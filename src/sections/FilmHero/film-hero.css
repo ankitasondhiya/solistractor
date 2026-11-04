@@ -1,0 +1,446 @@
+/* ---------------------------------------------------------------------------
+   FILM HERO (edition: film, `/`) — one pinned viewport
+     the picture     .film__frame > canvas   (full bleed, cover)
+     a scrim         .film__scrim            (keeps white type legible on the
+                                              bright field shots)
+     interface       .film__ui               (copy low-left, rail right,
+                                              hairline progress)
+--------------------------------------------------------------------------- */
+.film {
+  position: relative;
+  height: 640vh;
+  background: var(--film-ink);
+  color: var(--white);
+}
+
+.film__viewport {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--film-ink);
+}
+
+@supports (height: 100svh) {
+  .film__viewport {
+    height: 100svh;
+  }
+}
+
+.film__frame {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 55%;
+  will-change: transform;
+}
+
+.film__canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity var(--dur-5) var(--ease);
+}
+
+.film__canvas[data-ready='true'] {
+  opacity: 1;
+}
+
+/* Darker where the type is (low, and towards the left), and a touch along the
+   top for the header; the middle of the picture stays untouched. */
+.film__scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to top, rgba(4, 8, 20, 0.82) 0%, rgba(4, 8, 20, 0.45) 30%, rgba(4, 8, 20, 0) 56%),
+    linear-gradient(to right, rgba(4, 8, 20, 0.5) 0%, rgba(4, 8, 20, 0) 46%),
+    linear-gradient(to bottom, rgba(4, 8, 20, 0.5) 0%, rgba(4, 8, 20, 0) 18%);
+}
+
+.film__ui {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.film__ui a,
+.film__ui button {
+  pointer-events: auto;
+}
+
+/* Shared type ------------------------------------------------------------------ */
+.film__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.film__label::before {
+  content: '';
+  width: 28px;
+  height: 2px;
+  background: var(--green);
+}
+
+.film .display {
+  color: var(--white);
+}
+
+/* Intro -------------------------------------------------------------------- */
+.film__intro {
+  --a: 1;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: calc(var(--header-h) + 24px) var(--gutter) calc(6vh + 24px);
+  opacity: var(--a);
+}
+
+.film__intro-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.film__intro-main {
+  display: grid;
+  gap: 22px;
+  transform: translateY(calc((1 - var(--a)) * 40px));
+}
+
+.film__title {
+  font-size: clamp(64px, 10vw, 184px);
+  line-height: 0.86;
+}
+
+.film__line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.03em;
+}
+
+.film__line > span {
+  display: block;
+}
+
+.film__intro-foot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.film__lead {
+  max-width: 40ch;
+  font-size: clamp(16px, 1.2vw, 19px);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.film__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.film__warranty,
+.film__cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.film__warranty svg {
+  width: 16px;
+  height: 16px;
+  color: var(--green);
+}
+
+.film__cue {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 11px;
+}
+
+.film__cue svg {
+  width: 14px;
+  height: 14px;
+  animation: cue-bob 2s var(--ease) infinite;
+}
+
+@keyframes cue-bob {
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+/* Entrance, once the preloader lifts: title lines rise out of a mask. */
+.film__enter {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--dur-4) var(--ease-out),
+    transform var(--dur-5) var(--ease-out);
+  transition-delay: var(--d, 0ms);
+}
+
+.film__line > .film__enter {
+  opacity: 1;
+  transform: translateY(108%);
+}
+
+html[data-loaded='true'] .film__enter {
+  opacity: 1;
+  transform: none;
+}
+
+/* Chapters ------------------------------------------------------------------- */
+.film__chapter {
+  --a: 0;
+  position: absolute;
+  left: var(--gutter);
+  bottom: calc(6vh + 24px);
+  width: min(560px, 46vw);
+  display: grid;
+  justify-items: start;
+  gap: 16px;
+  opacity: var(--a);
+  visibility: hidden;
+  transform: translateY(calc((1 - var(--a)) * 36px));
+}
+
+.film__chapter-title {
+  font-size: clamp(48px, 5.6vw, 96px);
+  line-height: 0.88;
+}
+
+.film__chapter-body {
+  max-width: 44ch;
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.film__stats {
+  display: flex;
+  gap: 0;
+  margin-top: 6px;
+}
+
+.film__stats > div {
+  display: grid;
+  gap: 4px;
+  padding: 0 28px;
+  border-left: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.film__stats > div:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.film__stats dd {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 38px;
+  line-height: 1;
+  color: var(--white);
+}
+
+.film__stats small {
+  margin-left: 5px;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.film__stats dt {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.film__chapter-cta {
+  margin-top: 10px;
+}
+
+/* Rail: five numbered stops on the right edge -------------------------------- */
+.film__rail {
+  position: absolute;
+  right: var(--gutter);
+  top: 50%;
+  opacity: 0;
+  transform: translate(10px, -50%);
+  transition:
+    opacity var(--dur-3) var(--ease),
+    transform var(--dur-3) var(--ease);
+}
+
+.film__rail[data-show='true'] {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
+.film__rail ol {
+  display: grid;
+  gap: 6px;
+}
+
+.film__rail button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 6px 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  transition: color var(--dur-3) var(--ease);
+}
+
+.film__rail-num {
+  position: relative;
+  padding-right: 18px;
+  font-variant-numeric: tabular-nums;
+}
+
+.film__rail-num::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 8px;
+  height: 1px;
+  background: currentColor;
+  transition: width var(--dur-3) var(--ease-out);
+}
+
+.film__rail-name {
+  opacity: 0;
+  transform: translateX(6px);
+  transition:
+    opacity var(--dur-3) var(--ease),
+    transform var(--dur-3) var(--ease);
+}
+
+.film__rail li[data-state='done'] button {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.film__rail li[data-state='active'] button {
+  color: var(--white);
+}
+
+.film__rail li[data-state='active'] .film__rail-num::after {
+  width: 14px;
+  background: var(--green);
+}
+
+.film__rail li[data-state='active'] .film__rail-name,
+.film__rail button:hover .film__rail-name,
+.film__rail button:focus-visible .film__rail-name {
+  opacity: 1;
+  transform: none;
+}
+
+.film__progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.film__progress span {
+  position: absolute;
+  inset: 0;
+  background: var(--green);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* Narrow screens ------------------------------------------------------------- */
+@media (max-width: 899px) {
+  .film {
+    height: 540vh;
+  }
+
+  .film__scrim {
+    background:
+      linear-gradient(to top, rgba(4, 8, 20, 0.88) 0%, rgba(4, 8, 20, 0.5) 38%, rgba(4, 8, 20, 0) 62%),
+      linear-gradient(to bottom, rgba(4, 8, 20, 0.55) 0%, rgba(4, 8, 20, 0) 22%);
+  }
+
+  .film__intro {
+    padding-bottom: calc(4vh + 56px);
+  }
+
+  .film__chapter {
+    bottom: calc(4vh + 56px);
+  }
+
+  .film__title {
+    font-size: clamp(52px, 15vw, 96px);
+  }
+
+  .film__intro-foot {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .film__actions {
+    flex-direction: column;
+  }
+
+  .film__cue,
+  .film__rail {
+    display: none;
+  }
+
+  .film__chapter {
+    right: var(--gutter);
+    width: auto;
+  }
+
+  .film__chapter-title {
+    font-size: clamp(42px, 12vw, 64px);
+  }
+
+  .film__chapter-body {
+    font-size: 15px;
+  }
+
+  .film__chapter-cta {
+    display: none;
+  }
+
+  .film__stats > div {
+    padding: 0 18px;
+  }
+
+  .film__stats dd {
+    font-size: 30px;
+  }
+}

@@ -1,0 +1,106 @@
+import './site-footer.css'
+
+import { useLanguage } from '../../i18n/LanguageContext'
+import { useMotion } from '../../motion/MotionContext'
+import { links } from '../../data/links'
+import { EDITION, EDITIONS, editionPath, leaveForEdition } from '../../edition'
+import { Mail, Phone, Pin, SolisLogo } from '../Icons'
+
+/** Footer menu targets, in the order of `footer.links`. */
+const MENU = ['#top', links.models, links.information, links.service, links.warranty, links.about, links.contact]
+
+export function SiteFooter() {
+  const { t, lang, setLang } = useLanguage()
+  const { scrollTo } = useMotion()
+  const year = new Date().getFullYear()
+
+  return (
+    <footer className="site-footer">
+      <div className="container site-footer__top">
+        <div className="site-footer__brand">
+          <SolisLogo className="site-footer__logo" />
+          <p>{t.footer.tagline}</p>
+        </div>
+
+        <nav className="site-footer__col" aria-label={t.footer.dealers}>
+          <h3>{t.footer.dealers}</h3>
+          <a href={links.dealers}>{t.footer.findDealer}</a>
+          <a href={links.becomeDealer}>{t.footer.becomeDealer}</a>
+        </nav>
+
+        <nav className="site-footer__col" aria-label={t.footer.menu}>
+          <h3>{t.footer.menu}</h3>
+          {t.footer.links.map((label, i) => {
+            const href = MENU[i] ?? links.models
+            return (
+              <a
+                key={label}
+                href={href}
+                onClick={
+                  href.startsWith('#')
+                    ? (e) => {
+                        e.preventDefault()
+                        scrollTo(href)
+                      }
+                    : undefined
+                }
+              >
+                {label}
+              </a>
+            )
+          })}
+        </nav>
+
+        <address className="site-footer__col">
+          <h3>{t.footer.company}</h3>
+          <a href={links.phone}>
+            <Phone />
+            {t.utility.phone}
+          </a>
+          <a href={links.email}>
+            <Mail />
+            info@solistractor.nl
+          </a>
+          <a href={links.maps}>
+            <Pin />
+            <span>
+              {t.footer.address.map((line) => (
+                <span key={line}>{line}</span>
+              ))}
+            </span>
+          </a>
+        </address>
+      </div>
+
+      <div className="container site-footer__bottom">
+        <p>
+          © {year} Agrixpert · <a href={links.privacy}>{t.footer.privacy}</a> ·{' '}
+          <a href={links.cookies}>{t.footer.cookies}</a>
+        </p>
+        <p>{t.footer.note}</p>
+        <p className="site-footer__concept">{t.footer.concept}</p>
+        {/* Both versions of the page stay live; this is the way between them. */}
+        <nav className="site-footer__editions" aria-label={t.footer.edition}>
+          <span>{t.footer.edition}</span>
+          {EDITIONS.map((e) => (
+            <a
+              key={e}
+              href={editionPath[e]}
+              aria-current={e === EDITION ? 'page' : undefined}
+              onClick={(ev) => e !== EDITION && leaveForEdition(ev, editionPath[e])}
+            >
+              {t.footer.editions[e]}
+            </a>
+          ))}
+        </nav>
+        <button type="button" className="site-footer__lang" onClick={() => setLang(lang === 'nl' ? 'en' : 'nl')}>
+          {lang === 'nl' ? 'English' : 'Nederlands'}
+        </button>
+      </div>
+
+      <div className="site-footer__mark" aria-hidden="true">
+        <SolisLogo />
+      </div>
+    </footer>
+  )
+}

@@ -1,0 +1,116 @@
+.preloader {
+  --p: 0;
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-curtain);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: 28px var(--gutter) 34px;
+  background:
+    radial-gradient(60% 70% at 30% 60%, rgba(31, 95, 209, 0.22), transparent 70%),
+    var(--navy-900);
+  color: var(--white);
+  clip-path: inset(0 0 0 0);
+  transition: clip-path var(--dur-5) var(--ease-in-out);
+}
+
+.preloader[data-phase='leaving'] {
+  clip-path: inset(0 0 100% 0);
+}
+
+.preloader__top,
+.preloader__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.preloader__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--white);
+}
+
+.preloader__brand svg {
+  width: 74px;
+  height: auto;
+}
+
+.preloader__line {
+  align-self: center;
+  font-size: clamp(64px, 12.5vw, 210px);
+  line-height: 0.86;
+  color: inherit;
+  transition: transform var(--dur-5) var(--ease-in-out);
+}
+
+.preloader[data-phase='leaving'] .preloader__line {
+  transform: translateY(-12vh);
+}
+
+.preloader__row {
+  display: block;
+  white-space: nowrap;
+}
+
+.preloader__ch {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.14);
+  transition: color var(--dur-3) var(--ease);
+}
+
+.preloader__ch[data-lit='true'] {
+  color: var(--white);
+}
+
+.preloader__count {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: var(--display);
+  font-size: 56px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: var(--white);
+  font-variant-numeric: tabular-nums;
+}
+
+.preloader__count small {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.preloader__bar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--green);
+  transform: scaleX(var(--p));
+  transform-origin: left;
+}
+
+@media (max-width: 640px) {
+  .preloader__line {
+    font-size: clamp(48px, 15vw, 90px);
+  }
+
+  .preloader__row {
+    white-space: normal;
+  }
+
+  .preloader__count {
+    font-size: 44px;
+  }
+}

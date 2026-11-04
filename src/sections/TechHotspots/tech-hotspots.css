@@ -1,0 +1,226 @@
+.tech {
+  background: var(--paper);
+}
+
+.tech__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(24px, 4vw, 56px);
+}
+
+.tech__figure {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  background: var(--film-ink);
+  box-shadow: var(--shadow-2);
+}
+
+.tech__figure--studio {
+  background: linear-gradient(to bottom, var(--studio-top), var(--studio-floor));
+}
+
+.tech__figure img {
+  width: 100%;
+  height: auto;
+}
+
+.tech__spot {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--navy);
+  box-shadow:
+    0 0 0 6px rgba(255, 255, 255, 0.35),
+    0 6px 18px rgba(12, 30, 82, 0.25);
+  transition:
+    background-color var(--dur-2) var(--ease),
+    color var(--dur-2) var(--ease),
+    transform var(--dur-2) var(--ease);
+}
+
+.tech__spot::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  animation: spot-pulse 2.4s var(--ease) infinite;
+}
+
+@keyframes spot-pulse {
+  0% {
+    transform: scale(0.7);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.tech__spot-num {
+  display: none;
+}
+
+.tech__spot-plus {
+  width: 18px;
+  height: 18px;
+  transition: transform var(--dur-3) var(--ease);
+}
+
+.tech__spot:hover {
+  transform: scale(1.08);
+}
+
+.tech__spot[aria-pressed='true'] {
+  background: var(--green);
+  color: var(--navy-900);
+}
+
+.tech__spot[aria-pressed='true'] .tech__spot-plus {
+  transform: rotate(45deg);
+}
+
+.tech__pop {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  gap: 4px;
+  width: min(280px, 40%);
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--navy);
+  color: var(--white);
+  font-size: 13.5px;
+  line-height: 1.45;
+  box-shadow: var(--shadow-2);
+  pointer-events: none;
+  animation: pop-in var(--dur-3) var(--ease-out) both;
+}
+
+.tech__pop[data-side='right'] {
+  transform: translate(34px, -50%);
+}
+
+.tech__pop[data-side='left'] {
+  transform: translate(calc(-100% - 34px), -50%);
+}
+
+.tech__pop strong {
+  font-size: 15px;
+}
+
+.tech__pop span {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.tech__hint {
+  position: absolute;
+  left: 22px;
+  bottom: 18px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.tech__figure--studio .tech__hint {
+  color: rgba(12, 30, 82, 0.6);
+}
+
+.tech__list {
+  display: grid;
+  gap: 4px;
+}
+
+.tech__list button {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 12px;
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  text-align: left;
+  transition: background-color var(--dur-2) var(--ease);
+}
+
+.tech__list button:hover {
+  background: rgba(12, 30, 82, 0.04);
+}
+
+.tech__list button[aria-pressed='true'] {
+  background: var(--cream);
+  box-shadow: inset 3px 0 0 var(--green);
+}
+
+.tech__list-num {
+  font-family: var(--display);
+  font-size: 24px;
+  line-height: 1.1;
+  color: var(--green-dark);
+}
+
+.tech__list-copy {
+  display: grid;
+  gap: 2px;
+}
+
+.tech__list-copy strong {
+  font-size: 16px;
+  color: var(--navy);
+}
+
+.tech__list-copy span {
+  display: none;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.tech__list button[aria-pressed='true'] .tech__list-copy span {
+  display: block;
+}
+
+@media (max-width: 1000px) {
+  .tech__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* The figure is too small for a popover over it; the list carries the copy. */
+  .tech__pop {
+    display: none;
+  }
+
+  .tech__spot {
+    width: 32px;
+    height: 32px;
+    margin: -16px 0 0 -16px;
+  }
+
+  .tech__spot-plus {
+    display: none;
+  }
+
+  .tech__spot-num {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .tech__hint {
+    display: none;
+  }
+}

@@ -1,0 +1,182 @@
+.pillars {
+  background: var(--paper);
+  padding-bottom: clamp(60px, 8vw, 120px);
+}
+
+.pillars__list {
+  display: grid;
+  gap: 4vh;
+}
+
+.pillar {
+  position: sticky;
+  top: calc(var(--header-h) + 20px + var(--i) * 16px);
+}
+
+.pillar__card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  min-height: min(68vh, 620px);
+  border-radius: 28px;
+  overflow: hidden;
+  position: relative;
+  transform-origin: 50% 0;
+  box-shadow: var(--shadow-2);
+  will-change: transform;
+}
+
+/* Settles back as the next card slides over it (driven by Pillars.tsx). */
+.pillar__card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: #000;
+  opacity: var(--dim, 0);
+  pointer-events: none;
+}
+
+.pillar__card[data-tone='navy'] {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.pillar__card[data-tone='film'] {
+  background: var(--film-ink);
+  color: var(--white);
+}
+
+.pillar__card[data-tone='studio'] {
+  background: linear-gradient(to bottom, var(--studio-top), var(--studio-floor));
+  color: var(--navy);
+}
+
+.pillar__card[data-tone='cream'] {
+  background: var(--cream);
+  color: var(--navy);
+  box-shadow:
+    inset 0 0 0 1px var(--line),
+    var(--shadow-2);
+}
+
+.pillar__card[data-tone='green'] {
+  background: var(--green);
+  color: var(--navy-900);
+}
+
+.pillar__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  padding: clamp(28px, 4vw, 56px);
+}
+
+.pillar__num {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.pillar__num span {
+  opacity: 0.5;
+}
+
+.pillar__title {
+  margin-top: auto;
+  font-size: clamp(64px, 8.4vw, 140px);
+  line-height: 0.86;
+  color: inherit;
+}
+
+.pillar__label {
+  font-size: clamp(18px, 1.6vw, 24px);
+  font-weight: 600;
+}
+
+.pillar__body {
+  max-width: 40ch;
+  opacity: 0.78;
+}
+
+.pillar__visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.pillar__visual img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* A cut-out on the studio cream: shown whole, not cropped. */
+.pillar__card[data-tone='studio'] .pillar__visual img {
+  object-fit: contain;
+}
+
+.pillar__glyph {
+  width: 62%;
+  height: auto;
+  color: var(--green);
+  stroke-width: 0.7;
+}
+
+.pillar__count {
+  display: grid;
+  justify-items: center;
+  font-family: var(--display);
+  font-size: clamp(160px, 22vw, 340px);
+  line-height: 0.8;
+  color: var(--navy-900);
+}
+
+.pillar__count small {
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.pillar__badge {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--navy);
+  box-shadow: var(--shadow-1);
+}
+
+.pillar__badge svg {
+  width: 26px;
+  height: 26px;
+}
+
+.pillars__list[data-static='true'] .pillar {
+  position: static;
+}
+
+@media (max-width: 899px) {
+  .pillar__card {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .pillar__visual {
+    min-height: 240px;
+    order: -1;
+  }
+
+  .pillar__title {
+    margin-top: 8px;
+  }
+}

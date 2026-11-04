@@ -1,0 +1,86 @@
+.scroll-tractor {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 10px;
+  z-index: var(--z-companion);
+  height: 44px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--dur-3) var(--ease),
+    transform var(--dur-3) var(--ease);
+}
+
+.scroll-tractor[data-show='true'] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Tyre tracks: a dashed line, filled solid behind the tractor */
+.scroll-tractor__track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4px;
+  height: 2px;
+  background: repeating-linear-gradient(to right, rgba(12, 30, 82, 0.22) 0 6px, transparent 6px 12px);
+}
+
+.scroll-tractor__fill {
+  position: absolute;
+  inset: 0;
+  background: var(--green-dark);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.scroll-tractor__rig {
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  width: 64px;
+  height: 45px;
+  will-change: transform;
+}
+
+.scroll-tractor__rig img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 3px rgba(12, 30, 82, 0.3));
+  transition: transform var(--dur-3) var(--ease);
+}
+
+/* The photograph faces left; driving down the page it turns round. */
+.scroll-tractor__rig[data-facing='right'] img {
+  transform: scaleX(-1);
+}
+
+.scroll-tractor__dust {
+  position: absolute;
+  bottom: 2px;
+  width: 26px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(150, 140, 120, 0.55), transparent);
+  filter: blur(2px);
+  opacity: 0;
+  transition: opacity var(--dur-2) linear;
+}
+
+.scroll-tractor__rig[data-facing='right'] .scroll-tractor__dust {
+  left: -14px;
+}
+
+.scroll-tractor__rig[data-facing='left'] .scroll-tractor__dust {
+  right: -14px;
+}
+
+@media (max-width: 640px) {
+  .scroll-tractor__rig {
+    width: 50px;
+    height: 35px;
+  }
+}

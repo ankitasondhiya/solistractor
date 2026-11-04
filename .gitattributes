@@ -1,0 +1,12 @@
+# Normalise line endings in the repo (LF), let Git convert on checkout
+* text=auto
+
+# Binary assets
+*.webp binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.mp4 binary
+*.woff binary
+*.woff2 binary

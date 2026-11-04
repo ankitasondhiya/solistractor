@@ -1,0 +1,106 @@
+/* The hero without its film — reduced motion, or frames that would not load. */
+.hero-static {
+  padding: calc(var(--header-h) + 48px) 0 96px;
+}
+
+.hero-static[data-tone='dark'] {
+  background: var(--film-ink);
+  color: var(--white);
+}
+
+.hero-static[data-tone='dark'] .display {
+  color: var(--white);
+}
+
+.hero-static[data-tone='dark'] .lead {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.hero-static[data-tone='light'] {
+  background: linear-gradient(to bottom, var(--studio-top), var(--studio-floor));
+}
+
+.hero-static__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: 40px;
+}
+
+.hero-static__copy {
+  display: grid;
+  gap: 22px;
+  justify-items: start;
+}
+
+.hero-static__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero-static__image {
+  width: 100%;
+  height: auto;
+}
+
+/* The film's still is a photograph with its own edges; the studio's is a cut-out. */
+.hero-static[data-tone='dark'] .hero-static__image {
+  border-radius: 20px;
+}
+
+.hero-static__note {
+  font-size: 13px;
+  opacity: 0.65;
+}
+
+.hero-static__chapters {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 28px;
+  margin-top: 64px;
+}
+
+.hero-static__chapters li {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  padding-top: 20px;
+  border-top: 1px solid rgba(12, 30, 82, 0.18);
+}
+
+.hero-static[data-tone='dark'] .hero-static__chapters li {
+  border-top-color: rgba(255, 255, 255, 0.2);
+}
+
+.hero-static__chapters h2 {
+  font-size: 30px;
+}
+
+.hero-static__chapters p:last-child {
+  font-size: 14.5px;
+  color: #384152;
+}
+
+.hero-static[data-tone='dark'] .hero-static__chapters p:last-child {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.hero-static__kicker {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--green-dark);
+}
+
+.hero-static[data-tone='dark'] .hero-static__kicker {
+  color: var(--green);
+}
+
+@media (max-width: 899px) {
+  .hero-static__inner,
+  .hero-static__chapters {
+    grid-template-columns: 1fr;
+  }
+}

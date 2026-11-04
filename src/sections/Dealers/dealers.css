@@ -1,0 +1,231 @@
+.dealers {
+  background: var(--cream);
+}
+
+.dealers__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  align-items: start;
+  gap: clamp(40px, 6vw, 96px);
+}
+
+.dealers__intro {
+  position: sticky;
+  top: calc(var(--header-h) + 24px);
+  display: grid;
+  gap: 22px;
+  justify-items: start;
+}
+
+.dealers__count {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  margin-top: 8px;
+  font-family: var(--display);
+  font-size: clamp(96px, 10vw, 160px);
+  line-height: 0.8;
+  color: var(--navy);
+}
+
+.dealers__count span {
+  max-width: 14ch;
+  padding-bottom: 6px;
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+.dealers__services {
+  display: grid;
+  gap: 10px;
+}
+
+.dealers__services li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.dealers__services svg {
+  width: 22px;
+  height: 22px;
+  padding: 3px;
+  border-radius: 50%;
+  background: var(--green);
+  color: var(--navy-900);
+  stroke-width: 2.4;
+}
+
+.dealers__become {
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.dealers__finder {
+  display: grid;
+  gap: 18px;
+}
+
+.dealers__filter-label {
+  margin-bottom: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.dealers__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.dealers__results {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.dealers__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.dealers__list li {
+  animation: dealer-in var(--dur-3) var(--ease-out) both;
+}
+
+@keyframes dealer-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.dealer-card {
+  display: grid;
+  gap: 10px;
+  height: 100%;
+  padding: 20px;
+  border-radius: 18px;
+  background: var(--white);
+  box-shadow: inset 0 0 0 1px var(--line);
+  transition:
+    transform var(--dur-3) var(--ease-spring),
+    box-shadow var(--dur-3) var(--ease);
+}
+
+.dealer-card:active {
+  transform: scale(0.98);
+  transition-duration: var(--dur-1);
+}
+
+.dealer-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 0 0 1px var(--line-strong),
+    var(--shadow-1);
+}
+
+.dealer-card[data-importer='true'] {
+  background: var(--navy);
+  color: var(--white);
+  box-shadow: none;
+}
+
+.dealer-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.dealer-card__province {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green-dark);
+}
+
+.dealer-card[data-importer='true'] .dealer-card__province {
+  color: var(--green);
+}
+
+.dealer-card__badge {
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--green);
+  color: var(--navy-900);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.dealer-card__name {
+  font-size: 17px;
+  line-height: 1.3;
+  color: inherit;
+}
+
+.dealer-card:not([data-importer='true']) .dealer-card__name {
+  color: var(--navy);
+}
+
+.dealer-card__town {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.dealer-card[data-importer='true'] .dealer-card__town {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.dealer-card__town svg {
+  width: 15px;
+  height: 15px;
+}
+
+.dealer-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  font-size: 13.5px;
+  font-weight: 700;
+}
+
+.dealer-card__cta svg {
+  width: 15px;
+  height: 15px;
+  transition: transform var(--dur-3) var(--ease);
+}
+
+.dealer-card:hover .dealer-card__cta svg {
+  transform: translate(2px, -2px);
+}
+
+@media (max-width: 1000px) {
+  .dealers__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dealers__intro {
+    position: static;
+  }
+}
+
+@media (max-width: 560px) {
+  .dealers__list {
+    grid-template-columns: 1fr;
+  }
+}

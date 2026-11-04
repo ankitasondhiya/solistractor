@@ -1,0 +1,662 @@
+/* ---------------------------------------------------------------------------
+   Solis Nederland — design tokens
+   The brand's own palette from solistractor.nl: deep navy for type and
+   ground, field green for action, warm cream for paper. The studio grey is
+   new — it is the room the assembly film was shot in, and the hero is built
+   to sit inside that room rather than on top of a white page.
+--------------------------------------------------------------------------- */
+:root {
+  color-scheme: light;
+
+  --navy: #0c1e52;
+  --navy-900: #071338;
+  --navy-700: #16307a;
+  --blue: #1f5fd1;
+  --green: #74c04a;
+  /* Green as text on the light grounds: 4.6:1 on cream, 5.1:1 on paper (the
+     brand's #4f8d34 is 3.4–3.7:1, under AA for the small eyebrow labels). */
+  --green-dark: #3d7527;
+  --green-soft: rgba(116, 192, 74, 0.16);
+  --cream: #eeeae3;
+  --paper: #f6f4ef;
+  --white: #ffffff;
+  --ink: #1a1d21;
+  --muted: #616975;
+  --line: #e6e1d8;
+  --line-strong: #d4cdc0;
+  --gold: #c9a96a;
+
+  /* The room the machine stands in. The film was shot in a grey studio; the
+     frames are cut out of it, so the room can be the warm, quiet cream of the
+     reference instead — a touch deeper at the top, lighter at the floor. */
+  --studio-top: #e8e4dc;
+  --studio-mid: #eeeae3;
+  --studio-floor: #f4f1eb;
+
+  /* The film's own darkness — the studio it was shot in. */
+  --film-ink: #05080f;
+
+  /* Bebas Neue is the brand's display face and stays for headlines. The body
+     moves from Inter to Archivo, a grotesk with more presence at large sizes —
+     the big statement text carries the page the way it does on the studio
+     references. */
+  --font: 'Archivo', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial,
+    sans-serif;
+  --display: 'Bebas Neue', Impact, 'Arial Narrow', sans-serif;
+
+  /* Motion -----------------------------------------------------------------
+     One rhythm for the whole page: durations chosen by distance and weight,
+     a decelerating curve for anything arriving, an accelerating one for
+     anything leaving (and leaving takes about two thirds of arriving), and a
+     slight spring for things that snap back after a press. */
+  --dur-1: 150ms; /* press, hover colour */
+  --dur-2: 240ms; /* small state changes: chips, toggles, icons */
+  --dur-3: 420ms; /* components: panels, cards, menus */
+  --dur-4: 720ms; /* section reveals, headline lines */
+  --dur-5: 1100ms; /* full-screen: preloader curtain, intro */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1); /* standard */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* arriving (expo out) */
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0); /* leaving */
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1); /* curtains, wipes */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1); /* release after a press */
+
+  /* Layers, low to high, so nothing overlaps by accident. */
+  --z-raised: 3;
+  --z-menu: 40;
+  --z-companion: 44;
+  --z-float: 45;
+  --z-header: 50;
+  --z-curtain: 100;
+
+  /* Focus: 5.3:1 on the light grounds; dark sections switch to light green. */
+  --focus-ring: var(--blue);
+
+  --header-h: 76px;
+
+  --gutter: clamp(16px, 5vw, 72px);
+  --max: 1320px;
+  --radius: 18px;
+  --radius-sm: 10px;
+  --shadow-1: 0 1px 2px rgba(12, 30, 82, 0.06), 0 8px 24px rgba(12, 30, 82, 0.06);
+  --shadow-2: 0 2px 6px rgba(12, 30, 82, 0.08), 0 24px 60px rgba(12, 30, 82, 0.14);
+}
+
+/* Dark grounds take a focus ring that reads on them (11–14:1). */
+.film,
+.finder,
+.demo,
+.journey,
+.marquee,
+.site-footer,
+.mobile-menu,
+.preloader,
+.hero-static[data-tone='dark'],
+.pillar__card[data-tone='navy'],
+.pillar__card[data-tone='film'],
+.site-header[data-tone='film'] {
+  --focus-ring: #b9e88f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  /* Scroll drives the assembly timeline; native smooth scrolling would fight
+     Lenis and the eased progress loop. Anchor jumps go through Lenis. */
+  scroll-behavior: auto;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Lenis' own required rules */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped,
+html.scroll-locked {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Leaving for the other edition: a short fade, never a wait (edition.ts). */
+html[data-leaving='true'] body {
+  opacity: 0;
+  transition: opacity var(--dur-2) var(--ease-in);
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+ul,
+ol,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Short headings break into even lines rather than leaving one word alone. */
+h1,
+h2,
+h3,
+.display {
+  text-wrap: balance;
+}
+
+.lead {
+  text-wrap: pretty;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* No double-tap-to-zoom wait on controls. */
+a,
+button,
+label,
+summary {
+  touch-action: manipulation;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--green);
+  color: var(--navy-900);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: calc(var(--z-curtain) + 1);
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: var(--navy);
+  color: var(--white);
+  font-weight: 600;
+  transform: translateY(-160%);
+  transition: transform var(--dur-2) var(--ease-in);
+}
+
+.skip-link:focus {
+  transform: none;
+  transition: transform var(--dur-3) var(--ease-out);
+}
+
+/* Layout ------------------------------------------------------------------ */
+.container {
+  width: 100%;
+  max-width: calc(var(--max) + var(--gutter) * 2);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.section {
+  position: relative;
+  padding: clamp(80px, 11vw, 160px) 0;
+}
+
+/* Shared type ------------------------------------------------------------- */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green-dark);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 28px;
+  height: 2px;
+  background: currentColor;
+}
+
+.eyebrow--light {
+  color: var(--green);
+}
+
+.display {
+  font-family: var(--display);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+
+.display--xl {
+  font-size: clamp(52px, 8.4vw, 132px);
+}
+
+.display--lg {
+  font-size: clamp(44px, 6vw, 96px);
+}
+
+.display--md {
+  font-size: clamp(36px, 4.2vw, 64px);
+}
+
+/* Each direct child span is one line of a multi-line headline. */
+.display > span {
+  display: block;
+}
+
+.lead {
+  max-width: 54ch;
+  font-size: clamp(16px, 1.25vw, 19px);
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+.section-head {
+  display: grid;
+  gap: 22px;
+  margin-bottom: clamp(40px, 5vw, 72px);
+}
+
+.section-head--split {
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  align-items: end;
+  gap: 40px;
+}
+
+.section-head__lead {
+  display: grid;
+  gap: 24px;
+  justify-items: start;
+}
+
+@media (max-width: 900px) {
+  .section-head--split {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+}
+
+/* Buttons -----------------------------------------------------------------
+   Hover lifts by 2px (feedback, not motion); a press sinks to 0.97 at once
+   and springs back on release, so every tap answers inside 100ms. */
+.btn {
+  --btn-bg: var(--green);
+  --btn-fg: var(--navy-900);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 52px;
+  padding: 0 26px;
+  border-radius: 999px;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    transform var(--dur-3) var(--ease-spring),
+    box-shadow var(--dur-2) var(--ease),
+    background-color var(--dur-2) var(--ease),
+    color var(--dur-2) var(--ease);
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateX(-101%);
+  transition: transform var(--dur-3) var(--ease-out);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(79, 141, 52, 0.32);
+}
+
+.btn:hover::after {
+  transform: none;
+}
+
+.btn:active {
+  transform: scale(0.97);
+  transition-duration: var(--dur-1);
+  transition-timing-function: var(--ease-out);
+}
+
+.btn__icon {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  transition: transform var(--dur-2) var(--ease-out);
+}
+
+.btn:hover .btn__icon {
+  transform: translateX(3px);
+}
+
+.btn--navy {
+  --btn-bg: var(--navy);
+  --btn-fg: var(--white);
+}
+
+.btn--navy:hover {
+  box-shadow: 0 12px 28px rgba(12, 30, 82, 0.3);
+}
+
+.btn--ghost {
+  --btn-bg: transparent;
+  --btn-fg: var(--navy);
+  box-shadow: inset 0 0 0 1.5px rgba(12, 30, 82, 0.28);
+}
+
+.btn--ghost::after {
+  background: rgba(12, 30, 82, 0.06);
+}
+
+.btn--ghost:hover {
+  box-shadow: inset 0 0 0 1.5px var(--navy);
+}
+
+.btn--ghost-light {
+  --btn-bg: transparent;
+  --btn-fg: var(--white);
+  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.4);
+}
+
+.btn--ghost-light:hover {
+  box-shadow: inset 0 0 0 1.5px var(--white);
+}
+
+.btn--sm {
+  min-height: 42px;
+  padding: 0 18px;
+  font-size: 14px;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--navy);
+  background: linear-gradient(currentColor, currentColor) 100% 100% / 0 2px no-repeat;
+  padding-bottom: 2px;
+  transition: background-size var(--dur-2) var(--ease-in);
+}
+
+/* The underline draws in from the left and leaves to the right. */
+.text-link:hover {
+  background-position: 0 100%;
+  background-size: 100% 2px;
+  transition: background-size var(--dur-3) var(--ease-out);
+}
+
+.text-link svg {
+  width: 18px;
+  height: 18px;
+  transition: transform var(--dur-2) var(--ease-out);
+}
+
+.text-link:hover svg {
+  transform: translateX(3px);
+}
+
+/* Chips and round buttons --------------------------------------------------- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 0 16px;
+  border-radius: 999px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--navy);
+  box-shadow: inset 0 0 0 1.5px rgba(12, 30, 82, 0.16);
+  transition:
+    transform var(--dur-3) var(--ease-spring),
+    background-color var(--dur-2) var(--ease),
+    color var(--dur-2) var(--ease),
+    box-shadow var(--dur-2) var(--ease);
+}
+
+.chip:hover {
+  box-shadow: inset 0 0 0 1.5px var(--navy);
+}
+
+.chip[aria-pressed='true'] {
+  background: var(--navy);
+  color: var(--white);
+  box-shadow: inset 0 0 0 1.5px var(--navy);
+}
+
+.round-btn {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  color: var(--navy);
+  box-shadow: inset 0 0 0 1.5px rgba(12, 30, 82, 0.2);
+  transition:
+    transform var(--dur-3) var(--ease-spring),
+    background-color var(--dur-2) var(--ease),
+    color var(--dur-2) var(--ease),
+    opacity var(--dur-2) var(--ease);
+}
+
+.round-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.round-btn:hover:not(:disabled) {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.round-btn:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+.chip:active,
+.round-btn:active:not(:disabled) {
+  transform: scale(0.95);
+  transition-duration: var(--dur-1);
+  transition-timing-function: var(--ease-out);
+}
+
+/* Reveal-on-scroll ---------------------------------------------------------
+   Sections opt in with data-reveal; the Reveal component flips data-shown
+   once the element enters the viewport. A short rise (20px, not a slide),
+   and every headline line inside rises out of its own mask, one after the
+   other — the same move the hero's title makes, so the page speaks with one
+   motion. Without JavaScript, or with reduced motion, everything is simply
+   visible. */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity var(--dur-4) var(--ease-out),
+    transform var(--dur-4) var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+[data-reveal][data-shown='true'] {
+  opacity: 1;
+  transform: none;
+}
+
+[data-reveal] .display > span {
+  clip-path: inset(100% 0 0 0);
+  transform: translateY(0.32em);
+  transition:
+    clip-path var(--dur-4) var(--ease-out),
+    transform var(--dur-4) var(--ease-out);
+  transition-delay: calc(var(--reveal-delay, 0ms) + 120ms + var(--line, 0) * 90ms);
+}
+
+[data-reveal] .display > span:nth-child(2) {
+  --line: 1;
+}
+
+[data-reveal] .display > span:nth-child(3) {
+  --line: 2;
+}
+
+[data-reveal][data-shown='true'] .display > span {
+  clip-path: inset(-0.1em 0 -0.15em 0);
+  transform: none;
+}
+
+/* A section head reveals its parts in sequence (eyebrow + title, then the
+   lead) instead of as one block: ~80ms apart. */
+.section-head[data-reveal] {
+  opacity: 1;
+  transform: none;
+}
+
+.section-head[data-reveal] > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--dur-4) var(--ease-out),
+    transform var(--dur-4) var(--ease-out);
+  transition-delay: calc(var(--reveal-delay, 0ms) + var(--i, 0) * 80ms);
+}
+
+.section-head[data-reveal] > :nth-child(2) {
+  --i: 2;
+}
+
+.section-head[data-reveal][data-shown='true'] > * {
+  opacity: 1;
+  transform: none;
+}
+
+/* Calm: the reader pressed "Pause motion". Scroll-scrubbed pictures stay (the
+   reader is moving them), but every loop on the page holds still. */
+html[data-motion='calm'] *,
+html[data-motion='calm'] *::before,
+html[data-motion='calm'] *::after {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  .section-head[data-reveal] > *,
+  [data-reveal] .display > span {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+    transition: none;
+  }
+
+  /* Everything else answers instantly and no loop runs. */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+}
+
+/* The wrapper a magnetic button leans with (hooks/useMagnetic.ts). */
+.magnet {
+  display: inline-flex;
+  will-change: transform;
+}
+
+/* In a stacked (column) action row the wrapper stretches; the button fills it. */
+.magnet > .btn {
+  flex: 1 1 auto;
+}
+
+/* The site's own model label — "26 PK · HYDROSTAAT" — as solistractor.nl
+   sets it on every model card: a small navy plate. */
+.model-badge {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 5px 9px;
+  border-radius: 4px;
+  background: var(--navy);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}

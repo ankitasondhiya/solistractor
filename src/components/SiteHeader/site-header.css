@@ -1,0 +1,458 @@
+/* ---------------------------------------------------------------------------
+   Site header — one bar: wordmark, links, a single action
+--------------------------------------------------------------------------- */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-header);
+  transition: transform var(--dur-3) var(--ease-out);
+}
+
+/* Steps aside faster than it returns: leaving takes about two thirds. */
+.site-header[data-hidden='true'] {
+  transform: translateY(-100%);
+  transition: transform var(--dur-2) var(--ease-in);
+}
+
+.site-header__bar {
+  height: var(--header-h);
+  transition:
+    background-color var(--dur-3) var(--ease),
+    box-shadow var(--dur-3) var(--ease),
+    backdrop-filter var(--dur-3) var(--ease);
+}
+
+.site-header[data-scrolled='true'] .site-header__bar {
+  background: rgba(251, 250, 247, 0.78);
+  -webkit-backdrop-filter: saturate(1.6) blur(18px);
+  backdrop-filter: saturate(1.6) blur(18px);
+  box-shadow: 0 1px 0 rgba(12, 30, 82, 0.08);
+}
+
+.site-header__bar-inner {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  height: 100%;
+}
+
+.site-header__brand {
+  display: block;
+  flex: none;
+  color: var(--navy);
+}
+
+.site-header__brand svg {
+  display: block;
+  width: 108px;
+  height: auto;
+}
+
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0 auto;
+}
+
+.site-header__nav a {
+  position: relative;
+  padding: 10px 14px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.site-header__nav a::after {
+  content: '';
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 4px;
+  height: 2px;
+  background: var(--green);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-3) var(--ease-out);
+}
+
+.site-header__nav a:hover::after {
+  transform: none;
+}
+
+.site-header__end {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.site-header__burger {
+  display: none;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  color: var(--navy);
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: inset 0 0 0 1px rgba(12, 30, 82, 0.12);
+}
+
+.site-header__burger svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Over the film: no bar, white type, a light outline on the action. */
+.site-header[data-tone='film'] .site-header__bar,
+.site-header[data-tone='film'][data-scrolled='true'] .site-header__bar {
+  background: transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.site-header[data-tone='film'] .site-header__brand,
+.site-header[data-tone='film'] .site-header__nav a,
+.site-header[data-tone='film'] .site-header__burger {
+  color: var(--white);
+}
+
+.site-header[data-tone='film'] .site-header__burger {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.site-header[data-tone='film'] .site-header__cta {
+  --btn-bg: var(--white);
+  --btn-fg: var(--navy-900);
+}
+
+.site-header[data-tone='film'] .lang-switch {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.site-header[data-tone='film'] .lang-switch button {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.site-header[data-tone='film'] .lang-switch button[aria-pressed='true'] {
+  background: var(--white);
+  color: var(--navy-900);
+}
+
+.site-header[data-open='true'] .site-header__burger {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.site-header[data-open='true'] .site-header__brand {
+  color: var(--white);
+}
+
+.site-header[data-open='true'] .site-header__bar {
+  background: transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+/* Language switch ------------------------------------------------------------ */
+.lang-switch {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: 999px;
+  background: rgba(12, 30, 82, 0.07);
+}
+
+.lang-switch button {
+  min-width: 38px;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(12, 30, 82, 0.6);
+  transition:
+    background-color var(--dur-2) var(--ease),
+    color var(--dur-2) var(--ease);
+}
+
+.lang-switch button[aria-pressed='true'] {
+  background: var(--white);
+  color: var(--navy);
+  box-shadow: 0 1px 3px rgba(12, 30, 82, 0.14);
+}
+
+.lang-switch[data-light='true'] {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.lang-switch[data-light='true'] button {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.lang-switch[data-light='true'] button[aria-pressed='true'] {
+  background: var(--green);
+  color: var(--navy-900);
+}
+
+/* Edition switch (Film | Studio) ------------------------------------------------
+   Same pill as the language switch, but always on screen: it is the way to
+   the other version of the page. */
+.edition-switch {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: 999px;
+  background: rgba(12, 30, 82, 0.07);
+}
+
+.edition-switch a {
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: rgba(12, 30, 82, 0.6);
+  transition:
+    background-color var(--dur-2) var(--ease),
+    color var(--dur-2) var(--ease);
+}
+
+.edition-switch a:hover {
+  color: var(--navy);
+}
+
+.edition-switch a[aria-current='page'] {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.site-header[data-tone='film'] .edition-switch,
+.edition-switch[data-light='true'] {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.site-header[data-tone='film'] .edition-switch a,
+.edition-switch[data-light='true'] a {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.site-header[data-tone='film'] .edition-switch a:hover,
+.edition-switch[data-light='true'] a:hover {
+  color: var(--white);
+}
+
+.site-header[data-tone='film'] .edition-switch a[aria-current='page'],
+.edition-switch[data-light='true'] a[aria-current='page'] {
+  background: var(--green);
+  color: var(--navy-900);
+}
+
+/* Mobile menu ---------------------------------------------------------------- */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-menu);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: calc(var(--header-h) + 32px) var(--gutter) 32px;
+  background: var(--navy-900);
+  color: var(--white);
+  clip-path: inset(0 0 100% 0);
+  visibility: hidden;
+  transition:
+    clip-path var(--dur-3) var(--ease-in),
+    visibility 0s linear var(--dur-3);
+}
+
+.mobile-menu[data-open='true'] {
+  clip-path: inset(0 0 0 0);
+  visibility: visible;
+  transition:
+    clip-path var(--dur-4) var(--ease-out),
+    visibility 0s;
+}
+
+.mobile-menu__nav {
+  display: grid;
+  gap: 6px;
+}
+
+.mobile-menu__nav a {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  font-family: var(--display);
+  font-size: clamp(44px, 12vw, 72px);
+  line-height: 1;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--dur-3) var(--ease-out),
+    transform var(--dur-4) var(--ease-out);
+}
+
+.mobile-menu[data-open='true'] .mobile-menu__nav a {
+  opacity: 1;
+  transform: none;
+}
+
+.mobile-menu__nav span {
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--green);
+}
+
+.mobile-menu__foot {
+  display: grid;
+  gap: 18px;
+  justify-items: start;
+}
+
+.mobile-menu__phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+
+.mobile-menu__phone svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Motion toggle -------------------------------------------------------------- */
+.motion-toggle {
+  position: fixed;
+  left: 18px;
+  bottom: 18px;
+  z-index: var(--z-float);
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  height: 36px;
+  padding: 0 14px 0 12px;
+  border-radius: 999px;
+  background: rgba(251, 250, 247, 0.82);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    inset 0 0 0 1px rgba(12, 30, 82, 0.1),
+    var(--shadow-1);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--navy);
+  transition:
+    opacity var(--dur-2) var(--ease-in),
+    transform var(--dur-2) var(--ease-in),
+    visibility 0s linear var(--dur-2);
+}
+
+.motion-toggle[data-show='true'] {
+  transition:
+    opacity var(--dur-3) var(--ease-out),
+    transform var(--dur-3) var(--ease-out),
+    visibility 0s;
+}
+
+.motion-toggle[data-show='false'] {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+}
+
+.motion-toggle__icon {
+  position: relative;
+  width: 10px;
+  height: 11px;
+}
+
+/* Two bars while motion runs ("pause"), a triangle once paused ("play"). */
+.motion-toggle__icon::before,
+.motion-toggle__icon::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  border-radius: 1px;
+  background: currentColor;
+}
+
+.motion-toggle__icon::before {
+  left: 0;
+}
+
+.motion-toggle__icon::after {
+  right: 0;
+}
+
+.motion-toggle__icon[data-paused='true']::before {
+  width: 0;
+  height: 0;
+  border-radius: 0;
+  background: none;
+  border-style: solid;
+  border-width: 5.5px 0 5.5px 9px;
+  border-color: transparent transparent transparent currentColor;
+}
+
+.motion-toggle__icon[data-paused='true']::after {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  .site-header__nav,
+  .site-header__end .lang-switch {
+    display: none;
+  }
+
+  .site-header__burger {
+    display: grid;
+  }
+
+  .site-header__end {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --header-h: 64px;
+  }
+
+  .site-header__cta {
+    display: none;
+  }
+
+  /* On a phone the bottom edge belongs to the hero's dots and cards; the
+     control keeps its place as an icon, its name kept for screen readers. */
+  .motion-toggle {
+    width: 36px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .motion-toggle__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .site-header__brand svg {
+    width: 92px;
+  }
+}

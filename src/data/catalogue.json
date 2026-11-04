@@ -1,0 +1,4835 @@
+{
+ "source": "https://www.solistractor.nl/modellen/",
+ "retrieved": "2026-11-04",
+ "note": "As published by Solis Nederland (AgriXpert B.V.). Prices in EUR excl. VAT, price list 01-02-2026. Rebuild with scripts/scrape-catalogue.py.",
+ "models": [
+  {
+   "slug": "s16",
+   "url": "https://www.solistractor.nl/modellen/s16/",
+   "category": "Compact",
+   "tagline": "Compacte kracht voor tuin, terrein en erf.",
+   "width": "94,5 cm",
+   "hero": {
+    "eyebrow": "Solis S16",
+    "headline": "Compacte kracht voor tuin, terrein en erf.",
+    "text": "Met circa 95 cm breedte op standaard landbouwbanden komt de S16 waar grotere tractoren niet kunnen komen."
+   },
+   "keyFacts": [
+    {
+     "label": "Vermogen",
+     "value": "16 pk"
+    },
+    {
+     "label": "Motor",
+     "value": "3-cilinder ITL S-Tech Stage V"
+    },
+    {
+     "label": "Hefvermogen",
+     "value": "650 kg"
+    },
+    {
+     "label": "Transmissie",
+     "value": "6F + 2R mechanisch"
+    }
+   ],
+   "intro": {
+    "eyebrow": "Voor uw dagelijkse praktijk",
+    "title": "Solis S16: praktisch sterk en toegankelijk.",
+    "text": "Met circa 95 cm breedte op standaard landbouwbanden komt de S16 waar grotere tractoren niet kunnen komen. De dealer helpt u bij de keuze voor banden, ballast, hydrauliek en passende werktuigen.",
+    "checks": [
+     "Compact en wendbaar",
+     "Dubbelwerkend ventiel",
+     "Geschikt voor voorlader",
+     "Tot 5 jaar* fabrieksgarantie"
+    ],
+    "footnote": "*Vraag naar de voorwaarden",
+    "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/s16-1-1024x725.webp"
+   },
+   "work": {
+    "eyebrow": "Breed inzetbaar",
+    "title": "Gemaakt voor werk, niet voor omwegen.",
+    "text": "Van dagelijks onderhoud tot specialistische inzet: configureer de tractor rond uw praktijk.",
+    "items": [
+     {
+      "title": "Gazon en tuin bijhouden",
+      "text": "Maaien, slepen en aanharken langs paden, borders en gazon."
+     },
+     {
+      "title": "Maaien en grond bewerken",
+      "text": "Dezelfde machine voor maaiwerk en het frezen of egaliseren van grond."
+     },
+     {
+      "title": "Door compacte doorgangen werken",
+      "text": "Op standaard landbouwbanden is deze machine 94,5 cm breed. Andere banden veranderen die maat."
+     }
+    ]
+   },
+   "specsNote": "Gegevens voor het Nederlandse programma. Banden, opties en uitvoering kunnen waarden beïnvloeden; laat de gekozen configuratie door de dealer bevestigen.",
+   "specs": [
+    {
+     "label": "Motorvermogen",
+     "value": "16 pk"
+    },
+    {
+     "label": "Motor",
+     "value": "3-cilinder ITL S-Tech Stage V"
+    },
+    {
+     "label": "Aandrijving",
+     "value": "4WD"
+    },
+    {
+     "label": "Transmissie",
+     "value": "6F + 2R mechanisch"
+    },
+    {
+     "label": "Aftakas",
+     "value": "540 / 1000 tpm"
+    },
+    {
+     "label": "Hefvermogen",
+     "value": "650 kg"
+    }
+   ],
+   "downloads": [
+    {
+     "label": "Brochure",
+     "meta": "PDF · 4 MB",
+     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-brochure.pdf"
+    },
+    {
+     "label": "Prijslijst 01-02-2026",
+     "meta": "PDF · 302 KB",
+     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-prijslijst.pdf"
+    },
+    {
+     "label": "Garantie",
+     "meta": "",
+     "href": "https://www.solistractor.nl/garantie/"
+    }
+   ],
+   "configuratorNote": "Gebaseerd op de actieprijzen in de prijslijst van 01-02-2026. Geldigheid, uitvoering, montage en leverbaarheid altijd door de dealer te bevestigen.",
+   "configurator": {
+    "eyebrow": "Solis 16 configurator",
+    "currency": "EUR",
+    "vat": false,
+    "priceDate": "01-02-2026",
+    "steps": [
+     {
+      "title": "Uitvoering",
+      "controls": [
+       {
+        "key": "base",
+        "type": "cards",
+        "options": [
+         {
+          "value": "std",
+          "label": "Zonder stuurbekrachtiging",
+          "note": "6+2 handgeschakeld",
+          "price": 6950,
+          "isDefault": true
+         },
+         {
+          "value": "power",
+          "label": "Met stuurbekrachtiging",
+          "note": "6+2 handgeschakeld",
+          "price": 7450
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "title": "Banden",
+      "controls": [
+       {
+        "key": "tires",
+        "type": "list",
+        "options": [
+         {
+          "value": "standard",
+          "label": "Landbouwbanden · 94,5 cm",
+          "detail": "5×12 6PR · 8×18 6PR",
+          "price": 0,
+          "isDefault": true,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+         },
+         {
+          "value": "wide",
+          "label": "Brede landbouwbanden · 115 cm",
+          "detail": "BKT 6.5/80-12 · BKT 280/70R18",
+          "price": 300,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-breed-150x150.webp"
+         },
+         {
+          "value": "lawn",
+          "label": "Gazonbanden · 140 cm",
+          "detail": "BKT 23×8.5-12 · BKT 33×15.5-16.5",
+          "price": 700,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-150x150.webp"
+         },
+         {
+          "value": "industrial",
+          "label": "Industriebanden · 140 cm",
+          "detail": "BKT 23×8.5-12 · BKT 33×15.5-16.5",
+          "price": 900,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-industrie-150x150.webp"
+         },
+         {
+          "value": "multi",
+          "label": "Multi-use banden · 118,5 cm",
+          "detail": "Galaxy Garden Pro 220/55R15 · 280/70R16",
+          "price": 900,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+         }
+        ]
+       },
+       {
+        "key": "extraTires",
+        "type": "select",
+        "label": "Extra losse bandenset",
+        "options": [
+         {
+          "value": "none",
+          "label": "Geen extra bandenset",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "standard",
+          "label": "Landbouwbanden",
+          "price": 775,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+         },
+         {
+          "value": "wide",
+          "label": "Brede landbouwbanden",
+          "price": 1235,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-breed-150x150.webp"
+         },
+         {
+          "value": "lawn",
+          "label": "Gazonbanden",
+          "price": 1575,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-150x150.webp"
+         },
+         {
+          "value": "industrial",
+          "label": "Industriebanden",
+          "price": 1750,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-industrie-150x150.webp"
+         },
+         {
+          "value": "multi",
+          "label": "Multi-use banden",
+          "price": 1750,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "title": "Hydrauliek & gewichten",
+      "controls": [
+       {
+        "key": "valves",
+        "type": "select",
+        "label": "Dubbelwerkende ventielen",
+        "options": [
+         {
+          "value": "1",
+          "label": "1 ventiel · standaard",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "2",
+          "label": "2 ventielen",
+          "price": 1025
+         },
+         {
+          "value": "3",
+          "label": "3 ventielen",
+          "price": 1290
+         }
+        ]
+       },
+       {
+        "key": "counterweight",
+        "type": "check",
+        "label": "Contragewicht Cat. 1 · 300 kg",
+        "price": 670,
+        "options": []
+       },
+       {
+        "key": "frontWeights",
+        "type": "quantity",
+        "label": "Frontgewichten van 15 kg",
+        "max": 6,
+        "unit": "× 15 kg",
+        "price": 82,
+        "options": []
+       }
+      ]
+     },
+     {
+      "title": "Aflevering & accessoires",
+      "controls": [
+       {
+        "key": "towbar",
+        "type": "check",
+        "label": "Boventrekhaak",
+        "price": 410,
+        "options": []
+       },
+       {
+        "key": "rdw",
+        "type": "check",
+        "label": "RDW-keuring",
+        "note": "Inschrijving, kentekenplaat en leges",
+        "price": 139,
+        "options": []
+       },
+       {
+        "key": "charger",
+        "type": "check",
+        "label": "Druppellader",
+        "price": 129,
+        "options": []
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "s20",
+   "url": "https://www.solistractor.nl/modellen/s20/",
+   "category": "Compact",
+   "tagline": "Wendbaar van formaat. Breed in gebruik.",
+   "width": "92 cm",
+   "hero": {
+    "eyebrow": "Solis S20",
+    "headline": "Wendbaar van formaat. Breed in gebruik.",
+    "text": "Een compacte allroundtractor voor maaien, frezen, laden en werkzaamheden op beperkte ruimte."
+   },
+   "keyFacts": [
+    {
+     "label": "Vermogen",
+     "value": "18 pk"
+    },
+    {
+     "label": "Motor",
+     "value": "3-cilinder Mitsubishi Stage V"
+    },
+    {
+     "label": "Hefvermogen",
+     "value": "650 kg"
+    },
+    {
+     "label": "Transmissie",
+     "value": "6F + 2R mechanisch"
+    }
+   ],
+   "intro": {
+    "eyebrow": "Voor uw dagelijkse praktijk",
+    "title": "Solis S20: praktisch sterk en toegankelijk.",
+    "text": "Een compacte allroundtractor voor maaien, frezen, laden en werkzaamheden op beperkte ruimte. De dealer helpt u bij de keuze voor banden, ballast, hydrauliek en passende werktuigen.",
+    "checks": [
+     "Circa 99 cm breed",
+     "Mitsubishi-motor",
+     "Voorlader mogelijk",
+     "Tot 5 jaar* fabrieksgarantie"
+    ],
+    "footnote": "*Vraag naar de voorwaarden",
+    "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/s20-1-1024x725.webp"
+   },
+   "work": {
+    "eyebrow": "Breed inzetbaar",
+    "title": "Gemaakt voor werk, niet voor omwegen.",
+    "text": "Van dagelijks onderhoud tot specialistische inzet: configureer de tractor rond uw praktijk.",
+    "items": [
+     {
+      "title": "Groen onderhouden op wisselende locaties",
+      "text": "Maaien en opruimen op plekken waar een grotere machine niet komt."
+     },
+     {
+      "title": "Het erf op orde houden",
+      "text": "Vegen, slepen, opruimen en materiaal verplaatsen rond gebouwen."
+     },
+     {
+      "title": "Materiaal verplaatsen met een voorlader",
+      "text": "Voor dit model staat een voorlader in de prijslijst, vanaf € 3.085 exclusief btw en montage."
+     }
+    ]
+   },
+   "specsNote": "Gegevens voor het Nederlandse programma. Banden, opties en uitvoering kunnen waarden beïnvloeden; laat de gekozen configuratie door de dealer bevestigen.",
+   "specs": [
+    {
+     "label": "Motorvermogen",
+     "value": "18 pk"
+    },
+    {
+     "label": "Motor",
+     "value": "3-cilinder Mitsubishi Stage V"
+    },
+    {
+     "label": "Aandrijving",
+     "value": "4WD"
+    },
+    {
+     "label": "Transmissie",
+     "value": "6F + 2R mechanisch"
+    },
+    {
+     "label": "Aftakas",
+     "value": "540 / 1000 tpm"
+    },
+    {
+     "label": "Hefvermogen",
+     "value": "650 kg"
+    }
+   ],
+   "downloads": [
+    {
+     "label": "Brochure",
+     "meta": "PDF · 4 MB",
+     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-brochure.pdf"
+    },
+    {
+     "label": "Prijslijst 01-02-2026",
+     "meta": "PDF · 302 KB",
+     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-prijslijst.pdf"
+    },
+    {
+     "label": "Garantie",
+     "meta": "",
+     "href": "https://www.solistractor.nl/garantie/"
+    }
+   ],
+   "configuratorNote": "Gebaseerd op de actieprijzen in de prijslijst van 01-02-2026. Geldigheid, uitvoering, montage en leverbaarheid altijd door de dealer te bevestigen.",
+   "configurator": {
+    "eyebrow": "Solis 20 configurator",
+    "currency": "EUR",
+    "vat": false,
+    "priceDate": "01-02-2026",
+    "steps": [
+     {
+      "title": "Uitvoering",
+      "controls": [
+       {
+        "key": "base",
+        "type": "cards",
+        "options": [
+         {
+          "value": "std",
+          "label": "Zonder stuurbekrachtiging",
+          "note": "6+2 handgeschakeld",
+          "price": 8050,
+          "isDefault": true
+         },
+         {
+          "value": "power",
+          "label": "Met stuurbekrachtiging",
+          "note": "6+2 handgeschakeld",
+          "price": 8650
+         },
+         {
+          "value": "sideshift",
+          "label": "Sideshift met stuurbekrachtiging",
+          "note": "6+2 handgeschakeld",
+          "price": 8900
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "title": "Banden",
+      "controls": [
+       {
+        "key": "tires",
+        "type": "list",
+        "options": [
+         {
+          "value": "standard",
+          "label": "Landbouwbanden · 92 cm",
+          "detail": "5×12 6PR · 8×18 6PR",
+          "price": 0,
+          "isDefault": true,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+         },
+         {
+          "value": "wide",
+          "label": "Brede landbouwbanden · 115 cm",
+          "detail": "BKT 6.5/80-12 · BKT 280/70R18",
+          "price": 300,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-breed-150x150.webp"
+         },
+         {
+          "value": "lawn",
+          "label": "Gazonbanden · 140 cm",
+          "detail": "BKT 23×8.5-12 · BKT 33×15.5-16.5",
+          "price": 700,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-150x150.webp"
+         },
+         {
+          "value": "industrial",
+          "label": "Industriebanden · 140 cm",
+          "detail": "BKT 23×8.5-12 · BKT 33×15.5-16.5",
+          "price": 900,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-industrie-150x150.webp"
+         },
+         {
+          "value": "multi",
+          "label": "Multi-use banden · 117 cm",
+          "detail": "Galaxy Garden Pro 220/55R15 · 280/70R16",
+          "price": 900,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+         }
+        ]
+       },
+       {
+        "key": "extraTires",
+        "type": "select",
+        "label": "Extra losse bandenset",
+        "options": [
+         {
+          "value": "none",
+          "label": "Geen extra bandenset",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "standard",
+          "label": "Landbouwbanden",
+          "price": 775,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+         },
+         {
+          "value": "wide",
+          "label": "Brede landbouwbanden",
+          "price": 1235,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-breed-150x150.webp"
+         },
+         {
+          "value": "lawn",
+          "label": "Gazonbanden",
+          "price": 1575,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-150x150.webp"
+         },
+         {
+          "value": "industrial",
+          "label": "Industriebanden",
+          "price": 1750,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-industrie-150x150.webp"
+         },
+         {
+          "value": "multi",
+          "label": "Multi-use banden",
+          "price": 1750,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "title": "Voorlader",
+      "controls": [
+       {
+        "key": "loader",
+        "type": "select",
+        "label": "Type voorlader",
+        "options": [
+         {
+          "value": "none",
+          "label": "Geen voorlader",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "standard",
+          "label": "Voorlader · grondbak",
+          "price": 3085,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-150x150.webp"
+         },
+         {
+          "value": "multi",
+          "label": "Voorlader · multifunctionele bak + 3e functie",
+          "price": 4115,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/multifunctionele-bak-150x150.webp"
+         }
+        ]
+       },
+       {
+        "key": "loaderMount",
+        "type": "auto",
+        "label": "Voorladermontage",
+        "price": 350,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "bucket",
+        "type": "check",
+        "label": "Mestriek 1,10 m",
+        "price": 580,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "forks",
+        "type": "check",
+        "label": "Palletlepels",
+        "price": 875,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "hooks",
+        "type": "check",
+        "label": "Snelwissel aanlashaken",
+        "price": 150,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "frontWeights",
+        "type": "quantity",
+        "label": "Frontgewichten van 15 kg",
+        "max": 6,
+        "unit": "× 15 kg",
+        "price": 82,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       }
+      ]
+     },
+     {
+      "title": "Hydrauliek & gewichten",
+      "controls": [
+       {
+        "key": "valves",
+        "type": "select",
+        "label": "Dubbelwerkende ventielen",
+        "options": [
+         {
+          "value": "1",
+          "label": "1 ventiel · standaard",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "2",
+          "label": "2 ventielen",
+          "price": 1025
+         },
+         {
+          "value": "3",
+          "label": "3 ventielen",
+          "price": 1290
+         }
+        ]
+       },
+       {
+        "key": "counterweight",
+        "type": "check",
+        "label": "Contragewicht Cat. 1 · 300 kg",
+        "price": 670,
+        "options": []
+       }
+      ]
+     },
+     {
+      "title": "Aflevering & accessoires",
+      "controls": [
+       {
+        "key": "towbar",
+        "type": "check",
+        "label": "Boventrekhaak",
+        "price": 410,
+        "options": []
+       },
+       {
+        "key": "rdw",
+        "type": "check",
+        "label": "RDW-keuring",
+        "note": "Inschrijving, kentekenplaat en leges",
+        "price": 139,
+        "options": []
+       },
+       {
+        "key": "charger",
+        "type": "check",
+        "label": "Druppellader",
+        "price": 129,
+        "options": []
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "s22",
+   "url": "https://www.solistractor.nl/modellen/s22/",
+   "category": "Compact",
+   "tagline": "Meer vermogen in een compact pakket.",
+   "width": "106 cm",
+   "hero": {
+    "eyebrow": "Solis S22",
+    "headline": "Meer vermogen in een compact pakket.",
+    "text": "De S22 combineert compacte afmetingen met een sterke driepuntshef en Stage V-techniek."
+   },
+   "keyFacts": [
+    {
+     "label": "Vermogen",
+     "value": "22 pk"
+    },
+    {
+     "label": "Motor",
+     "value": "3-cilinder ITL S-Tech Stage V"
+    },
+    {
+     "label": "Hefvermogen",
+     "value": "750 kg"
+    },
+    {
+     "label": "Transmissie",
+     "value": "6F + 2R mechanisch"
+    }
+   ],
+   "intro": {
+    "eyebrow": "Voor uw dagelijkse praktijk",
+    "title": "Solis S22: praktisch sterk en toegankelijk.",
+    "text": "De S22 combineert compacte afmetingen met een sterke driepuntshef en Stage V-techniek. De dealer helpt u bij de keuze voor banden, ballast, hydrauliek en passende werktuigen.",
+    "checks": [
+     "750 kg hefvermogen",
+     "Dubbelwerkend ventiel",
+     "Meerdere bandenopties",
+     "Tot 5 jaar* fabrieksgarantie"
+    ],
+    "footnote": "*Vraag naar de voorwaarden",
+    "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/s22-1-1024x725.webp"
+   },
+   "work": {
+    "eyebrow": "Breed inzetbaar",
+    "title": "Gemaakt voor werk, niet voor omwegen.",
+    "text": "Van dagelijks onderhoud tot specialistische inzet: configureer de tractor rond uw praktijk.",
+    "items": [
+     {
+      "title": "Land en erf met één machine",
+      "text": "Werktuigen aan de hef voor het land, een voorlader voor het erf."
+     },
+     {
+      "title": "Maaien in minder rondes",
+      "text": "Grotere werkbreedte dan een zitmaaier, met werktuigen aan de hef of middenaftakas."
+     },
+     {
+      "title": "Materiaal verplaatsen met een voorlader",
+      "text": "Voor dit model staat een voorlader in de prijslijst, vanaf € 3.085 exclusief btw en montage."
+     }
+    ]
+   },
+   "specsNote": "Gegevens voor het Nederlandse programma. Banden, opties en uitvoering kunnen waarden beïnvloeden; laat de gekozen configuratie door de dealer bevestigen.",
+   "specs": [
+    {
+     "label": "Motorvermogen",
+     "value": "22 pk"
+    },
+    {
+     "label": "Motor",
+     "value": "3-cilinder ITL S-Tech Stage V"
+    },
+    {
+     "label": "Aandrijving",
+     "value": "4WD"
+    },
+    {
+     "label": "Transmissie",
+     "value": "6F + 2R mechanisch"
+    },
+    {
+     "label": "Aftakas",
+     "value": "540 / 1000 tpm"
+    },
+    {
+     "label": "Hefvermogen",
+     "value": "750 kg"
+    }
+   ],
+   "downloads": [
+    {
+     "label": "Brochure",
+     "meta": "PDF · 4 MB",
+     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-brochure.pdf"
+    },
+    {
+     "label": "Prijslijst 01-02-2026",
+     "meta": "PDF · 302 KB",
+     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-prijslijst.pdf"
+    },
+    {
+     "label": "Garantie",
+     "meta": "",
+     "href": "https://www.solistractor.nl/garantie/"
+    }
+   ],
+   "configuratorNote": "Gebaseerd op de actieprijzen in de prijslijst van 01-02-2026. Geldigheid, uitvoering, montage en leverbaarheid altijd door de dealer te bevestigen.",
+   "configurator": {
+    "eyebrow": "Solis 22 configurator",
+    "currency": "EUR",
+    "vat": false,
+    "priceDate": "01-02-2026",
+    "steps": [
+     {
+      "title": "Uitvoering",
+      "controls": [
+       {
+        "key": "base",
+        "type": "cards",
+        "options": [
+         {
+          "value": "std",
+          "label": "Sideshift",
+          "note": "6+2 handgeschakeld",
+          "price": 8150,
+          "isDefault": true
+         },
+         {
+          "value": "black",
+          "label": "Sideshift Black Edition",
+          "note": "Alleen op bestelling",
+          "price": 8300
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "title": "Banden",
+      "controls": [
+       {
+        "key": "tires",
+        "type": "list",
+        "options": [
+         {
+          "value": "standard",
+          "label": "Landbouwbanden · 106 cm",
+          "detail": "6×12 6PR · 8.3×20 6PR",
+          "price": 0,
+          "isDefault": true,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+         },
+         {
+          "value": "wide",
+          "label": "Brede landbouwbanden · 115 cm",
+          "detail": "BKT 6.5/80-12 · BKT 280/70R18",
+          "price": 300,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-breed-150x150.webp"
+         },
+         {
+          "value": "lawn",
+          "label": "Gazonbanden · 140 cm",
+          "detail": "BKT 23×8.5-12 · BKT 33×15.5-16.5",
+          "price": 700,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-150x150.webp"
+         },
+         {
+          "value": "industrial",
+          "label": "Industriebanden · 140 cm",
+          "detail": "BKT 23×8.5-12 · BKT 33×15.5-16.5",
+          "price": 900,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-industrie-150x150.webp"
+         },
+         {
+          "value": "multi",
+          "label": "Multi-use banden · 117 cm",
+          "detail": "Galaxy Garden Pro 220/55R15 · 280/70R16",
+          "price": 900,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+         }
+        ]
+       },
+       {
+        "key": "extraTires",
+        "type": "select",
+        "label": "Extra losse bandenset",
+        "options": [
+         {
+          "value": "none",
+          "label": "Geen extra bandenset",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "standard",
+          "label": "Landbouwbanden",
+          "price": 875,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+         },
+         {
+          "value": "wide",
+          "label": "Brede landbouwbanden",
+          "price": 1235,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-breed-150x150.webp"
+         },
+         {
+          "value": "lawn",
+          "label": "Gazonbanden",
+          "price": 1575,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-150x150.webp"
+         },
+         {
+          "value": "industrial",
+          "label": "Industriebanden",
+          "price": 1750,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-industrie-150x150.webp"
+         },
+         {
+          "value": "multi",
+          "label": "Multi-use banden",
+          "price": 1750,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "title": "Voorlader",
+      "controls": [
+       {
+        "key": "loader",
+        "type": "select",
+        "label": "Type voorlader",
+        "options": [
+         {
+          "value": "none",
+          "label": "Geen voorlader",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "standard",
+          "label": "Voorlader · grondbak",
+          "price": 3085,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-150x150.webp"
+         },
+         {
+          "value": "multi",
+          "label": "Voorlader · multifunctionele bak + 3e functie",
+          "price": null,
+          "onRequest": true,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/multifunctionele-bak-150x150.webp"
+         }
+        ]
+       },
+       {
+        "key": "loaderMount",
+        "type": "auto",
+        "label": "Voorladermontage",
+        "price": 350,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "bucket",
+        "type": "check",
+        "label": "Mestriek 1,10 m",
+        "price": 580,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "forks",
+        "type": "check",
+        "label": "Palletlepels",
+        "price": 875,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "hooks",
+        "type": "check",
+        "label": "Snelwissel aanlashaken",
+        "price": 150,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "frontWeights",
+        "type": "quantity",
+        "label": "Frontgewichten van 15 kg",
+        "max": 6,
+        "unit": "× 15 kg",
+        "price": 82,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       }
+      ]
+     },
+     {
+      "title": "Hydrauliek & gewichten",
+      "controls": [
+       {
+        "key": "valves",
+        "type": "select",
+        "label": "Dubbelwerkende ventielen",
+        "options": [
+         {
+          "value": "1",
+          "label": "1 ventiel · standaard",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "2",
+          "label": "2 ventielen",
+          "price": 1025
+         },
+         {
+          "value": "3",
+          "label": "3 ventielen",
+          "price": 1290
+         }
+        ]
+       },
+       {
+        "key": "counterweight",
+        "type": "check",
+        "label": "Contragewicht Cat. 1 · 300 kg",
+        "price": 670,
+        "options": []
+       }
+      ]
+     },
+     {
+      "title": "Aflevering & accessoires",
+      "controls": [
+       {
+        "key": "towbar",
+        "type": "check",
+        "label": "Boventrekhaak",
+        "price": 410,
+        "options": []
+       },
+       {
+        "key": "rdw",
+        "type": "check",
+        "label": "RDW-keuring",
+        "note": "Inschrijving, kentekenplaat en leges",
+        "price": 139,
+        "options": []
+       },
+       {
+        "key": "charger",
+        "type": "check",
+        "label": "Druppellader",
+        "price": 129,
+        "options": []
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "s26",
+   "url": "https://www.solistractor.nl/modellen/s26/",
+   "category": "Mechanisch",
+   "tagline": "De compacte krachtpatser voor iedere dag.",
+   "width": "106 cm",
+   "hero": {
+    "eyebrow": "Solis S26",
+    "headline": "De compacte krachtpatser voor iedere dag.",
+    "text": "Mitsubishi-motortechniek, een zware vooras en veelzijdige uitrusting voor compact werk."
+   },
+   "keyFacts": [
+    {
+     "label": "Vermogen",
+     "value": "26 pk"
+    },
+    {
+     "label": "Motor",
+     "value": "3-cilinder Mitsubishi Stage V"
+    },
+    {
+     "label": "Hefvermogen",
+     "value": "775 kg"
+    },
+    {
+     "label": "Transmissie",
+     "value": "6F + 2R mechanisch"
+    }
+   ],
+   "intro": {
+    "eyebrow": "Voor uw dagelijkse praktijk",
+    "title": "Solis S26: praktisch sterk en toegankelijk.",
+    "text": "Mitsubishi-motortechniek, een zware vooras en veelzijdige uitrusting voor compact werk. De dealer helpt u bij de keuze voor banden, ballast, hydrauliek en passende werktuigen.",
+    "checks": [
+     "Stuurbekrachtiging",
+     "Zware vooras",
+     "Industrie-, gazon- of landbouwbanden",
+     "Tot 5 jaar* fabrieksgarantie"
+    ],
+    "footnote": "*Vraag naar de voorwaarden",
+    "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/s26-1-1024x725.webp"
+   },
+   "work": {
+    "eyebrow": "Breed inzetbaar",
+    "title": "Gemaakt voor werk, niet voor omwegen.",
+    "text": "Van dagelijks onderhoud tot specialistische inzet: configureer de tractor rond uw praktijk.",
+    "items": [
+     {
+      "title": "Terrein begaanbaar houden",
+      "text": "Paden, erf en verharding bijwerken, slepen en opruimen."
+     },
+     {
+      "title": "Laden en stapelen",
+      "text": "Bakken, balen en pallets oppakken en op hoogte plaatsen."
+     },
+     {
+      "title": "Materiaal verplaatsen met een voorlader",
+      "text": "Voor dit model staat een voorlader in de prijslijst, vanaf € 3.085 exclusief btw en montage."
+     }
+    ]
+   },
+   "specsNote": "Gegevens voor het Nederlandse programma. Banden, opties en uitvoering kunnen waarden beïnvloeden; laat de gekozen configuratie door de dealer bevestigen.",
+   "specs": [
+    {
+     "label": "Motorvermogen",
+     "value": "26 pk"
+    },
+    {
+     "label": "Motor",
+     "value": "3-cilinder Mitsubishi Stage V"
+    },
+    {
+     "label": "Aandrijving",
+     "value": "4WD"
+    },
+    {
+     "label": "Transmissie",
+     "value": "6F + 2R mechanisch"
+    },
+    {
+     "label": "Aftakas",
+     "value": "540 / 1000 tpm"
+    },
+    {
+     "label": "Hefvermogen",
+     "value": "775 kg"
+    }
+   ],
+   "downloads": [
+    {
+     "label": "Brochure",
+     "meta": "PDF · 4 MB",
+     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-brochure.pdf"
+    },
+    {
+     "label": "Prijslijst 01-02-2026",
+     "meta": "PDF · 302 KB",
+     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-prijslijst.pdf"
+    },
+    {
+     "label": "Garantie",
+     "meta": "",
+     "href": "https://www.solistractor.nl/garantie/"
+    }
+   ],
+   "configuratorNote": "Gebaseerd op de actieprijzen in de prijslijst van 01-02-2026. Geldigheid, uitvoering, montage en leverbaarheid altijd door de dealer te bevestigen.",
+   "configurator": {
+    "eyebrow": "Solis 26 configurator",
+    "currency": "EUR",
+    "vat": false,
+    "priceDate": "01-02-2026",
+    "steps": [
+     {
+      "title": "Uitvoering",
+      "controls": [
+       {
+        "key": "base",
+        "type": "cards",
+        "options": [
+         {
+          "value": "std",
+          "label": "Standaard",
+          "note": "6+2 handgeschakeld",
+          "price": 10150,
+          "isDefault": true
+         },
+         {
+          "value": "sideshift",
+          "label": "Sideshift",
+          "note": "6+2 handgeschakeld",
+          "price": 10550
+         },
+         {
+          "value": "black",
+          "label": "Black Edition",
+          "note": "Alleen op bestelling",
+          "price": 10300
+         },
+         {
+          "value": "sideshiftBlack",
+          "label": "Sideshift Black Edition",
+          "note": "Alleen op bestelling",
+          "price": 10700
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "title": "Banden",
+      "controls": [
+       {
+        "key": "tires",
+        "type": "list",
+        "options": [
+         {
+          "value": "standard",
+          "label": "Landbouwbanden · 106 cm",
+          "detail": "6×12 6PR · 8.3×20 6PR",
+          "price": 0,
+          "isDefault": true,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+         },
+         {
+          "value": "wide",
+          "label": "Brede landbouwbanden · 115 cm",
+          "detail": "BKT 6.5/80-12 · BKT 280/70R18",
+          "price": 300,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-breed-150x150.webp"
+         },
+         {
+          "value": "lawn",
+          "label": "Gazonbanden · 140 cm",
+          "detail": "BKT 23×8.5-12 · BKT 33×15.5-16.5",
+          "price": 700,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-150x150.webp"
+         },
+         {
+          "value": "industrial",
+          "label": "Industriebanden · 140 cm",
+          "detail": "BKT 23×8.5-12 · BKT 33×15.5-16.5",
+          "price": 900,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-industrie-150x150.webp"
+         },
+         {
+          "value": "multi",
+          "label": "Multi-use banden · 117 cm",
+          "detail": "Galaxy Garden Pro 220/55R15 · 280/70R16",
+          "price": 900,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+         }
+        ]
+       },
+       {
+        "key": "extraTires",
+        "type": "select",
+        "label": "Extra losse bandenset",
+        "options": [
+         {
+          "value": "none",
+          "label": "Geen extra bandenset",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "standard",
+          "label": "Landbouwbanden",
+          "price": 875,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+         },
+         {
+          "value": "wide",
+          "label": "Brede landbouwbanden",
+          "price": 1235,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-breed-150x150.webp"
+         },
+         {
+          "value": "lawn",
+          "label": "Gazonbanden",
+          "price": 1575,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-150x150.webp"
+         },
+         {
+          "value": "industrial",
+          "label": "Industriebanden",
+          "price": 1750,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-industrie-150x150.webp"
+         },
+         {
+          "value": "multi",
+          "label": "Multi-use banden",
+          "price": 1750,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "title": "Voorlader",
+      "controls": [
+       {
+        "key": "loader",
+        "type": "select",
+        "label": "Type voorlader",
+        "options": [
+         {
+          "value": "none",
+          "label": "Geen voorlader",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "standard",
+          "label": "Voorlader · grondbak",
+          "price": 3085,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-150x150.webp"
+         },
+         {
+          "value": "multi",
+          "label": "Voorlader · multifunctionele bak + 3e functie",
+          "price": 4115,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/multifunctionele-bak-150x150.webp"
+         }
+        ]
+       },
+       {
+        "key": "loaderMount",
+        "type": "auto",
+        "label": "Voorladermontage",
+        "price": 350,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "bucket",
+        "type": "check",
+        "label": "Mestriek 1,10 m",
+        "price": 580,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "forks",
+        "type": "check",
+        "label": "Palletlepels",
+        "price": 875,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "hooks",
+        "type": "check",
+        "label": "Snelwissel aanlashaken",
+        "price": 150,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "frontWeights",
+        "type": "quantity",
+        "label": "Frontgewichten van 15 kg",
+        "max": 6,
+        "unit": "× 15 kg",
+        "price": 82,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       }
+      ]
+     },
+     {
+      "title": "Hydrauliek & front",
+      "controls": [
+       {
+        "key": "valves",
+        "type": "select",
+        "label": "Dubbelwerkende ventielen",
+        "options": [
+         {
+          "value": "1",
+          "label": "1 ventiel · standaard",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "2",
+          "label": "2 ventielen",
+          "price": 1025
+         },
+         {
+          "value": "3",
+          "label": "3 ventielen",
+          "price": 1290
+         }
+        ]
+       },
+       {
+        "key": "frontLift",
+        "type": "check",
+        "label": "Zuidberg fronthef Cat. 1",
+        "note": "Montage wordt automatisch berekend",
+        "price": 1950,
+        "options": []
+       },
+       {
+        "key": "frontPto",
+        "type": "check",
+        "label": "Zuidberg frontaftakas",
+        "note": "Alleen in combinatie met fronthef",
+        "price": 2075,
+        "when": {
+         "veld": "frontLift",
+         "op": "gezet"
+        },
+        "rule": "Frontaftakas wordt beschikbaar zodra u de fronthef selecteert.",
+        "options": []
+       },
+       {
+        "key": "frontLiftMount",
+        "type": "auto",
+        "label": "Montage fronthef",
+        "onRequest": true,
+        "priceRule": {
+         "indien": {
+          "veld": "frontPto",
+          "op": "gezet"
+         },
+         "dan": 550,
+         "anders": 350
+        },
+        "when": {
+         "veld": "frontLift",
+         "op": "gezet"
+        },
+        "options": []
+       },
+       {
+        "key": "counterweight",
+        "type": "check",
+        "label": "Contragewicht Cat. 1 · 300 kg",
+        "price": 670,
+        "options": []
+       }
+      ]
+     },
+     {
+      "title": "Aflevering & accessoires",
+      "controls": [
+       {
+        "key": "towbar",
+        "type": "check",
+        "label": "Boventrekhaak",
+        "price": 410,
+        "options": []
+       },
+       {
+        "key": "rdw",
+        "type": "check",
+        "label": "RDW-keuring",
+        "note": "Inschrijving, kentekenplaat en leges",
+        "price": 139,
+        "options": []
+       },
+       {
+        "key": "charger",
+        "type": "check",
+        "label": "Druppellader",
+        "price": 129,
+        "options": []
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "s26-shuttle-xl",
+   "url": "https://www.solistractor.nl/modellen/s26-shuttle-xl/",
+   "category": "9+9 shuttle",
+   "tagline": "Compact werken met het gemak van een shuttle.",
+   "width": "119 cm",
+   "hero": {
+    "eyebrow": "Solis 26 Shuttle XL",
+    "headline": "Compact werken met het gemak van een shuttle.",
+    "text": "De 9+9-transmissie met omkeerschakeling ondersteunt herhaald manoeuvreren en voorladerwerk."
+   },
+   "keyFacts": [
+    {
+     "label": "Vermogen",
+     "value": "26 pk"
+    },
+    {
+     "label": "Motor",
+     "value": "3-cilinder Mitsubishi Stage V"
+    },
+    {
+     "label": "Hefvermogen",
+     "value": "775 kg"
+    },
+    {
+     "label": "Transmissie",
+     "value": "9F + 9R shuttle"
+    }
+   ],
+   "intro": {
+    "eyebrow": "Voor uw dagelijkse praktijk",
+    "title": "Solis 26 Shuttle XL: praktisch sterk en toegankelijk.",
+    "text": "De 9+9-transmissie met omkeerschakeling ondersteunt herhaald manoeuvreren en voorladerwerk. De dealer helpt u bij de keuze voor banden, ballast, hydrauliek en passende werktuigen.",
+    "checks": [
+     "Reverser shuttle",
+     "Zijschakeling",
+     "Hydraulische stuurbekrachtiging",
+     "Tot 5 jaar* fabrieksgarantie"
+    ],
+    "footnote": "*Vraag naar de voorwaarden",
+    "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/s26-shuttle-1-1024x725.webp"
+   },
+   "work": {
+    "eyebrow": "Breed inzetbaar",
+    "title": "Gemaakt voor werk, niet voor omwegen.",
+    "text": "Van dagelijks onderhoud tot specialistische inzet: configureer de tractor rond uw praktijk.",
+    "items": [
+     {
+      "title": "Laden zonder tillen",
+      "text": "Grond, mest, zand of pallets verplaatsen met een voorlader."
+     },
+     {
+      "title": "Werken rond stal en erf",
+      "text": "Mest afvoeren, strooisel aanvoeren en balen verplaatsen in krappe ruimte."
+     },
+     {
+      "title": "Materiaal verplaatsen met een voorlader",
+      "text": "Voor dit model staat een voorlader in de prijslijst, vanaf € 3.190 exclusief btw en montage."
+     }
+    ]
+   },
+   "specsNote": "Gegevens voor het Nederlandse programma. Banden, opties en uitvoering kunnen waarden beïnvloeden; laat de gekozen configuratie door de dealer bevestigen.",
+   "specs": [
+    {
+     "label": "Motorvermogen",
+     "value": "26 pk"
+    },
+    {
+     "label": "Motor",
+     "value": "3-cilinder Mitsubishi Stage V"
+    },
+    {
+     "label": "Aandrijving",
+     "value": "4WD"
+    },
+    {
+     "label": "Transmissie",
+     "value": "9F + 9R shuttle"
+    },
+    {
+     "label": "Aftakas",
+     "value": "540 / 540E tpm"
+    },
+    {
+     "label": "Hefvermogen",
+     "value": "775 kg"
+    }
+   ],
+   "downloads": [
+    {
+     "label": "Brochure",
+     "meta": "PDF · 4 MB",
+     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-brochure.pdf"
+    },
+    {
+     "label": "Prijslijst 01-02-2026",
+     "meta": "PDF · 302 KB",
+     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-prijslijst.pdf"
+    },
+    {
+     "label": "Garantie",
+     "meta": "",
+     "href": "https://www.solistractor.nl/garantie/"
+    }
+   ],
+   "configuratorNote": "Gebaseerd op de actieprijzen in de prijslijst van 01-02-2026. Geldigheid, uitvoering, montage en leverbaarheid altijd door de dealer te bevestigen.",
+   "configurator": {
+    "eyebrow": "Solis 26 Shuttle XL configurator",
+    "currency": "EUR",
+    "vat": false,
+    "priceDate": "01-02-2026",
+    "steps": [
+     {
+      "title": "Uitvoering",
+      "controls": [
+       {
+        "key": "base",
+        "type": "cards",
+        "options": [
+         {
+          "value": "std",
+          "label": "Shuttle XL",
+          "note": "9+9 handgeschakeld",
+          "price": 11250,
+          "isDefault": true
+         },
+         {
+          "value": "black",
+          "label": "Shuttle XL Black Edition",
+          "note": "Alleen op bestelling",
+          "price": 11400
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "title": "Banden",
+      "controls": [
+       {
+        "key": "tires",
+        "type": "list",
+        "options": [
+         {
+          "value": "standard",
+          "label": "Landbouwbanden · 119 cm",
+          "detail": "6×12 6PR · 8.3×20 6PR",
+          "price": 0,
+          "isDefault": true,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+         },
+         {
+          "value": "wide",
+          "label": "Brede landbouwbanden · 128 cm",
+          "detail": "BKT 6.5/80-12 · BKT 280/70R18",
+          "price": 300,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-breed-150x150.webp"
+         },
+         {
+          "value": "lawn",
+          "label": "Gazonbanden · 153 cm",
+          "detail": "BKT 23×8.5-12 · BKT 33×15.5-16.5",
+          "price": 700,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-150x150.webp"
+         },
+         {
+          "value": "highLawn",
+          "label": "Hoge gazonbanden · 140 cm",
+          "detail": "BKT 25×8.5-14 · BKT 13.6-16",
+          "price": 900,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-hoog-150x150.webp"
+         },
+         {
+          "value": "industrial",
+          "label": "Industriebanden · 153 cm",
+          "detail": "BKT 23×8.5-12 · BKT 33×15.5-16.5",
+          "price": 900,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-industrie-150x150.webp"
+         },
+         {
+          "value": "multi",
+          "label": "Multi-use banden · 129 cm",
+          "detail": "Galaxy Garden Pro 220/55R15 · 280/70R16",
+          "price": 900,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+         },
+         {
+          "value": "galaxy",
+          "label": "Galaxy banden hoog · 129 cm",
+          "detail": "200/65R16 · 300/70R20",
+          "price": 1495,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+         }
+        ]
+       },
+       {
+        "key": "extraTires",
+        "type": "select",
+        "label": "Extra losse bandenset",
+        "options": [
+         {
+          "value": "none",
+          "label": "Geen extra bandenset",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "standard",
+          "label": "Landbouwbanden",
+          "price": 875,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+         },
+         {
+          "value": "wide",
+          "label": "Brede landbouwbanden",
+          "price": 1235,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-breed-150x150.webp"
+         },
+         {
+          "value": "lawn",
+          "label": "Gazonbanden",
+          "price": 1575,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-150x150.webp"
+         },
+         {
+          "value": "highLawn",
+          "label": "Hoge gazonbanden",
+          "price": 1750,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-hoog-150x150.webp"
+         },
+         {
+          "value": "industrial",
+          "label": "Industriebanden",
+          "price": 1750,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-industrie-150x150.webp"
+         },
+         {
+          "value": "multi",
+          "label": "Multi-use banden",
+          "price": 1750,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+         },
+         {
+          "value": "galaxy",
+          "label": "Galaxy banden hoog",
+          "price": 1950,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "title": "Voorlader",
+      "controls": [
+       {
+        "key": "loader",
+        "type": "select",
+        "label": "Type voorlader",
+        "options": [
+         {
+          "value": "none",
+          "label": "Geen voorlader",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "standard",
+          "label": "Voorlader · grondbak",
+          "price": 3190,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-150x150.webp"
+         },
+         {
+          "value": "multi",
+          "label": "Voorlader · multifunctionele bak + 3e functie",
+          "price": 4220,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/multifunctionele-bak-150x150.webp"
+         }
+        ]
+       },
+       {
+        "key": "loaderMount",
+        "type": "auto",
+        "label": "Voorladermontage",
+        "price": 350,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "bucket",
+        "type": "check",
+        "label": "Mestriek 1,10 m",
+        "price": 580,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "forks",
+        "type": "check",
+        "label": "Palletlepels",
+        "price": 875,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "hooks",
+        "type": "check",
+        "label": "Snelwissel aanlashaken",
+        "price": 150,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "frontWeights",
+        "type": "quantity",
+        "label": "Frontgewichten van 15 kg",
+        "max": 6,
+        "unit": "× 15 kg",
+        "price": 82,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       }
+      ]
+     },
+     {
+      "title": "Hydrauliek & front",
+      "controls": [
+       {
+        "key": "valves",
+        "type": "select",
+        "label": "Dubbelwerkende ventielen",
+        "options": [
+         {
+          "value": "1",
+          "label": "1 ventiel · standaard",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "2",
+          "label": "2 ventielen",
+          "price": 1025
+         },
+         {
+          "value": "3",
+          "label": "3 ventielen",
+          "price": 1285
+         }
+        ]
+       },
+       {
+        "key": "frontLift",
+        "type": "check",
+        "label": "Zuidberg fronthef Cat. 1",
+        "note": "Montage wordt automatisch berekend",
+        "price": 1950,
+        "options": []
+       },
+       {
+        "key": "frontPto",
+        "type": "check",
+        "label": "Zuidberg frontaftakas",
+        "note": "Alleen in combinatie met fronthef",
+        "price": 2075,
+        "when": {
+         "veld": "frontLift",
+         "op": "gezet"
+        },
+        "rule": "Frontaftakas wordt beschikbaar zodra u de fronthef selecteert.",
+        "options": []
+       },
+       {
+        "key": "frontLiftMount",
+        "type": "auto",
+        "label": "Montage fronthef",
+        "onRequest": true,
+        "priceRule": {
+         "indien": {
+          "veld": "frontPto",
+          "op": "gezet"
+         },
+         "dan": 550,
+         "anders": 350
+        },
+        "when": {
+         "veld": "frontLift",
+         "op": "gezet"
+        },
+        "options": []
+       },
+       {
+        "key": "counterweight",
+        "type": "check",
+        "label": "Contragewicht Cat. 1 · 300 kg",
+        "price": 670,
+        "options": []
+       }
+      ]
+     },
+     {
+      "title": "Aflevering & accessoires",
+      "controls": [
+       {
+        "key": "rdw",
+        "type": "check",
+        "label": "RDW-keuring",
+        "note": "Inschrijving, kentekenplaat en leges",
+        "price": 139,
+        "options": []
+       },
+       {
+        "key": "charger",
+        "type": "check",
+        "label": "Druppellader",
+        "price": 129,
+        "options": []
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "h26",
+   "url": "https://www.solistractor.nl/modellen/h26/",
+   "category": "Hydrostaat",
+   "tagline": "Traploos comfortabel en precies te bedienen.",
+   "width": "119 cm",
+   "hero": {
+    "eyebrow": "Solis H26",
+    "headline": "Traploos comfortabel en precies te bedienen.",
+    "text": "De hydrostatische aandrijving met twee pedalen maakt de H26 toegankelijk en nauwkeurig bij veel wisselend rijwerk."
+   },
+   "keyFacts": [
+    {
+     "label": "Vermogen",
+     "value": "26 pk"
+    },
+    {
+     "label": "Motor",
+     "value": "3-cilinder Mitsubishi Stage V"
+    },
+    {
+     "label": "Hefvermogen",
+     "value": "750 kg"
+    },
+    {
+     "label": "Transmissie",
+     "value": "2-groeps hydrostaat"
+    }
+   ],
+   "intro": {
+    "eyebrow": "Voor uw dagelijkse praktijk",
+    "title": "Solis H26: praktisch sterk en toegankelijk.",
+    "text": "De hydrostatische aandrijving met twee pedalen maakt de H26 toegankelijk en nauwkeurig bij veel wisselend rijwerk. De dealer helpt u bij de keuze voor banden, ballast, hydrauliek en passende werktuigen.",
+    "checks": [
+     "2-pedalenbediening",
+     "Cruisecontrol",
+     "ROPS of cabine mogelijk",
+     "Tot 5 jaar* fabrieksgarantie"
+    ],
+    "footnote": "*Vraag naar de voorwaarden",
+    "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/h26-1-1024x725.webp"
+   },
+   "work": {
+    "eyebrow": "Breed inzetbaar",
+    "title": "Gemaakt voor werk, niet voor omwegen.",
+    "text": "Van dagelijks onderhoud tot specialistische inzet: configureer de tractor rond uw praktijk.",
+    "items": [
+     {
+      "title": "Maaien in minder rondes",
+      "text": "Grotere werkbreedte dan een zitmaaier, met werktuigen aan de hef of middenaftakas."
+     },
+     {
+      "title": "Laden zonder tillen",
+      "text": "Grond, mest, zand of pallets verplaatsen met een voorlader."
+     },
+     {
+      "title": "Materiaal verplaatsen met een voorlader",
+      "text": "Voor dit model staat een voorlader in de prijslijst, vanaf € 3.190 exclusief btw en montage."
+     }
+    ]
+   },
+   "specsNote": "Gegevens voor het Nederlandse programma. Banden, opties en uitvoering kunnen waarden beïnvloeden; laat de gekozen configuratie door de dealer bevestigen.",
+   "specs": [
+    {
+     "label": "Motorvermogen",
+     "value": "26 pk"
+    },
+    {
+     "label": "Motor",
+     "value": "3-cilinder Mitsubishi Stage V"
+    },
+    {
+     "label": "Aandrijving",
+     "value": "4WD"
+    },
+    {
+     "label": "Transmissie",
+     "value": "2-groeps hydrostaat"
+    },
+    {
+     "label": "Aftakas",
+     "value": "540 / 2100 tpm (achter / midden)"
+    },
+    {
+     "label": "Hefvermogen",
+     "value": "750 kg"
+    }
+   ],
+   "downloads": [
+    {
+     "label": "Brochure",
+     "meta": "PDF · 4 MB",
+     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-brochure.pdf"
+    },
+    {
+     "label": "Prijslijst 01-02-2026",
+     "meta": "PDF · 302 KB",
+     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-prijslijst.pdf"
+    },
+    {
+     "label": "Garantie",
+     "meta": "",
+     "href": "https://www.solistractor.nl/garantie/"
+    }
+   ],
+   "configuratorNote": "Gebaseerd op de actieprijzen in de prijslijst van 01-02-2026. Geldigheid, uitvoering, montage en leverbaarheid altijd door de dealer te bevestigen.",
+   "configurator": {
+    "eyebrow": "Solis 26 HST configurator",
+    "currency": "EUR",
+    "vat": false,
+    "priceDate": "01-02-2026",
+    "steps": [
+     {
+      "title": "Uitvoering",
+      "controls": [
+       {
+        "key": "base",
+        "type": "cards",
+        "options": [
+         {
+          "value": "std",
+          "label": "ROPS · Solis blauw",
+          "note": "Open werkplek",
+          "price": 11850,
+          "isDefault": true
+         },
+         {
+          "value": "black",
+          "label": "ROPS · Black Edition",
+          "note": "Open werkplek",
+          "price": 12000
+         },
+         {
+          "value": "xtra",
+          "label": "ROPS · X-Tra",
+          "note": "Open werkplek · X-Tra-pakket",
+          "price": 12345
+         },
+         {
+          "value": "blackXtra",
+          "label": "ROPS · Black Edition X-Tra",
+          "note": "Open werkplek · X-Tra-pakket",
+          "price": 12495
+         },
+         {
+          "value": "silver",
+          "label": "ROPS · Silver Edition",
+          "note": "Open werkplek",
+          "price": 12100
+         },
+         {
+          "value": "red",
+          "label": "ROPS · Red Edition",
+          "note": "Open werkplek",
+          "price": 12125
+         },
+         {
+          "value": "cabinStd",
+          "label": "Cabine · Solis blauw",
+          "note": "Gesloten werkplek",
+          "price": 16250
+         },
+         {
+          "value": "cabinBlack",
+          "label": "Cabine · Black Edition",
+          "note": "Gesloten werkplek",
+          "price": 16500
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "title": "Banden",
+      "controls": [
+       {
+        "key": "tires",
+        "type": "list",
+        "options": [
+         {
+          "value": "standard",
+          "label": "Landbouwbanden · 119 cm",
+          "detail": "6×12 voor · 8.3×20 achter",
+          "price": 0,
+          "isDefault": true,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+         },
+         {
+          "value": "wide",
+          "label": "Brede landbouwbanden · 128 cm",
+          "detail": "BKT 6.5/80-12 · BKT 280/70R18",
+          "price": 300,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-breed-150x150.webp"
+         },
+         {
+          "value": "lawn",
+          "label": "Gazonbanden · 153 cm",
+          "detail": "BKT 23×8.5-12 · BKT 33×15.5-16.5",
+          "price": 700,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-150x150.webp"
+         },
+         {
+          "value": "highLawn",
+          "label": "Hoge gazonbanden · 140 cm",
+          "detail": "BKT 25×8.5-14 · BKT 13.6-16",
+          "price": 900,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-hoog-150x150.webp"
+         },
+         {
+          "value": "industrial",
+          "label": "Industriebanden · 153 cm",
+          "detail": "BKT 23×8.5-12 · BKT 33×15.5-16.5",
+          "price": 900,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-industrie-150x150.webp"
+         },
+         {
+          "value": "multi",
+          "label": "Multi-use banden · 129 cm",
+          "detail": "Galaxy Garden Pro 220/55R15 · 280/70R16",
+          "price": 900,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+         },
+         {
+          "value": "galaxy",
+          "label": "Galaxy banden hoog · 129 cm",
+          "detail": "200/65R16 · 300/70R20",
+          "price": 1495,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+         }
+        ]
+       },
+       {
+        "key": "extraTires",
+        "type": "select",
+        "label": "Extra losse bandenset",
+        "options": [
+         {
+          "value": "none",
+          "label": "Geen extra bandenset",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "standard",
+          "label": "Landbouwbanden",
+          "price": 875,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+         },
+         {
+          "value": "wide",
+          "label": "Brede landbouwbanden",
+          "price": 1235,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-breed-150x150.webp"
+         },
+         {
+          "value": "lawn",
+          "label": "Gazonbanden",
+          "price": 1575,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-150x150.webp"
+         },
+         {
+          "value": "highLawn",
+          "label": "Hoge gazonbanden",
+          "price": 1750,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-hoog-150x150.webp"
+         },
+         {
+          "value": "industrial",
+          "label": "Industriebanden",
+          "price": 1750,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-industrie-150x150.webp"
+         },
+         {
+          "value": "multi",
+          "label": "Multi-use banden",
+          "price": 1750,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+         },
+         {
+          "value": "galaxy",
+          "label": "Galaxy banden hoog",
+          "price": 1950,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "title": "Maaien",
+      "controls": [
+       {
+        "key": "mower",
+        "type": "check",
+        "label": "Middenmaaidek 150 cm",
+        "note": "Inclusief ophanging · vereist hoge gazonbanden",
+        "onRequest": true,
+        "priceRule": {
+         "indien": {
+          "veld": "base",
+          "op": "isEenVan",
+          "waarden": [
+           "black",
+           "cabinBlack",
+           "blackXtra"
+          ]
+         },
+         "dan": 2425,
+         "anders": 2325
+        },
+        "labelRule": {
+         "indien": {
+          "veld": "base",
+          "op": "isEenVan",
+          "waarden": [
+           "black",
+           "cabinBlack",
+           "blackXtra"
+          ]
+         },
+         "dan": "Middenmaaidek Black Edition 150 cm",
+         "anders": "Middenmaaidek 150 cm"
+        },
+        "when": {
+         "veld": "tires",
+         "op": "is",
+         "waarde": "highLawn"
+        },
+        "rule": "Selecteer hoge gazonbanden om het middenmaaidek toe te voegen.",
+        "options": []
+       }
+      ]
+     },
+     {
+      "title": "Voorlader",
+      "controls": [
+       {
+        "key": "loader",
+        "type": "select",
+        "label": "Type voorlader",
+        "options": [
+         {
+          "value": "none",
+          "label": "Geen voorlader",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "standard",
+          "label": "Voorlader · grondbak",
+          "price": 3190,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-150x150.webp"
+         },
+         {
+          "value": "multi",
+          "label": "Voorlader · multifunctionele bak + 3e functie",
+          "price": 4220,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/multifunctionele-bak-150x150.webp"
+         },
+         {
+          "value": "hd",
+          "label": "Voorlader HD · grondbak",
+          "price": 3600,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-150x150.webp"
+         },
+         {
+          "value": "hdBlack",
+          "label": "Voorlader HD Black Edition · grondbak",
+          "price": 3705,
+          "when": {
+           "veld": "base",
+           "op": "isEenVan",
+           "waarden": [
+            "black",
+            "cabinBlack",
+            "blackXtra"
+           ]
+          },
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-150x150.webp"
+         },
+         {
+          "value": "hdMulti",
+          "label": "Voorlader HD · multifunctionele bak + 3e functie",
+          "price": 4630,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/multifunctionele-bak-150x150.webp"
+         },
+         {
+          "value": "hdBlackMulti",
+          "label": "Voorlader HD Black Edition · multifunctionele bak + 3e functie",
+          "price": 4735,
+          "when": {
+           "veld": "base",
+           "op": "isEenVan",
+           "waarden": [
+            "black",
+            "cabinBlack",
+            "blackXtra"
+           ]
+          },
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/multifunctionele-bak-150x150.webp"
+         }
+        ]
+       },
+       {
+        "key": "loaderMount",
+        "type": "auto",
+        "label": "Voorladermontage",
+        "price": 350,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "bucket",
+        "type": "check",
+        "label": "Mestriek 1,10 m",
+        "price": 580,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "forks",
+        "type": "check",
+        "label": "Palletlepels",
+        "onRequest": true,
+        "priceRule": {
+         "indien": {
+          "veld": "base",
+          "op": "isEenVan",
+          "waarden": [
+           "black",
+           "cabinBlack",
+           "blackXtra"
+          ]
+         },
+         "dan": 925,
+         "anders": 875
+        },
+        "labelRule": {
+         "indien": {
+          "veld": "base",
+          "op": "isEenVan",
+          "waarden": [
+           "black",
+           "cabinBlack",
+           "blackXtra"
+          ]
+         },
+         "dan": "Palletlepels Black Edition",
+         "anders": "Palletlepels"
+        },
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "hooks",
+        "type": "check",
+        "label": "Snelwissel aanlashaken",
+        "price": 150,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "frontWeights",
+        "type": "quantity",
+        "label": "Frontgewichten van 15 kg",
+        "max": 6,
+        "unit": "× 15 kg",
+        "price": 82,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       }
+      ]
+     },
+     {
+      "title": "Hydrauliek & front",
+      "controls": [
+       {
+        "key": "valves",
+        "type": "select",
+        "label": "Dubbelwerkende ventielen",
+        "when": {
+         "veld": "base",
+         "op": "isEenVan",
+         "waarden": [
+          "std",
+          "black",
+          "silver",
+          "red",
+          "cabinStd",
+          "cabinBlack"
+         ]
+        },
+        "options": [
+         {
+          "value": "1",
+          "label": "1 ventiel · standaard",
+          "price": 0,
+          "when": {
+           "veld": "base",
+           "op": "isEenVan",
+           "waarden": [
+            "std",
+            "black",
+            "silver",
+            "red",
+            "cabinStd",
+            "cabinBlack"
+           ]
+          },
+          "isDefault": true
+         },
+         {
+          "value": "2",
+          "label": "2 ventielen",
+          "price": 1025,
+          "when": {
+           "veld": "base",
+           "op": "isEenVan",
+           "waarden": [
+            "std",
+            "black",
+            "silver",
+            "red",
+            "cabinStd",
+            "cabinBlack"
+           ]
+          }
+         },
+         {
+          "value": "3",
+          "label": "3 ventielen",
+          "price": 1290,
+          "when": {
+           "veld": "base",
+           "op": "isEenVan",
+           "waarden": [
+            "std",
+            "black",
+            "silver",
+            "red",
+            "cabinStd",
+            "cabinBlack"
+           ]
+          }
+         }
+        ]
+       },
+       {
+        "key": "xtraPack",
+        "type": "auto",
+        "label": "X-Tra-pakket: 3 dubbelwerkende ventielen, hydraulische topstang, hydrauliekpomp 25 l/min",
+        "when": {
+         "veld": "base",
+         "op": "isEenVan",
+         "waarden": [
+          "xtra",
+          "blackXtra"
+         ]
+        },
+        "options": []
+       },
+       {
+        "key": "frontLift",
+        "type": "check",
+        "label": "Zuidberg fronthef Cat. 1",
+        "note": "Montage wordt automatisch berekend",
+        "price": 1950,
+        "options": []
+       },
+       {
+        "key": "frontPto",
+        "type": "check",
+        "label": "Zuidberg frontaftakas",
+        "note": "Alleen in combinatie met fronthef",
+        "price": 2075,
+        "when": {
+         "veld": "frontLift",
+         "op": "gezet"
+        },
+        "rule": "Frontaftakas wordt beschikbaar zodra u de fronthef selecteert.",
+        "options": []
+       },
+       {
+        "key": "frontLiftMount",
+        "type": "auto",
+        "label": "Montage fronthef",
+        "onRequest": true,
+        "priceRule": {
+         "indien": {
+          "veld": "frontPto",
+          "op": "gezet"
+         },
+         "dan": 550,
+         "anders": 350
+        },
+        "when": {
+         "veld": "frontLift",
+         "op": "gezet"
+        },
+        "options": []
+       },
+       {
+        "key": "counterweight",
+        "type": "check",
+        "label": "Contragewicht Cat. 1 · 300 kg",
+        "price": 670,
+        "options": []
+       }
+      ]
+     },
+     {
+      "title": "Aflevering & accessoires",
+      "controls": [
+       {
+        "key": "rdw",
+        "type": "check",
+        "label": "RDW-keuring",
+        "note": "Inschrijving, kentekenplaat en leges",
+        "price": 139,
+        "options": []
+       },
+       {
+        "key": "charger",
+        "type": "check",
+        "label": "Druppellader",
+        "price": 129,
+        "options": []
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "s50",
+   "url": "https://www.solistractor.nl/modellen/s50/",
+   "category": "Shuttle XL",
+   "tagline": "Een volwassen landbouwtractor met compacte souplesse.",
+   "width": "",
+   "hero": {
+    "eyebrow": "Solis S50 Shuttle XL",
+    "headline": "Een volwassen landbouwtractor met compacte souplesse.",
+    "text": "De S50 biedt een Stage V-motor, shuttle-transmissie en 2.500 kg hefvermogen voor breed dagelijks gebruik."
+   },
+   "keyFacts": [
+    {
+     "label": "Vermogen",
+     "value": "50 pk"
+    },
+    {
+     "label": "Motor",
+     "value": "3-cilinder CRDi Stage V"
+    },
+    {
+     "label": "Hefvermogen",
+     "value": "2.500 kg"
+    },
+    {
+     "label": "Transmissie",
+     "value": "12F + 12R shuttle"
+    }
+   ],
+   "intro": {
+    "eyebrow": "Voor uw dagelijkse praktijk",
+    "title": "Solis S50 Shuttle XL: praktisch sterk en toegankelijk.",
+    "text": "De S50 biedt een Stage V-motor, shuttle-transmissie en 2.500 kg hefvermogen voor breed dagelijks gebruik. De dealer helpt u bij de keuze voor banden, ballast, hydrauliek en passende werktuigen.",
+    "checks": [
+     "ROPS of cabine",
+     "Shuttle-transmissie",
+     "Black Edition beschikbaar",
+     "3 jaar* fabrieksgarantie"
+    ],
+    "footnote": "*Vraag naar de voorwaarden",
+    "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/s50-1-1024x725.webp"
+   },
+   "work": {
+    "eyebrow": "Breed inzetbaar",
+    "title": "Gemaakt voor werk, niet voor omwegen.",
+    "text": "Van dagelijks onderhoud tot specialistische inzet: configureer de tractor rond uw praktijk.",
+    "items": [
+     {
+      "title": "Land bewerken en oogsten",
+      "text": "Volwaardige werktuigen aan de hef, met bijpassende hefkracht."
+     },
+     {
+      "title": "Laden zonder tillen",
+      "text": "Grond, mest, zand of pallets verplaatsen met een voorlader."
+     },
+     {
+      "title": "Materiaal verplaatsen met een voorlader",
+      "text": "Voor dit model staat een voorlader in de prijslijst, vanaf € 4.995 exclusief btw en montage."
+     }
+    ]
+   },
+   "specsNote": "Gegevens voor het Nederlandse programma. Banden, opties en uitvoering kunnen waarden beïnvloeden; laat de gekozen configuratie door de dealer bevestigen.",
+   "specs": [
+    {
+     "label": "Motorvermogen",
+     "value": "50 pk"
+    },
+    {
+     "label": "Motor",
+     "value": "3-cilinder CRDi Stage V"
+    },
+    {
+     "label": "Aandrijving",
+     "value": "4WD"
+    },
+    {
+     "label": "Transmissie",
+     "value": "12F + 12R shuttle"
+    },
+    {
+     "label": "Aftakas",
+     "value": "540 / 540E tpm"
+    },
+    {
+     "label": "Hefvermogen",
+     "value": "2.500 kg"
+    }
+   ],
+   "downloads": [
+    {
+     "label": "Brochure",
+     "meta": "PDF · 4 MB",
+     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-brochure.pdf"
+    },
+    {
+     "label": "Prijslijst 01-02-2026",
+     "meta": "PDF · 302 KB",
+     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-prijslijst.pdf"
+    },
+    {
+     "label": "Garantie",
+     "meta": "",
+     "href": "https://www.solistractor.nl/garantie/"
+    }
+   ],
+   "configuratorNote": "Gebaseerd op de actieprijzen in de prijslijst van 01-02-2026. Geldigheid, uitvoering, montage en leverbaarheid altijd door de dealer te bevestigen.",
+   "configurator": {
+    "eyebrow": "Solis 50 configurator",
+    "currency": "EUR",
+    "vat": false,
+    "priceDate": "01-02-2026",
+    "steps": [
+     {
+      "title": "Uitvoering",
+      "controls": [
+       {
+        "key": "base",
+        "type": "cards",
+        "options": [
+         {
+          "value": "rops",
+          "label": "4wd ROPS",
+          "note": "Open werkplek",
+          "price": 21725,
+          "isDefault": true
+         },
+         {
+          "value": "ropsBlack",
+          "label": "4wd ROPS Black Edition",
+          "note": "Open werkplek",
+          "price": 22225
+         },
+         {
+          "value": "cabin",
+          "label": "4wd Cabine",
+          "note": "Gesloten werkplek",
+          "price": 26625
+         },
+         {
+          "value": "cabinBlack",
+          "label": "4wd Cabine Black Edition",
+          "note": "Gesloten werkplek",
+          "price": 27125
+         },
+         {
+          "value": "rops2wd",
+          "label": "2wd ROPS",
+          "note": "Alleen op bestelling",
+          "price": 20350
+         },
+         {
+          "value": "cabin2wd",
+          "label": "2wd Cabine",
+          "note": "Alleen op bestelling",
+          "price": 25250
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "title": "Banden",
+      "controls": [
+       {
+        "key": "tires",
+        "type": "list",
+        "options": [
+         {
+          "value": "diagonal",
+          "label": "Landbouwbanden diagonaal",
+          "detail": "9.5-20 voor · 13.6-28 achter",
+          "price": 0,
+          "isDefault": true,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+         },
+         {
+          "value": "radial",
+          "label": "Landbouwbanden radiaal",
+          "detail": "280/70R18 · 380/70R28",
+          "price": 900,
+          "when": {
+           "veld": "mudguards",
+           "op": "nietGezet"
+          },
+          "rule": "Radiaal- en Galaxy-banden zijn niet mogelijk in combinatie met spatborden voorzijde.",
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-radiaal-150x150.webp"
+         },
+         {
+          "value": "galaxy",
+          "label": "Galaxy Garden Pro",
+          "detail": "260/70R18 · 360/70R28",
+          "price": 2200,
+          "when": {
+           "veld": "mudguards",
+           "op": "nietGezet"
+          },
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "title": "Voorlader",
+      "controls": [
+       {
+        "key": "loader",
+        "type": "select",
+        "label": "Type voorlader",
+        "options": [
+         {
+          "value": "none",
+          "label": "Geen voorlader",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "standard",
+          "label": "Voorlader met euro-aankoppeling",
+          "price": 4995,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-zwaar-150x150.webp"
+         },
+         {
+          "value": "black",
+          "label": "Voorlader Black Edition met euro-aankoppeling",
+          "price": 5195,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-zwaar-150x150.webp"
+         }
+        ]
+       },
+       {
+        "key": "loaderMount",
+        "type": "auto",
+        "label": "Montagekosten voorlader",
+        "price": 650,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "joystickBlock",
+        "type": "check",
+        "label": "Ventielenblok met geïntegreerde joystick",
+        "note": "Fabrieksmontage",
+        "price": 910,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "bucket",
+        "type": "check",
+        "label": "Grondbak 1,50 m",
+        "price": 775,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "baleClamp",
+        "type": "check",
+        "label": "Balenklem 0,80–1,60 m",
+        "price": 1235,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "forks",
+        "type": "check",
+        "label": "Palletlepels",
+        "price": 1005,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       }
+      ]
+     },
+     {
+      "title": "Trekhaak & gewichten",
+      "controls": [
+       {
+        "key": "towbar",
+        "type": "select",
+        "label": "Trekhaak",
+        "options": [
+         {
+          "value": "none",
+          "label": "Ondertrekhaak (zwaaihaak) · standaard",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "fixed",
+          "label": "Vaste draaibare boventrekhaak · zit voor aftakas",
+          "price": 130,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/trekhaak-vast-150x150.webp"
+         },
+         {
+          "value": "reframed",
+          "label": "Aangepast trekhaakframe · boventrekhaak boven aftakas",
+          "price": 820,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/trekhaakframe-150x150.webp"
+         }
+        ]
+       },
+       {
+        "key": "frontWeights",
+        "type": "select",
+        "label": "Frontgewichten",
+        "options": [
+         {
+          "value": "none",
+          "label": "Basisgewicht 1 × 72 kg · standaard",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "one",
+          "label": "Frontgewicht 31 kg",
+          "price": 100,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/frontgewichten-150x150.webp"
+         },
+         {
+          "value": "set",
+          "label": "Frontgewichten set 6 × 31 kg",
+          "price": 510,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/frontgewichten-150x150.webp"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "title": "Hydrauliek & comfort",
+      "controls": [
+       {
+        "key": "valves3da",
+        "type": "check",
+        "label": "2DA naar 3DA hydrauliekventielen",
+        "price": 275,
+        "options": []
+       },
+       {
+        "key": "frontLiftCat2",
+        "type": "check",
+        "label": "Fronthefsysteem Cat. 2",
+        "note": "Prijs op aanvraag",
+        "onRequest": true,
+        "options": []
+       },
+       {
+        "key": "catchHooks",
+        "type": "check",
+        "label": "Vanghaak set Cat. 2 heflatten",
+        "price": 565,
+        "options": []
+       },
+       {
+        "key": "airBrakes",
+        "type": "check",
+        "label": "Lucht aanhangerreminstallatie",
+        "price": 1960,
+        "options": []
+       },
+       {
+        "key": "hydraulicBrakes",
+        "type": "check",
+        "label": "Enkelleidings hydraulisch remsysteem",
+        "note": "Geen kentekenregistratie mogelijk",
+        "price": 740,
+        "options": []
+       },
+       {
+        "key": "mudguards",
+        "type": "check",
+        "label": "Spatborden voorzijde",
+        "note": "Niet mogelijk met radiaal- of Galaxy-banden",
+        "price": 285,
+        "when": {
+         "veld": "tires",
+         "op": "is",
+         "waarde": "diagonal"
+        },
+        "rule": "Spatborden zijn alleen mogelijk met landbouwbanden diagonaal.",
+        "options": []
+       },
+       {
+        "key": "premiumSeat",
+        "type": "check",
+        "label": "Premium stoel",
+        "price": 200,
+        "options": []
+       }
+      ]
+     },
+     {
+      "title": "Aflevering & accessoires",
+      "controls": [
+       {
+        "key": "rdw",
+        "type": "check",
+        "label": "RDW-keuring",
+        "note": "Inschrijving, kentekenplaat en leges",
+        "price": 139,
+        "options": []
+       },
+       {
+        "key": "charger",
+        "type": "check",
+        "label": "Druppellader",
+        "price": 129,
+        "options": []
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "s60",
+   "url": "https://www.solistractor.nl/modellen/s60/",
+   "category": "Shuttle XL",
+   "tagline": "Meer reserve voor het zwaardere werk.",
+   "width": "",
+   "hero": {
+    "eyebrow": "Solis S60 Shuttle XL",
+    "headline": "Meer reserve voor het zwaardere werk.",
+    "text": "De S60 deelt zijn basis met de S50 en zet daar 58 pk en 250 Nm koppel tegenover: shuttle-transmissie, 2.500 kg hefvermogen en ROPS of cabine."
+   },
+   "keyFacts": [
+    {
+     "label": "Vermogen",
+     "value": "58 pk"
+    },
+    {
+     "label": "Motor",
+     "value": "3-cilinder CRDi Stage V"
+    },
+    {
+     "label": "Hefvermogen",
+     "value": "2.500 kg"
+    },
+    {
+     "label": "Transmissie",
+     "value": "12F + 12R shuttle"
+    }
+   ],
+   "intro": {
+    "eyebrow": "Voor uw dagelijkse praktijk",
+    "title": "Solis S60 Shuttle XL: praktisch sterk en toegankelijk.",
+    "text": "De S60 deelt zijn basis met de S50 en zet daar 58 pk en 250 Nm koppel tegenover: shuttle-transmissie, 2.500 kg hefvermogen en ROPS of cabine. De dealer helpt u bij de keuze voor banden, ballast, hydrauliek en passende werktuigen.",
+    "checks": [
+     "ROPS of cabine",
+     "Shuttle-transmissie",
+     "Black Edition beschikbaar",
+     "3 jaar* fabrieksgarantie"
+    ],
+    "footnote": "*Vraag naar de voorwaarden",
+    "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/s60-1-1024x725.webp"
+   },
+   "work": {
+    "eyebrow": "Breed inzetbaar",
+    "title": "Gemaakt voor werk, niet voor omwegen.",
+    "text": "Van dagelijks onderhoud tot specialistische inzet: configureer de tractor rond uw praktijk.",
+    "items": [
+     {
+      "title": "Land bewerken en oogsten",
+      "text": "Volwaardige werktuigen aan de hef, met bijpassende hefkracht."
+     },
+     {
+      "title": "Laden zonder tillen",
+      "text": "Grond, mest, zand of pallets verplaatsen met een voorlader."
+     },
+     {
+      "title": "Materiaal verplaatsen met een voorlader",
+      "text": "Voor dit model staat een voorlader in de prijslijst, vanaf € 4.995 exclusief btw en montage."
+     }
+    ]
+   },
+   "specsNote": "Gegevens voor het Nederlandse programma. Banden, opties en uitvoering kunnen waarden beïnvloeden; laat de gekozen configuratie door de dealer bevestigen.",
+   "specs": [
+    {
+     "label": "Motorvermogen",
+     "value": "58 pk"
+    },
+    {
+     "label": "Motor",
+     "value": "3-cilinder CRDi Stage V"
+    },
+    {
+     "label": "Aandrijving",
+     "value": "4WD"
+    },
+    {
+     "label": "Transmissie",
+     "value": "12F + 12R shuttle"
+    },
+    {
+     "label": "Aftakas",
+     "value": "540 / 540E tpm"
+    },
+    {
+     "label": "Hefvermogen",
+     "value": "2.500 kg"
+    }
+   ],
+   "downloads": [
+    {
+     "label": "Brochure",
+     "meta": "PDF · 4 MB",
+     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-brochure.pdf"
+    },
+    {
+     "label": "Prijslijst 01-02-2026",
+     "meta": "PDF · 302 KB",
+     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-prijslijst.pdf"
+    },
+    {
+     "label": "Garantie",
+     "meta": "",
+     "href": "https://www.solistractor.nl/garantie/"
+    }
+   ],
+   "configuratorNote": "Gebaseerd op de actieprijzen in de prijslijst van 01-02-2026. Geldigheid, uitvoering, montage en leverbaarheid altijd door de dealer te bevestigen.",
+   "configurator": {
+    "eyebrow": "Solis 60 configurator",
+    "currency": "EUR",
+    "vat": false,
+    "priceDate": "01-02-2026",
+    "steps": [
+     {
+      "title": "Uitvoering",
+      "controls": [
+       {
+        "key": "base",
+        "type": "cards",
+        "options": [
+         {
+          "value": "rops",
+          "label": "4wd ROPS",
+          "note": "Open werkplek",
+          "price": 23475,
+          "isDefault": true
+         },
+         {
+          "value": "ropsBlack",
+          "label": "4wd ROPS Black Edition",
+          "note": "Open werkplek",
+          "price": 23975
+         },
+         {
+          "value": "cabin",
+          "label": "4wd Cabine",
+          "note": "Gesloten werkplek",
+          "price": 28475
+         },
+         {
+          "value": "cabinBlack",
+          "label": "4wd Cabine Black Edition",
+          "note": "Gesloten werkplek",
+          "price": 28975
+         },
+         {
+          "value": "rops2wd",
+          "label": "2wd ROPS",
+          "note": "Alleen op bestelling",
+          "price": 21500
+         },
+         {
+          "value": "cabin2wd",
+          "label": "2wd Cabine",
+          "note": "Alleen op bestelling",
+          "price": 26500
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "title": "Banden",
+      "controls": [
+       {
+        "key": "tires",
+        "type": "list",
+        "options": [
+         {
+          "value": "diagonal",
+          "label": "Landbouwbanden diagonaal",
+          "detail": "9.5-24 voor · 14.9-28 achter",
+          "price": 0,
+          "isDefault": true,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+         },
+         {
+          "value": "radial",
+          "label": "Landbouwbanden radiaal",
+          "detail": "320/70R24 · 480/70R28",
+          "price": 820,
+          "when": {
+           "veld": "mudguards",
+           "op": "nietGezet"
+          },
+          "rule": "Radiaal- en Galaxy-banden zijn niet mogelijk in combinatie met spatborden voorzijde.",
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-radiaal-150x150.webp"
+         },
+         {
+          "value": "galaxy",
+          "label": "Galaxy Garden Pro",
+          "detail": "260/70R18 · 360/70R28",
+          "price": 2200,
+          "when": {
+           "veld": "mudguards",
+           "op": "nietGezet"
+          },
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "title": "Voorlader",
+      "controls": [
+       {
+        "key": "loader",
+        "type": "select",
+        "label": "Type voorlader",
+        "options": [
+         {
+          "value": "none",
+          "label": "Geen voorlader",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "standard",
+          "label": "Voorlader met euro-aankoppeling",
+          "price": 4995,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-zwaar-150x150.webp"
+         }
+        ]
+       },
+       {
+        "key": "loaderMount",
+        "type": "auto",
+        "label": "Montagekosten voorlader",
+        "price": 650,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "joystickBlock",
+        "type": "check",
+        "label": "Ventielenblok met geïntegreerde joystick",
+        "note": "Fabrieksmontage",
+        "price": 910,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "bucket",
+        "type": "check",
+        "label": "Grondbak 1,50 m",
+        "price": 775,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "baleClamp",
+        "type": "check",
+        "label": "Balenklem 0,80–1,60 m",
+        "price": 1235,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "forks",
+        "type": "check",
+        "label": "Palletlepels",
+        "price": 1005,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       }
+      ]
+     },
+     {
+      "title": "Trekhaak & gewichten",
+      "controls": [
+       {
+        "key": "towbar",
+        "type": "select",
+        "label": "Trekhaak",
+        "options": [
+         {
+          "value": "none",
+          "label": "Ondertrekhaak (zwaaihaak) · standaard",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "fixed",
+          "label": "Vaste draaibare boventrekhaak · zit voor aftakas",
+          "price": 130,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/trekhaak-vast-150x150.webp"
+         },
+         {
+          "value": "reframed",
+          "label": "Aangepast trekhaakframe · boventrekhaak boven aftakas",
+          "price": 820,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/trekhaakframe-150x150.webp"
+         }
+        ]
+       },
+       {
+        "key": "frontWeights",
+        "type": "select",
+        "label": "Frontgewichten",
+        "options": [
+         {
+          "value": "none",
+          "label": "Basisgewicht 1 × 72 kg · standaard",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "one",
+          "label": "Frontgewicht 31 kg",
+          "price": 100,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/frontgewichten-150x150.webp"
+         },
+         {
+          "value": "set",
+          "label": "Frontgewichten set 6 × 31 kg",
+          "price": 510,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/frontgewichten-150x150.webp"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "title": "Hydrauliek & comfort",
+      "controls": [
+       {
+        "key": "valves3da",
+        "type": "check",
+        "label": "2DA naar 3DA hydrauliekventielen",
+        "price": 275,
+        "options": []
+       },
+       {
+        "key": "frontLiftCat2",
+        "type": "check",
+        "label": "Fronthefsysteem Cat. 2",
+        "note": "Prijs op aanvraag",
+        "onRequest": true,
+        "options": []
+       },
+       {
+        "key": "catchHooks",
+        "type": "check",
+        "label": "Vanghaak set Cat. 2 heflatten",
+        "price": 660,
+        "options": []
+       },
+       {
+        "key": "airBrakes",
+        "type": "check",
+        "label": "Lucht aanhangerreminstallatie",
+        "price": 1960,
+        "options": []
+       },
+       {
+        "key": "hydraulicBrakes",
+        "type": "check",
+        "label": "Enkelleidings hydraulisch remsysteem",
+        "note": "Geen kentekenregistratie mogelijk",
+        "price": 740,
+        "options": []
+       },
+       {
+        "key": "mudguards",
+        "type": "check",
+        "label": "Spatborden voorzijde",
+        "note": "Niet mogelijk met radiaal- of Galaxy-banden",
+        "price": 285,
+        "when": {
+         "veld": "tires",
+         "op": "is",
+         "waarde": "diagonal"
+        },
+        "rule": "Spatborden zijn alleen mogelijk met landbouwbanden diagonaal.",
+        "options": []
+       },
+       {
+        "key": "premiumSeat",
+        "type": "check",
+        "label": "Premium stoel",
+        "price": 200,
+        "options": []
+       }
+      ]
+     },
+     {
+      "title": "Aflevering & accessoires",
+      "controls": [
+       {
+        "key": "rdw",
+        "type": "check",
+        "label": "RDW-keuring",
+        "note": "Inschrijving, kentekenplaat en leges",
+        "price": 139,
+        "options": []
+       },
+       {
+        "key": "charger",
+        "type": "check",
+        "label": "Druppellader",
+        "price": 129,
+        "options": []
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "n75",
+   "url": "https://www.solistractor.nl/modellen/n75/",
+   "category": "Smalspoor",
+   "tagline": "Smal gebouwd voor werk tussen de rijen.",
+   "width": "",
+   "hero": {
+    "eyebrow": "Solis N75",
+    "headline": "Smal gebouwd voor werk tussen de rijen.",
+    "text": "De N75 combineert 75 pk met een smalle, lage bouw voor boomgaard, fruitteelt en andere specialistische toepassingen."
+   },
+   "keyFacts": [
+    {
+     "label": "Vermogen",
+     "value": "75 pk"
+    },
+    {
+     "label": "Motor",
+     "value": "4-cilinder CRDi Stage V"
+    },
+    {
+     "label": "Hefvermogen",
+     "value": "2.500 kg"
+    },
+    {
+     "label": "Transmissie",
+     "value": "Gesynchroniseerde shuttle"
+    }
+   ],
+   "intro": {
+    "eyebrow": "Voor uw dagelijkse praktijk",
+    "title": "Solis N75: praktisch sterk en toegankelijk.",
+    "text": "De N75 combineert 75 pk met een smalle, lage bouw voor boomgaard, fruitteelt en andere specialistische toepassingen. De dealer helpt u bij de keuze voor banden, ballast, hydrauliek en passende werktuigen.",
+    "checks": [
+     "Compacte buitenmaten",
+     "Krachtige hydrauliek",
+     "Meerdere bandenopties",
+     "3 jaar* fabrieksgarantie"
+    ],
+    "footnote": "*Vraag naar de voorwaarden",
+    "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/n75-1-1024x725.webp"
+   },
+   "work": {
+    "eyebrow": "Breed inzetbaar",
+    "title": "Gemaakt voor werk, niet voor omwegen.",
+    "text": "Van dagelijks onderhoud tot specialistische inzet: configureer de tractor rond uw praktijk.",
+    "items": [
+     {
+      "title": "Werken tussen bomenrijen",
+      "text": "Smalle bouw houdt ruimte vrij langs stammen en takken."
+     },
+     {
+      "title": "Werken tussen gewassen",
+      "text": "Afmetingen en hydrauliek afgestemd op teelt tussen rijen."
+     },
+     {
+      "title": "Werken waar het smal is",
+      "text": "Vermogen op een breedte waar een standaardtractor niet past."
+     }
+    ]
+   },
+   "specsNote": "Gegevens voor het Nederlandse programma. Banden, opties en uitvoering kunnen waarden beïnvloeden; laat de gekozen configuratie door de dealer bevestigen.",
+   "specs": [
+    {
+     "label": "Motorvermogen",
+     "value": "75 pk"
+    },
+    {
+     "label": "Motor",
+     "value": "4-cilinder CRDi Stage V"
+    },
+    {
+     "label": "Aandrijving",
+     "value": "4WD"
+    },
+    {
+     "label": "Transmissie",
+     "value": "Gesynchroniseerde shuttle"
+    },
+    {
+     "label": "Aftakas",
+     "value": "540 / 540E tpm"
+    },
+    {
+     "label": "Hefvermogen",
+     "value": "2.500 kg"
+    }
+   ],
+   "downloads": [
+    {
+     "label": "Brochure",
+     "meta": "PDF · 4 MB",
+     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-brochure.pdf"
+    },
+    {
+     "label": "Prijslijst 01-02-2026",
+     "meta": "PDF · 302 KB",
+     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-prijslijst.pdf"
+    },
+    {
+     "label": "Garantie",
+     "meta": "",
+     "href": "https://www.solistractor.nl/garantie/"
+    }
+   ],
+   "configuratorNote": "Gebaseerd op de actieprijzen in de prijslijst van 01-02-2026. Geldigheid, uitvoering, montage en leverbaarheid altijd door de dealer te bevestigen.",
+   "configurator": {
+    "eyebrow": "Solis N75 configurator",
+    "currency": "EUR",
+    "vat": false,
+    "priceDate": "01-02-2026",
+    "steps": [
+     {
+      "title": "Uitvoering",
+      "controls": [
+       {
+        "key": "base",
+        "type": "cards",
+        "options": [
+         {
+          "value": "rops",
+          "label": "4wd ROPS",
+          "note": "Open werkplek",
+          "price": 30850,
+          "isDefault": true
+         },
+         {
+          "value": "cabin",
+          "label": "4wd Cabine",
+          "note": "Gesloten werkplek",
+          "price": 36515
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "title": "Banden",
+      "controls": [
+       {
+        "key": "tires",
+        "type": "list",
+        "options": [
+         {
+          "value": "diagonal",
+          "label": "Landbouwbanden diagonaal",
+          "detail": "8-18 voor · 14,9-24 achter",
+          "price": 0,
+          "isDefault": true,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+         },
+         {
+          "value": "radial",
+          "label": "Landbouwbanden radiaal",
+          "detail": "280/70R18 · 360/70R28",
+          "price": 1120,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-radiaal-150x150.webp"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "title": "Hefsysteem & hydrauliek",
+      "controls": [
+       {
+        "key": "valves3da",
+        "type": "check",
+        "label": "2DA naar 3DA hydrauliekventielen",
+        "price": 275,
+        "options": []
+       },
+       {
+        "key": "catchHooks",
+        "type": "check",
+        "label": "Vanghaken met kogels",
+        "note": "In plaats van gesloten kogels",
+        "price": 1290,
+        "options": []
+       },
+       {
+        "key": "hydraulicBrakes",
+        "type": "check",
+        "label": "Enkelleidings hydraulisch remsysteem",
+        "note": "Geen kentekenregistratie mogelijk",
+        "price": 1395,
+        "options": []
+       }
+      ]
+     },
+     {
+      "title": "Gewichten & aflevering",
+      "controls": [
+       {
+        "key": "frontWeights",
+        "type": "select",
+        "label": "Frontgewichten",
+        "options": [
+         {
+          "value": "none",
+          "label": "Basisgewicht 1 × 72 kg · standaard",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "one",
+          "label": "Frontgewicht 31 kg",
+          "price": 100,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/frontgewichten-150x150.webp"
+         },
+         {
+          "value": "set",
+          "label": "Frontgewichten set 6 × 31 kg",
+          "price": 510,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/frontgewichten-150x150.webp"
+         }
+        ]
+       },
+       {
+        "key": "mudguards",
+        "type": "check",
+        "label": "Spatborden voorzijde",
+        "price": 285,
+        "options": []
+       },
+       {
+        "key": "rdw",
+        "type": "check",
+        "label": "RDW-keuring",
+        "note": "Inschrijving, kentekenplaat en leges",
+        "price": 139,
+        "options": []
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "s75",
+   "url": "https://www.solistractor.nl/modellen/s75/",
+   "category": "Shuttle XL",
+   "tagline": "Kracht die werkt. Comfort dat blijft.",
+   "width": "",
+   "hero": {
+    "eyebrow": "Solis S75",
+    "headline": "Kracht die werkt. Comfort dat blijft.",
+    "text": "Een veelzijdige 75 pk tractor voor landbouw, erfwerk en voorladerwerk."
+   },
+   "keyFacts": [
+    {
+     "label": "Vermogen",
+     "value": "75 pk"
+    },
+    {
+     "label": "Motor",
+     "value": "4-cilinder ITL CRDi Stage V"
+    },
+    {
+     "label": "Hefvermogen",
+     "value": "2.500 kg standaard / 3.000 kg optioneel"
+    },
+    {
+     "label": "Transmissie",
+     "value": "12F + 12R shuttle"
+    }
+   ],
+   "intro": {
+    "eyebrow": "Voor uw dagelijkse praktijk",
+    "title": "Solis S75: praktisch sterk en toegankelijk.",
+    "text": "Een veelzijdige 75 pk tractor voor landbouw, erfwerk en voorladerwerk. De dealer helpt u bij de keuze voor banden, ballast, hydrauliek en passende werktuigen.",
+    "checks": [
+     "ROPS of cabine",
+     "Voorlader voorbereid",
+     "4WD standaard",
+     "3 jaar* fabrieksgarantie"
+    ],
+    "footnote": "*Vraag naar de voorwaarden",
+    "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/s75-1024x725.webp"
+   },
+   "work": {
+    "eyebrow": "Breed inzetbaar",
+    "title": "Gemaakt voor werk, niet voor omwegen.",
+    "text": "Van dagelijks onderhoud tot specialistische inzet: configureer de tractor rond uw praktijk.",
+    "items": [
+     {
+      "title": "Land bewerken en oogsten",
+      "text": "Volwaardige werktuigen aan de hef, met bijpassende hefkracht."
+     },
+     {
+      "title": "Laden zonder tillen",
+      "text": "Grond, mest, zand of pallets verplaatsen met een voorlader."
+     },
+     {
+      "title": "Materiaal verplaatsen met een voorlader",
+      "text": "Voor dit model staat een voorlader in de prijslijst, vanaf € 6.690 exclusief btw en montage."
+     }
+    ]
+   },
+   "specsNote": "Gegevens voor het Nederlandse programma. Banden, opties en uitvoering kunnen waarden beïnvloeden; laat de gekozen configuratie door de dealer bevestigen.",
+   "specs": [
+    {
+     "label": "Motorvermogen",
+     "value": "75 pk"
+    },
+    {
+     "label": "Motor",
+     "value": "4-cilinder ITL CRDi Stage V"
+    },
+    {
+     "label": "Aandrijving",
+     "value": "4WD"
+    },
+    {
+     "label": "Transmissie",
+     "value": "12F + 12R shuttle"
+    },
+    {
+     "label": "Aftakas",
+     "value": "540 / 540E tpm"
+    },
+    {
+     "label": "Hefvermogen",
+     "value": "2.500 kg standaard / 3.000 kg optioneel"
+    }
+   ],
+   "downloads": [
+    {
+     "label": "Brochure",
+     "meta": "PDF · 4 MB",
+     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-brochure.pdf"
+    },
+    {
+     "label": "Prijslijst 01-02-2026",
+     "meta": "PDF · 302 KB",
+     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-prijslijst.pdf"
+    },
+    {
+     "label": "Garantie",
+     "meta": "",
+     "href": "https://www.solistractor.nl/garantie/"
+    }
+   ],
+   "configuratorNote": "Gebaseerd op de actieprijzen in de prijslijst van 01-02-2026. Geldigheid, uitvoering, montage en leverbaarheid altijd door de dealer te bevestigen.",
+   "configurator": {
+    "eyebrow": "Solis 75 configurator",
+    "currency": "EUR",
+    "vat": false,
+    "priceDate": "01-02-2026",
+    "steps": [
+     {
+      "title": "Uitvoering",
+      "controls": [
+       {
+        "key": "base",
+        "type": "cards",
+        "options": [
+         {
+          "value": "rops12",
+          "label": "4wd ROPS · 12+12",
+          "note": "Shuttle 30 km/u",
+          "price": 29250,
+          "isDefault": true
+         },
+         {
+          "value": "cabin12",
+          "label": "4wd Cabine · 12+12",
+          "note": "Shuttle 30 km/u",
+          "price": 33950
+         },
+         {
+          "value": "rops20",
+          "label": "4wd ROPS · 20+20",
+          "note": "Shuttle 40 km/u",
+          "price": 29760
+         },
+         {
+          "value": "cabin20",
+          "label": "4wd Cabine · 20+20",
+          "note": "Shuttle 40 km/u",
+          "price": 34460
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "title": "Banden",
+      "controls": [
+       {
+        "key": "tires",
+        "type": "list",
+        "options": [
+         {
+          "value": "diagonal",
+          "label": "Landbouwbanden diagonaal",
+          "detail": "11.2-24 · 16.9-30 · max. 38 km/u",
+          "price": 0,
+          "isDefault": true,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+         },
+         {
+          "value": "radial",
+          "label": "Landbouwbanden radiaal",
+          "detail": "320/85R24 · 460/85R30 · max. 38 km/u",
+          "price": 1125,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-radiaal-150x150.webp"
+         },
+         {
+          "value": "radialWide",
+          "label": "Landbouwbanden radiaal breed",
+          "detail": "420/65R24 · 540/65R34 · max. 40 km/u",
+          "price": 1425,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-radiaal-breed-150x150.webp"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "title": "Voorlader",
+      "controls": [
+       {
+        "key": "loader",
+        "type": "select",
+        "label": "Type voorlader",
+        "options": [
+         {
+          "value": "none",
+          "label": "Geen voorlader",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "standard",
+          "label": "Voorlader met parallelgeleiding",
+          "price": 6690,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-zwaar-150x150.webp"
+         }
+        ]
+       },
+       {
+        "key": "loaderMount",
+        "type": "auto",
+        "label": "Montagekosten voorlader",
+        "price": 650,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "joystick",
+        "type": "select",
+        "label": "Joystickbediening",
+        "options": [
+         {
+          "value": "none",
+          "label": "Geen extra ventielenblok",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "mounted",
+          "label": "Ventielenblok met opbouw joystick · namontage",
+          "price": 820,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-joystick-150x150.webp"
+         },
+         {
+          "value": "integrated",
+          "label": "Ventielenblok met geïntegreerde joystick · fabrieksmontage",
+          "price": 910,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-joystick-150x150.webp"
+         }
+        ]
+       },
+       {
+        "key": "bucket",
+        "type": "check",
+        "label": "Grondbak 1,50 m",
+        "price": 775,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "baleClamp",
+        "type": "check",
+        "label": "Balenklem 0,80–1,60 m",
+        "price": 1235,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "forks",
+        "type": "check",
+        "label": "Palletlepels",
+        "price": 1005,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       }
+      ]
+     },
+     {
+      "title": "Trekhaak & gewichten",
+      "controls": [
+       {
+        "key": "towbar",
+        "type": "select",
+        "label": "Trekhaak",
+        "options": [
+         {
+          "value": "none",
+          "label": "Zwaaihaak onderzijde · standaard",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "semi",
+          "label": "Trekhaakframe met semi-automatische vangmuil",
+          "price": 510,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/trekhaak-semi-150x150.webp"
+         },
+         {
+          "value": "auto",
+          "label": "Trekhaakframe met automatische vangmuil",
+          "price": 720,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/trekhaak-automatisch-150x150.webp"
+         }
+        ]
+       },
+       {
+        "key": "frontWeights",
+        "type": "select",
+        "label": "Frontgewichten",
+        "options": [
+         {
+          "value": "none",
+          "label": "Basisgewicht 1 × 72 kg · standaard",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "one",
+          "label": "Frontgewicht 31 kg",
+          "price": 100,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/frontgewichten-150x150.webp"
+         },
+         {
+          "value": "set",
+          "label": "Frontgewichten set 6 × 31 kg",
+          "price": 510,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/frontgewichten-150x150.webp"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "title": "Hefsysteem & hydrauliek",
+      "controls": [
+       {
+        "key": "valves3da",
+        "type": "check",
+        "label": "2DA naar 3DA hydrauliekventielen",
+        "price": 275,
+        "options": []
+       },
+       {
+        "key": "catchHooks",
+        "type": "check",
+        "label": "Vanghaken met kogels",
+        "note": "In plaats van gesloten kogels",
+        "price": 1290,
+        "options": []
+       },
+       {
+        "key": "lift",
+        "type": "select",
+        "label": "Hefcapaciteit",
+        "options": [
+         {
+          "value": "2500",
+          "label": "2.500 kg · standaard",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "3000",
+          "label": "3.000 kg in plaats van 2.500 kg",
+          "price": 220
+         },
+         {
+          "value": "3500",
+          "label": "3.500 kg",
+          "note": "Inclusief tussenstap naar 3.000 kg",
+          "price": 575
+         }
+        ]
+       },
+       {
+        "key": "airBrakes",
+        "type": "check",
+        "label": "Dubbelleidings luchtremsysteem",
+        "price": 1960,
+        "options": []
+       },
+       {
+        "key": "hydraulicBrakes",
+        "type": "check",
+        "label": "Enkelleidings hydraulisch remsysteem",
+        "note": "Geen kentekenregistratie mogelijk",
+        "price": 1395,
+        "options": []
+       }
+      ]
+     },
+     {
+      "title": "Comfort & aflevering",
+      "controls": [
+       {
+        "key": "premiumSeat",
+        "type": "check",
+        "label": "Premium stoel",
+        "price": 200,
+        "options": []
+       },
+       {
+        "key": "mudguards",
+        "type": "check",
+        "label": "Spatborden voorzijde",
+        "price": 285,
+        "options": []
+       },
+       {
+        "key": "rdw",
+        "type": "check",
+        "label": "RDW-keuring",
+        "note": "Inschrijving, kentekenplaat en leges",
+        "price": 139,
+        "options": []
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "n90",
+   "url": "https://www.solistractor.nl/modellen/n90/",
+   "category": "Smalspoor",
+   "tagline": "Maximaal vermogen op minimale breedte.",
+   "width": "",
+   "hero": {
+    "eyebrow": "Solis N90",
+    "headline": "Maximaal vermogen op minimale breedte.",
+    "text": "De N90 is ontwikkeld voor gebruikers die in smalle rijen veel vermogen, hydrauliek en hefkracht nodig hebben."
+   },
+   "keyFacts": [
+    {
+     "label": "Vermogen",
+     "value": "90 pk"
+    },
+    {
+     "label": "Motor",
+     "value": "4-cilinder CRDi Stage V"
+    },
+    {
+     "label": "Hefvermogen",
+     "value": "2.500 kg"
+    },
+    {
+     "label": "Transmissie",
+     "value": "Gesynchroniseerde shuttle"
+    }
+   ],
+   "intro": {
+    "eyebrow": "Voor uw dagelijkse praktijk",
+    "title": "Solis N90: praktisch sterk en toegankelijk.",
+    "text": "De N90 is ontwikkeld voor gebruikers die in smalle rijen veel vermogen, hydrauliek en hefkracht nodig hebben. De dealer helpt u bij de keuze voor banden, ballast, hydrauliek en passende werktuigen.",
+    "checks": [
+     "90 pk smalspoor",
+     "4WD",
+     "ROPS of cabine",
+     "3 jaar* fabrieksgarantie"
+    ],
+    "footnote": "*Vraag naar de voorwaarden",
+    "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/n90-1-1024x725.webp"
+   },
+   "work": {
+    "eyebrow": "Breed inzetbaar",
+    "title": "Gemaakt voor werk, niet voor omwegen.",
+    "text": "Van dagelijks onderhoud tot specialistische inzet: configureer de tractor rond uw praktijk.",
+    "items": [
+     {
+      "title": "Werken tussen wijnstokken",
+      "text": "Nauwkeurig manoeuvreren in smalle, kwetsbare rijen."
+     },
+     {
+      "title": "Werken tussen bomenrijen",
+      "text": "Smalle bouw houdt ruimte vrij langs stammen en takken."
+     },
+     {
+      "title": "Specialistisch smalspoorwerk",
+      "text": "Koppel en hydrauliek voor werktuigen tussen nauwe rijen."
+     }
+    ]
+   },
+   "specsNote": "Gegevens voor het Nederlandse programma. Banden, opties en uitvoering kunnen waarden beïnvloeden; laat de gekozen configuratie door de dealer bevestigen.",
+   "specs": [
+    {
+     "label": "Motorvermogen",
+     "value": "90 pk"
+    },
+    {
+     "label": "Motor",
+     "value": "4-cilinder CRDi Stage V"
+    },
+    {
+     "label": "Aandrijving",
+     "value": "4WD"
+    },
+    {
+     "label": "Transmissie",
+     "value": "Gesynchroniseerde shuttle"
+    },
+    {
+     "label": "Aftakas",
+     "value": "540 / 540E tpm"
+    },
+    {
+     "label": "Hefvermogen",
+     "value": "2.500 kg"
+    }
+   ],
+   "downloads": [
+    {
+     "label": "Brochure",
+     "meta": "PDF · 4 MB",
+     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-brochure.pdf"
+    },
+    {
+     "label": "Prijslijst 01-02-2026",
+     "meta": "PDF · 302 KB",
+     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-prijslijst.pdf"
+    },
+    {
+     "label": "Garantie",
+     "meta": "",
+     "href": "https://www.solistractor.nl/garantie/"
+    }
+   ],
+   "configuratorNote": "Gebaseerd op de actieprijzen in de prijslijst van 01-02-2026. Geldigheid, uitvoering, montage en leverbaarheid altijd door de dealer te bevestigen.",
+   "configurator": {
+    "eyebrow": "Solis N90 configurator",
+    "currency": "EUR",
+    "vat": false,
+    "priceDate": "01-02-2026",
+    "steps": [
+     {
+      "title": "Uitvoering",
+      "controls": [
+       {
+        "key": "base",
+        "type": "cards",
+        "options": [
+         {
+          "value": "rops",
+          "label": "4wd ROPS",
+          "note": "Open werkplek",
+          "price": 35900,
+          "isDefault": true
+         },
+         {
+          "value": "cabin",
+          "label": "4wd Cabine",
+          "note": "Gesloten werkplek",
+          "price": 41050
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "title": "Banden",
+      "controls": [
+       {
+        "key": "tires",
+        "type": "list",
+        "options": [
+         {
+          "value": "diagonal",
+          "label": "Landbouwbanden diagonaal",
+          "detail": "8-18 voor · 14,9-24 achter",
+          "price": 0,
+          "isDefault": true,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+         },
+         {
+          "value": "radial",
+          "label": "Landbouwbanden radiaal",
+          "detail": "280/70R18 · 360/70R28",
+          "price": 1120,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-radiaal-150x150.webp"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "title": "Hefsysteem & hydrauliek",
+      "controls": [
+       {
+        "key": "valves3da",
+        "type": "check",
+        "label": "2DA naar 3DA hydrauliekventielen",
+        "price": 275,
+        "options": []
+       },
+       {
+        "key": "catchHooks",
+        "type": "check",
+        "label": "Vanghaken met kogels",
+        "note": "In plaats van gesloten kogels",
+        "price": 1290,
+        "options": []
+       },
+       {
+        "key": "hydraulicBrakes",
+        "type": "check",
+        "label": "Enkelleidings hydraulisch remsysteem",
+        "note": "Geen kentekenregistratie mogelijk",
+        "price": 1395,
+        "options": []
+       }
+      ]
+     },
+     {
+      "title": "Gewichten & aflevering",
+      "controls": [
+       {
+        "key": "frontWeights",
+        "type": "select",
+        "label": "Frontgewichten",
+        "options": [
+         {
+          "value": "none",
+          "label": "Basisgewicht 1 × 72 kg · standaard",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "one",
+          "label": "Frontgewicht 31 kg",
+          "price": 100,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/frontgewichten-150x150.webp"
+         },
+         {
+          "value": "set",
+          "label": "Frontgewichten set 6 × 31 kg",
+          "price": 510,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/frontgewichten-150x150.webp"
+         }
+        ]
+       },
+       {
+        "key": "mudguards",
+        "type": "check",
+        "label": "Spatborden voorzijde",
+        "price": 285,
+        "options": []
+       },
+       {
+        "key": "rdw",
+        "type": "check",
+        "label": "RDW-keuring",
+        "note": "Inschrijving, kentekenplaat en leges",
+        "price": 139,
+        "options": []
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "slug": "s90",
+   "url": "https://www.solistractor.nl/modellen/s90/",
+   "category": "Landbouw",
+   "tagline": "Meer vermogen voor het zware werk.",
+   "width": "",
+   "hero": {
+    "eyebrow": "Solis S90",
+    "headline": "Meer vermogen voor het zware werk.",
+    "text": "De S90 combineert een CRDi Stage V-motor met een robuuste transmissie en grote hefkracht."
+   },
+   "keyFacts": [
+    {
+     "label": "Vermogen",
+     "value": "90 pk"
+    },
+    {
+     "label": "Motor",
+     "value": "4-cilinder CRDi Stage V"
+    },
+    {
+     "label": "Hefvermogen",
+     "value": "3.000 kg / 3.500 kg optioneel"
+    },
+    {
+     "label": "Transmissie",
+     "value": "12F + 12R / 20F + 20R"
+    }
+   ],
+   "intro": {
+    "eyebrow": "Voor uw dagelijkse praktijk",
+    "title": "Solis S90: praktisch sterk en toegankelijk.",
+    "text": "De S90 combineert een CRDi Stage V-motor met een robuuste transmissie en grote hefkracht. De dealer helpt u bij de keuze voor banden, ballast, hydrauliek en passende werktuigen.",
+    "checks": [
+     "ROPS of cabine",
+     "Hoog hefvermogen",
+     "Brede radiaalbanden mogelijk",
+     "3 jaar* fabrieksgarantie"
+    ],
+    "footnote": "*Vraag naar de voorwaarden",
+    "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/s90-1-1024x725.webp"
+   },
+   "work": {
+    "eyebrow": "Breed inzetbaar",
+    "title": "Gemaakt voor werk, niet voor omwegen.",
+    "text": "Van dagelijks onderhoud tot specialistische inzet: configureer de tractor rond uw praktijk.",
+    "items": [
+     {
+      "title": "Zwaar veldwerk aankunnen",
+      "text": "Vermogen en hefkracht voor veeleisende grondbewerking."
+     },
+     {
+      "title": "Transporteren over land en weg",
+      "text": "Aanhangers en karren trekken tussen percelen en bedrijf."
+     },
+     {
+      "title": "Materiaal verplaatsen met een voorlader",
+      "text": "Voor dit model staat een voorlader in de prijslijst, vanaf € 6.690 exclusief btw en montage."
+     }
+    ]
+   },
+   "specsNote": "Gegevens voor het Nederlandse programma. Banden, opties en uitvoering kunnen waarden beïnvloeden; laat de gekozen configuratie door de dealer bevestigen.",
+   "specs": [
+    {
+     "label": "Motorvermogen",
+     "value": "90 pk"
+    },
+    {
+     "label": "Motor",
+     "value": "4-cilinder CRDi Stage V"
+    },
+    {
+     "label": "Aandrijving",
+     "value": "4WD"
+    },
+    {
+     "label": "Transmissie",
+     "value": "12F + 12R / 20F + 20R"
+    },
+    {
+     "label": "Aftakas",
+     "value": "540 / 540E tpm"
+    },
+    {
+     "label": "Hefvermogen",
+     "value": "3.000 kg / 3.500 kg optioneel"
+    }
+   ],
+   "downloads": [
+    {
+     "label": "Brochure",
+     "meta": "PDF · 4 MB",
+     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-brochure.pdf"
+    },
+    {
+     "label": "Prijslijst 01-02-2026",
+     "meta": "PDF · 302 KB",
+     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-prijslijst.pdf"
+    },
+    {
+     "label": "Garantie",
+     "meta": "",
+     "href": "https://www.solistractor.nl/garantie/"
+    }
+   ],
+   "configuratorNote": "Gebaseerd op de actieprijzen in de prijslijst van 01-02-2026. Geldigheid, uitvoering, montage en leverbaarheid altijd door de dealer te bevestigen.",
+   "configurator": {
+    "eyebrow": "Solis 90 configurator",
+    "currency": "EUR",
+    "vat": false,
+    "priceDate": "01-02-2026",
+    "steps": [
+     {
+      "title": "Uitvoering",
+      "controls": [
+       {
+        "key": "base",
+        "type": "cards",
+        "options": [
+         {
+          "value": "rops12",
+          "label": "4wd ROPS · 12+12",
+          "note": "Shuttle 30 km/u",
+          "price": 31750,
+          "isDefault": true
+         },
+         {
+          "value": "cabin12",
+          "label": "4wd Cabine · 12+12",
+          "note": "Shuttle 30 km/u",
+          "price": 36500
+         },
+         {
+          "value": "rops20",
+          "label": "4wd ROPS · 20+20",
+          "note": "Shuttle 40 km/u",
+          "price": 32260
+         },
+         {
+          "value": "cabin20",
+          "label": "4wd Cabine · 20+20",
+          "note": "Shuttle 40 km/u",
+          "price": 37010
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "title": "Banden",
+      "controls": [
+       {
+        "key": "tires",
+        "type": "list",
+        "options": [
+         {
+          "value": "diagonal",
+          "label": "Landbouwbanden diagonaal",
+          "detail": "12.4-24 · 18.4-30 · max. 40 km/u",
+          "price": 0,
+          "isDefault": true,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+         },
+         {
+          "value": "radial",
+          "label": "Landbouwbanden radiaal",
+          "detail": "320/85R24 · 460/85R30 · max. 40 km/u",
+          "price": 1125,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-radiaal-150x150.webp"
+         },
+         {
+          "value": "radialWide",
+          "label": "Landbouwbanden radiaal breed",
+          "detail": "420/65R24 · 540/65R34 · max. 40 km/u",
+          "price": 1425,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-radiaal-breed-150x150.webp"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "title": "Voorlader",
+      "controls": [
+       {
+        "key": "loader",
+        "type": "select",
+        "label": "Type voorlader",
+        "options": [
+         {
+          "value": "none",
+          "label": "Geen voorlader",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "standard",
+          "label": "Voorlader met parallelgeleiding",
+          "price": 6690,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-zwaar-150x150.webp"
+         }
+        ]
+       },
+       {
+        "key": "loaderMount",
+        "type": "auto",
+        "label": "Montagekosten voorlader",
+        "price": 670,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "joystick",
+        "type": "select",
+        "label": "Joystickbediening",
+        "options": [
+         {
+          "value": "none",
+          "label": "Geen extra ventielenblok",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "mounted",
+          "label": "Ventielenblok met opbouw joystick · namontage",
+          "price": 820,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-joystick-150x150.webp"
+         },
+         {
+          "value": "integrated",
+          "label": "Ventielenblok met geïntegreerde joystick · fabrieksmontage",
+          "price": 910,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-joystick-150x150.webp"
+         }
+        ]
+       },
+       {
+        "key": "bucket",
+        "type": "check",
+        "label": "Grondbak 1,50 m",
+        "price": 775,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "baleClamp",
+        "type": "check",
+        "label": "Balenklem 0,80–1,60 m",
+        "price": 1235,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       },
+       {
+        "key": "forks",
+        "type": "check",
+        "label": "Palletlepels",
+        "price": 1005,
+        "when": {
+         "veld": "loader",
+         "op": "isNiet",
+         "waarde": "none"
+        },
+        "hidden": true,
+        "options": []
+       }
+      ]
+     },
+     {
+      "title": "Trekhaak & gewichten",
+      "controls": [
+       {
+        "key": "towbar",
+        "type": "select",
+        "label": "Trekhaak",
+        "options": [
+         {
+          "value": "none",
+          "label": "Zwaaihaak onderzijde · standaard",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "semi",
+          "label": "Trekhaakframe met semi-automatische vangmuil",
+          "price": 510,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/trekhaak-semi-150x150.webp"
+         },
+         {
+          "value": "auto",
+          "label": "Trekhaakframe met automatische vangmuil",
+          "price": 720,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/trekhaak-automatisch-150x150.webp"
+         }
+        ]
+       },
+       {
+        "key": "frontWeights",
+        "type": "select",
+        "label": "Frontgewichten",
+        "options": [
+         {
+          "value": "none",
+          "label": "Basisgewicht 1 × 72 kg · standaard",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "one",
+          "label": "Frontgewicht 31 kg",
+          "price": 100,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/frontgewichten-150x150.webp"
+         },
+         {
+          "value": "set",
+          "label": "Frontgewichten set 6 × 31 kg",
+          "price": 510,
+          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/frontgewichten-150x150.webp"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "title": "Hefsysteem & hydrauliek",
+      "controls": [
+       {
+        "key": "valves3da",
+        "type": "check",
+        "label": "2DA naar 3DA hydrauliekventielen",
+        "price": 275,
+        "options": []
+       },
+       {
+        "key": "catchHooks",
+        "type": "check",
+        "label": "Vanghaken met kogels",
+        "note": "In plaats van gesloten kogels",
+        "price": 1290,
+        "options": []
+       },
+       {
+        "key": "lift",
+        "type": "select",
+        "label": "Hefcapaciteit",
+        "options": [
+         {
+          "value": "2500",
+          "label": "2.500 kg · standaard",
+          "price": 0,
+          "isDefault": true
+         },
+         {
+          "value": "3000",
+          "label": "3.000 kg in plaats van 2.500 kg",
+          "price": 220
+         },
+         {
+          "value": "3500",
+          "label": "3.500 kg",
+          "note": "Inclusief tussenstap naar 3.000 kg",
+          "price": 575
+         }
+        ]
+       },
+       {
+        "key": "airBrakes",
+        "type": "check",
+        "label": "Dubbelleidings luchtremsysteem",
+        "price": 1960,
+        "options": []
+       },
+       {
+        "key": "hydraulicBrakes",
+        "type": "check",
+        "label": "Enkelleidings hydraulisch remsysteem",
+        "note": "Geen kentekenregistratie mogelijk",
+        "price": 1395,
+        "options": []
+       }
+      ]
+     },
+     {
+      "title": "Comfort & aflevering",
+      "controls": [
+       {
+        "key": "premiumSeat",
+        "type": "check",
+        "label": "Premium stoel",
+        "price": 200,
+        "options": []
+       },
+       {
+        "key": "mudguards",
+        "type": "check",
+        "label": "Spatborden voorzijde",
+        "price": 285,
+        "options": []
+       },
+       {
+        "key": "rdw",
+        "type": "check",
+        "label": "RDW-keuring",
+        "note": "Inschrijving, kentekenplaat en leges",
+        "price": 139,
+        "options": []
+       }
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}
