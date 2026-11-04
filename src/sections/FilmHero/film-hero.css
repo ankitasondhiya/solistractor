@@ -174,7 +174,7 @@
 .film__cue {
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .film__cue svg {
@@ -271,7 +271,7 @@ html[data-loaded='true'] .film__enter {
 }
 
 .film__stats dt {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -301,7 +301,7 @@ html[data-loaded='true'] .film__enter {
 
 .film__rail ol {
   display: grid;
-  gap: 6px;
+  gap: 0;
 }
 
 .film__rail button {
@@ -309,8 +309,9 @@ html[data-loaded='true'] .film__enter {
   align-items: center;
   justify-content: flex-end;
   gap: 12px;
-  padding: 6px 0;
-  font-size: 11px;
+  min-height: 44px;
+  padding: 0;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;

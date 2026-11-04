@@ -126,11 +126,15 @@
 }
 
 /* On the card, top left, above the faint model-name watermark. */
-.gallery__card-badge {
+.gallery__card-badges {
   position: absolute;
   top: 16px;
   left: 16px;
+  right: 16px;
   z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 .gallery__card img {
@@ -193,7 +197,7 @@
   color: var(--muted);
 }
 
-.gallery__detail-kicker span {
+.gallery__detail-kicker span:not(.model-badge) {
   color: var(--green-dark);
 }
 
@@ -223,7 +227,7 @@
 }
 
 .gallery__specs dt {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -271,7 +275,7 @@
 }
 
 .gallery__price-label {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;

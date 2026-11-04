@@ -4,6 +4,7 @@ import './styles/global.css'
 import App from './App'
 import { LanguageProvider } from './i18n/LanguageContext'
 import { MotionProvider } from './motion/MotionContext'
+import { MotionLayer } from './motion/MotionLayer'
 import { EDITION } from './edition'
 
 // Lets the stylesheets tell the two editions apart (see edition.ts).
@@ -16,7 +17,9 @@ createRoot(rootElement).render(
   <StrictMode>
     <LanguageProvider>
       <MotionProvider>
-        <App />
+        <MotionLayer>
+          <App />
+        </MotionLayer>
       </MotionProvider>
     </LanguageProvider>
   </StrictMode>,

@@ -94,6 +94,21 @@
   margin-left: auto;
 }
 
+/* What the page remembers, and the way to wipe it — its own row. */
+.site-footer__privacy {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  flex-basis: 100%;
+}
+
+.site-footer__privacy-status {
+  color: var(--green);
+  font-weight: 600;
+}
+
+
 .site-footer__editions {
   display: inline-flex;
   align-items: center;
@@ -105,7 +120,7 @@
 
 .site-footer__editions span {
   margin-right: 6px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;

@@ -10,3 +10,31 @@ import { createProgressStore } from '../hooks/progressStore'
  * passed.
  */
 export const preload = createProgressStore()
+
+/**
+ * Runs `fn` once the preloader has lifted (it sets html[data-loaded]) plus
+ * `delay` ms — for anything that should not open behind the curtain, like a
+ * shared model link or the welcome-back note. Returns a cancel function.
+ */
+export function afterLoaded(fn: () => void, delay = 0): () => void {
+  const root = document.documentElement
+  let timer = 0
+  const run = () => {
+    timer = window.setTimeout(fn, delay)
+  }
+  if (root.dataset.loaded === 'true') {
+    run()
+    return () => window.clearTimeout(timer)
+  }
+  const observer = new MutationObserver(() => {
+    if (root.dataset.loaded === 'true') {
+      observer.disconnect()
+      run()
+    }
+  })
+  observer.observe(root, { attributes: true, attributeFilter: ['data-loaded'] })
+  return () => {
+    observer.disconnect()
+    window.clearTimeout(timer)
+  }
+}

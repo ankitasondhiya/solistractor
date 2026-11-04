@@ -16,6 +16,7 @@ import { Journey } from './sections/Journey/Journey'
 import { Dealers } from './sections/Dealers/Dealers'
 import { DemoRequest } from './sections/DemoRequest/DemoRequest'
 import { EDITION } from './edition'
+import { WelcomeBack } from './components/WelcomeBack/WelcomeBack'
 
 /**
  * The landing page, top to bottom. No router: it is one scroll in one of two
@@ -48,6 +49,7 @@ export default function App() {
       </main>
       <SiteFooter />
       <MotionToggle />
+      <WelcomeBack />
       {/* Every model's full sheet, opened from the gallery, the compare table and the finder. */}
       <ModelSheet />
       {EDITION === 'studio' && <ScrollTractor />}

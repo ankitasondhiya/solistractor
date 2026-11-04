@@ -58,8 +58,8 @@ html[data-edition='studio'] .marquee__item:nth-child(even) {
   right: max(12px, calc(var(--gutter) / 2));
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   color: var(--white);
   background: rgba(7, 19, 56, 0.72);

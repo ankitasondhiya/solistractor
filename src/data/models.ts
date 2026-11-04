@@ -325,6 +325,19 @@ export const segments: Segment[] = ['compact', 'mid', 'narrow', 'farm']
 export const MAX_HP = 90
 
 /**
+ * The power span of a segment — "16–26 pk" — shown on every segment filter,
+ * so the four groups explain themselves: three are sized by power, and
+ * Smalspoor / Narrow track is the N-series' narrow, low build.
+ */
+export function segmentRange(segment: Segment, lang: 'nl' | 'en'): string {
+  const hp = models.filter((m) => m.segment === segment).map((m) => m.hp)
+  const lo = Math.min(...hp)
+  const hi = Math.max(...hp)
+  const unit = lang === 'nl' ? 'pk' : 'hp'
+  return lo === hi ? `${lo} ${unit}` : `${lo}–${hi} ${unit}`
+}
+
+/**
  * The site's own label for a model — "26 pk · Hydrostaat", "26 hp ·
  * Hydrostatic" — which is what tells the three 26 hp tractors apart.
  */

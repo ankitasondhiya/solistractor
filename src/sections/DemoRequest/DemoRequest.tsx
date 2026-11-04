@@ -3,7 +3,8 @@ import './demo-request.css'
 
 import { useLanguage } from '../../i18n/LanguageContext'
 import { models, type Use } from '../../data/models'
-import { dealers, provinces, type Province } from '../../data/dealers'
+import { byDistance, dealers, provinces, type Province } from '../../data/dealers'
+import { usePersonal } from '../../personal/personal'
 import { links } from '../../data/links'
 import { ArrowLeft, ArrowRight, Check, Mail, Phone } from '../../components/Icons'
 import { onDemoRequest } from './demoBus'
@@ -35,6 +36,29 @@ const EMPTY: FormState = {
 const USES: Use[] = ['yard', 'grounds', 'equestrian', 'orchard', 'farming', 'loader']
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 
+type Required = 'name' | 'email' | 'place'
+type Personal = ReturnType<typeof usePersonal>
+
+/**
+ * Fills what the reader already told the page — the tractor they last opened,
+ * their town and nearest dealer — into the fields they haven't touched. An
+ * untouched field keeps following their latest choice (a new location, another
+ * model); one they typed in or picked is theirs and is never overwritten
+ * (ui-ux-pro-max: redundant-entry).
+ */
+function withPrefill(f: FormState, personal: Personal, touched: Set<keyof FormState>): FormState {
+  const next = { ...f }
+  if (!touched.has('model')) next.model = personal.viewed[0] ?? null
+  if (!touched.has('place')) next.place = personal.place?.town ?? ''
+  if (!touched.has('province') && !touched.has('dealer')) {
+    const near = personal.place ? byDistance(personal.place)[0]?.dealer : undefined
+    next.province = near?.province ?? ''
+    next.dealer = near ? `${near.name}, ${near.town}` : ''
+  }
+  const same = (Object.keys(next) as (keyof FormState)[]).every((k) => next[k] === f[k])
+  return same ? f : next
+}
+
 /**
  * Section 08 — a demo request in three short steps (after Enki's Web Studio's
  * contact form). There is no backend behind this page, so the last step
@@ -44,27 +68,63 @@ const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 export function DemoRequest() {
   const { t, lang } = useLanguage()
   const d = t.demo
+  const personal = usePersonal()
+  const touched = useRef(new Set<keyof FormState>())
   const [step, setStep] = useState(0)
-  const [form, setForm] = useState<FormState>(EMPTY)
-  const [errors, setErrors] = useState<Partial<Record<'name' | 'email' | 'place', string>>>({})
+  const [form, setForm] = useState<FormState>(() => withPrefill(EMPTY, personal, touched.current))
+  const [errors, setErrors] = useState<Partial<Record<Required, string>>>({})
   const [sent, setSent] = useState(false)
   const formRef = useRef<HTMLFormElement>(null)
 
   useEffect(
     () =>
       onDemoRequest((modelId, message) => {
+        if (modelId) touched.current.add('model')
         setForm((f) => ({ ...f, model: modelId ?? f.model, message: message ?? f.message }))
       }),
     [],
   )
 
-  const set = <K extends keyof FormState>(key: K, value: FormState[K]) => setForm((f) => ({ ...f, [key]: value }))
+  // What the reader does elsewhere on the page (opens a model, finds their
+  // dealer) reaches the form while its fields are still untouched.
+  useEffect(() => {
+    setForm((f) => withPrefill(f, personal, touched.current))
+  }, [personal])
+
+  const prefilled =
+    (!touched.current.has('model') && form.model !== null) ||
+    (!touched.current.has('place') && !!form.place) ||
+    (!touched.current.has('dealer') && !touched.current.has('province') && !!form.dealer)
+
+  const set = <K extends keyof FormState>(key: K, value: FormState[K]) => {
+    touched.current.add(key)
+    setForm((f) => ({ ...f, [key]: value }))
+  }
+
+  const problem = (key: Required, f: FormState): string | undefined => {
+    if (key === 'name') return f.name.trim() ? undefined : d.errors.name
+    if (key === 'email') return EMAIL.test(f.email.trim()) ? undefined : d.errors.email
+    return f.place.trim() ? undefined : d.errors.place
+  }
+
+  // Checked when the reader leaves a field they typed in, not on every key
+  // (ui-ux-pro-max: inline-validation); a shown error clears as soon as it's fixed.
+  const checkOnBlur = (key: Required) => {
+    if (!touched.current.has(key)) return
+    setErrors((e) => ({ ...e, [key]: problem(key, form) }))
+  }
+
+  const setRequired = (key: Required, value: string) => {
+    set(key, value)
+    if (errors[key]) setErrors((e) => ({ ...e, [key]: problem(key, { ...form, [key]: value }) }))
+  }
 
   const validateFirst = () => {
     const next: typeof errors = {}
-    if (!form.name.trim()) next.name = d.errors.name
-    if (!EMAIL.test(form.email.trim())) next.email = d.errors.email
-    if (!form.place.trim()) next.place = d.errors.place
+    for (const key of ['name', 'email', 'place'] as Required[]) {
+      const p = problem(key, form)
+      if (p) next[key] = p
+    }
     setErrors(next)
     const ok = Object.keys(next).length === 0
     // A failed step puts the reader on the first field to fix, once the
@@ -79,7 +139,11 @@ export function DemoRequest() {
   }
 
   const modelName = models.find((m) => m.id === form.model)?.fullName ?? d.unsure
-  const regionDealers = form.province ? dealers.filter((x) => x.province === form.province) : []
+  const inRegion = form.province ? dealers.filter((x) => x.province === form.province) : []
+  // Nearest first, with the distance, once the reader has said where they are.
+  const regionDealers = personal.place
+    ? byDistance(personal.place, inRegion)
+    : inRegion.map((dealer) => ({ dealer, km: null as number | null }))
 
   const submit = (e: FormEvent) => {
     e.preventDefault()
@@ -146,7 +210,8 @@ export function DemoRequest() {
                 onClick={() => {
                   setSent(false)
                   setStep(0)
-                  setForm(EMPTY)
+                  touched.current.clear()
+                  setForm(withPrefill(EMPTY, personal, touched.current))
                 }}
               >
                 {d.again}
@@ -165,6 +230,7 @@ export function DemoRequest() {
               <p className="demo__step-of" aria-live="polite">
                 {d.stepOf(step + 1, 3)}
               </p>
+              {prefilled && <p className="demo__prefilled">{d.prefilled}</p>}
 
               {step === 0 && (
                 <div className="demo__fields" key="s0">
@@ -172,16 +238,22 @@ export function DemoRequest() {
                     <input
                       autoComplete="name"
                       value={form.name}
-                      onChange={(e) => set('name', e.target.value)}
+                      onChange={(e) => setRequired('name', e.target.value)}
+                      onBlur={() => checkOnBlur('name')}
+                      aria-required="true"
                       aria-invalid={!!errors.name}
                     />
                   </Field>
                   <Field label={d.email} error={errors.email}>
                     <input
                       type="email"
+                      inputMode="email"
                       autoComplete="email"
+                      spellCheck={false}
                       value={form.email}
-                      onChange={(e) => set('email', e.target.value)}
+                      onChange={(e) => setRequired('email', e.target.value)}
+                      onBlur={() => checkOnBlur('email')}
+                      aria-required="true"
                       aria-invalid={!!errors.email}
                     />
                   </Field>
@@ -192,7 +264,9 @@ export function DemoRequest() {
                     <input
                       autoComplete="address-level2"
                       value={form.place}
-                      onChange={(e) => set('place', e.target.value)}
+                      onChange={(e) => setRequired('place', e.target.value)}
+                      onBlur={() => checkOnBlur('place')}
+                      aria-required="true"
                       aria-invalid={!!errors.place}
                     />
                   </Field>
@@ -241,7 +315,10 @@ export function DemoRequest() {
                   <Field label={d.province}>
                     <select
                       value={form.province}
-                      onChange={(e) => setForm((f) => ({ ...f, province: e.target.value as Province | '', dealer: '' }))}
+                      onChange={(e) => {
+                        touched.current.add('province')
+                        setForm((f) => ({ ...f, province: e.target.value as Province | '', dealer: '' }))
+                      }}
                     >
                       <option value="">{d.anyProvince}</option>
                       {provinces.map((p) => (
@@ -254,9 +331,10 @@ export function DemoRequest() {
                   <Field label={d.dealer}>
                     <select value={form.dealer} onChange={(e) => set('dealer', e.target.value)} disabled={!form.province}>
                       <option value="">{d.anyDealer}</option>
-                      {regionDealers.map((x) => (
+                      {regionDealers.map(({ dealer: x, km }) => (
                         <option key={x.href} value={`${x.name}, ${x.town}`}>
                           {x.name} — {x.town}
+                          {km !== null ? ` (${t.dealers.locate.km(km)})` : ''}
                         </option>
                       ))}
                     </select>

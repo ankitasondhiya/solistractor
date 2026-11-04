@@ -35,8 +35,9 @@ own film where a section shows the machine (`src/edition.ts`).
 | 03 | Model finder | "Welke past bij mijn werk?" answered on the page: two questions, three ranked models. | — |
 | 04 | Engineering | Hotspots on the finished tractor. | — |
 | 05 | Journey | One pinned photo; the Solis story, then Kies / Probeer / Rijd. | Enki's Web Studio |
-| 05 | Dealers | The 20 dealers, filterable by province. | — |
-| 05 | Demo request | Three-step form; opens the visitor's email app with the request to info@solistractor.nl (no backend). | Enki's Web Studio |
+| 05 | Dealers | The 20 dealers, filterable by province — and sorted nearest first once the visitor shares their location or types a postcode / town (distance in km on every card). | — |
+| 05 | Demo request | Three-step form, pre-filled with the visitor's last-viewed model, town and nearest dealer; opens their email app with the request to info@solistractor.nl (no backend). | Enki's Web Studio |
+| — | Welcome back (returning visitors) | A note under the header: "Continue with the S26?" and their nearest dealer. | — |
 | — | Pause motion | Turns off smooth scrolling and ambient loops. `prefers-reduced-motion` gets static sections. | Ascenta Studio |
 | — | Companion (studio) | A small Solis drives along a track at the foot of the screen as you scroll. | Ascenta Studio (hummingbird) |
 
@@ -47,10 +48,11 @@ src/
   edition.ts  which edition this page is (from the path)
   data/       filmTimeline.ts · studioTimeline.ts · timeline.ts (shared clock) · models.ts · dealers.ts · links.ts
   i18n/       copy.ts (every sentence, NL + EN) · LanguageContext.tsx
-  motion/     MotionContext.tsx (Lenis + GSAP clock, pause) · preload.ts
+  motion/     MotionContext.tsx (Lenis + GSAP clock, pause) · MotionLayer.tsx (Motion for React) · preload.ts
+  personal/   personal.ts (what this browser remembers) · locate.ts (geolocation + PDOK postcode search)
   hooks/      progressStore · useScrollProgress · useFrameSequence · usePinnedProgress …
   sections/   one folder per section, each with its own CSS (FilmHero, StudioHero, HeroStatic …)
-  components/ header, footer, preloader, icons, ScrollTractor (studio)
+  components/ header, footer, preloader, icons, Chip (sliding filter chips), WelcomeBack, ScrollTractor (studio)
 public/
   frames/film/lg|md/…120.webp       film edition, 1920 px and 1280 px
   frames/studio/lg|sm/…160.webp     studio edition, cut-outs, 1280 px and 720 px
@@ -115,6 +117,13 @@ price. The catalogue loads as its own chunk the first time a sheet opens.
 
 ## Motion and UI system
 
+[Motion for React](https://motion.dev) (`motion`, pinned) handles the component moves that GSAP and CSS
+don't do well — dealer cards gliding to their new order when the list re-sorts
+by distance (FLIP layout), the highlight travelling between filter chips
+(shared layout) and the welcome note's exit. Its features load lazily as their
+own chunk, and it follows *Pause motion* and `prefers-reduced-motion`. GSAP +
+Lenis keep the scroll-scrubbed film.
+
 Built against the rules in [ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill):
 shared duration/easing tokens in `global.css` (exits faster than entrances, decelerate in,
 accelerate out, a spring on press release), press feedback on every control, headline
@@ -122,6 +131,42 @@ lines that rise out of a mask as sections enter, a pausable marquee that also st
 offscreen / on hover / in hidden tabs, a skippable preloader, a magnetic primary CTA
 (fine pointers only), a short fade between editions, focus rings at 3:1+ on every
 ground, AA contrast for small green text, and reduced-motion support throughout.
+
+Audited with axe-core (WCAG 2.2 AA) against the skill's checklist: every
+control has a 44 px target (small ones extend an invisible hit area past their
+edge), no text under 12 px, focused controls scroll clear of the fixed header,
+unique landmark names, declared image sizes (no layout shift), segment filters
+that state their power range, and a demo form that validates on blur and marks
+required fields for screen readers.
+
+## Personalisation — on this device only
+
+The page remembers a few things the visitor did, so a second visit picks up
+where the first left off (`src/personal/personal.ts`, one `localStorage` key):
+
+- **Where they are** — set by *Use my location* (the browser asks permission;
+  stored rounded to ~1 km) or by a postcode / town. Sorts the dealers nearest
+  first and pre-selects the nearest dealer in the demo form.
+- **Models they opened** — the welcome-back note offers the last one, and the
+  demo form pre-selects it.
+- **Their model-finder answers** — the finder opens with them, and those models
+  carry a *Uw match* badge in the gallery and the compare table.
+
+Nothing is sent anywhere and there is no tracking. *Forget my choices* in the
+footer wipes everything the site stores. Untouched form fields follow the
+latest choice; anything the visitor typed is never overwritten.
+
+**Nearest dealer.** Postcodes and towns are looked up with
+[PDOK Locatieserver](https://api.pdok.nl/bzk/locatieserver/search/v3_1/) (the
+Dutch government's free address service — no key, CORS open); the reverse
+lookup names the town for *Use my location*. Each dealer carries its town's
+coordinates (`src/data/dealers.ts`, geocoded once with PDOK); distances are
+straight-line km. There is deliberately no IP lookup: in the Netherlands it
+mostly resolves to the provider's hub, and it would send every visitor's IP to
+a third party without consent.
+
+**Shareable models.** Every model sheet has its own address — `/#model-s26` —
+that opens the sheet after the preloader; the browser's Back button closes it.
 
 ## Content and images
 

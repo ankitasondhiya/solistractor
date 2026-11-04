@@ -6,9 +6,10 @@ import { progressTop } from '../../hooks/useScrollProgress'
 import { usePinnedProgress } from '../../hooks/usePinnedProgress'
 import { useLanguage } from '../../i18n/LanguageContext'
 import { useMotion } from '../../motion/MotionContext'
-import { MAX_HP, formatPrice, modelBadge, models, segments, type Segment } from '../../data/models'
+import { MAX_HP, formatPrice, modelBadge, models, segmentRange, segments, type Segment } from '../../data/models'
 import { openModelSheet } from '../ModelSheet/sheetBus'
-import { ArrowLeft, ArrowRight } from '../../components/Icons'
+import { ArrowLeft, ArrowRight, Check } from '../../components/Icons'
+import { useMatchIds } from '../../personal/personal'
 
 const SWIPE_QUERY = '(max-width: 899px)'
 const LAST = models.length - 1
@@ -42,6 +43,7 @@ export function ModelGallery() {
   const [swipe, setSwipe] = useState(() => window.matchMedia(SWIPE_QUERY).matches || systemReduced)
   const [active, setActive] = useState(0)
   const activeRef = useRef(0)
+  const matches = useMatchIds()
 
   useEffect(() => {
     const mq = window.matchMedia(SWIPE_QUERY)
@@ -148,6 +150,7 @@ export function ModelGallery() {
                   onClick={() => goTo(firstOf(segment))}
                 >
                   {t.models.segments[segment]}
+                  <span className="chip__note">{segmentRange(segment, lang)}</span>
                 </button>
               ))}
             </div>
@@ -185,7 +188,7 @@ export function ModelGallery() {
                 type="button"
                 className="gallery__card"
                 data-active={i === active ? 'true' : 'false'}
-                aria-label={`Solis ${m.fullName}, ${modelBadge(m, lang)}`}
+                aria-label={`Solis ${m.fullName}, ${modelBadge(m, lang)}${matches.includes(m.id) ? `, ${t.personal.match}` : ''}`}
                 aria-current={i === active}
                 ref={(el) => {
                   cardRefs.current[i] = el
@@ -195,8 +198,16 @@ export function ModelGallery() {
                 <span className="gallery__card-name" aria-hidden="true">
                   {m.name.replace(' Shuttle XL', '')}
                 </span>
-                <span className="model-badge gallery__card-badge">{modelBadge(m, lang)}</span>
-                <img src={m.image} alt="" loading={i < 3 ? 'eager' : 'lazy'} decoding="async" />
+                <span className="gallery__card-badges">
+                  <span className="model-badge">{modelBadge(m, lang)}</span>
+                  {matches.includes(m.id) && (
+                    <span className="match-badge">
+                      <Check aria-hidden="true" />
+                      {t.personal.match}
+                    </span>
+                  )}
+                </span>
+                <img src={m.image} alt="" width={1024} height={725} loading={i < 3 ? 'eager' : 'lazy'} decoding="async" />
                 <span className="gallery__card-meta">
                   <span>{t.models.segments[m.segment]}</span>
                   <span>4WD</span>

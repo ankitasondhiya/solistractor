@@ -94,7 +94,7 @@ export function SiteHeader() {
               <SolisLogo />
             </a>
 
-            <nav className="site-header__nav" aria-label="Hoofdmenu">
+            <nav className="site-header__nav" aria-label={t.nav.main}>
               {SECTIONS.map((s) => (
                 <a key={s.id} href={`#${s.id}`} onClick={go(s.id)}>
                   {t.nav[s.key]}

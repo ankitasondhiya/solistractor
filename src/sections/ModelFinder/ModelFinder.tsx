@@ -1,4 +1,4 @@
-import { useState, type ComponentType, type SVGProps } from 'react'
+import { useEffect, useState, type ComponentType, type SVGProps } from 'react'
 import './model-finder.css'
 
 import { useLanguage } from '../../i18n/LanguageContext'
@@ -8,6 +8,7 @@ import { Apple, ArrowRight, Horseshoe, Loader, Tree, Wheat, Yard } from '../../c
 import { Reveal } from '../../components/Reveal'
 import { requestDemo } from '../DemoRequest/demoBus'
 import { openModelSheet } from '../ModelSheet/sheetBus'
+import { getPersonal, setFinderAnswers } from '../../personal/personal'
 
 const USES: { id: Use; Icon: ComponentType<SVGProps<SVGSVGElement>> }[] = [
   { id: 'yard', Icon: Yard },
@@ -28,8 +29,13 @@ const SPACES: Space[] = ['tight', 'medium', 'open']
 export function ModelFinder() {
   const { t, l, lang } = useLanguage()
   const { scrollTo } = useMotion()
-  const [use, setUse] = useState<Use | null>(null)
-  const [space, setSpace] = useState<Space | null>(null)
+  // A returning reader finds their own answers — and so their shortlist — still in place.
+  const [use, setUse] = useState<Use | null>(() => getPersonal().finder?.use ?? null)
+  const [space, setSpace] = useState<Space | null>(() => getPersonal().finder?.space ?? null)
+
+  useEffect(() => {
+    if (use) setFinderAnswers({ use, space })
+  }, [use, space])
 
   const results = use ? recommend(use, space) : []
 
@@ -98,7 +104,7 @@ export function ModelFinder() {
             <ol className="finder__results">
               {results.map(({ model, score }, i) => (
                 <li key={`${use}-${space}-${model.id}`} className="finder__result" style={{ animationDelay: `${i * 80}ms` }}>
-                  <img src={model.image} alt="" loading="lazy" />
+                  <img src={model.image} alt="" width={1024} height={725} loading="lazy" decoding="async" />
                   <div className="finder__result-body">
                     <p className="finder__result-top">
                       {i === 0 && <span className="finder__best">{t.finder.best}</span>}

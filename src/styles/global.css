@@ -25,6 +25,8 @@
   --line: #e6e1d8;
   --line-strong: #d4cdc0;
   --gold: #c9a96a;
+  /* Errors: 6.4:1 on white, 5.9:1 on paper. */
+  --error: #b42318;
 
   /* The room the machine stands in. The film was shot in a grey studio; the
      frames are cut out of it, so the room can be the warm, quiet cream of the
@@ -105,6 +107,10 @@ html {
   /* Scroll drives the assembly timeline; native smooth scrolling would fight
      Lenis and the eased progress loop. Anchor jumps go through Lenis. */
   scroll-behavior: auto;
+  /* A control reached with Tab is scrolled clear of the fixed header, never
+     under it (WCAG 2.2 focus-not-obscured). */
+  scroll-padding-top: calc(var(--header-h) + 16px);
+  scroll-padding-bottom: 72px;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -434,7 +440,7 @@ summary {
 }
 
 .btn--sm {
-  min-height: 42px;
+  min-height: 44px;
   padding: 0 18px;
   font-size: 14px;
 }
@@ -473,10 +479,10 @@ summary {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  min-height: 38px;
-  padding: 0 16px;
+  min-height: 44px;
+  padding: 0 18px;
   border-radius: 999px;
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--navy);
   box-shadow: inset 0 0 0 1.5px rgba(12, 30, 82, 0.16);
@@ -495,6 +501,89 @@ summary {
   background: var(--navy);
   color: var(--white);
   box-shadow: inset 0 0 0 1.5px var(--navy);
+}
+
+/* Sliding variant (components/Chip.tsx): the pressed chip's navy comes from a
+   pill that travels between chips; the chip itself stays clear. */
+.chip[data-slide='true'] {
+  position: relative;
+}
+
+.chip[data-slide='true'][aria-pressed='true'] {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px transparent;
+}
+
+.chip__pill {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: var(--navy);
+}
+
+.chip__label {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* A chip's secondary note — "16–26 pk" beside a segment name. */
+.chip__note {
+  font-size: 12px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Hit areas ---------------------------------------------------------------
+   Small controls keep their look but answer to a 44px target: an invisible
+   layer extends the clickable area past the visual edge (ui-ux-pro-max:
+   touch-target-size — "extend hit area beyond visual bounds"). */
+.site-header__brand,
+.edition-switch a,
+.lang-switch button,
+.site-footer__lang,
+.site-footer__editions a,
+.text-link,
+.finder__link,
+.compare__details,
+.assembly__dots button {
+  position: relative;
+}
+
+.site-header__brand::after,
+.edition-switch a::after,
+.lang-switch button::after,
+.site-footer__lang::after,
+.site-footer__editions a::after,
+.text-link::after,
+.finder__link::after,
+.motion-toggle::after,
+.tech__spot::after,
+.assembly__dots button::after {
+  content: '';
+  position: absolute;
+  inset: -7px 0;
+}
+
+.site-header__brand::after {
+  inset: -11px -6px;
+}
+
+.text-link::after,
+.finder__link::after {
+  inset: -10px -4px;
+}
+
+.motion-toggle::after {
+  inset: -4px;
+}
+
+.tech__spot::after {
+  inset: -6px;
+  border-radius: 50%;
 }
 
 .round-btn {
@@ -652,11 +741,33 @@ html[data-motion='calm'] *::after {
   border-radius: 4px;
   background: var(--navy);
   color: var(--white);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
+}
+
+/* "Uw match" — a model the reader's own finder answers pointed to. */
+.match-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  width: fit-content;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: var(--green);
+  color: var(--navy-900);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.match-badge svg {
+  width: 13px;
+  height: 13px;
+  stroke-width: 2.6;
 }

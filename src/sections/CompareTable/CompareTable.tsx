@@ -2,8 +2,10 @@ import { useState, type CSSProperties } from 'react'
 import './compare-table.css'
 
 import { useLanguage } from '../../i18n/LanguageContext'
-import { formatPrice, modelBadge, models, segments, type Segment } from '../../data/models'
-import { ArrowRight } from '../../components/Icons'
+import { formatPrice, modelBadge, models, segmentRange, segments, type Segment } from '../../data/models'
+import { SlideChip } from '../../components/Chip'
+import { useMatchIds } from '../../personal/personal'
+import { ArrowRight, Check } from '../../components/Icons'
 import { Reveal } from '../../components/Reveal'
 import { openModelSheet } from '../ModelSheet/sheetBus'
 
@@ -18,6 +20,7 @@ export function CompareTable() {
   const [segment, setSegment] = useState<Segment | null>(null)
   const rows = segment ? models.filter((m) => m.segment === segment) : models
   const unit = lang === 'nl' ? 'pk' : 'hp'
+  const matches = useMatchIds()
 
   return (
     <section className="section compare" id="vergelijken" aria-labelledby="compare-title">
@@ -36,13 +39,14 @@ export function CompareTable() {
 
         <div className="compare__bar">
           <div className="compare__chips" role="group" aria-label={t.models.all}>
-            <button type="button" className="chip" aria-pressed={segment === null} onClick={() => setSegment(null)}>
+            <SlideChip group="compare" pressed={segment === null} onClick={() => setSegment(null)}>
               {t.models.all}
-            </button>
+            </SlideChip>
             {segments.map((s) => (
-              <button key={s} type="button" className="chip" aria-pressed={segment === s} onClick={() => setSegment(s)}>
+              <SlideChip key={s} group="compare" pressed={segment === s} onClick={() => setSegment(s)}>
                 {t.models.segments[s]}
-              </button>
+                <span className="chip__note">{segmentRange(s, lang)}</span>
+              </SlideChip>
             ))}
           </div>
           <p className="compare__count" aria-live="polite">
@@ -72,10 +76,16 @@ export function CompareTable() {
                 <tr key={m.id} style={{ '--i': i } as CSSProperties}>
                   <th scope="row">
                     <span className="compare__model">
-                      <img src={m.image} alt="" loading="lazy" />
+                      <img src={m.image} alt="" width={1024} height={725} loading="lazy" decoding="async" />
                       <span>
                         <strong>Solis {m.fullName}</strong>
                         <span className="model-badge">{modelBadge(m, lang)}</span>
+                        {matches.includes(m.id) && (
+                          <span className="match-badge">
+                            <Check aria-hidden="true" />
+                            {t.personal.match}
+                          </span>
+                        )}
                       </span>
                     </span>
                   </th>

@@ -19,9 +19,17 @@ import {
 } from '../../data/catalogue'
 import { ArrowRight, ArrowUpRight, Check, Close, Plus } from '../../components/Icons'
 import { requestDemo } from '../DemoRequest/demoBus'
-import { onModelSheet, type SheetTab } from './sheetBus'
+import { onModelSheet, openModelSheet, type SheetTab } from './sheetBus'
+import { recordView } from '../../personal/personal'
+import { afterLoaded } from '../../motion/preload'
 
 const TABS: SheetTab[] = ['overview', 'specs', 'configure']
+/** Each open sheet has its own address — /#model-s26 — to share or bookmark. */
+const HASH = /^#model-([a-z0-9-]+)$/
+/** Read once at start-up (before the effect below tidies the address). */
+const SHARED_ID = HASH.exec(window.location.hash)?.[1] ?? null
+const sheetState = (): string | null =>
+  (window.history.state as { solisSheet?: string } | null)?.solisSheet ?? null
 /** How long the sheet takes to leave (--dur-2 in global.css). */
 const EXIT_MS = 240
 
@@ -50,17 +58,41 @@ export function ModelSheet() {
   const closeRef = useRef<HTMLButtonElement>(null)
   const returnFocus = useRef<HTMLElement | null>(null)
 
+  const phaseRef = useRef(phase)
+  phaseRef.current = phase
+
+  const show = useCallback((nextSlug: string, nextTab: SheetTab) => {
+    if (phaseRef.current === 'closed') {
+      returnFocus.current = document.activeElement instanceof HTMLElement ? document.activeElement : null
+    }
+    setSlug(nextSlug)
+    setTab(nextTab)
+    setPhase('open')
+    loadCatalogue().then(setCatalogue)
+    recordView(nextSlug)
+  }, [])
+
   useEffect(
     () =>
       onModelSheet((nextSlug, nextTab) => {
-        returnFocus.current = document.activeElement instanceof HTMLElement ? document.activeElement : null
-        setSlug(nextSlug)
-        setTab(nextTab)
-        setPhase('open')
-        loadCatalogue().then(setCatalogue)
+        show(nextSlug, nextTab)
+        // Back closes the sheet, as it would on any app (ui-ux-pro-max:
+        // back-behavior), and the address can be shared (deep-linking).
+        const hash = `#model-${nextSlug}`
+        if (sheetState()) window.history.replaceState({ solisSheet: nextSlug }, '', hash)
+        else window.history.pushState({ solisSheet: nextSlug }, '', hash)
       }),
-    [],
+    [show],
   )
+
+  // Arriving on a shared link: open that model once the preloader has lifted,
+  // on top of a clean entry so Back closes the sheet and stays on the page.
+  useEffect(() => {
+    const id = SHARED_ID
+    if (!id || !models.some((m) => m.id === id)) return undefined
+    window.history.replaceState(null, '', window.location.pathname + window.location.search)
+    return afterLoaded(() => openModelSheet(id), 250)
+  }, [])
 
   useEffect(() => {
     if (phase !== 'open') return undefined
@@ -72,7 +104,12 @@ export function ModelSheet() {
     }
   }, [phase, lockScroll])
 
-  const close = useCallback(() => {
+  const close = useCallback((fromHistory = false) => {
+    // Opened with its own history entry: step back, and popstate closes it.
+    if (!fromHistory && sheetState()) {
+      window.history.back()
+      return
+    }
     setPhase('closing')
     window.setTimeout(
       () => {
@@ -83,6 +120,18 @@ export function ModelSheet() {
       calm ? 0 : EXIT_MS,
     )
   }, [calm])
+
+  const closeRef2 = useRef(close)
+  closeRef2.current = close
+  useEffect(() => {
+    const onPop = () => {
+      const s = sheetState()
+      if (s) show(s, 'overview')
+      else if (phaseRef.current === 'open') closeRef2.current(true)
+    }
+    window.addEventListener('popstate', onPop)
+    return () => window.removeEventListener('popstate', onPop)
+  }, [show])
 
   // Escape closes; Tab is held inside the panel.
   const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
@@ -119,11 +168,11 @@ export function ModelSheet() {
 
   return (
     <div className="sheet" data-phase={phase} onKeyDown={onKeyDown}>
-      <button type="button" className="sheet__backdrop" aria-label={t.sheet.close} tabIndex={-1} onClick={close} />
+      <button type="button" className="sheet__backdrop" aria-label={t.sheet.close} tabIndex={-1} onClick={() => close()} />
       <div className="sheet__panel" ref={panelRef} role="dialog" aria-modal="true" aria-labelledby={titleId}>
         <header className="sheet__head">
           <div className="sheet__thumb" aria-hidden="true">
-            <img src={model.image} alt="" />
+            <img src={model.image} alt="" width={1024} height={725} decoding="async" />
           </div>
           <div className="sheet__heading">
             <p className="sheet__eyebrow">
@@ -139,7 +188,7 @@ export function ModelSheet() {
             <strong>{euro(model.price, lang)}</strong>
             <small>{t.sheet.vat}</small>
           </div>
-          <button type="button" className="sheet__close" ref={closeRef} aria-label={t.sheet.close} onClick={close}>
+          <button type="button" className="sheet__close" ref={closeRef} aria-label={t.sheet.close} onClick={() => close()}>
             <Close />
           </button>
         </header>
@@ -252,7 +301,7 @@ function Overview({ cm, model }: { cm: CatalogueModel; model: TractorModel }) {
     <div className="sheet-overview">
       <p className="sheet-overview__lead">{cm.hero.text}</p>
       <figure className="sheet-overview__figure">
-        <img src={model.image} alt={`Solis ${model.fullName}`} />
+        <img src={model.image} alt={`Solis ${model.fullName}`} width={1024} height={725} decoding="async" />
       </figure>
 
       <section className="sheet-block">

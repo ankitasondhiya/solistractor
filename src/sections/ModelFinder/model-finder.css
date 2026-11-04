@@ -233,7 +233,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -305,7 +305,7 @@
 
 .finder__price small {
   font-family: var(--font);
-  font-size: 11.5px;
+  font-size: 12px;
   color: var(--muted);
 }
 

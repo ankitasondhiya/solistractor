@@ -79,6 +79,22 @@ export const Pin = (p: IconProps) => (
   </Line>
 )
 
+/** "Use my location": a target with its four sights. */
+export const Locate = (p: IconProps) => (
+  <Line {...p}>
+    <circle cx="12" cy="12" r="6.5" />
+    <circle cx="12" cy="12" r="2" />
+    <path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3" />
+  </Line>
+)
+
+export const Search = (p: IconProps) => (
+  <Line {...p}>
+    <circle cx="11" cy="11" r="6.5" />
+    <path d="m20 20-4.4-4.4" />
+  </Line>
+)
+
 export const Check = (p: IconProps) => (
   <Line {...p}>
     <path d="m5 12.5 4.2 4.2L19 7" />
