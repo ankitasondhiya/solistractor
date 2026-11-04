@@ -1,11 +1,13 @@
 /* ---------------------------------------------------------------------------
-   Model gallery — a pinned, curved rail of twelve cards
+   Model gallery — twelve cards on a turning ring (ModelGallery.tsx places
+   each card; this file sizes the stage and dresses the cards)
 --------------------------------------------------------------------------- */
 .gallery {
-  --card-w: min(34vw, 520px, calc((100vh - 470px) * 1.42));
+  --card-w: min(25vw, 360px, calc((100vh - 560px) * 1.42));
   position: relative;
   height: calc(100vh + 12 * 30vh);
   background: var(--cream);
+  overflow-x: clip;
 }
 
 .gallery__viewport {
@@ -67,26 +69,45 @@
   font-weight: 600;
 }
 
-/* The rail ------------------------------------------------------------------- */
+/* The ring ------------------------------------------------------------------- */
 .gallery__stage {
-  display: flex;
-  align-items: center;
+  position: relative;
   min-height: 0;
-  perspective: 1700px;
-  perspective-origin: 50% 50%;
+  /* Vertical swipes still scroll the page; sideways ones turn the ring. */
+  touch-action: pan-y;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-.gallery__track {
-  display: flex;
-  column-gap: 2.4vw;
-  padding-left: calc(50vw - var(--card-w) / 2);
-  transform-style: preserve-3d;
-  will-change: transform;
+.gallery__stage[data-dragging='true'] {
+  cursor: grabbing;
+}
+
+.gallery__ring {
+  position: absolute;
+  inset: 0;
+}
+
+/* The floor the ring stands on: a soft ellipse of shadow, so the circle
+   reads as one object rather than cards floating apart. */
+.gallery__ring::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 58%;
+  width: min(86%, calc(var(--card-w) * 3.9));
+  height: calc(var(--card-w) * 0.62);
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(12, 30, 82, 0.13), rgba(12, 30, 82, 0.04) 60%, transparent);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
 }
 
 .gallery__card {
-  position: relative;
-  flex: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
   width: var(--card-w);
   aspect-ratio: 1.42;
   border-radius: 24px;
@@ -101,7 +122,26 @@
   transform-origin: 50% 50%;
   backface-visibility: hidden;
   will-change: transform, opacity;
+  cursor: pointer;
   transition: box-shadow var(--dur-3) var(--ease);
+}
+
+.gallery__stage[data-dragging='true'] .gallery__card {
+  cursor: grabbing;
+}
+
+/* The far side of the ring stays in view but steps back. */
+.gallery__card[data-far='true'] .gallery__card-badges,
+.gallery__card[data-far='true'] .gallery__card-meta {
+  visibility: hidden;
+}
+
+.gallery__card[data-far='true'] {
+  box-shadow: 0 10px 24px rgba(12, 30, 82, 0.08);
+}
+
+.gallery__card img {
+  -webkit-user-drag: none;
 }
 
 .gallery__card[data-active='true'] {
@@ -301,10 +341,10 @@
 }
 
 @media (max-width: 1200px) {
-  /* Heading and chips stack and the detail splits in two: the rail gets
+  /* Heading and chips stack and the detail splits in two: the ring gets
      less height, so the cards size to what is left. */
   .gallery {
-    --card-w: min(34vw, 520px, calc((100vh - 560px) * 1.42));
+    --card-w: min(25vw, 360px, calc((100vh - 660px) * 1.42));
   }
 
   .gallery__head {
@@ -324,14 +364,15 @@
   }
 }
 
-/* Swipe mode (phones, and reduced motion) ------------------------------------ */
-.gallery[data-mode='swipe'] {
-  --card-w: min(80vw, 440px);
+/* Free mode (phones, and reduced motion): the section scrolls normally and
+   the ring is turned by hand, so it gets a fixed-height stage of its own. */
+.gallery[data-mode='free'] {
+  --card-w: min(56vw, 340px);
   height: auto;
   padding: clamp(72px, 10vw, 120px) 0;
 }
 
-.gallery[data-mode='swipe'] .gallery__viewport {
+.gallery[data-mode='free'] .gallery__viewport {
   position: static;
   height: auto;
   padding: 0;
@@ -339,25 +380,14 @@
   overflow: visible;
 }
 
-.gallery[data-mode='swipe'] .gallery__stage {
-  perspective: none;
+.gallery[data-mode='free'] .gallery__stage {
+  height: calc(var(--card-w) / 1.42 * 1.7);
 }
 
-.gallery[data-mode='swipe'] .gallery__track {
-  width: 100%;
-  padding: 8px calc(50vw - var(--card-w) / 2) 24px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  transform: none;
-}
-
-.gallery[data-mode='swipe'] .gallery__track::-webkit-scrollbar {
-  display: none;
-}
-
-.gallery[data-mode='swipe'] .gallery__card {
-  scroll-snap-align: center;
+/* On a phone the far side is mostly covered: only slivers would be left to
+   tap, so it doesn't take taps — a swipe or the arrows bring it round. */
+.gallery[data-mode='free'] .gallery__card[data-far='true'] {
+  pointer-events: none;
 }
 
 @media (max-width: 899px) {

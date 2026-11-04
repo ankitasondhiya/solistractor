@@ -69,6 +69,32 @@ export function MotionProvider({ children }: { children: ReactNode }) {
     }
   }, [])
 
+  // Layout above a pinned section can move it without resizing it — web
+  // fonts swapping in, the preloader's scroll lock lifting, images arriving.
+  // ScrollTrigger only re-measures on load and window resize, so a section
+  // further down would map scroll to a stale start (the model ring's arrows
+  // landed a card short). Re-measure whenever the page's height changes or
+  // the fonts are in, debounced to one refresh per burst.
+  useEffect(() => {
+    let timer = 0
+    const refresh = () => {
+      window.clearTimeout(timer)
+      timer = window.setTimeout(() => ScrollTrigger.refresh(), 150)
+    }
+    const observer = new ResizeObserver(refresh)
+    observer.observe(document.body)
+    document.fonts?.ready.then(refresh).catch(() => {})
+    const loaded = new MutationObserver(() => {
+      if (document.documentElement.dataset.loaded === 'true') refresh()
+    })
+    loaded.observe(document.documentElement, { attributes: true, attributeFilter: ['data-loaded'] })
+    return () => {
+      window.clearTimeout(timer)
+      observer.disconnect()
+      loaded.disconnect()
+    }
+  }, [])
+
   useEffect(() => {
     document.documentElement.dataset.motion = calm ? 'calm' : 'full'
     if (calm) return undefined

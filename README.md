@@ -29,7 +29,7 @@ own film where a section shows the machine (`src/edition.ts`).
 | — | Marquee | Headline facts; speeds up with scroll and turns round when you scroll back. | Enki's Web Studio |
 | 02 | Statement | The brand sentence, assembled from scattered words as you scroll, then four counters. | Enki's Web Studio |
 | 02 | Why Solis | Four stacked sticky cards. | Enki's Web Studio |
-| 03 | Model gallery | All 12 models on a pinned, curved 3D rail with segment chips and a live spec panel (swipe carousel on phones). | Ascenta Studio |
+| 03 | Model gallery | All 12 models on a turning 3D ring (CSS 3D — every card stays a real button): scrolling turns it on desktop, swiping on phones; drag, arrows, keys and the segment chips (with their power range) turn it too, and the front card opens its sheet. | Ascenta Studio |
 | 03 | Compare table | All 12 models side by side — power, engine, lift, transmission, PTO, width, price — filterable by segment. | — |
 | 03 | Model sheet | Opens from the gallery, table and finder: overview, full specs and downloads, and the model's **configurator** with the official option prices and rules (live total, "take to a quote" fills the demo form). | solistractor.nl/modellen |
 | 03 | Model finder | "Welke past bij mijn werk?" answered on the page: two questions, three ranked models. | — |
