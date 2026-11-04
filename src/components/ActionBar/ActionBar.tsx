@@ -3,11 +3,11 @@ import { AnimatePresence, m } from 'motion/react'
 import './action-bar.css'
 
 import { useLanguage } from '../../i18n/LanguageContext'
-import { useMotion } from '../../motion/MotionContext'
 import { links } from '../../data/links'
 import { byDistance } from '../../data/dealers'
 import { usePersonal } from '../../personal/personal'
 import { openCompare } from '../Shortlist/compareBus'
+import { goToSection } from '../../router'
 import { ArrowRight, Heart, Phone, Pin } from '../Icons'
 
 /**
@@ -20,7 +20,6 @@ import { ArrowRight, Heart, Phone, Pin } from '../Icons'
  */
 export function ActionBar() {
   const { t } = useLanguage()
-  const { scrollTo } = useMotion()
   const { shortlist, place } = usePersonal()
   const [pastHero, setPastHero] = useState(false)
   const [atEnd, setAtEnd] = useState(false)
@@ -75,7 +74,7 @@ export function ActionBar() {
           <button
             type="button"
             className="action-bar__item"
-            onClick={() => scrollTo('#dealers', { offset: -12 })}
+            onClick={() => goToSection('dealers')}
           >
             <Pin aria-hidden="true" />
             <span>
@@ -95,7 +94,7 @@ export function ActionBar() {
           <button
             type="button"
             className="action-bar__item action-bar__item--primary"
-            onClick={() => scrollTo('#demo', { offset: -24 })}
+            onClick={() => goToSection('demo')}
           >
             <span>{A.demo}</span>
             <ArrowRight aria-hidden="true" />

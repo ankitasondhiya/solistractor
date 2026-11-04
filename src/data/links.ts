@@ -1,32 +1,38 @@
 /**
- * Where the redesigned home page hands off to the existing site.
+ * Where links go. Everything that used to live on solistractor.nl is now a
+ * page or a section of this site (src/router.ts), so a reader never has to
+ * leave: the deeper pages have their own paths, "models", "dealers" and the
+ * like are sections of the landing page ("/#dealers").
  *
- * The landing page is the only page rebuilt here; model pages, dealer pages
- * and forms stay on solistractor.nl, so every outbound link is collected in
- * one place to be re-pointed when the rest of the site follows.
+ * The content of those pages comes from solistractor.nl as published — see
+ * scripts/scrape-pages.py and scripts/scrape-catalogue.py.
  */
-export const SITE = 'https://www.solistractor.nl'
+export const SOURCE = 'https://www.solistractor.nl'
 
 /**
- * Product photography is the site's own, served from its WordPress uploads.
- * Swap this for a local folder (e.g. '/media/models') once the images are
- * copied into the project.
+ * Photography, maps and PDFs, copied from the site's WordPress uploads into
+ * public/media/solis by scripts/localize-media.py (same paths below it).
  */
-export const MEDIA = `${SITE}/wp-content`
+export const MEDIA = '/media/solis'
 
 export const links = {
-  models: `${SITE}/modellen/`,
-  finder: `${SITE}/keuzehulp/`,
-  compare: `${SITE}/vergelijken/`,
-  dealers: `${SITE}/dealers/`,
-  information: `${SITE}/informatie/`,
-  service: `${SITE}/klantenservice/`,
-  warranty: `${SITE}/garantie/`,
-  about: `${SITE}/over-ons/`,
-  contact: `${SITE}/contact/`,
-  becomeDealer: `${SITE}/contact/?onderwerp=dealer`,
-  privacy: `${SITE}/privacybeleid/`,
-  cookies: `${SITE}/cookiebeleid/`,
+  home: '/',
+  models: '/#modellen',
+  finder: '/#keuzehulp',
+  compare: '/#vergelijken',
+  dealers: '/#dealers',
+  demo: '/#demo',
+  information: '/informatie',
+  service: '/klantenservice',
+  warranty: '/garantie',
+  warrantyForm: '/garantie/registreren',
+  about: '/over-ons',
+  contact: '/contact',
+  becomeDealer: '/contact?onderwerp=dealer',
+  privacy: '/privacybeleid',
+  cookies: '/cookiebeleid',
+  priceList: `${MEDIA}/uploads/2026/08/Solis-prijslijst.pdf`,
+  brochure: `${MEDIA}/uploads/2026/08/Solis-brochure.pdf`,
   phone: 'tel:+31155150070',
   email: 'mailto:info@solistractor.nl',
   maps: 'https://maps.app.goo.gl/C9KGSUYa9cZ7WYVE7',

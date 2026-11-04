@@ -3,13 +3,13 @@ import { AnimatePresence, m } from 'motion/react'
 import './welcome-back.css'
 
 import { useLanguage } from '../../i18n/LanguageContext'
-import { useMotion } from '../../motion/MotionContext'
 import { afterLoaded } from '../../motion/preload'
 import { models } from '../../data/models'
 import { byDistance } from '../../data/dealers'
 import { dismissReturning, getPersonal, usePersonal } from '../../personal/personal'
 import { imageIn, openModelSheet } from '../../sections/ModelSheet/sheetBus'
 import { ArrowRight, Close, Pin } from '../Icons'
+import { goToSection } from '../../router'
 
 /**
  * A returning reader gets a short note, under the header, once the preloader lifts: the tractor
@@ -19,7 +19,6 @@ import { ArrowRight, Close, Pin } from '../Icons'
  */
 export function WelcomeBack() {
   const { t } = useLanguage()
-  const { scrollTo } = useMotion()
   const personal = usePersonal()
   const [ready, setReady] = useState(false)
 
@@ -84,7 +83,7 @@ export function WelcomeBack() {
                     className="btn btn--sm"
                     onClick={() => {
                       close()
-                      scrollTo('#dealers', { offset: -24 })
+                      goToSection('dealers')
                     }}
                   >
                     {t.personal.seeDealers}

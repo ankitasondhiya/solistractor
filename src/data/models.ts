@@ -1,5 +1,5 @@
 import type { Localized } from '../i18n/LanguageContext'
-import { MEDIA, SITE } from './links'
+import { MEDIA } from './links'
 
 export type Segment = 'compact' | 'mid' | 'narrow' | 'farm'
 export type Use = 'yard' | 'grounds' | 'equestrian' | 'orchard' | 'farming' | 'loader'
@@ -38,7 +38,8 @@ export interface TractorModel {
 }
 
 const upload = (file: string) => `${MEDIA}/uploads/2026/08/${file}-1024x725.webp`
-const page = (slug: string) => `${SITE}/modellen/${slug}/`
+/** A model's own address on this site: the landing page with its sheet open. */
+const page = (slug: string) => `/#model-${slug}`
 const same = (value: string): Localized => ({ nl: value, en: value })
 
 /** All twelve models, as listed on solistractor.nl, in order of power. */

@@ -43,6 +43,41 @@ own film where a section shows the machine (`src/edition.ts`).
 | — | Pause motion | Turns off smooth scrolling and ambient loops. `prefers-reduced-motion` gets static sections. | Ascenta Studio |
 | — | Companion (studio) | A small Solis drives along a track at the foot of the screen as you scroll. | Ascenta Studio (hummingbird) |
 
+## Every page on this site — nothing sends readers away
+
+Everything that used to link out to solistractor.nl is now part of this site,
+with its own address (`src/router.ts` — History API, back button and shared
+links work, any same-site `<a href>` is handled):
+
+| Path | Page |
+|------|------|
+| `/over-ons` | The Solis story (ITL, Yanmar, scale, Solis in the Netherlands) |
+| `/informatie` | Price list and brochure (local PDFs), tyres per series, factory, partners |
+| `/klantenservice` | Service routes: workshop, technical questions, parts, warranty |
+| `/garantie` · `/garantie/registreren` | Warranty cover, and the registration form (the licence plate fills in the model from the RDW register) |
+| `/contact` | Contact form (`?onderwerp=dealer` pre-selects "Dealer worden") |
+| `/privacybeleid` · `/cookiebeleid` | Legal pages |
+| `/dealers/<slug>` | Each of the 20 dealers: photo, address, phone, route, website, region map, history, distance from you, "plan a demo with this dealer" |
+
+Section links (`/#dealers`, `/#model-s26`) go home first, then to the section
+or the model's sheet. The landing page stays mounted while another page is open,
+so Back returns to the exact spot. Unknown addresses get a "page not found".
+Forms open the visitor's email app (there is no backend); the only external
+links left are a dealer's own website, map routes and the OpenStreetMap credit,
+which open in a new tab.
+
+The content is solistractor.nl's own, as published, kept as data and drawn in
+this site's design (`src/pages/`). Rebuild it with:
+
+```bash
+python scripts/scrape-pages.py src/data/pages.json   # pages + 20 dealers → structured content
+python scripts/localize-media.py                     # photos, maps, PDFs → public/media/solis (big PNGs → WebP)
+```
+
+Content pages are in Dutch, as on the original site; in English the page chrome
+is translated and a note says so. `npm run build` writes an app shell for every
+path (and a `404.html`), so any static host serves them.
+
 ## Where things live
 
 ```
@@ -52,6 +87,8 @@ src/
   i18n/       copy.ts (every sentence, NL + EN) · LanguageContext.tsx
   motion/     MotionContext.tsx (Lenis + GSAP clock, pause) · MotionLayer.tsx (Motion for React) · preload.ts
   personal/   personal.ts (what this browser remembers) · locate.ts (geolocation + PDOK postcode search)
+  pages/      ContentRoute (every deeper page) · Blocks (the page renderer) · ContactForm · WarrantyForm
+  router.ts   addresses for the pages above; section links into the landing page
   hooks/      progressStore · useScrollProgress · useFrameSequence · usePinnedProgress …
   sections/   one folder per section, each with its own CSS (FilmHero, StudioHero, HeroStatic …)
   components/ header, footer, preloader, icons, Chip (sliding filter chips), WelcomeBack, ScrollTractor (studio)
@@ -60,9 +97,11 @@ public/
   frames/studio/lg|sm/…160.webp     studio edition, cut-outs, 1280 px and 720 px
   media/film|studio/                stills taken from each edition's film
 scripts/
+  scrape-pages.py                   solistractor.nl's pages and dealer pages → src/data/pages.json
+  localize-media.py                 every photo, map and PDF → public/media/solis
   extract-frames.mjs                rebuilds public/frames/film from a new film
   cutout-frames.py                  keys the studio out of the studio edition's frames
-  spa-routes.mjs                    copies the app shell to dist/studio/ after a build
+  spa-routes.mjs                    copies the app shell to every route (and 404.html) after a build
 ```
 
 ## The film edition
@@ -176,8 +215,7 @@ that opens the sheet after the preloader; the browser's Back button closes it.
 ## Content and images
 
 - Model data, prices, dealer list and copy are taken from solistractor.nl as published.
-- The 12 model cut-outs (and, in the studio edition, the farmyard and detail photos) are **hot-linked** from solistractor.nl's WordPress uploads
-  (`src/data/links.ts → MEDIA`). Copy them into `public/media/` and point `MEDIA`
-  there before shipping.
+- All photography, maps and PDFs are copies in `public/media/solis/` (same paths
+  as the WordPress uploads; `MEDIA` in `src/data/links.ts`) — nothing is hot-linked.
 - The film shows a red S75; the Dutch range on solistractor.nl is blue.
-- Every deeper link (model pages, dealers, forms) goes to the existing site.
+- Every deeper link (models, dealers, forms, service, warranty) is a page of this site.

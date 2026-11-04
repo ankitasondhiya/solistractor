@@ -1,11 +1,11 @@
 {
- "source": "https://www.solistractor.nl/modellen/",
+ "source": "/#modellen",
  "retrieved": "2026-11-04",
  "note": "As published by Solis Nederland (AgriXpert B.V.). Prices in EUR excl. VAT, price list 01-02-2026. Rebuild with scripts/scrape-catalogue.py.",
  "models": [
   {
    "slug": "s16",
-   "url": "https://www.solistractor.nl/modellen/s16/",
+   "url": "/#model-s16",
    "category": "Compact",
    "tagline": "Compacte kracht voor tuin, terrein en erf.",
    "width": "94,5 cm",
@@ -43,7 +43,7 @@
      "Tot 5 jaar* fabrieksgarantie"
     ],
     "footnote": "*Vraag naar de voorwaarden",
-    "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/s16-1-1024x725.webp"
+    "image": "/media/solis/uploads/2026/08/s16-1-1024x725.webp"
    },
    "work": {
     "eyebrow": "Breed inzetbaar",
@@ -95,17 +95,17 @@
     {
      "label": "Brochure",
      "meta": "PDF · 4 MB",
-     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-brochure.pdf"
+     "href": "/media/solis/uploads/2026/08/Solis-brochure.pdf"
     },
     {
      "label": "Prijslijst 01-02-2026",
      "meta": "PDF · 302 KB",
-     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-prijslijst.pdf"
+     "href": "/media/solis/uploads/2026/08/Solis-prijslijst.pdf"
     },
     {
      "label": "Garantie",
      "meta": "",
-     "href": "https://www.solistractor.nl/garantie/"
+     "href": "/garantie"
     }
    ],
    "configuratorNote": "Gebaseerd op de actieprijzen in de prijslijst van 01-02-2026. Geldigheid, uitvoering, montage en leverbaarheid altijd door de dealer te bevestigen.",
@@ -152,35 +152,35 @@
           "detail": "5×12 6PR · 8×18 6PR",
           "price": 0,
           "isDefault": true,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-150x150.webp"
          },
          {
           "value": "wide",
           "label": "Brede landbouwbanden · 115 cm",
           "detail": "BKT 6.5/80-12 · BKT 280/70R18",
           "price": 300,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-breed-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-breed-150x150.webp"
          },
          {
           "value": "lawn",
           "label": "Gazonbanden · 140 cm",
           "detail": "BKT 23×8.5-12 · BKT 33×15.5-16.5",
           "price": 700,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-gazon-150x150.webp"
          },
          {
           "value": "industrial",
           "label": "Industriebanden · 140 cm",
           "detail": "BKT 23×8.5-12 · BKT 33×15.5-16.5",
           "price": 900,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-industrie-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-industrie-150x150.webp"
          },
          {
           "value": "multi",
           "label": "Multi-use banden · 118,5 cm",
           "detail": "Galaxy Garden Pro 220/55R15 · 280/70R16",
           "price": 900,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-galaxy-150x150.webp"
          }
         ]
        },
@@ -199,31 +199,31 @@
           "value": "standard",
           "label": "Landbouwbanden",
           "price": 775,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-150x150.webp"
          },
          {
           "value": "wide",
           "label": "Brede landbouwbanden",
           "price": 1235,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-breed-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-breed-150x150.webp"
          },
          {
           "value": "lawn",
           "label": "Gazonbanden",
           "price": 1575,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-gazon-150x150.webp"
          },
          {
           "value": "industrial",
           "label": "Industriebanden",
           "price": 1750,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-industrie-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-industrie-150x150.webp"
          },
          {
           "value": "multi",
           "label": "Multi-use banden",
           "price": 1750,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-galaxy-150x150.webp"
          }
         ]
        }
@@ -305,7 +305,7 @@
   },
   {
    "slug": "s20",
-   "url": "https://www.solistractor.nl/modellen/s20/",
+   "url": "/#model-s20",
    "category": "Compact",
    "tagline": "Wendbaar van formaat. Breed in gebruik.",
    "width": "92 cm",
@@ -343,7 +343,7 @@
      "Tot 5 jaar* fabrieksgarantie"
     ],
     "footnote": "*Vraag naar de voorwaarden",
-    "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/s20-1-1024x725.webp"
+    "image": "/media/solis/uploads/2026/08/s20-1-1024x725.webp"
    },
    "work": {
     "eyebrow": "Breed inzetbaar",
@@ -395,17 +395,17 @@
     {
      "label": "Brochure",
      "meta": "PDF · 4 MB",
-     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-brochure.pdf"
+     "href": "/media/solis/uploads/2026/08/Solis-brochure.pdf"
     },
     {
      "label": "Prijslijst 01-02-2026",
      "meta": "PDF · 302 KB",
-     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-prijslijst.pdf"
+     "href": "/media/solis/uploads/2026/08/Solis-prijslijst.pdf"
     },
     {
      "label": "Garantie",
      "meta": "",
-     "href": "https://www.solistractor.nl/garantie/"
+     "href": "/garantie"
     }
    ],
    "configuratorNote": "Gebaseerd op de actieprijzen in de prijslijst van 01-02-2026. Geldigheid, uitvoering, montage en leverbaarheid altijd door de dealer te bevestigen.",
@@ -458,35 +458,35 @@
           "detail": "5×12 6PR · 8×18 6PR",
           "price": 0,
           "isDefault": true,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-150x150.webp"
          },
          {
           "value": "wide",
           "label": "Brede landbouwbanden · 115 cm",
           "detail": "BKT 6.5/80-12 · BKT 280/70R18",
           "price": 300,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-breed-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-breed-150x150.webp"
          },
          {
           "value": "lawn",
           "label": "Gazonbanden · 140 cm",
           "detail": "BKT 23×8.5-12 · BKT 33×15.5-16.5",
           "price": 700,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-gazon-150x150.webp"
          },
          {
           "value": "industrial",
           "label": "Industriebanden · 140 cm",
           "detail": "BKT 23×8.5-12 · BKT 33×15.5-16.5",
           "price": 900,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-industrie-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-industrie-150x150.webp"
          },
          {
           "value": "multi",
           "label": "Multi-use banden · 117 cm",
           "detail": "Galaxy Garden Pro 220/55R15 · 280/70R16",
           "price": 900,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-galaxy-150x150.webp"
          }
         ]
        },
@@ -505,31 +505,31 @@
           "value": "standard",
           "label": "Landbouwbanden",
           "price": 775,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-150x150.webp"
          },
          {
           "value": "wide",
           "label": "Brede landbouwbanden",
           "price": 1235,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-breed-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-breed-150x150.webp"
          },
          {
           "value": "lawn",
           "label": "Gazonbanden",
           "price": 1575,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-gazon-150x150.webp"
          },
          {
           "value": "industrial",
           "label": "Industriebanden",
           "price": 1750,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-industrie-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-industrie-150x150.webp"
          },
          {
           "value": "multi",
           "label": "Multi-use banden",
           "price": 1750,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-galaxy-150x150.webp"
          }
         ]
        }
@@ -553,13 +553,13 @@
           "value": "standard",
           "label": "Voorlader · grondbak",
           "price": 3085,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/voorlader-150x150.webp"
          },
          {
           "value": "multi",
           "label": "Voorlader · multifunctionele bak + 3e functie",
           "price": 4115,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/multifunctionele-bak-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/multifunctionele-bak-150x150.webp"
          }
         ]
        },
@@ -699,7 +699,7 @@
   },
   {
    "slug": "s22",
-   "url": "https://www.solistractor.nl/modellen/s22/",
+   "url": "/#model-s22",
    "category": "Compact",
    "tagline": "Meer vermogen in een compact pakket.",
    "width": "106 cm",
@@ -737,7 +737,7 @@
      "Tot 5 jaar* fabrieksgarantie"
     ],
     "footnote": "*Vraag naar de voorwaarden",
-    "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/s22-1-1024x725.webp"
+    "image": "/media/solis/uploads/2026/08/s22-1-1024x725.webp"
    },
    "work": {
     "eyebrow": "Breed inzetbaar",
@@ -789,17 +789,17 @@
     {
      "label": "Brochure",
      "meta": "PDF · 4 MB",
-     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-brochure.pdf"
+     "href": "/media/solis/uploads/2026/08/Solis-brochure.pdf"
     },
     {
      "label": "Prijslijst 01-02-2026",
      "meta": "PDF · 302 KB",
-     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-prijslijst.pdf"
+     "href": "/media/solis/uploads/2026/08/Solis-prijslijst.pdf"
     },
     {
      "label": "Garantie",
      "meta": "",
-     "href": "https://www.solistractor.nl/garantie/"
+     "href": "/garantie"
     }
    ],
    "configuratorNote": "Gebaseerd op de actieprijzen in de prijslijst van 01-02-2026. Geldigheid, uitvoering, montage en leverbaarheid altijd door de dealer te bevestigen.",
@@ -846,35 +846,35 @@
           "detail": "6×12 6PR · 8.3×20 6PR",
           "price": 0,
           "isDefault": true,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-150x150.webp"
          },
          {
           "value": "wide",
           "label": "Brede landbouwbanden · 115 cm",
           "detail": "BKT 6.5/80-12 · BKT 280/70R18",
           "price": 300,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-breed-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-breed-150x150.webp"
          },
          {
           "value": "lawn",
           "label": "Gazonbanden · 140 cm",
           "detail": "BKT 23×8.5-12 · BKT 33×15.5-16.5",
           "price": 700,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-gazon-150x150.webp"
          },
          {
           "value": "industrial",
           "label": "Industriebanden · 140 cm",
           "detail": "BKT 23×8.5-12 · BKT 33×15.5-16.5",
           "price": 900,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-industrie-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-industrie-150x150.webp"
          },
          {
           "value": "multi",
           "label": "Multi-use banden · 117 cm",
           "detail": "Galaxy Garden Pro 220/55R15 · 280/70R16",
           "price": 900,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-galaxy-150x150.webp"
          }
         ]
        },
@@ -893,31 +893,31 @@
           "value": "standard",
           "label": "Landbouwbanden",
           "price": 875,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-150x150.webp"
          },
          {
           "value": "wide",
           "label": "Brede landbouwbanden",
           "price": 1235,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-breed-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-breed-150x150.webp"
          },
          {
           "value": "lawn",
           "label": "Gazonbanden",
           "price": 1575,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-gazon-150x150.webp"
          },
          {
           "value": "industrial",
           "label": "Industriebanden",
           "price": 1750,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-industrie-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-industrie-150x150.webp"
          },
          {
           "value": "multi",
           "label": "Multi-use banden",
           "price": 1750,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-galaxy-150x150.webp"
          }
         ]
        }
@@ -941,14 +941,14 @@
           "value": "standard",
           "label": "Voorlader · grondbak",
           "price": 3085,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/voorlader-150x150.webp"
          },
          {
           "value": "multi",
           "label": "Voorlader · multifunctionele bak + 3e functie",
           "price": null,
           "onRequest": true,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/multifunctionele-bak-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/multifunctionele-bak-150x150.webp"
          }
         ]
        },
@@ -1088,7 +1088,7 @@
   },
   {
    "slug": "s26",
-   "url": "https://www.solistractor.nl/modellen/s26/",
+   "url": "/#model-s26",
    "category": "Mechanisch",
    "tagline": "De compacte krachtpatser voor iedere dag.",
    "width": "106 cm",
@@ -1126,7 +1126,7 @@
      "Tot 5 jaar* fabrieksgarantie"
     ],
     "footnote": "*Vraag naar de voorwaarden",
-    "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/s26-1-1024x725.webp"
+    "image": "/media/solis/uploads/2026/08/s26-1-1024x725.webp"
    },
    "work": {
     "eyebrow": "Breed inzetbaar",
@@ -1178,17 +1178,17 @@
     {
      "label": "Brochure",
      "meta": "PDF · 4 MB",
-     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-brochure.pdf"
+     "href": "/media/solis/uploads/2026/08/Solis-brochure.pdf"
     },
     {
      "label": "Prijslijst 01-02-2026",
      "meta": "PDF · 302 KB",
-     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-prijslijst.pdf"
+     "href": "/media/solis/uploads/2026/08/Solis-prijslijst.pdf"
     },
     {
      "label": "Garantie",
      "meta": "",
-     "href": "https://www.solistractor.nl/garantie/"
+     "href": "/garantie"
     }
    ],
    "configuratorNote": "Gebaseerd op de actieprijzen in de prijslijst van 01-02-2026. Geldigheid, uitvoering, montage en leverbaarheid altijd door de dealer te bevestigen.",
@@ -1247,35 +1247,35 @@
           "detail": "6×12 6PR · 8.3×20 6PR",
           "price": 0,
           "isDefault": true,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-150x150.webp"
          },
          {
           "value": "wide",
           "label": "Brede landbouwbanden · 115 cm",
           "detail": "BKT 6.5/80-12 · BKT 280/70R18",
           "price": 300,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-breed-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-breed-150x150.webp"
          },
          {
           "value": "lawn",
           "label": "Gazonbanden · 140 cm",
           "detail": "BKT 23×8.5-12 · BKT 33×15.5-16.5",
           "price": 700,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-gazon-150x150.webp"
          },
          {
           "value": "industrial",
           "label": "Industriebanden · 140 cm",
           "detail": "BKT 23×8.5-12 · BKT 33×15.5-16.5",
           "price": 900,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-industrie-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-industrie-150x150.webp"
          },
          {
           "value": "multi",
           "label": "Multi-use banden · 117 cm",
           "detail": "Galaxy Garden Pro 220/55R15 · 280/70R16",
           "price": 900,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-galaxy-150x150.webp"
          }
         ]
        },
@@ -1294,31 +1294,31 @@
           "value": "standard",
           "label": "Landbouwbanden",
           "price": 875,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-150x150.webp"
          },
          {
           "value": "wide",
           "label": "Brede landbouwbanden",
           "price": 1235,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-breed-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-breed-150x150.webp"
          },
          {
           "value": "lawn",
           "label": "Gazonbanden",
           "price": 1575,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-gazon-150x150.webp"
          },
          {
           "value": "industrial",
           "label": "Industriebanden",
           "price": 1750,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-industrie-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-industrie-150x150.webp"
          },
          {
           "value": "multi",
           "label": "Multi-use banden",
           "price": 1750,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-galaxy-150x150.webp"
          }
         ]
        }
@@ -1342,13 +1342,13 @@
           "value": "standard",
           "label": "Voorlader · grondbak",
           "price": 3085,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/voorlader-150x150.webp"
          },
          {
           "value": "multi",
           "label": "Voorlader · multifunctionele bak + 3e functie",
           "price": 4115,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/multifunctionele-bak-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/multifunctionele-bak-150x150.webp"
          }
         ]
        },
@@ -1528,7 +1528,7 @@
   },
   {
    "slug": "s26-shuttle-xl",
-   "url": "https://www.solistractor.nl/modellen/s26-shuttle-xl/",
+   "url": "/#model-s26-shuttle-xl",
    "category": "9+9 shuttle",
    "tagline": "Compact werken met het gemak van een shuttle.",
    "width": "119 cm",
@@ -1566,7 +1566,7 @@
      "Tot 5 jaar* fabrieksgarantie"
     ],
     "footnote": "*Vraag naar de voorwaarden",
-    "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/s26-shuttle-1-1024x725.webp"
+    "image": "/media/solis/uploads/2026/08/s26-shuttle-1-1024x725.webp"
    },
    "work": {
     "eyebrow": "Breed inzetbaar",
@@ -1618,17 +1618,17 @@
     {
      "label": "Brochure",
      "meta": "PDF · 4 MB",
-     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-brochure.pdf"
+     "href": "/media/solis/uploads/2026/08/Solis-brochure.pdf"
     },
     {
      "label": "Prijslijst 01-02-2026",
      "meta": "PDF · 302 KB",
-     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-prijslijst.pdf"
+     "href": "/media/solis/uploads/2026/08/Solis-prijslijst.pdf"
     },
     {
      "label": "Garantie",
      "meta": "",
-     "href": "https://www.solistractor.nl/garantie/"
+     "href": "/garantie"
     }
    ],
    "configuratorNote": "Gebaseerd op de actieprijzen in de prijslijst van 01-02-2026. Geldigheid, uitvoering, montage en leverbaarheid altijd door de dealer te bevestigen.",
@@ -1675,49 +1675,49 @@
           "detail": "6×12 6PR · 8.3×20 6PR",
           "price": 0,
           "isDefault": true,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-150x150.webp"
          },
          {
           "value": "wide",
           "label": "Brede landbouwbanden · 128 cm",
           "detail": "BKT 6.5/80-12 · BKT 280/70R18",
           "price": 300,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-breed-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-breed-150x150.webp"
          },
          {
           "value": "lawn",
           "label": "Gazonbanden · 153 cm",
           "detail": "BKT 23×8.5-12 · BKT 33×15.5-16.5",
           "price": 700,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-gazon-150x150.webp"
          },
          {
           "value": "highLawn",
           "label": "Hoge gazonbanden · 140 cm",
           "detail": "BKT 25×8.5-14 · BKT 13.6-16",
           "price": 900,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-hoog-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-gazon-hoog-150x150.webp"
          },
          {
           "value": "industrial",
           "label": "Industriebanden · 153 cm",
           "detail": "BKT 23×8.5-12 · BKT 33×15.5-16.5",
           "price": 900,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-industrie-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-industrie-150x150.webp"
          },
          {
           "value": "multi",
           "label": "Multi-use banden · 129 cm",
           "detail": "Galaxy Garden Pro 220/55R15 · 280/70R16",
           "price": 900,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-galaxy-150x150.webp"
          },
          {
           "value": "galaxy",
           "label": "Galaxy banden hoog · 129 cm",
           "detail": "200/65R16 · 300/70R20",
           "price": 1495,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-galaxy-150x150.webp"
          }
         ]
        },
@@ -1736,43 +1736,43 @@
           "value": "standard",
           "label": "Landbouwbanden",
           "price": 875,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-150x150.webp"
          },
          {
           "value": "wide",
           "label": "Brede landbouwbanden",
           "price": 1235,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-breed-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-breed-150x150.webp"
          },
          {
           "value": "lawn",
           "label": "Gazonbanden",
           "price": 1575,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-gazon-150x150.webp"
          },
          {
           "value": "highLawn",
           "label": "Hoge gazonbanden",
           "price": 1750,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-hoog-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-gazon-hoog-150x150.webp"
          },
          {
           "value": "industrial",
           "label": "Industriebanden",
           "price": 1750,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-industrie-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-industrie-150x150.webp"
          },
          {
           "value": "multi",
           "label": "Multi-use banden",
           "price": 1750,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-galaxy-150x150.webp"
          },
          {
           "value": "galaxy",
           "label": "Galaxy banden hoog",
           "price": 1950,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-galaxy-150x150.webp"
          }
         ]
        }
@@ -1796,13 +1796,13 @@
           "value": "standard",
           "label": "Voorlader · grondbak",
           "price": 3190,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/voorlader-150x150.webp"
          },
          {
           "value": "multi",
           "label": "Voorlader · multifunctionele bak + 3e functie",
           "price": 4220,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/multifunctionele-bak-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/multifunctionele-bak-150x150.webp"
          }
         ]
        },
@@ -1975,7 +1975,7 @@
   },
   {
    "slug": "h26",
-   "url": "https://www.solistractor.nl/modellen/h26/",
+   "url": "/#model-h26",
    "category": "Hydrostaat",
    "tagline": "Traploos comfortabel en precies te bedienen.",
    "width": "119 cm",
@@ -2013,7 +2013,7 @@
      "Tot 5 jaar* fabrieksgarantie"
     ],
     "footnote": "*Vraag naar de voorwaarden",
-    "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/h26-1-1024x725.webp"
+    "image": "/media/solis/uploads/2026/08/h26-1-1024x725.webp"
    },
    "work": {
     "eyebrow": "Breed inzetbaar",
@@ -2065,17 +2065,17 @@
     {
      "label": "Brochure",
      "meta": "PDF · 4 MB",
-     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-brochure.pdf"
+     "href": "/media/solis/uploads/2026/08/Solis-brochure.pdf"
     },
     {
      "label": "Prijslijst 01-02-2026",
      "meta": "PDF · 302 KB",
-     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-prijslijst.pdf"
+     "href": "/media/solis/uploads/2026/08/Solis-prijslijst.pdf"
     },
     {
      "label": "Garantie",
      "meta": "",
-     "href": "https://www.solistractor.nl/garantie/"
+     "href": "/garantie"
     }
    ],
    "configuratorNote": "Gebaseerd op de actieprijzen in de prijslijst van 01-02-2026. Geldigheid, uitvoering, montage en leverbaarheid altijd door de dealer te bevestigen.",
@@ -2158,49 +2158,49 @@
           "detail": "6×12 voor · 8.3×20 achter",
           "price": 0,
           "isDefault": true,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-150x150.webp"
          },
          {
           "value": "wide",
           "label": "Brede landbouwbanden · 128 cm",
           "detail": "BKT 6.5/80-12 · BKT 280/70R18",
           "price": 300,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-breed-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-breed-150x150.webp"
          },
          {
           "value": "lawn",
           "label": "Gazonbanden · 153 cm",
           "detail": "BKT 23×8.5-12 · BKT 33×15.5-16.5",
           "price": 700,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-gazon-150x150.webp"
          },
          {
           "value": "highLawn",
           "label": "Hoge gazonbanden · 140 cm",
           "detail": "BKT 25×8.5-14 · BKT 13.6-16",
           "price": 900,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-hoog-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-gazon-hoog-150x150.webp"
          },
          {
           "value": "industrial",
           "label": "Industriebanden · 153 cm",
           "detail": "BKT 23×8.5-12 · BKT 33×15.5-16.5",
           "price": 900,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-industrie-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-industrie-150x150.webp"
          },
          {
           "value": "multi",
           "label": "Multi-use banden · 129 cm",
           "detail": "Galaxy Garden Pro 220/55R15 · 280/70R16",
           "price": 900,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-galaxy-150x150.webp"
          },
          {
           "value": "galaxy",
           "label": "Galaxy banden hoog · 129 cm",
           "detail": "200/65R16 · 300/70R20",
           "price": 1495,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-galaxy-150x150.webp"
          }
         ]
        },
@@ -2219,43 +2219,43 @@
           "value": "standard",
           "label": "Landbouwbanden",
           "price": 875,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-150x150.webp"
          },
          {
           "value": "wide",
           "label": "Brede landbouwbanden",
           "price": 1235,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-breed-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-breed-150x150.webp"
          },
          {
           "value": "lawn",
           "label": "Gazonbanden",
           "price": 1575,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-gazon-150x150.webp"
          },
          {
           "value": "highLawn",
           "label": "Hoge gazonbanden",
           "price": 1750,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-gazon-hoog-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-gazon-hoog-150x150.webp"
          },
          {
           "value": "industrial",
           "label": "Industriebanden",
           "price": 1750,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-industrie-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-industrie-150x150.webp"
          },
          {
           "value": "multi",
           "label": "Multi-use banden",
           "price": 1750,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-galaxy-150x150.webp"
          },
          {
           "value": "galaxy",
           "label": "Galaxy banden hoog",
           "price": 1950,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-galaxy-150x150.webp"
          }
         ]
        }
@@ -2324,19 +2324,19 @@
           "value": "standard",
           "label": "Voorlader · grondbak",
           "price": 3190,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/voorlader-150x150.webp"
          },
          {
           "value": "multi",
           "label": "Voorlader · multifunctionele bak + 3e functie",
           "price": 4220,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/multifunctionele-bak-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/multifunctionele-bak-150x150.webp"
          },
          {
           "value": "hd",
           "label": "Voorlader HD · grondbak",
           "price": 3600,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/voorlader-150x150.webp"
          },
          {
           "value": "hdBlack",
@@ -2351,13 +2351,13 @@
             "blackXtra"
            ]
           },
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/voorlader-150x150.webp"
          },
          {
           "value": "hdMulti",
           "label": "Voorlader HD · multifunctionele bak + 3e functie",
           "price": 4630,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/multifunctionele-bak-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/multifunctionele-bak-150x150.webp"
          },
          {
           "value": "hdBlackMulti",
@@ -2372,7 +2372,7 @@
             "blackXtra"
            ]
           },
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/multifunctionele-bak-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/multifunctionele-bak-150x150.webp"
          }
         ]
        },
@@ -2633,7 +2633,7 @@
   },
   {
    "slug": "s50",
-   "url": "https://www.solistractor.nl/modellen/s50/",
+   "url": "/#model-s50",
    "category": "Shuttle XL",
    "tagline": "Een volwassen landbouwtractor met compacte souplesse.",
    "width": "",
@@ -2671,7 +2671,7 @@
      "3 jaar* fabrieksgarantie"
     ],
     "footnote": "*Vraag naar de voorwaarden",
-    "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/s50-1-1024x725.webp"
+    "image": "/media/solis/uploads/2026/08/s50-1-1024x725.webp"
    },
    "work": {
     "eyebrow": "Breed inzetbaar",
@@ -2723,17 +2723,17 @@
     {
      "label": "Brochure",
      "meta": "PDF · 4 MB",
-     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-brochure.pdf"
+     "href": "/media/solis/uploads/2026/08/Solis-brochure.pdf"
     },
     {
      "label": "Prijslijst 01-02-2026",
      "meta": "PDF · 302 KB",
-     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-prijslijst.pdf"
+     "href": "/media/solis/uploads/2026/08/Solis-prijslijst.pdf"
     },
     {
      "label": "Garantie",
      "meta": "",
-     "href": "https://www.solistractor.nl/garantie/"
+     "href": "/garantie"
     }
    ],
    "configuratorNote": "Gebaseerd op de actieprijzen in de prijslijst van 01-02-2026. Geldigheid, uitvoering, montage en leverbaarheid altijd door de dealer te bevestigen.",
@@ -2804,7 +2804,7 @@
           "detail": "9.5-20 voor · 13.6-28 achter",
           "price": 0,
           "isDefault": true,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-150x150.webp"
          },
          {
           "value": "radial",
@@ -2816,7 +2816,7 @@
            "op": "nietGezet"
           },
           "rule": "Radiaal- en Galaxy-banden zijn niet mogelijk in combinatie met spatborden voorzijde.",
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-radiaal-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-radiaal-150x150.webp"
          },
          {
           "value": "galaxy",
@@ -2827,7 +2827,7 @@
            "veld": "mudguards",
            "op": "nietGezet"
           },
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-galaxy-150x150.webp"
          }
         ]
        }
@@ -2851,13 +2851,13 @@
           "value": "standard",
           "label": "Voorlader met euro-aankoppeling",
           "price": 4995,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-zwaar-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/voorlader-zwaar-150x150.webp"
          },
          {
           "value": "black",
           "label": "Voorlader Black Edition met euro-aankoppeling",
           "price": 5195,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-zwaar-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/voorlader-zwaar-150x150.webp"
          }
         ]
        },
@@ -2947,13 +2947,13 @@
           "value": "fixed",
           "label": "Vaste draaibare boventrekhaak · zit voor aftakas",
           "price": 130,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/trekhaak-vast-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/trekhaak-vast-150x150.webp"
          },
          {
           "value": "reframed",
           "label": "Aangepast trekhaakframe · boventrekhaak boven aftakas",
           "price": 820,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/trekhaakframe-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/trekhaakframe-150x150.webp"
          }
         ]
        },
@@ -2972,13 +2972,13 @@
           "value": "one",
           "label": "Frontgewicht 31 kg",
           "price": 100,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/frontgewichten-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/frontgewichten-150x150.webp"
          },
          {
           "value": "set",
           "label": "Frontgewichten set 6 × 31 kg",
           "price": 510,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/frontgewichten-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/frontgewichten-150x150.webp"
          }
         ]
        }
@@ -3072,7 +3072,7 @@
   },
   {
    "slug": "s60",
-   "url": "https://www.solistractor.nl/modellen/s60/",
+   "url": "/#model-s60",
    "category": "Shuttle XL",
    "tagline": "Meer reserve voor het zwaardere werk.",
    "width": "",
@@ -3110,7 +3110,7 @@
      "3 jaar* fabrieksgarantie"
     ],
     "footnote": "*Vraag naar de voorwaarden",
-    "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/s60-1-1024x725.webp"
+    "image": "/media/solis/uploads/2026/08/s60-1-1024x725.webp"
    },
    "work": {
     "eyebrow": "Breed inzetbaar",
@@ -3162,17 +3162,17 @@
     {
      "label": "Brochure",
      "meta": "PDF · 4 MB",
-     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-brochure.pdf"
+     "href": "/media/solis/uploads/2026/08/Solis-brochure.pdf"
     },
     {
      "label": "Prijslijst 01-02-2026",
      "meta": "PDF · 302 KB",
-     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-prijslijst.pdf"
+     "href": "/media/solis/uploads/2026/08/Solis-prijslijst.pdf"
     },
     {
      "label": "Garantie",
      "meta": "",
-     "href": "https://www.solistractor.nl/garantie/"
+     "href": "/garantie"
     }
    ],
    "configuratorNote": "Gebaseerd op de actieprijzen in de prijslijst van 01-02-2026. Geldigheid, uitvoering, montage en leverbaarheid altijd door de dealer te bevestigen.",
@@ -3243,7 +3243,7 @@
           "detail": "9.5-24 voor · 14.9-28 achter",
           "price": 0,
           "isDefault": true,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-150x150.webp"
          },
          {
           "value": "radial",
@@ -3255,7 +3255,7 @@
            "op": "nietGezet"
           },
           "rule": "Radiaal- en Galaxy-banden zijn niet mogelijk in combinatie met spatborden voorzijde.",
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-radiaal-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-radiaal-150x150.webp"
          },
          {
           "value": "galaxy",
@@ -3266,7 +3266,7 @@
            "veld": "mudguards",
            "op": "nietGezet"
           },
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-galaxy-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-galaxy-150x150.webp"
          }
         ]
        }
@@ -3290,7 +3290,7 @@
           "value": "standard",
           "label": "Voorlader met euro-aankoppeling",
           "price": 4995,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-zwaar-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/voorlader-zwaar-150x150.webp"
          }
         ]
        },
@@ -3380,13 +3380,13 @@
           "value": "fixed",
           "label": "Vaste draaibare boventrekhaak · zit voor aftakas",
           "price": 130,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/trekhaak-vast-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/trekhaak-vast-150x150.webp"
          },
          {
           "value": "reframed",
           "label": "Aangepast trekhaakframe · boventrekhaak boven aftakas",
           "price": 820,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/trekhaakframe-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/trekhaakframe-150x150.webp"
          }
         ]
        },
@@ -3405,13 +3405,13 @@
           "value": "one",
           "label": "Frontgewicht 31 kg",
           "price": 100,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/frontgewichten-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/frontgewichten-150x150.webp"
          },
          {
           "value": "set",
           "label": "Frontgewichten set 6 × 31 kg",
           "price": 510,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/frontgewichten-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/frontgewichten-150x150.webp"
          }
         ]
        }
@@ -3505,7 +3505,7 @@
   },
   {
    "slug": "n75",
-   "url": "https://www.solistractor.nl/modellen/n75/",
+   "url": "/#model-n75",
    "category": "Smalspoor",
    "tagline": "Smal gebouwd voor werk tussen de rijen.",
    "width": "",
@@ -3543,7 +3543,7 @@
      "3 jaar* fabrieksgarantie"
     ],
     "footnote": "*Vraag naar de voorwaarden",
-    "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/n75-1-1024x725.webp"
+    "image": "/media/solis/uploads/2026/08/n75-1-1024x725.webp"
    },
    "work": {
     "eyebrow": "Breed inzetbaar",
@@ -3595,17 +3595,17 @@
     {
      "label": "Brochure",
      "meta": "PDF · 4 MB",
-     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-brochure.pdf"
+     "href": "/media/solis/uploads/2026/08/Solis-brochure.pdf"
     },
     {
      "label": "Prijslijst 01-02-2026",
      "meta": "PDF · 302 KB",
-     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-prijslijst.pdf"
+     "href": "/media/solis/uploads/2026/08/Solis-prijslijst.pdf"
     },
     {
      "label": "Garantie",
      "meta": "",
-     "href": "https://www.solistractor.nl/garantie/"
+     "href": "/garantie"
     }
    ],
    "configuratorNote": "Gebaseerd op de actieprijzen in de prijslijst van 01-02-2026. Geldigheid, uitvoering, montage en leverbaarheid altijd door de dealer te bevestigen.",
@@ -3652,14 +3652,14 @@
           "detail": "8-18 voor · 14,9-24 achter",
           "price": 0,
           "isDefault": true,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-150x150.webp"
          },
          {
           "value": "radial",
           "label": "Landbouwbanden radiaal",
           "detail": "280/70R18 · 360/70R28",
           "price": 1120,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-radiaal-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-radiaal-150x150.webp"
          }
         ]
        }
@@ -3711,13 +3711,13 @@
           "value": "one",
           "label": "Frontgewicht 31 kg",
           "price": 100,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/frontgewichten-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/frontgewichten-150x150.webp"
          },
          {
           "value": "set",
           "label": "Frontgewichten set 6 × 31 kg",
           "price": 510,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/frontgewichten-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/frontgewichten-150x150.webp"
          }
         ]
        },
@@ -3743,7 +3743,7 @@
   },
   {
    "slug": "s75",
-   "url": "https://www.solistractor.nl/modellen/s75/",
+   "url": "/#model-s75",
    "category": "Shuttle XL",
    "tagline": "Kracht die werkt. Comfort dat blijft.",
    "width": "",
@@ -3781,7 +3781,7 @@
      "3 jaar* fabrieksgarantie"
     ],
     "footnote": "*Vraag naar de voorwaarden",
-    "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/s75-1024x725.webp"
+    "image": "/media/solis/uploads/2026/08/s75-1024x725.webp"
    },
    "work": {
     "eyebrow": "Breed inzetbaar",
@@ -3833,17 +3833,17 @@
     {
      "label": "Brochure",
      "meta": "PDF · 4 MB",
-     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-brochure.pdf"
+     "href": "/media/solis/uploads/2026/08/Solis-brochure.pdf"
     },
     {
      "label": "Prijslijst 01-02-2026",
      "meta": "PDF · 302 KB",
-     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-prijslijst.pdf"
+     "href": "/media/solis/uploads/2026/08/Solis-prijslijst.pdf"
     },
     {
      "label": "Garantie",
      "meta": "",
-     "href": "https://www.solistractor.nl/garantie/"
+     "href": "/garantie"
     }
    ],
    "configuratorNote": "Gebaseerd op de actieprijzen in de prijslijst van 01-02-2026. Geldigheid, uitvoering, montage en leverbaarheid altijd door de dealer te bevestigen.",
@@ -3902,21 +3902,21 @@
           "detail": "11.2-24 · 16.9-30 · max. 38 km/u",
           "price": 0,
           "isDefault": true,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-150x150.webp"
          },
          {
           "value": "radial",
           "label": "Landbouwbanden radiaal",
           "detail": "320/85R24 · 460/85R30 · max. 38 km/u",
           "price": 1125,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-radiaal-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-radiaal-150x150.webp"
          },
          {
           "value": "radialWide",
           "label": "Landbouwbanden radiaal breed",
           "detail": "420/65R24 · 540/65R34 · max. 40 km/u",
           "price": 1425,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-radiaal-breed-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-radiaal-breed-150x150.webp"
          }
         ]
        }
@@ -3940,7 +3940,7 @@
           "value": "standard",
           "label": "Voorlader met parallelgeleiding",
           "price": 6690,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-zwaar-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/voorlader-zwaar-150x150.webp"
          }
         ]
        },
@@ -3972,13 +3972,13 @@
           "value": "mounted",
           "label": "Ventielenblok met opbouw joystick · namontage",
           "price": 820,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-joystick-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/voorlader-joystick-150x150.webp"
          },
          {
           "value": "integrated",
           "label": "Ventielenblok met geïntegreerde joystick · fabrieksmontage",
           "price": 910,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-joystick-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/voorlader-joystick-150x150.webp"
          }
         ]
        },
@@ -4041,13 +4041,13 @@
           "value": "semi",
           "label": "Trekhaakframe met semi-automatische vangmuil",
           "price": 510,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/trekhaak-semi-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/trekhaak-semi-150x150.webp"
          },
          {
           "value": "auto",
           "label": "Trekhaakframe met automatische vangmuil",
           "price": 720,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/trekhaak-automatisch-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/trekhaak-automatisch-150x150.webp"
          }
         ]
        },
@@ -4066,13 +4066,13 @@
           "value": "one",
           "label": "Frontgewicht 31 kg",
           "price": 100,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/frontgewichten-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/frontgewichten-150x150.webp"
          },
          {
           "value": "set",
           "label": "Frontgewichten set 6 × 31 kg",
           "price": 510,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/frontgewichten-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/frontgewichten-150x150.webp"
          }
         ]
        }
@@ -4169,7 +4169,7 @@
   },
   {
    "slug": "n90",
-   "url": "https://www.solistractor.nl/modellen/n90/",
+   "url": "/#model-n90",
    "category": "Smalspoor",
    "tagline": "Maximaal vermogen op minimale breedte.",
    "width": "",
@@ -4207,7 +4207,7 @@
      "3 jaar* fabrieksgarantie"
     ],
     "footnote": "*Vraag naar de voorwaarden",
-    "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/n90-1-1024x725.webp"
+    "image": "/media/solis/uploads/2026/08/n90-1-1024x725.webp"
    },
    "work": {
     "eyebrow": "Breed inzetbaar",
@@ -4259,17 +4259,17 @@
     {
      "label": "Brochure",
      "meta": "PDF · 4 MB",
-     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-brochure.pdf"
+     "href": "/media/solis/uploads/2026/08/Solis-brochure.pdf"
     },
     {
      "label": "Prijslijst 01-02-2026",
      "meta": "PDF · 302 KB",
-     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-prijslijst.pdf"
+     "href": "/media/solis/uploads/2026/08/Solis-prijslijst.pdf"
     },
     {
      "label": "Garantie",
      "meta": "",
-     "href": "https://www.solistractor.nl/garantie/"
+     "href": "/garantie"
     }
    ],
    "configuratorNote": "Gebaseerd op de actieprijzen in de prijslijst van 01-02-2026. Geldigheid, uitvoering, montage en leverbaarheid altijd door de dealer te bevestigen.",
@@ -4316,14 +4316,14 @@
           "detail": "8-18 voor · 14,9-24 achter",
           "price": 0,
           "isDefault": true,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-150x150.webp"
          },
          {
           "value": "radial",
           "label": "Landbouwbanden radiaal",
           "detail": "280/70R18 · 360/70R28",
           "price": 1120,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-radiaal-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-radiaal-150x150.webp"
          }
         ]
        }
@@ -4375,13 +4375,13 @@
           "value": "one",
           "label": "Frontgewicht 31 kg",
           "price": 100,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/frontgewichten-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/frontgewichten-150x150.webp"
          },
          {
           "value": "set",
           "label": "Frontgewichten set 6 × 31 kg",
           "price": 510,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/frontgewichten-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/frontgewichten-150x150.webp"
          }
         ]
        },
@@ -4407,7 +4407,7 @@
   },
   {
    "slug": "s90",
-   "url": "https://www.solistractor.nl/modellen/s90/",
+   "url": "/#model-s90",
    "category": "Landbouw",
    "tagline": "Meer vermogen voor het zware werk.",
    "width": "",
@@ -4445,7 +4445,7 @@
      "3 jaar* fabrieksgarantie"
     ],
     "footnote": "*Vraag naar de voorwaarden",
-    "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/s90-1-1024x725.webp"
+    "image": "/media/solis/uploads/2026/08/s90-1-1024x725.webp"
    },
    "work": {
     "eyebrow": "Breed inzetbaar",
@@ -4497,17 +4497,17 @@
     {
      "label": "Brochure",
      "meta": "PDF · 4 MB",
-     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-brochure.pdf"
+     "href": "/media/solis/uploads/2026/08/Solis-brochure.pdf"
     },
     {
      "label": "Prijslijst 01-02-2026",
      "meta": "PDF · 302 KB",
-     "href": "https://www.solistractor.nl/wp-content/uploads/2026/08/Solis-prijslijst.pdf"
+     "href": "/media/solis/uploads/2026/08/Solis-prijslijst.pdf"
     },
     {
      "label": "Garantie",
      "meta": "",
-     "href": "https://www.solistractor.nl/garantie/"
+     "href": "/garantie"
     }
    ],
    "configuratorNote": "Gebaseerd op de actieprijzen in de prijslijst van 01-02-2026. Geldigheid, uitvoering, montage en leverbaarheid altijd door de dealer te bevestigen.",
@@ -4566,21 +4566,21 @@
           "detail": "12.4-24 · 18.4-30 · max. 40 km/u",
           "price": 0,
           "isDefault": true,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-landbouw-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-landbouw-150x150.webp"
          },
          {
           "value": "radial",
           "label": "Landbouwbanden radiaal",
           "detail": "320/85R24 · 460/85R30 · max. 40 km/u",
           "price": 1125,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-radiaal-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-radiaal-150x150.webp"
          },
          {
           "value": "radialWide",
           "label": "Landbouwbanden radiaal breed",
           "detail": "420/65R24 · 540/65R34 · max. 40 km/u",
           "price": 1425,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/banden-radiaal-breed-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/banden-radiaal-breed-150x150.webp"
          }
         ]
        }
@@ -4604,7 +4604,7 @@
           "value": "standard",
           "label": "Voorlader met parallelgeleiding",
           "price": 6690,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-zwaar-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/voorlader-zwaar-150x150.webp"
          }
         ]
        },
@@ -4636,13 +4636,13 @@
           "value": "mounted",
           "label": "Ventielenblok met opbouw joystick · namontage",
           "price": 820,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-joystick-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/voorlader-joystick-150x150.webp"
          },
          {
           "value": "integrated",
           "label": "Ventielenblok met geïntegreerde joystick · fabrieksmontage",
           "price": 910,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/voorlader-joystick-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/voorlader-joystick-150x150.webp"
          }
         ]
        },
@@ -4705,13 +4705,13 @@
           "value": "semi",
           "label": "Trekhaakframe met semi-automatische vangmuil",
           "price": 510,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/trekhaak-semi-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/trekhaak-semi-150x150.webp"
          },
          {
           "value": "auto",
           "label": "Trekhaakframe met automatische vangmuil",
           "price": 720,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/trekhaak-automatisch-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/trekhaak-automatisch-150x150.webp"
          }
         ]
        },
@@ -4730,13 +4730,13 @@
           "value": "one",
           "label": "Frontgewicht 31 kg",
           "price": 100,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/frontgewichten-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/frontgewichten-150x150.webp"
          },
          {
           "value": "set",
           "label": "Frontgewichten set 6 × 31 kg",
           "price": 510,
-          "image": "https://www.solistractor.nl/wp-content/uploads/2026/08/frontgewichten-150x150.webp"
+          "image": "/media/solis/uploads/2026/08/frontgewichten-150x150.webp"
          }
         ]
        }

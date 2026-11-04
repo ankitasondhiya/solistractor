@@ -5,6 +5,7 @@ import { useLanguage, type Lang } from '../../i18n/LanguageContext'
 import { useMotion } from '../../motion/MotionContext'
 import { links } from '../../data/links'
 import { EDITION, EDITIONS, editionPath, leaveForEdition } from '../../edition'
+import { goToSection, HOME, matchRoute, navigate, usePath } from '../../router'
 import { ArrowRight, Close, Menu, Phone, SolisLogo } from '../Icons'
 
 const SECTIONS = [
@@ -28,6 +29,8 @@ export function SiteHeader() {
   const [overFilm, setOverFilm] = useState(true)
   const [hidden, setHidden] = useState(false)
   const [open, setOpen] = useState(false)
+  const path = usePath()
+  const onLanding = matchRoute(path, []).kind === 'landing'
 
   useEffect(() => {
     let last = window.scrollY
@@ -37,11 +40,14 @@ export function SiteHeader() {
       frame = requestAnimationFrame(() => {
         const y = window.scrollY
         setScrolled(y > 24)
-        // Over the film edition's hero the bar stays clear and its type turns
-        // white, so the film keeps the whole screen; past it, and throughout
-        // the light studio edition, the frosted light bar is used.
-        const hero = document.getElementById('top')
-        setOverFilm(EDITION === 'film' && !!hero && y < hero.offsetTop + hero.offsetHeight - 80)
+        // Over a dark hero — the film edition's, or a page's photograph — the
+        // bar stays clear and its type turns white, so the picture keeps the
+        // whole screen; past it, and throughout the light studio edition, the
+        // frosted light bar is used.
+        const film = document.getElementById('top')
+        const page = Array.from(document.querySelectorAll<HTMLElement>('[data-dark-hero]')).find((el) => el.offsetHeight > 0)
+        const hero = page ?? (EDITION === 'film' && film && film.offsetHeight > 0 ? film : null)
+        setOverFilm(!!hero && y < hero.offsetTop + hero.offsetHeight - 80)
         if (Math.abs(y - last) > 6) {
           setHidden(y > last && y > 420)
           last = y
@@ -50,11 +56,16 @@ export function SiteHeader() {
     }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
+    // A new page may start where the old one was (or load its hero a moment
+    // later): check again now and once the page has settled.
+    onScroll()
+    const settle = window.setTimeout(onScroll, 400)
     return () => {
       cancelAnimationFrame(frame)
+      window.clearTimeout(settle)
       window.removeEventListener('scroll', onScroll)
     }
-  }, [])
+  }, [path])
 
   useEffect(() => {
     if (!open) return undefined
@@ -73,6 +84,12 @@ export function SiteHeader() {
   const go = (id: string) => (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
     setOpen(false)
+    // From another page: home first, then the section.
+    if (!onLanding) {
+      if (id === 'top') navigate(HOME)
+      else goToSection(id)
+      return
+    }
     // After the menu has released the scroll lock.
     requestAnimationFrame(() => scrollTo(`#${id}`, { offset: id === 'top' ? 0 : -24 }))
   }

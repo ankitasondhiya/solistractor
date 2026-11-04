@@ -1,13 +1,14 @@
-import { cloneElement, useEffect, useId, useRef, useState, type FormEvent, type ReactElement } from 'react'
+import { useEffect, useRef, useState, type FormEvent } from 'react'
 import './demo-request.css'
 
 import { useLanguage } from '../../i18n/LanguageContext'
 import { models, type Use } from '../../data/models'
-import { byDistance, dealers, provinces, type Province } from '../../data/dealers'
+import { byDistance, dealerSlug, dealers, provinces, type Province } from '../../data/dealers'
 import { usePersonal } from '../../personal/personal'
 import { links } from '../../data/links'
 import { ArrowLeft, ArrowRight, Check, Mail, Phone } from '../../components/Icons'
 import { onDemoRequest } from './demoBus'
+import { Field } from '../../components/Field'
 
 interface FormState {
   name: string
@@ -78,9 +79,19 @@ export function DemoRequest() {
 
   useEffect(
     () =>
-      onDemoRequest((modelId, message) => {
+      onDemoRequest((modelId, message, dealerId) => {
         if (modelId) touched.current.add('model')
-        setForm((f) => ({ ...f, model: modelId ?? f.model, message: message ?? f.message }))
+        const chosen = dealerId ? dealers.find((x) => dealerSlug(x) === dealerId) : undefined
+        if (chosen) {
+          touched.current.add('province')
+          touched.current.add('dealer')
+        }
+        setForm((f) => ({
+          ...f,
+          model: modelId ?? f.model,
+          message: message ?? f.message,
+          ...(chosen ? { province: chosen.province, dealer: `${chosen.name}, ${chosen.town}` } : {}),
+        }))
       }),
     [],
   )
@@ -363,35 +374,5 @@ export function DemoRequest() {
         </div>
       </div>
     </section>
-  )
-}
-
-/**
- * A labelled control. Its error, when there is one, sits right under it and
- * is tied to the control with aria-describedby, so a screen reader reads the
- * problem together with the field.
- */
-function Field({
-  label,
-  error,
-  wide = false,
-  children,
-}: {
-  label: string
-  error?: string
-  wide?: boolean
-  children: ReactElement<{ 'aria-describedby'?: string }>
-}) {
-  const errorId = useId()
-  return (
-    <label className="field" data-wide={wide ? 'true' : 'false'} data-error={error ? 'true' : 'false'}>
-      <span className="field__label">{label}</span>
-      {cloneElement(children, { 'aria-describedby': error ? errorId : undefined })}
-      {error && (
-        <span className="field__error" id={errorId} role="alert">
-          {error}
-        </span>
-      )}
-    </label>
   )
 }

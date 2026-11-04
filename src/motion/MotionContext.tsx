@@ -124,6 +124,9 @@ export function MotionProvider({ children }: { children: ReactNode }) {
       const offset = options.offset ?? 0
       const lenis = lenisRef.current
       if (lenis) {
+        // The page may just have grown (the landing page shown again after
+        // another page): measure it now, or Lenis clamps to the old height.
+        lenis.resize()
         lenis.scrollTo(target, { offset, immediate: options.immediate, duration: 1.4 })
         return
       }

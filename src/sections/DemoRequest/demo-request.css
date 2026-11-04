@@ -304,3 +304,16 @@
     font-size: 13.5px;
   }
 }
+
+/* Shared by every form (components/Field.tsx): the optional/required tag and
+   a persistent hint under the control. */
+.field__tag {
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.field__hint {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--muted);
+}

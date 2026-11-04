@@ -1,4 +1,3 @@
-import { SITE } from './links'
 import { distanceKm } from '../personal/personal'
 
 export type Province =
@@ -17,6 +16,7 @@ export interface Dealer {
   name: string
   town: string
   province: Province
+  /** "/dealers/goedhart" */
   href: string
   /** the town's centre (PDOK Locatieserver), for "nearest dealer" */
   lat: number
@@ -24,7 +24,8 @@ export interface Dealer {
   importer?: boolean
 }
 
-const dealer = (slug: string) => `${SITE}/dealers/${slug}/`
+/** Each dealer's own page on this site (src/router.ts). */
+const dealer = (slug: string) => `/dealers/${slug}`
 
 /** The twenty sales and service points listed on solistractor.nl. */
 export const dealers: Dealer[] = [
@@ -67,3 +68,8 @@ export function byDistance(from: { lat: number; lng: number }, list: Dealer[] = 
     .map((dealer) => ({ dealer, km: Math.round(distanceKm(from, dealer)) }))
     .sort((a, b) => a.km - b.km)
 }
+
+/** "/dealers/goedhart" → "goedhart" */
+export const dealerSlug = (d: Dealer): string => d.href.split('/').pop() ?? ''
+
+export const DEALER_SLUGS: readonly string[] = dealers.map(dealerSlug)

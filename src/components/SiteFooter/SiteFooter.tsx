@@ -2,18 +2,16 @@ import { useState } from 'react'
 import './site-footer.css'
 
 import { useLanguage } from '../../i18n/LanguageContext'
-import { useMotion } from '../../motion/MotionContext'
 import { links } from '../../data/links'
 import { EDITION, EDITIONS, editionPath, leaveForEdition } from '../../edition'
 import { Mail, Phone, Pin, SolisLogo } from '../Icons'
 import { forgetEverything } from '../../personal/personal'
 
 /** Footer menu targets, in the order of `footer.links`. */
-const MENU = ['#top', links.models, links.information, links.service, links.warranty, links.about, links.contact]
+const MENU = [links.home, links.models, links.information, links.service, links.warranty, links.about, links.contact]
 
 export function SiteFooter() {
   const { t, lang, setLang } = useLanguage()
-  const { scrollTo } = useMotion()
   const year = new Date().getFullYear()
   const [forgotten, setForgotten] = useState(false)
 
@@ -26,28 +24,17 @@ export function SiteFooter() {
         </div>
 
         <nav className="site-footer__col" aria-label={t.footer.dealers}>
-          <h3>{t.footer.dealers}</h3>
+          <h2>{t.footer.dealers}</h2>
           <a href={links.dealers}>{t.footer.findDealer}</a>
           <a href={links.becomeDealer}>{t.footer.becomeDealer}</a>
         </nav>
 
         <nav className="site-footer__col" aria-label={t.footer.menu}>
-          <h3>{t.footer.menu}</h3>
+          <h2>{t.footer.menu}</h2>
           {t.footer.links.map((label, i) => {
             const href = MENU[i] ?? links.models
             return (
-              <a
-                key={label}
-                href={href}
-                onClick={
-                  href.startsWith('#')
-                    ? (e) => {
-                        e.preventDefault()
-                        scrollTo(href)
-                      }
-                    : undefined
-                }
-              >
+              <a key={label} href={href}>
                 {label}
               </a>
             )
@@ -55,7 +42,7 @@ export function SiteFooter() {
         </nav>
 
         <address className="site-footer__col">
-          <h3>{t.footer.company}</h3>
+          <h2>{t.footer.company}</h2>
           <a href={links.phone}>
             <Phone />
             {t.utility.phone}
@@ -64,7 +51,7 @@ export function SiteFooter() {
             <Mail />
             info@solistractor.nl
           </a>
-          <a href={links.maps}>
+          <a href={links.maps} target="_blank" rel="noopener noreferrer">
             <Pin />
             <span>
               {t.footer.address.map((line) => (

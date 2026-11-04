@@ -45,9 +45,10 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     }
   }, [])
 
+  // The document title is set per page by App (the landing page) and the
+  // content pages themselves.
   useEffect(() => {
     document.documentElement.lang = lang
-    document.title = copy[lang].meta.title
   }, [lang])
 
   const value = useMemo<LanguageValue>(

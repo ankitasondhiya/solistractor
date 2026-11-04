@@ -9,6 +9,7 @@ import { requestDemo } from '../../sections/DemoRequest/demoBus'
 import { imageIn, openModelSheet } from '../../sections/ModelSheet/sheetBus'
 import { ArrowRight, Check, Close } from '../Icons'
 import { onCompare } from './compareBus'
+import { goToSection } from '../../router'
 import './shortlist.css'
 
 /** The first number in a spec as published ("2.500 kg (3.000 kg optie)" → 2500, "94,5 cm" → 94.5). */
@@ -38,7 +39,7 @@ function bestOf(values: (number | null)[], best: Best): Set<number> {
  */
 export function CompareDialog() {
   const { t, l, lang } = useLanguage()
-  const { lockScroll, scrollTo, calm } = useMotion()
+  const { lockScroll, calm } = useMotion()
   const { shortlist } = usePersonal()
   const [open, setOpen] = useState(false)
   const panelRef = useRef<HTMLDivElement>(null)
@@ -250,7 +251,7 @@ export function CompareDialog() {
                   onClick={() => {
                     requestDemo(list[0]!.id, S.message(list.map((x) => `Solis ${x.fullName}`).join(', ')))
                     close()
-                    window.setTimeout(() => scrollTo('#demo', { offset: -24 }), calm ? 0 : 300)
+                    window.setTimeout(() => goToSection('demo'), calm ? 0 : 300)
                   }}
                 >
                   {S.demo}

@@ -23,6 +23,7 @@ import { onModelSheet, openModelSheet, type SheetTab } from './sheetBus'
 import { recordView } from '../../personal/personal'
 import { afterLoaded } from '../../motion/preload'
 import { flyImage } from '../../motion/flight'
+import { goToSection, HOME } from '../../router'
 import { ShortlistToggle } from '../../components/Shortlist/ShortlistToggle'
 
 const TABS: SheetTab[] = ['overview', 'specs', 'configure']
@@ -51,7 +52,7 @@ export function euro(value: number, lang: Lang): string {
  */
 export function ModelSheet() {
   const { t, l, lang } = useLanguage()
-  const { lockScroll, calm, scrollTo } = useMotion()
+  const { lockScroll, calm } = useMotion()
   const [slug, setSlug] = useState<string | null>(null)
   const [tab, setTab] = useState<SheetTab>('overview')
   const [phase, setPhase] = useState<'closed' | 'open' | 'closing'>('closed')
@@ -257,7 +258,7 @@ export function ModelSheet() {
                   onQuote={(message) => {
                     requestDemo(model.id, message)
                     close()
-                    window.setTimeout(() => scrollTo('#demo', { offset: -24 }), calm ? 0 : EXIT_MS + 40)
+                    window.setTimeout(() => goToSection('demo'), calm ? 0 : EXIT_MS + 40)
                   }}
                 />
               )}
@@ -266,17 +267,14 @@ export function ModelSheet() {
         </div>
 
         <footer className="sheet__foot">
-          <a className="text-link" href={model.href} target="_blank" rel="noreferrer">
-            {t.sheet.site}
-            <ArrowUpRight />
-          </a>
+          <ShareButton slug={model.id} title={`Solis ${model.fullName}`} />
           <button
             type="button"
             className="btn btn--sm"
             onClick={() => {
               requestDemo(model.id)
               close()
-              window.setTimeout(() => scrollTo('#demo', { offset: -24 }), calm ? 0 : EXIT_MS + 40)
+              window.setTimeout(() => goToSection('demo'), calm ? 0 : EXIT_MS + 40)
             }}
           >
             {t.sheet.demo}
@@ -679,4 +677,41 @@ function useTweenedNumber(target: number, duration = 420): number {
     return () => cancelAnimationFrame(frame)
   }, [target, calm, duration])
   return value
+}
+
+/**
+ * Shares the model's own address on this site (/#model-s26 opens its sheet):
+ * the phone's share sheet where there is one, otherwise the link is copied
+ * and the button says so for a moment.
+ */
+function ShareButton({ slug, title }: { slug: string; title: string }) {
+  const { t } = useLanguage()
+  const [copied, setCopied] = useState(false)
+  const url = `${window.location.origin}${HOME === '/' ? '/' : `${HOME}/`}#model-${slug}`
+  return (
+    <button
+      type="button"
+      className="text-link"
+      onClick={async () => {
+        if (navigator.share) {
+          try {
+            await navigator.share({ title, url })
+          } catch {
+            // Dismissed: nothing to do.
+          }
+          return
+        }
+        try {
+          await navigator.clipboard.writeText(url)
+          setCopied(true)
+          window.setTimeout(() => setCopied(false), 2500)
+        } catch {
+          window.prompt(t.sheet.site, url)
+        }
+      }}
+    >
+      <span role="status">{copied ? t.sheet.copied : t.sheet.site}</span>
+      <ArrowUpRight />
+    </button>
+  )
 }
