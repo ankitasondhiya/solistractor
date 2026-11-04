@@ -1,0 +1,108 @@
+/* Phones only: a bar of quick actions along the foot of the screen. */
+.action-bar {
+  display: none;
+}
+
+@media (max-width: 899px) {
+  .action-bar {
+    position: fixed;
+    left: 10px;
+    right: 10px;
+    bottom: max(10px, env(safe-area-inset-bottom));
+    z-index: var(--z-float);
+    display: flex;
+    gap: 6px;
+    padding: 6px;
+    border-radius: 22px;
+    background: rgba(7, 19, 56, 0.94);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 16px 40px rgba(5, 8, 15, 0.35);
+    --focus-ring: #b9e88f;
+  }
+
+  .action-bar__item {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    min-width: 0;
+    min-height: 52px;
+    border-radius: 16px;
+    color: var(--white);
+    font-size: 12.5px;
+    font-weight: 700;
+    line-height: 1.15;
+    text-align: center;
+    transition:
+      transform var(--dur-3) var(--ease-spring),
+      background-color var(--dur-2) var(--ease);
+  }
+
+  .action-bar__item:active {
+    transform: scale(0.95);
+    transition-duration: var(--dur-1);
+  }
+
+  .action-bar__item svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .action-bar__item small {
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  .action-bar__item--primary {
+    flex: 1.3 1 0;
+    flex-direction: row;
+    gap: 8px;
+    background: var(--green);
+    color: var(--navy-900);
+    font-size: 15px;
+  }
+
+  .action-bar__heart {
+    position: relative;
+    display: grid;
+  }
+
+  .action-bar__heart path {
+    fill: #ff8a96;
+    stroke: #ff8a96;
+  }
+
+  .action-bar__count {
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    display: grid;
+    place-items: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: 999px;
+    background: var(--white);
+    color: var(--navy-900);
+    font-size: 12px;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* While the bar is up, the floating controls step up above it. */
+  html[data-actionbar='true'] .motion-toggle {
+    bottom: calc(max(10px, env(safe-area-inset-bottom)) + 76px);
+  }
+
+  html[data-actionbar='true'] .scroll-tractor {
+    bottom: calc(max(10px, env(safe-area-inset-bottom)) + 72px);
+  }
+
+  /* A focused control is scrolled clear of the bar. */
+  html {
+    scroll-padding-bottom: 96px;
+  }
+}

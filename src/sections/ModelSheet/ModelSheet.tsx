@@ -22,6 +22,8 @@ import { requestDemo } from '../DemoRequest/demoBus'
 import { onModelSheet, openModelSheet, type SheetTab } from './sheetBus'
 import { recordView } from '../../personal/personal'
 import { afterLoaded } from '../../motion/preload'
+import { flyImage } from '../../motion/flight'
+import { ShortlistToggle } from '../../components/Shortlist/ShortlistToggle'
 
 const TABS: SheetTab[] = ['overview', 'specs', 'configure']
 /** Each open sheet has its own address — /#model-s26 — to share or bookmark. */
@@ -57,11 +59,14 @@ export function ModelSheet() {
   const panelRef = useRef<HTMLDivElement>(null)
   const closeRef = useRef<HTMLButtonElement>(null)
   const returnFocus = useRef<HTMLElement | null>(null)
+  /** The picture the reader clicked to open this sheet, for the flight in and back. */
+  const originRef = useRef<HTMLImageElement | null>(null)
 
   const phaseRef = useRef(phase)
   phaseRef.current = phase
 
-  const show = useCallback((nextSlug: string, nextTab: SheetTab) => {
+  const show = useCallback((nextSlug: string, nextTab: SheetTab, origin: HTMLImageElement | null = null) => {
+    originRef.current = origin
     if (phaseRef.current === 'closed') {
       returnFocus.current = document.activeElement instanceof HTMLElement ? document.activeElement : null
     }
@@ -74,8 +79,8 @@ export function ModelSheet() {
 
   useEffect(
     () =>
-      onModelSheet((nextSlug, nextTab) => {
-        show(nextSlug, nextTab)
+      onModelSheet((nextSlug, nextTab, origin) => {
+        show(nextSlug, nextTab, origin)
         // Back closes the sheet, as it would on any app (ui-ux-pro-max:
         // back-behavior), and the address can be shared (deep-linking).
         const hash = `#model-${nextSlug}`
@@ -104,12 +109,51 @@ export function ModelSheet() {
     }
   }, [phase, lockScroll])
 
+  // Loaded quietly once the page has settled, so the first sheet opens with
+  // everything in place (and the flight has its picture to land on).
+  useEffect(
+    () =>
+      afterLoaded(() => {
+        const idle = window.requestIdleCallback ?? ((fn: () => void) => window.setTimeout(fn, 1))
+        idle(() => loadCatalogue().then(setCatalogue))
+      }, 2500),
+    [],
+  )
+
+  /** The sheet's own picture: the overview's large one, or the header thumbnail. */
+  const sheetImage = useCallback((): HTMLImageElement | null => {
+    const panel = panelRef.current
+    if (!panel) return null
+    const candidates = panel.querySelectorAll<HTMLImageElement>('.sheet-overview__figure img, .sheet__thumb img')
+    return Array.from(candidates).find((img) => img.offsetParent !== null) ?? null
+  }, [])
+
+  // The flight in: the clicked picture travels into the sheet as it slides open.
+  useEffect(() => {
+    const origin = originRef.current
+    if (phase !== 'open' || !origin || calm) return undefined
+    let stop = () => {}
+    const id = requestAnimationFrame(() => {
+      stop = flyImage(origin, sheetImage, 620)
+    })
+    return () => {
+      cancelAnimationFrame(id)
+      stop()
+    }
+    // Once per opening, not on tab changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase, slug])
+
   const close = useCallback((fromHistory = false) => {
     // Opened with its own history entry: step back, and popstate closes it.
     if (!fromHistory && sheetState()) {
       window.history.back()
       return
     }
+    // The flight back: the picture returns to the card it came from.
+    const origin = originRef.current
+    const from = sheetImage()
+    if (origin?.isConnected && from && !calm) flyImage(from, () => origin, 380)
     setPhase('closing')
     window.setTimeout(
       () => {
@@ -119,7 +163,7 @@ export function ModelSheet() {
       },
       calm ? 0 : EXIT_MS,
     )
-  }, [calm])
+  }, [calm, sheetImage])
 
   const closeRef2 = useRef(close)
   closeRef2.current = close
@@ -188,9 +232,12 @@ export function ModelSheet() {
             <strong>{euro(model.price, lang)}</strong>
             <small>{t.sheet.vat}</small>
           </div>
-          <button type="button" className="sheet__close" ref={closeRef} aria-label={t.sheet.close} onClick={() => close()}>
-            <Close />
-          </button>
+          <div className="sheet__head-actions">
+            <ShortlistToggle modelId={model.id} />
+            <button type="button" className="sheet__close" ref={closeRef} aria-label={t.sheet.close} onClick={() => close()}>
+              <Close />
+            </button>
+          </div>
         </header>
 
         <Tabs tab={tab} onTab={setTab} slug={slug} />

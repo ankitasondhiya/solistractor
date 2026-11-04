@@ -7,7 +7,8 @@ import { formatPrice, modelBadge, recommend, type Space, type Use } from '../../
 import { Apple, ArrowRight, Horseshoe, Loader, Tree, Wheat, Yard } from '../../components/Icons'
 import { Reveal } from '../../components/Reveal'
 import { requestDemo } from '../DemoRequest/demoBus'
-import { openModelSheet } from '../ModelSheet/sheetBus'
+import { imageIn, openModelSheet } from '../ModelSheet/sheetBus'
+import { ShortlistToggle } from '../../components/Shortlist/ShortlistToggle'
 import { getPersonal, setFinderAnswers } from '../../personal/personal'
 
 const USES: { id: Use; Icon: ComponentType<SVGProps<SVGSVGElement>> }[] = [
@@ -124,10 +125,17 @@ export function ModelFinder() {
                       <span className="finder__price">
                         {formatPrice(model.price, lang)} <small>{t.models.vat}</small>
                       </span>
-                      <button type="button" className="finder__link" onClick={() => openModelSheet(model.id)}>
-                        {t.sheet.open}
-                        <ArrowRight />
-                      </button>
+                      <span className="finder__result-actions">
+                        <ShortlistToggle modelId={model.id} />
+                        <button
+                          type="button"
+                          className="finder__link"
+                          onClick={(e) => openModelSheet(model.id, 'overview', imageIn(e.currentTarget.closest('li')))}
+                        >
+                          {t.sheet.open}
+                          <ArrowRight />
+                        </button>
+                      </span>
                     </div>
                   </div>
                 </li>

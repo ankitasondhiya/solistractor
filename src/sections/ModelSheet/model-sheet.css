@@ -902,3 +902,10 @@
     flex-wrap: wrap;
   }
 }
+
+/* Head: the ♥ (shortlist) beside the close button. */
+.sheet__head-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

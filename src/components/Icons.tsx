@@ -79,6 +79,13 @@ export const Pin = (p: IconProps) => (
   </Line>
 )
 
+/** Shortlist: an outline heart; filled by CSS when its button is pressed. */
+export const Heart = (p: IconProps) => (
+  <Line {...p}>
+    <path d="M12 20.3s-7.6-4.6-8.9-9.6C2.3 7.5 4.4 4.6 7.5 4.6c1.9 0 3.4 1 4.5 2.6 1.1-1.6 2.6-2.6 4.5-2.6 3.1 0 5.2 2.9 4.4 6.1-1.3 5-8.9 9.6-8.9 9.6Z" />
+  </Line>
+)
+
 /** "Use my location": a target with its four sights. */
 export const Locate = (p: IconProps) => (
   <Line {...p}>

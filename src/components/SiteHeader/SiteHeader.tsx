@@ -57,13 +57,17 @@ export function SiteHeader() {
   }, [])
 
   useEffect(() => {
-    lockScroll(open)
     if (!open) return undefined
+    // Locks are counted (MotionContext): take one while open, give it back on close.
+    lockScroll(true)
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setOpen(false)
     }
     window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      lockScroll(false)
+    }
   }, [open, lockScroll])
 
   const go = (id: string) => (e: MouseEvent<HTMLAnchorElement>) => {

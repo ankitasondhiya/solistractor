@@ -17,6 +17,9 @@ import { Dealers } from './sections/Dealers/Dealers'
 import { DemoRequest } from './sections/DemoRequest/DemoRequest'
 import { EDITION } from './edition'
 import { WelcomeBack } from './components/WelcomeBack/WelcomeBack'
+import { ShortlistTray } from './components/Shortlist/ShortlistTray'
+import { CompareDialog } from './components/Shortlist/CompareDialog'
+import { ActionBar } from './components/ActionBar/ActionBar'
 
 /**
  * The landing page, top to bottom. No router: it is one scroll in one of two
@@ -50,6 +53,9 @@ export default function App() {
       <SiteFooter />
       <MotionToggle />
       <WelcomeBack />
+      <ShortlistTray />
+      <ActionBar />
+      <CompareDialog />
       {/* Every model's full sheet, opened from the gallery, the compare table and the finder. */}
       <ModelSheet />
       {EDITION === 'studio' && <ScrollTractor />}

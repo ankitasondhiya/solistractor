@@ -356,3 +356,10 @@
     height: 140px;
   }
 }
+
+/* The ♥ beside "view" on each recommendation. */
+.finder__result-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}

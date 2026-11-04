@@ -7,9 +7,11 @@ import { usePinnedProgress } from '../../hooks/usePinnedProgress'
 import { useLanguage } from '../../i18n/LanguageContext'
 import { useMotion } from '../../motion/MotionContext'
 import { MAX_HP, formatPrice, modelBadge, models, segmentRange, segments, type Segment } from '../../data/models'
-import { openModelSheet } from '../ModelSheet/sheetBus'
+import { imageIn, openModelSheet } from '../ModelSheet/sheetBus'
 import { ArrowLeft, ArrowRight, Check } from '../../components/Icons'
 import { useMatchIds } from '../../personal/personal'
+import { RollingNumber } from '../../components/RollingNumber'
+import { ShortlistToggle } from '../../components/Shortlist/ShortlistToggle'
 
 /** Phones (and reduced motion) turn the ring by hand; desktops by scrolling. */
 const FREE_QUERY = '(max-width: 899px)'
@@ -48,6 +50,35 @@ function undwell(position: number): number {
   const s = position - base
   const t = s < 0.5 ? 0.5 * Math.pow(2 * s, 1 / 2.4) : 1 - 0.5 * Math.pow(2 * (1 - s), 1 / 2.4)
   return base + t
+}
+
+/**
+ * A spec as published, split around its first figure so the figure can roll:
+ * "2.500 kg (3.000 kg optie)" → 2500 + " kg (3.000 kg optie)".
+ */
+function splitFigure(text: string, lang: 'nl' | 'en'): { n: number; decimals: number; rest: string } | null {
+  const re = lang === 'nl' ? /^(\d{1,3}(?:\.\d{3})+|\d+)(?:,(\d+))?(.*)$/s : /^(\d{1,3}(?:,\d{3})+|\d+)(?:\.(\d+))?(.*)$/s
+  const m = re.exec(text)
+  if (!m) return null
+  const whole = m[1]!.replace(/[.,]/g, '')
+  const decimals = m[2]?.length ?? 0
+  return { n: Number(decimals ? `${whole}.${m[2]}` : whole), decimals, rest: m[3] ?? '' }
+}
+
+/** A published spec whose leading figure rolls to its new value. */
+function RollingSpec({ text, lang }: { text: string; lang: 'nl' | 'en' }) {
+  const parts = splitFigure(text, lang)
+  if (!parts) return <>{text}</>
+  const locale = lang === 'nl' ? 'nl-NL' : 'en-GB'
+  return (
+    <RollingNumber
+      value={parts.n}
+      format={(n) =>
+        n.toLocaleString(locale, { minimumFractionDigits: parts.decimals, maximumFractionDigits: parts.decimals }) +
+        parts.rest
+      }
+    />
+  )
 }
 
 /** Half the ring's width on screen: wider on phones so the neighbours peek out. */
@@ -398,7 +429,7 @@ export function ModelGallery() {
                     if (suppressClick.current) return
                     // Keyboard clicks (detail 0) are judged now; pointer clicks by where the card was when pressed.
                     const wasFront = e.detail === 0 ? activeRef.current === i : pressedActive.current
-                    if (wasFront) openModelSheet(m.id)
+                    if (wasFront) openModelSheet(m.id, 'overview', imageIn(e.currentTarget))
                     else goTo(i)
                   }}
                 >
@@ -433,8 +464,8 @@ export function ModelGallery() {
           </div>
         </div>
 
-        <div className="container gallery__detail" key={model.id}>
-          <div className="gallery__detail-main">
+        <div className="container gallery__detail">
+          <div className="gallery__detail-main" key={model.id}>
             <p className="gallery__detail-kicker">
               <span className="model-badge">{modelBadge(model, lang)}</span>
               {t.models.segments[model.segment]}
@@ -446,33 +477,45 @@ export function ModelGallery() {
           <dl className="gallery__specs">
             <div>
               <dt>{t.models.specs.engine}</dt>
-              <dd>{l(model.engine)}</dd>
+              <dd className="gallery__swap" key={`engine-${model.id}`}>
+                {l(model.engine)}
+              </dd>
             </div>
             <div>
               <dt>{t.models.specs.lift}</dt>
-              <dd>{l(model.lift)}</dd>
+              <dd>
+                <RollingSpec text={l(model.lift)} lang={lang} />
+              </dd>
             </div>
             <div>
               <dt>{t.models.specs.transmission}</dt>
-              <dd>{l(model.transmission)}</dd>
+              <dd className="gallery__swap" key={`tx-${model.id}`}>
+                {l(model.transmission)}
+              </dd>
             </div>
             <div>
               <dt>{t.models.specs.pto}</dt>
-              <dd>{l(model.pto)}</dd>
+              <dd className="gallery__swap" key={`pto-${model.id}`}>
+                {l(model.pto)}
+              </dd>
             </div>
             {model.width && (
               <div>
                 <dt>{t.models.specs.width}</dt>
-                <dd>{l(model.width)}</dd>
+                <dd>
+                  <RollingSpec text={l(model.width)} lang={lang} />
+                </dd>
               </div>
             )}
             <div className="gallery__power">
               <dt>{t.models.power}</dt>
               <dd>
                 <span className="gallery__power-bar">
-                  <span style={{ width: `${(model.hp / MAX_HP) * 100}%` }} />
+                  <span style={{ transform: `scaleX(${model.hp / MAX_HP})` }} />
                 </span>
-                {model.hp} {lang === 'nl' ? 'pk' : 'hp'}
+                <span className="gallery__hp">
+                  <RollingNumber value={model.hp} format={(n) => `${Math.round(n)} ${lang === 'nl' ? 'pk' : 'hp'}`} />
+                </span>
               </dd>
             </div>
           </dl>
@@ -480,13 +523,20 @@ export function ModelGallery() {
           <div className="gallery__buy">
             <p className="gallery__price-label">{t.models.from}</p>
             <p className="gallery__price">
-              {formatPrice(model.price, lang)}
+              <RollingNumber value={model.price} format={(n) => formatPrice(Math.round(n), lang)} />
               <small>{t.models.vat}</small>
             </p>
-            <button type="button" className="btn" onClick={() => openModelSheet(model.id)}>
-              {t.sheet.open}
-              <ArrowRight className="btn__icon" />
-            </button>
+            <div className="gallery__buy-actions">
+              <button
+                type="button"
+                className="btn"
+                onClick={() => openModelSheet(model.id, 'overview', imageIn(cardRefs.current[active]))}
+              >
+                {t.sheet.open}
+                <ArrowRight className="btn__icon" />
+              </button>
+              <ShortlistToggle modelId={model.id} labelled />
+            </div>
             <a
               className="text-link"
               href="#vergelijken"

@@ -8,7 +8,7 @@ import { afterLoaded } from '../../motion/preload'
 import { models } from '../../data/models'
 import { byDistance } from '../../data/dealers'
 import { dismissReturning, getPersonal, usePersonal } from '../../personal/personal'
-import { openModelSheet } from '../../sections/ModelSheet/sheetBus'
+import { imageIn, openModelSheet } from '../../sections/ModelSheet/sheetBus'
 import { ArrowRight, Close, Pin } from '../Icons'
 
 /**
@@ -70,9 +70,9 @@ export function WelcomeBack() {
                   <button
                     type="button"
                     className="btn btn--sm"
-                    onClick={() => {
+                    onClick={(e) => {
+                      openModelSheet(model.id, 'overview', imageIn(e.currentTarget.closest('.welcome')))
                       close()
-                      openModelSheet(model.id)
                     }}
                   >
                     {t.personal.open(model.name)}

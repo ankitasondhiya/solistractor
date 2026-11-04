@@ -139,11 +139,17 @@ export function MotionProvider({ children }: { children: ReactNode }) {
     [calm],
   )
 
+  // Counted, not toggled: two layers can hold the page still at once (the
+  // shortlist comparison with a model sheet opened on top of it), and the
+  // page only scrolls again once both have let go.
+  const locks = useRef(0)
   const lockScroll = useCallback((locked: boolean) => {
-    document.documentElement.classList.toggle('scroll-locked', locked)
+    locks.current = Math.max(0, locks.current + (locked ? 1 : -1))
+    const held = locks.current > 0
+    document.documentElement.classList.toggle('scroll-locked', held)
     const lenis = lenisRef.current
     if (!lenis) return
-    if (locked) lenis.stop()
+    if (held) lenis.stop()
     else lenis.start()
   }, [])
 

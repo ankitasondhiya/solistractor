@@ -184,3 +184,8 @@
   font-size: 12.5px;
   color: var(--muted);
 }
+
+.compare__save {
+  width: 1%;
+  padding-right: 0;
+}

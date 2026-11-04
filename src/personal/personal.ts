@@ -33,6 +33,8 @@ interface PersonalState {
   /** model ids, most recently opened first */
   viewed: string[]
   finder: FinderAnswers | null
+  /** models the reader saved to compare, in the order they were added (max 3) */
+  shortlist: string[]
   /** visits so far, this one included */
   visits: number
   /** whether this visit started with something to come back to */
@@ -44,8 +46,10 @@ const SESSION_KEY = 'solis-session'
 /** Every key the site writes, for "Forget my choices". */
 const ALL_KEYS = [KEY, 'solis-lang', 'solis-motion-paused']
 const MAX_VIEWED = 4
+/** Three side by side is as many as a phone can compare legibly. */
+export const MAX_SHORTLIST = 3
 
-const EMPTY: PersonalState = { place: null, viewed: [], finder: null, visits: 0, returning: false }
+const EMPTY: PersonalState = { place: null, viewed: [], finder: null, shortlist: [], visits: 0, returning: false }
 
 function read(): PersonalState {
   try {
@@ -56,6 +60,9 @@ function read(): PersonalState {
       place: parsed.place && typeof parsed.place.lat === 'number' ? parsed.place : null,
       viewed: Array.isArray(parsed.viewed) ? parsed.viewed.filter((v) => typeof v === 'string').slice(0, MAX_VIEWED) : [],
       finder: parsed.finder && typeof parsed.finder.use === 'string' ? parsed.finder : null,
+      shortlist: Array.isArray(parsed.shortlist)
+        ? parsed.shortlist.filter((v) => typeof v === 'string').slice(0, MAX_SHORTLIST)
+        : [],
       visits: typeof parsed.visits === 'number' ? parsed.visits : 0,
       returning: false,
     }
@@ -83,7 +90,7 @@ function startSession(state: PersonalState): PersonalState {
     // Without session storage every load counts as a visit; harmless.
   }
   if (!fresh) return state
-  const returning = state.visits > 0 && (state.viewed.length > 0 || state.place !== null)
+  const returning = state.visits > 0 && (state.viewed.length > 0 || state.place !== null || state.shortlist.length > 0)
   const next = { ...state, visits: state.visits + 1, returning }
   write(next)
   return next
@@ -127,6 +134,29 @@ export function recordView(modelId: string): void {
 
 export function setFinderAnswers(finder: FinderAnswers | null): void {
   update({ finder })
+}
+
+export type ShortlistResult = 'added' | 'removed' | 'full'
+
+/** Event fired when a fourth model is refused, so the tray can say why. */
+export const SHORTLIST_FULL = 'solis:shortlist-full'
+
+/** Adds or removes a model; refuses a fourth (and says so). */
+export function toggleShortlist(modelId: string): ShortlistResult {
+  if (state.shortlist.includes(modelId)) {
+    update({ shortlist: state.shortlist.filter((id) => id !== modelId) })
+    return 'removed'
+  }
+  if (state.shortlist.length >= MAX_SHORTLIST) {
+    window.dispatchEvent(new CustomEvent(SHORTLIST_FULL))
+    return 'full'
+  }
+  update({ shortlist: [...state.shortlist, modelId] })
+  return 'added'
+}
+
+export function clearShortlist(): void {
+  update({ shortlist: [] })
 }
 
 /** The welcome-back prompt was answered or closed: don't show it again this visit. */

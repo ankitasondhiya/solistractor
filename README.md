@@ -37,6 +37,8 @@ own film where a section shows the machine (`src/edition.ts`).
 | 05 | Journey | One pinned photo; the Solis story, then Kies / Probeer / Rijd. | Enki's Web Studio |
 | 05 | Dealers | The 20 dealers, filterable by province — and sorted nearest first once the visitor shares their location or types a postcode / town (distance in km on every card). | — |
 | 05 | Demo request | Three-step form, pre-filled with the visitor's last-viewed model, town and nearest dealer; opens their email app with the request to info@solistractor.nl (no backend). | Enki's Web Studio |
+| — | Shortlist & compare | A ♥ on every model (gallery, compare table, finder, sheet) saves up to 3; a tray at the foot (desktop) or the phone action bar opens them side by side with the best figure in each row marked, and asks for a demo of all of them at once. | — |
+| — | Phone action bar | Bel · Dealer (with the distance to your nearest) · Shortlist · Demo within thumb reach; steps aside over the film, the demo form and the footer. | — |
 | — | Welcome back (returning visitors) | A note under the header: "Continue with the S26?" and their nearest dealer. | — |
 | — | Pause motion | Turns off smooth scrolling and ambient loops. `prefers-reduced-motion` gets static sections. | Ascenta Studio |
 | — | Companion (studio) | A small Solis drives along a track at the foot of the screen as you scroll. | Ascenta Studio (hummingbird) |
@@ -120,7 +122,10 @@ price. The catalogue loads as its own chunk the first time a sheet opens.
 [Motion for React](https://motion.dev) (`motion`, pinned) handles the component moves that GSAP and CSS
 don't do well — dealer cards gliding to their new order when the list re-sorts
 by distance (FLIP layout), the highlight travelling between filter chips
-(shared layout) and the welcome note's exit. Its features load lazily as their
+(shared layout) and the welcome note's exit. Opening a model flies its photo
+from the card you clicked into the sheet and back on close (`motion/flight.ts`),
+and the gallery's figures — power, lift, width, price — roll to the next model's
+values (`components/RollingNumber.tsx`). Its features load lazily as their
 own chunk, and it follows *Pause motion* and `prefers-reduced-motion`. GSAP +
 Lenis keep the scroll-scrubbed film.
 

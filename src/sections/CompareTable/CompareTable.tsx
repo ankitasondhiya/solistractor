@@ -7,7 +7,8 @@ import { SlideChip } from '../../components/Chip'
 import { useMatchIds } from '../../personal/personal'
 import { ArrowRight, Check } from '../../components/Icons'
 import { Reveal } from '../../components/Reveal'
-import { openModelSheet } from '../ModelSheet/sheetBus'
+import { imageIn, openModelSheet } from '../ModelSheet/sheetBus'
+import { ShortlistToggle } from '../../components/Shortlist/ShortlistToggle'
 
 /**
  * Section 03b — every model's key figures in one table, as published on
@@ -67,6 +68,9 @@ export function CompareTable() {
                 <th scope="col">{c.width}</th>
                 <th scope="col">{c.price}</th>
                 <th scope="col">
+                  <span className="visually-hidden">{t.shortlist.title}</span>
+                </th>
+                <th scope="col">
                   <span className="visually-hidden">{t.compare.details}</span>
                 </th>
               </tr>
@@ -101,12 +105,15 @@ export function CompareTable() {
                     {formatPrice(m.price, lang)}
                     <small>{t.models.vat}</small>
                   </td>
+                  <td className="compare__save">
+                    <ShortlistToggle modelId={m.id} />
+                  </td>
                   <td>
                     <button
                       type="button"
                       className="compare__details"
                       aria-label={`${t.compare.details}: Solis ${m.fullName}`}
-                      onClick={() => openModelSheet(m.id, 'specs')}
+                      onClick={(e) => openModelSheet(m.id, 'specs', imageIn(e.currentTarget.closest('tr')))}
                     >
                       {t.compare.details}
                       <ArrowRight />

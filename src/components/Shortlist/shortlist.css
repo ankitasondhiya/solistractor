@@ -1,0 +1,433 @@
+/* ---------------------------------------------------------------------------
+   Shortlist — the ♥ toggle, the desktop tray and the comparison dialog
+--------------------------------------------------------------------------- */
+
+/* The heart ------------------------------------------------------------------ */
+.heart-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--navy);
+  box-shadow: inset 0 0 0 1.5px rgba(12, 30, 82, 0.18);
+  transition:
+    transform var(--dur-3) var(--ease-spring),
+    background-color var(--dur-2) var(--ease),
+    color var(--dur-2) var(--ease),
+    box-shadow var(--dur-2) var(--ease);
+}
+
+.heart-btn[data-labelled='true'] {
+  display: inline-flex;
+  gap: 8px;
+  width: auto;
+  padding: 0 18px 0 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.heart-btn:hover {
+  box-shadow: inset 0 0 0 1.5px var(--navy);
+}
+
+.heart-btn:active {
+  transform: scale(0.92);
+  transition-duration: var(--dur-1);
+}
+
+.heart-btn__icon {
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.9;
+}
+
+.heart-btn__icon path {
+  fill: transparent;
+  transition: fill var(--dur-2) var(--ease);
+}
+
+/* Saved: filled red heart and a small beat — the press has an answer. */
+.heart-btn[aria-pressed='true'] {
+  color: #c62f3f;
+  box-shadow: inset 0 0 0 1.5px rgba(198, 47, 63, 0.4);
+  background: rgba(198, 47, 63, 0.06);
+}
+
+.heart-btn[aria-pressed='true'] .heart-btn__icon path {
+  fill: currentColor;
+}
+
+.heart-btn[aria-pressed='true'] .heart-btn__icon {
+  animation: heart-beat var(--dur-4) var(--ease-spring);
+}
+
+.heart-btn[data-labelled='true'][aria-pressed='true'] {
+  color: #b42a39;
+}
+
+@keyframes heart-beat {
+  30% {
+    transform: scale(1.28);
+  }
+}
+
+/* On dark grounds (the finder). */
+.finder .heart-btn {
+  color: var(--white);
+  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.3);
+}
+
+.finder .heart-btn[aria-pressed='true'] {
+  color: #ff8a96;
+  background: rgba(255, 138, 150, 0.12);
+}
+
+/* The tray (desktop) ----------------------------------------------------------- */
+.tray-region {
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  z-index: var(--z-float);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+html[data-edition='studio'] .tray-region {
+  bottom: 66px;
+}
+
+.tray {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 10px 10px 18px;
+  border-radius: 22px;
+  background: rgba(251, 250, 247, 0.94);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow:
+    inset 0 0 0 1px var(--line),
+    var(--shadow-2);
+  pointer-events: auto;
+}
+
+.tray__title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--navy);
+}
+
+.tray__heart {
+  width: 18px;
+  height: 18px;
+  color: #c62f3f;
+}
+
+.tray__heart path {
+  fill: currentColor;
+}
+
+.tray__items {
+  display: flex;
+  gap: 8px;
+}
+
+.tray__item {
+  position: relative;
+}
+
+.tray__thumb {
+  display: grid;
+  justify-items: center;
+  width: 76px;
+  padding: 4px 4px 3px;
+  border-radius: 12px;
+  background: linear-gradient(to bottom, var(--studio-top), var(--studio-floor));
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--navy);
+  transition: transform var(--dur-3) var(--ease-spring);
+}
+
+.tray__thumb:hover {
+  transform: translateY(-2px);
+}
+
+.tray__thumb img {
+  width: 64px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* The ×: 24px visible, 44px to tap. */
+.tray__remove {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--white);
+}
+
+.tray__remove::after {
+  content: '';
+  position: absolute;
+  inset: -10px;
+}
+
+.tray__remove svg {
+  width: 13px;
+  height: 13px;
+  stroke-width: 2.4;
+}
+
+.tray__hint {
+  max-width: 17ch;
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+.tray__notice {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 10px);
+  width: max-content;
+  max-width: min(420px, 90vw);
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: var(--navy);
+  color: var(--white);
+  font-size: 13.5px;
+  font-weight: 600;
+  transform: translateX(-50%);
+}
+
+.tray__notice:empty {
+  padding: 0;
+  background: none;
+}
+
+/* Phones reach the shortlist from the action bar instead. */
+@media (max-width: 899px) {
+  .tray-region {
+    display: none;
+  }
+}
+
+/* The comparison -------------------------------------------------------------- */
+.compare-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-header) + 3);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.compare-dialog__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 8, 15, 0.55);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  cursor: default;
+}
+
+.compare-dialog__panel {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  width: min(1040px, 100%);
+  max-height: min(860px, 100%);
+  border-radius: 26px;
+  background: var(--paper);
+  box-shadow: 0 40px 100px rgba(5, 8, 15, 0.35);
+  overflow: hidden;
+}
+
+.compare-dialog__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px clamp(20px, 3vw, 32px) 12px;
+}
+
+.compare-dialog__head h2 {
+  font-size: clamp(30px, 3.2vw, 44px);
+}
+
+.compare-dialog__body {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 8px clamp(20px, 3vw, 32px) 20px;
+}
+
+.compare-dialog__empty,
+.compare-dialog__more {
+  padding: 18px 0;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.compare-dialog__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px 24px;
+  padding: 14px clamp(20px, 3vw, 32px);
+  border-top: 1px solid var(--line);
+}
+
+.compare-dialog__clear {
+  margin-right: auto;
+}
+
+/* Models across, figures down: a label row spans the width, the values sit
+   under their tractor — the same reading at any width. */
+.compare-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 2), minmax(0, 1fr));
+  gap: 0 clamp(10px, 2vw, 24px);
+}
+
+.compare-grid__model {
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: 8px;
+  padding-bottom: 14px;
+}
+
+.compare-grid__pic {
+  width: 100%;
+  aspect-ratio: 1.42;
+  border-radius: 16px;
+  background:
+    radial-gradient(70% 60% at 50% 70%, rgba(255, 255, 255, 0.7), transparent 70%),
+    linear-gradient(to bottom, var(--studio-top), var(--studio-floor));
+}
+
+.compare-grid__pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 6% 6% 8%;
+}
+
+.compare-grid__name {
+  font-family: var(--display);
+  font-size: clamp(22px, 2.2vw, 30px);
+  font-weight: 400;
+  line-height: 1;
+  color: var(--navy);
+}
+
+.compare-grid__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+}
+
+.compare-grid__remove {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--muted);
+}
+
+.compare-grid__remove:hover {
+  background: rgba(12, 30, 82, 0.07);
+  color: var(--navy);
+}
+
+.compare-grid__remove svg {
+  width: 18px;
+  height: 18px;
+}
+
+.compare-grid__row {
+  display: contents;
+}
+
+.compare-grid__label {
+  grid-column: 1 / -1;
+  padding: 14px 0 6px;
+  border-top: 1px solid var(--line-strong);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.compare-grid__value {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--navy);
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.compare-grid__value[data-best='true'] {
+  background: var(--green-soft);
+}
+
+.compare-grid__best {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  width: fit-content;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--green-dark);
+}
+
+.compare-grid__best svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.6;
+}
+
+@media (max-width: 760px) {
+  .compare-dialog {
+    place-items: end stretch;
+    padding: 0;
+  }
+
+  .compare-dialog__panel {
+    max-height: 94dvh;
+    border-radius: 22px 22px 0 0;
+  }
+
+  .compare-dialog__foot .btn {
+    flex: 1 1 100%;
+  }
+
+  .compare-grid__value {
+    padding: 6px;
+    font-size: 14px;
+  }
+}
