@@ -17,10 +17,30 @@
   gap: 8px;
 }
 
+.compare__meta {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+}
+
 .compare__count {
   font-size: 13.5px;
   font-weight: 600;
+  font-variant-numeric: tabular-nums;
   color: var(--muted);
+}
+
+.compare__hint {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 14px;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.compare__hint::before {
+  content: '·';
 }
 
 /* The table scrolls on its own inside the page width, never the page. */
@@ -52,6 +72,9 @@
   text-transform: uppercase;
   color: var(--muted);
   white-space: nowrap;
+  transition:
+    color var(--dur-2) var(--ease),
+    box-shadow var(--dur-2) var(--ease);
 }
 
 .compare__table td,
@@ -61,6 +84,7 @@
   text-align: left;
   vertical-align: middle;
   color: var(--navy);
+  transition: box-shadow var(--dur-2) var(--ease);
 }
 
 /* The model column stays put while the figures scroll sideways. */
@@ -77,22 +101,243 @@
   background: var(--cream);
 }
 
+/* …and once the figures have moved under it, it casts a soft edge. */
+.compare__scroll[data-scrolled='true'] .compare__table thead th:first-child,
+.compare__scroll[data-scrolled='true'] .compare__table tbody th {
+  box-shadow: 8px 0 16px -12px rgba(12, 30, 82, 0.35);
+}
+
 .compare__table tbody tr {
   background: var(--white);
   transition: background-color var(--dur-2) var(--ease);
-  animation: row-in var(--dur-3) var(--ease-out) both;
-  animation-delay: calc(var(--i, 0) * 35ms);
 }
 
-.compare__table tbody tr:hover {
-  background: #fbfaf6;
+/* Each column's place in the reading order, for the stagger below. */
+.compare__table tr > :nth-child(2) {
+  --j: 1;
 }
 
-@keyframes row-in {
+.compare__table tr > :nth-child(3) {
+  --j: 2;
+}
+
+.compare__table tr > :nth-child(4) {
+  --j: 3;
+}
+
+.compare__table tr > :nth-child(5) {
+  --j: 4;
+}
+
+.compare__table tr > :nth-child(6) {
+  --j: 5;
+}
+
+.compare__table tr > :nth-child(7) {
+  --j: 6;
+}
+
+.compare__table tr > :nth-child(8) {
+  --j: 7;
+}
+
+.compare__table tr > :nth-child(9) {
+  --j: 8;
+}
+
+.compare__table tr > :nth-child(10) {
+  --j: 9;
+}
+
+/* Arrival --------------------------------------------------------------------
+   The first time the table scrolls into view it fills in as a diagonal wave —
+   row by row, and left to right within a row — while each tractor rolls into
+   its frame and its meters grow. Cells animate, not rows: rows belong to
+   Motion, which glides them to a new place when the order changes.
+
+   Once the wave is over (data-settled) these entrances are switched off. A
+   re-sorted row is moved in the DOM, and a moved element restarts its CSS
+   animations — its cells would blank out mid-glide. From then on a row a
+   filter brings in fades in through Motion instead (CompareTable.tsx). */
+.compare__scroll[data-shown='true'] thead th {
+  animation: compare-head-in 520ms var(--ease-out) backwards;
+  animation-delay: calc(var(--j, 0) * 30ms + 60ms);
+}
+
+.compare__scroll[data-shown='true'] tbody tr > * {
+  animation: compare-cell-in 620ms var(--ease-out) backwards;
+  animation-delay: calc(var(--i, 0) * 45ms + var(--j, 0) * 24ms + 120ms);
+}
+
+.compare__scroll[data-shown='true'] .compare__model img {
+  animation: compare-drive-in 900ms var(--ease-out) backwards;
+  animation-delay: calc(var(--i, 0) * 45ms + 120ms);
+}
+
+.compare__scroll[data-settled='true'] thead th,
+.compare__scroll[data-settled='true'] tbody tr > *,
+.compare__scroll[data-settled='true'] .compare__model img,
+.compare__scroll[data-settled='true'] .compare__meter-fill {
+  animation: none;
+}
+
+@keyframes compare-head-in {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(-6px);
   }
+}
+
+@keyframes compare-cell-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@keyframes compare-drive-in {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+}
+
+/* Meters: power and lift against the strongest in the range ------------------ */
+.compare__meter {
+  position: relative;
+  display: block;
+  width: 72px;
+  height: 4px;
+  margin-top: 7px;
+  border-radius: 4px;
+  background: rgba(12, 30, 82, 0.08);
+  overflow: hidden;
+}
+
+.compare__meter-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(to right, var(--green-dark), var(--green));
+  transform-origin: 0 50%;
+  transform: scaleX(var(--v, 0));
+}
+
+/* The optional upgrade (a stronger lift), lighter, behind the standard figure. */
+.compare__meter-fill--option {
+  background: rgba(116, 192, 74, 0.35);
+}
+
+.compare__scroll[data-shown='true'] .compare__meter-fill {
+  animation: compare-meter-grow 900ms var(--ease-out) backwards;
+  animation-delay: calc(var(--i, 0) * 45ms + var(--j, 0) * 24ms + 320ms);
+}
+
+@keyframes compare-meter-grow {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+/* Sortable headings ---------------------------------------------------------- */
+.compare__sort {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: -6px -8px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: inherit;
+  white-space: nowrap;
+  transition:
+    color var(--dur-2) var(--ease),
+    background-color var(--dur-2) var(--ease);
+}
+
+.compare__sort:hover {
+  color: var(--navy);
+  background: rgba(12, 30, 82, 0.05);
+}
+
+.compare__sort:active {
+  transform: scale(0.96);
+}
+
+.compare__sort-icon {
+  width: 13px;
+  height: 13px;
+  opacity: 0;
+  transform: translateY(-3px);
+  transition:
+    opacity var(--dur-2) var(--ease),
+    transform var(--dur-3) var(--ease-out);
+}
+
+.compare__sort:hover .compare__sort-icon,
+.compare__sort:focus-visible .compare__sort-icon {
+  opacity: 0.45;
+  transform: none;
+}
+
+.compare__table th[aria-sort] .compare__sort {
+  color: var(--navy);
+}
+
+.compare__table th[aria-sort] .compare__sort-icon {
+  opacity: 1;
+  transform: none;
+}
+
+.compare__table th[aria-sort='ascending'] .compare__sort-icon {
+  transform: rotate(180deg);
+}
+
+/* Hover: the row, and the column, under the pointer ---------------------------
+   The row tints and a green mark runs up its edge; the tractor rolls forward a
+   touch. The column lifts too (set by CompareTable.tsx), so one figure can be
+   followed down the whole range. */
+.compare__table tbody tr:hover {
+  background: #f8f7f2;
+}
+
+.compare__table tbody th::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: var(--green);
+  transform: scaleY(0);
+  transition: transform var(--dur-3) var(--ease-out);
+}
+
+.compare__table tbody tr:hover th::before {
+  transform: scaleY(1);
+}
+
+.compare__table[data-col='2'] tr > :nth-child(2),
+.compare__table[data-col='3'] tr > :nth-child(3),
+.compare__table[data-col='4'] tr > :nth-child(4),
+.compare__table[data-col='5'] tr > :nth-child(5),
+.compare__table[data-col='6'] tr > :nth-child(6),
+.compare__table[data-col='7'] tr > :nth-child(7),
+.compare__table[data-col='8'] tr > :nth-child(8) {
+  box-shadow: inset 0 0 0 999px rgba(31, 95, 209, 0.04);
+}
+
+.compare__table[data-col='2'] thead th:nth-child(2),
+.compare__table[data-col='3'] thead th:nth-child(3),
+.compare__table[data-col='4'] thead th:nth-child(4),
+.compare__table[data-col='5'] thead th:nth-child(5),
+.compare__table[data-col='6'] thead th:nth-child(6),
+.compare__table[data-col='7'] thead th:nth-child(7),
+.compare__table[data-col='8'] thead th:nth-child(8) {
+  color: var(--navy);
 }
 
 .compare__model {
@@ -109,6 +354,11 @@
   border-radius: 10px;
   object-fit: contain;
   background: linear-gradient(to bottom, var(--studio-top), var(--studio-floor));
+  transition: transform var(--dur-4) var(--ease-spring);
+}
+
+.compare__table tbody tr:hover .compare__model img {
+  transform: translateX(4px) scale(1.06);
 }
 
 .compare__model > span {
@@ -156,6 +406,7 @@
   transition:
     background-color var(--dur-2) var(--ease),
     color var(--dur-2) var(--ease),
+    box-shadow var(--dur-2) var(--ease),
     transform var(--dur-3) var(--ease-spring);
 }
 
@@ -165,12 +416,18 @@
   transition: transform var(--dur-2) var(--ease-out);
 }
 
+/* The row's own action answers the row's hover. */
+.compare__table tbody tr:hover .compare__details {
+  box-shadow: inset 0 0 0 1.5px var(--navy);
+}
+
 .compare__details:hover {
   background: var(--navy);
   color: var(--white);
 }
 
-.compare__details:hover svg {
+.compare__details:hover svg,
+.compare__table tbody tr:hover .compare__details svg {
   transform: translateX(2px);
 }
 
@@ -188,4 +445,11 @@
 .compare__save {
   width: 1%;
   padding-right: 0;
+}
+
+/* "Pause motion" pauses every animation on the page (global.css), which would
+   hold these entrances at their first frame — invisible. Here, none run. */
+html[data-motion='calm'] .compare__scroll *,
+html[data-motion='calm'] .compare__scroll *::before {
+  animation-name: none !important;
 }

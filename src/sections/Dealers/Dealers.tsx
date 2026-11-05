@@ -1,27 +1,36 @@
-import { useEffect, useId, useRef, useState, type FormEvent } from 'react'
+import { useEffect, useId, useLayoutEffect, useRef, useState, type CSSProperties, type FormEvent } from 'react'
 import { m } from 'motion/react'
 import './dealers.css'
 
 import { useLanguage } from '../../i18n/LanguageContext'
 import { byDistance, dealers, provinces, type Province } from '../../data/dealers'
 import { links } from '../../data/links'
-import { ArrowUpRight, Check, Locate, Pin, Search } from '../../components/Icons'
+import { ArrowDown, ArrowUpRight, Check, Locate, Pin, Search } from '../../components/Icons'
 import { Reveal } from '../../components/Reveal'
 import { SlideChip } from '../../components/Chip'
 import { setPlace, usePersonal } from '../../personal/personal'
 import { LocateFailure, locateMe, searchPlace } from '../../personal/locate'
+import { useMotion } from '../../motion/MotionContext'
 
 type Busy = 'gps' | 'search' | null
+
+/**
+ * How many dealers the list shows before "Show all": three rows of two —
+ * once the reader has said where they are, the six nearest.
+ */
+const FIRST = 6
 
 /**
  * Section 07 — the twenty dealers. The reader can say where they are (their
  * browser's location, or a postcode / town) and the list re-sorts nearest
  * first, each card gliding to its new place; the province filter still
  * narrows it. The place is remembered on this device for the next visit and
- * for the demo form.
+ * for the demo form. The list opens on its first six; the rest are one
+ * press away, and a new filter or place starts short again.
  */
 export function Dealers() {
   const { t } = useLanguage()
+  const { scrollTo } = useMotion()
   const L = t.dealers.locate
   const { place } = usePersonal()
   const [province, setProvince] = useState<Province | null>(null)
@@ -32,11 +41,48 @@ export function Dealers() {
   const inputId = useId()
   const errorId = useId()
   const hintId = useId()
+  const listId = useId()
+  const listRef = useRef<HTMLUListElement>(null)
+  const toggleRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => () => abortRef.current?.abort(), [])
 
   const filtered = province ? dealers.filter((d) => d.province === province) : dealers
   const rows = place ? byDistance(place, filtered) : filtered.map((dealer) => ({ dealer, km: null as number | null }))
+
+  // Opened for one filter and place only: changing either starts short again.
+  const view = `${province ?? 'all'}|${place?.label ?? ''}`
+  const [openFor, setOpenFor] = useState<string | null>(null)
+  const expanded = openFor === view
+  const collapsible = rows.length > FIRST
+  const visible = expanded || !collapsible ? rows : rows.slice(0, FIRST)
+
+  // What the press should do once the list has re-rendered: show the first
+  // new dealer (and move focus to it), or keep the button where it was.
+  const after = useRef<{ focus: boolean } | { anchor: number } | null>(null)
+  useLayoutEffect(() => {
+    const job = after.current
+    after.current = null
+    if (!job) return
+    if ('focus' in job) {
+      listRef.current?.children[FIRST]?.querySelector('a')?.focus({ preventScroll: true })
+      return
+    }
+    // Fewer cards above the button: scroll by what they took, so the button
+    // stays under the pointer and the first six are right above it.
+    const top = toggleRef.current?.getBoundingClientRect().top
+    if (top !== undefined) scrollTo(window.scrollY + (top - job.anchor), { immediate: true })
+  }, [expanded, scrollTo])
+
+  const toggle = () => {
+    if (expanded) {
+      after.current = { anchor: toggleRef.current?.getBoundingClientRect().top ?? 0 }
+      setOpenFor(null)
+    } else {
+      after.current = { focus: true }
+      setOpenFor(view)
+    }
+  }
 
   const fail = (e: unknown) => {
     if ((e as Error).name === 'AbortError') return
@@ -195,15 +241,17 @@ export function Dealers() {
             {resultsText}
           </p>
 
-          <ul className="dealers__list" key={province ?? 'all'}>
-            {rows.map(({ dealer: d, km }, i) => {
+          <ul className="dealers__list" id={listId} ref={listRef} key={province ?? 'all'}>
+            {visible.map(({ dealer: d, km }, i) => {
               const nearest = km !== null && i === 0
+              // The cards "Show all" adds arrive one after another, from the first new one.
+              const step = expanded && i >= FIRST ? i - FIRST : i
               return (
                 <m.li
                   key={d.href}
                   layout="position"
                   transition={{ layout: { duration: 0.56, ease: [0.16, 1, 0.3, 1] } }}
-                  style={{ animationDelay: `${Math.min(i, 10) * 35}ms` }}
+                  style={{ animationDelay: `${Math.min(step, 10) * 40}ms` }}
                 >
                   <a
                     className="dealer-card"
@@ -236,6 +284,32 @@ export function Dealers() {
               )
             })}
           </ul>
+
+          {collapsible && (
+            <div className="dealers__more">
+              <p className="dealers__progress">
+                <span>{t.dealers.shown(visible.length, rows.length)}</span>
+                <span
+                  className="dealers__progress-bar"
+                  aria-hidden="true"
+                  style={{ '--p': visible.length / rows.length } as CSSProperties}
+                >
+                  <span />
+                </span>
+              </p>
+              <button
+                ref={toggleRef}
+                type="button"
+                className="btn btn--ghost dealers__toggle"
+                aria-expanded={expanded}
+                aria-controls={listId}
+                onClick={toggle}
+              >
+                {expanded ? t.dealers.showFewer : t.dealers.showAll(rows.length)}
+                <ArrowDown className="btn__icon dealers__toggle-icon" />
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </section>
