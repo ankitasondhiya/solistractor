@@ -101,6 +101,15 @@
   background: var(--cream);
 }
 
+/* While the rows glide to a new order (CompareTable.tsx), a sticky cell would
+   stay behind as its row moves; for that second it is held at the same spot
+   by hand — offset by however far the table is scrolled sideways — so it
+   travels with its row. */
+.compare__table[data-gliding='true'] tbody th {
+  position: relative;
+  left: var(--sx, 0px);
+}
+
 /* …and once the figures have moved under it, it casts a soft edge. */
 .compare__scroll[data-scrolled='true'] .compare__table thead th:first-child,
 .compare__scroll[data-scrolled='true'] .compare__table tbody th {

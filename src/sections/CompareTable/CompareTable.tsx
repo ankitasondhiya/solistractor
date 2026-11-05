@@ -86,6 +86,8 @@ function nextSort(current: Sort | null, key: SortKey): Sort | null {
 
 /** How long the first cascade takes, so later rows can arrive without it. */
 const CASCADE_MS = 2000
+/** The longest row glide: 0.55s, after a stagger of up to 11 × 28ms, after the exits. */
+const GLIDE_MS = 1100
 
 /**
  * Section 03b — every model's key figures in one table, as published on
@@ -110,6 +112,28 @@ export function CompareTable() {
   const unit = lang === 'nl' ? 'pk' : 'hp'
   const matches = useMatchIds()
   const scrollRef = useRef<HTMLDivElement>(null)
+  const tableRef = useRef<HTMLTableElement>(null)
+  const glideTimer = useRef(0)
+
+  // While rows glide to a new order the model column can't stay sticky: Chrome
+  // leaves sticky cells where they were while their row moves, splitting each
+  // name from its figures. For that moment it is held in place by hand
+  // (compare-table.css, data-gliding + --sx), then made sticky again.
+  const glide = () => {
+    const table = tableRef.current
+    if (!table) return
+    table.dataset.gliding = 'true'
+    window.clearTimeout(glideTimer.current)
+    glideTimer.current = window.setTimeout(() => {
+      delete table.dataset.gliding
+    }, GLIDE_MS)
+  }
+  useEffect(() => () => window.clearTimeout(glideTimer.current), [])
+  const filter = (next: Segment | null) => {
+    if (next === segment) return
+    glide()
+    setSegment(next)
+  }
 
   // Reveal: shown once the table is in view; settled once its cascade is over,
   // after which rows that arrive (a filter) come in on their own, quickly.
@@ -153,7 +177,14 @@ export function CompareTable() {
 
   const sortHeader = (key: SortKey, label: string) => (
     <th scope="col" aria-sort={sort?.key === key ? sort.dir : undefined}>
-      <button type="button" className="compare__sort" onClick={() => setSort((s) => nextSort(s, key))}>
+      <button
+        type="button"
+        className="compare__sort"
+        onClick={() => {
+          glide()
+          setSort((s) => nextSort(s, key))
+        }}
+      >
         {label}
         <ArrowDown className="compare__sort-icon" aria-hidden="true" />
       </button>
@@ -177,11 +208,11 @@ export function CompareTable() {
 
         <div className="compare__bar">
           <div className="compare__chips" role="group" aria-label={t.models.all}>
-            <SlideChip group="compare" pressed={segment === null} onClick={() => setSegment(null)}>
+            <SlideChip group="compare" pressed={segment === null} onClick={() => filter(null)}>
               {t.models.all}
             </SlideChip>
             {segments.map((s) => (
-              <SlideChip key={s} group="compare" pressed={segment === s} onClick={() => setSegment(s)}>
+              <SlideChip key={s} group="compare" pressed={segment === s} onClick={() => filter(s)}>
                 {t.models.segments[s]}
                 <span className="chip__note">{segmentRange(s, lang)}</span>
               </SlideChip>
@@ -200,11 +231,14 @@ export function CompareTable() {
           ref={scrollRef}
           data-reveal=""
           onScroll={(e) => {
-            e.currentTarget.dataset.scrolled = e.currentTarget.scrollLeft > 2 ? 'true' : 'false'
+            const el = e.currentTarget
+            el.dataset.scrolled = el.scrollLeft > 2 ? 'true' : 'false'
+            el.style.setProperty('--sx', `${el.scrollLeft}px`)
           }}
         >
           <table
             className="compare__table"
+            ref={tableRef}
             onPointerOver={onPointerOver}
             onPointerLeave={(e) => {
               e.currentTarget.dataset.col = ''
@@ -241,8 +275,10 @@ export function CompareTable() {
                       // first render (AnimatePresence initial={false}), where CSS runs the wave.
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
+                      // Each row sets off a beat after the one above its new place: a reversed
+                      // order would otherwise send every row through the middle at once.
                       transition={{
-                        layout: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+                        layout: { duration: 0.55, delay: i * 0.028, ease: [0.16, 1, 0.3, 1] },
                         opacity: { duration: 0.32, delay: 0.12, ease: [0.16, 1, 0.3, 1] },
                       }}
                       exit={{ opacity: 0, transition: { duration: 0.16, ease: [0.7, 0, 0.84, 0] } }}
