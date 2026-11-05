@@ -1,10 +1,13 @@
 /* ---------------------------------------------------------------------------
-   STUDIO HERO (edition: studio, `/studio`) — one pinned viewport, three layers
-     1  words          .assembly__words      (intro headline, chapter words)
+   STUDIO HERO (edition: studio, `/`) — one pinned viewport, three layers
+     1  words          .assembly__words      (intro headline)
      2  the machine    .assembly__stage      (cut-out frames on a canvas)
-     3  interface      .assembly__ui
+     3  interface      .assembly__ui         (chapter column, callouts, dots)
 --------------------------------------------------------------------------- */
 .assembly {
+  /* The chapter column on the left; the camera frames the machine in the
+     space to its right (StudioHero.tsx measures where it ends). */
+  --col: clamp(300px, 28vw, 420px);
   position: relative;
   height: 640vh;
   background: var(--studio-mid);
@@ -62,28 +65,6 @@
 
 .assembly__line > span {
   display: block;
-}
-
-/* One word per chapter, sized to fill the width it has: Bebas averages about
-   0.43em a letter, so the word's length sets its size, capped by height. */
-.assembly__word {
-  --a: 0;
-  position: absolute;
-  /* Centred on the machine (the camera holds it a little below the middle),
-     and kept under the corner copy rather than behind it. */
-  top: 57%;
-  left: 50%;
-  font-family: var(--display);
-  font-size: min(calc(94vw / (var(--len) * 0.43)), 38vh);
-  line-height: 0.8;
-  letter-spacing: 0.005em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  color: var(--navy);
-  opacity: var(--a);
-  visibility: hidden;
-  transform: translate3d(-50%, calc(-50% + (1 - var(--a)) * 6vh), 0) scale(calc(0.96 + var(--a) * 0.04));
-  will-change: transform, opacity;
 }
 
 /* Layer 2 — the machine ------------------------------------------------------ */
@@ -228,29 +209,54 @@ html[data-loaded='true'] .assembly__enter {
   transform: none;
 }
 
-/* Chapters: a small label in the corner, two floating cards ------------------ */
+/* Chapters: one column on the left — label, word, title, text, two cards ------ */
 .assembly__chapter {
   --a: 0;
   position: absolute;
   inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(16px, 2.6vh, 26px);
+  padding: calc(var(--header-h) + 3.5vh) var(--gutter) 0;
   visibility: hidden;
 }
 
 .assembly__chapter-copy {
-  position: absolute;
-  top: calc(var(--header-h) + 4vh);
-  left: var(--gutter);
-  width: min(320px, 28vw);
+  width: var(--col);
   opacity: var(--a);
   transform: translateY(calc((1 - var(--a)) * 24px));
 }
 
+/* The chapter's word, in front of the studio and clear of the machine. Every
+   chapter uses one size — the one at which the longest word fills the column
+   (Bebas averages about 0.43em a letter) — capped by the window's height. */
+.assembly__chapter-word {
+  margin: 12px 0 2px;
+  overflow: hidden;
+  padding-bottom: 0.04em;
+  font-family: var(--display);
+  font-size: min(calc(var(--col) / (var(--len-max, 9) * 0.43)), 16vh);
+  line-height: 0.84;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--navy);
+}
+
+/* It rises out of its own line as the chapter arrives, and sinks back as it goes. */
+.assembly__chapter-word > span {
+  display: block;
+  transform: translateY(calc((1 - var(--a)) * 70%));
+}
+
 .assembly__chapter-title {
-  margin: 14px 0 8px;
-  font-size: clamp(20px, 1.6vw, 25px);
+  margin: 12px 0 8px;
+  font-size: clamp(19px, 1.5vw, 24px);
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.01em;
+  text-wrap: balance;
   color: var(--navy);
 }
 
@@ -264,14 +270,23 @@ html[data-loaded='true'] .assembly__enter {
   margin-top: 20px;
 }
 
+/* The chapter's two figures, side by side under its text — one above the
+   other where the column is too narrow for the longest label. */
+.assembly__facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(168px, 1fr));
+  gap: 10px;
+  width: var(--col);
+}
+
 .assembly__card {
-  position: absolute;
   display: flex;
   flex-direction: column-reverse;
+  justify-content: flex-end;
   gap: 6px;
-  min-width: 172px;
+  min-width: 0;
   margin: 0;
-  padding: 14px 18px 16px;
+  padding: 14px 14px 15px;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.8);
   -webkit-backdrop-filter: blur(14px);
@@ -282,36 +297,42 @@ html[data-loaded='true'] .assembly__enter {
   opacity: var(--a);
 }
 
+/* The second card trails the first a little, in and out. */
 .assembly__card[data-slot='0'] {
-  left: var(--gutter);
-  bottom: calc(10vh + 40px);
-  transform: translateY(calc((1 - var(--a)) * 36px));
+  transform: translateY(calc((1 - var(--a)) * 28px));
 }
 
 .assembly__card[data-slot='1'] {
-  right: var(--gutter);
-  top: calc(var(--header-h) + 13vh);
-  transform: translateY(calc((1 - var(--a)) * -36px));
+  transform: translateY(calc((1 - var(--a)) * 44px));
 }
 
 .assembly__card dt {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  line-height: 1.35;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
 }
 
+/* The figure never breaks; its unit drops under it if the card is too narrow. */
 .assembly__card dd {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 5px;
   margin: 0;
   font-family: var(--display);
-  font-size: 34px;
+  font-size: clamp(25px, 1.9vw, 32px);
   line-height: 1;
   color: var(--navy);
 }
 
+.assembly__card dd > span {
+  white-space: nowrap;
+}
+
 .assembly__card small {
-  margin-left: 5px;
   font-family: var(--font);
   font-size: 13px;
   font-weight: 600;
@@ -492,7 +513,7 @@ html[data-loaded='true'] .assembly__enter {
 }
 
 /* Narrow screens --------------------------------------------------------------
-   Copy at the top, cards along the bottom, the machine and its word between. */
+   Copy and word at the top, cards along the bottom, the machine between. */
 @media (max-width: 899px) {
   .assembly {
     height: 540vh;
@@ -505,11 +526,6 @@ html[data-loaded='true'] .assembly__enter {
 
   .assembly__title {
     font-size: clamp(54px, 16vw, 96px);
-  }
-
-  .assembly__word {
-    font-size: min(calc(92vw / (var(--len) * 0.43)), 30vh);
-    top: 50%;
   }
 
   .assembly__intro {
@@ -540,14 +556,29 @@ html[data-loaded='true'] .assembly__enter {
     display: none;
   }
 
-  .assembly__chapter-copy {
-    top: calc(var(--header-h) + 14px);
-    right: var(--gutter);
-    width: auto;
+  .assembly__chapter {
+    justify-content: space-between;
+    gap: 16px;
+    padding: calc(var(--header-h) + 14px) var(--gutter) calc(3.6vh + 40px);
+  }
+
+  .assembly__chapter-copy,
+  .assembly__facts {
+    width: 100%;
+  }
+
+  /* Always two across: stacked, they would take the machine's room. */
+  .assembly__facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .assembly__chapter-word {
+    margin: 8px 0 0;
+    font-size: min(14vw, 60px, 7.5vh);
   }
 
   .assembly__chapter-title {
-    margin: 10px 0 6px;
+    margin: 8px 0 6px;
     font-size: 19px;
   }
 
@@ -560,27 +591,14 @@ html[data-loaded='true'] .assembly__enter {
   }
 
   .assembly__card {
-    min-width: 0;
-    padding: 12px 14px;
+    padding: 12px;
   }
 
-  .assembly__card[data-slot='0'],
-  .assembly__card[data-slot='1'] {
-    top: auto;
-    bottom: calc(3.6vh + 40px);
-    width: calc(50% - var(--gutter) - 5px);
-  }
-
-  .assembly__card[data-slot='0'] {
-    left: var(--gutter);
-  }
-
-  .assembly__card[data-slot='1'] {
-    right: var(--gutter);
-    transform: translateY(calc((1 - var(--a)) * 36px));
+  .assembly__card dt {
+    letter-spacing: 0.08em;
   }
 
   .assembly__card dd {
-    font-size: 26px;
+    font-size: 24px;
   }
 }

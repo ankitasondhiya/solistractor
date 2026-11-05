@@ -34,8 +34,8 @@ import { landingScrollY, matchRoute, onArrive, usePath } from './router'
 const ContentRoute = lazy(() => import('./pages/ContentRoute'))
 
 /**
- * The landing page, top to bottom, in one of two editions (edition.ts — `/`
- * the film, `/studio` the first version).
+ * The landing page, top to bottom, in one of two editions (edition.ts). For
+ * now only the studio edition is live, at `/`; the film edition is parked.
  */
 function Landing({ hidden }: { hidden: boolean }) {
   return (

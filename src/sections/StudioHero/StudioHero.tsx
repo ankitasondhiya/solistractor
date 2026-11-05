@@ -5,6 +5,7 @@ import {
   ProgressContext,
   createProgressStore,
   useProgressEffect,
+  useProgressStore,
   type ProgressStore,
 } from '../../hooks/progressStore'
 import { progressTop, useScrollProgress } from '../../hooks/useScrollProgress'
@@ -29,20 +30,21 @@ import { HeroStatic } from '../HeroStatic/HeroStatic'
 const MOBILE_QUERY = '(max-width: 899px)'
 
 /**
- * Section 01, studio edition (`/studio`) — the tractor builds itself as the
- * reader scrolls.
+ * Section 01, studio edition (`/`) — the tractor builds itself as the reader
+ * scrolls.
  *
  * Three layers in one pinned viewport, bottom to top:
- *   1  words        the intro headline, then one giant word per chapter, solid
- *                   navy on the cream studio
+ *   1  words        the intro headline, solid navy on the cream studio
  *   2  the machine  the frame sequence — cut out of its studio, so it stands
- *                   in front of the word and covers part of it
- *   3  interface    a small chapter label, floating fact cards, callouts,
- *                   the pagination dots
+ *                   in front of the headline
+ *   3  interface    per chapter, a column on the left: label, the chapter's
+ *                   word in giant type, title, text and two fact cards; then
+ *                   the callouts on the machine, the pagination dots
  *
- * The scroll machinery is the Hitachi hero's; the composition — product in
- * front of an oversized word, almost nothing else on screen — follows the
- * "Pour / Play" reference.
+ * Once the chapters begin the machine moves right of the column
+ * (studioTimeline.ts, `lane`), so the words are never behind it. The scroll
+ * machinery is the Hitachi hero's; the cream studio and the oversized word
+ * follow the "Pour / Play" reference.
  */
 export function StudioHero() {
   const { systemReduced } = useMotion()
@@ -102,12 +104,20 @@ function AssemblyStory({ store, canvasRef, draw, ready }: StageProps & { store: 
     const top = progressTop(sectionRef, chapterTarget(c))
     if (top !== null) scrollTo(top)
   }
+  // Every chapter's word is set at one size: the size at which the longest fits the column.
+  const longest = Math.max(1, ...t.hero.chapters.map((c) => c.ghost.length))
 
   return (
-    <section className="assembly" ref={sectionRef} id="top" aria-labelledby="assembly-title">
+    <section
+      className="assembly"
+      ref={sectionRef}
+      id="top"
+      aria-labelledby="assembly-title"
+      style={{ '--len-max': longest } as CSSProperties}
+    >
       <div className="assembly__viewport" ref={viewportRef}>
         <Words />
-        <Stage canvasRef={canvasRef} draw={draw} ready={ready} />
+        <Stage canvasRef={canvasRef} draw={draw} ready={ready} viewportRef={viewportRef} />
 
         <div className="assembly__ui">
           <IntroFoot onJump={jump} />
@@ -138,15 +148,57 @@ function AssemblyStory({ store, canvasRef, draw, ready }: StageProps & { store: 
 }
 
 /* Layer 2 — the machine ----------------------------------------------------- */
-function Stage({ canvasRef, draw, ready }: StageProps) {
+/** Space between the chapter column and the machine (desktop). */
+const COLUMN_GAP = 40
+/** Space above and below the machine, between copy and cards (narrow screens). */
+const BAND_GAP = 12
+
+function Stage({ canvasRef, draw, ready, viewportRef }: StageProps & { viewportRef: RefObject<HTMLDivElement> }) {
   const stageRef = useRef<HTMLDivElement>(null)
   const mobile = useMobileRef()
+  const store = useProgressStore()
+  const { lang } = useLanguage()
+  // Where the chapter copy is, measured from the page itself rather than
+  // restated here: on desktop the machine is framed right of the column, on a
+  // narrow screen between the copy above and the cards below.
+  const layout = useRef({ width: 0, height: 0, reserve: 0, margin: 0, band: { top: 0, bottom: 0 } })
+
+  useEffect(() => {
+    const measure = () => {
+      const viewport = viewportRef.current
+      const columns = Array.from(viewport?.querySelectorAll<HTMLElement>('.assembly__chapter-copy') ?? [])
+      const facts = Array.from(viewport?.querySelectorAll<HTMLElement>('.assembly__facts') ?? [])
+      if (!viewport || !columns[0]) return
+      const v = viewport.getBoundingClientRect()
+      const c = columns[0].getBoundingClientRect()
+      // Offsets, not boxes: they leave out the copy's own entrance transform.
+      const copyEnd = Math.max(...columns.map((el) => el.offsetTop + el.offsetHeight))
+      const factsStart = Math.min(...facts.map((el) => el.offsetTop))
+      layout.current = {
+        width: v.width,
+        height: v.height,
+        reserve: c.right - v.left + COLUMN_GAP,
+        margin: c.left - v.left,
+        band: { top: copyEnd + BAND_GAP, bottom: factsStart - BAND_GAP },
+      }
+      store.set(store.get())
+    }
+    measure()
+    // Again once the display face has loaded: it sets the word's height.
+    let live = true
+    document.fonts?.ready.then(() => live && measure())
+    window.addEventListener('resize', measure)
+    return () => {
+      live = false
+      window.removeEventListener('resize', measure)
+    }
+  }, [viewportRef, store, lang])
 
   useProgressEffect((p) => {
     draw(frameAt(p))
     const stage = stageRef.current
     if (!stage) return
-    const cam = cameraAt(p, mobile.current, window.innerWidth / window.innerHeight)
+    const cam = cameraAt(p, { mobile: mobile.current, ...layout.current })
     stage.style.transform = `translate3d(${cam.x.toFixed(3)}vw, ${cam.y.toFixed(3)}vh, 0) scale(${cam.scale.toFixed(4)})`
   })
 
@@ -163,26 +215,17 @@ function Stage({ canvasRef, draw, ready }: StageProps) {
   )
 }
 
-/* Layer 1 — the words ------------------------------------------------------- */
+/* Layer 1 — the intro headline ---------------------------------------------- */
 function Words() {
   const { t } = useLanguage()
   const introRef = useRef<HTMLDivElement>(null)
-  const refs = useRef<(HTMLSpanElement | null)[]>([])
 
   useProgressEffect((p) => {
     const intro = introRef.current
-    if (intro) {
-      const a = p <= INTRO.hold ? 1 : 1 - Math.min(1, (p - INTRO.hold) / (INTRO.exit - INTRO.hold))
-      intro.style.setProperty('--a', a.toFixed(3))
-      intro.style.visibility = a < 0.01 ? 'hidden' : 'visible'
-    }
-    CHAPTERS.forEach((c, i) => {
-      const el = refs.current[i]
-      if (!el) return
-      const a = chapterAlpha(p, c)
-      el.style.setProperty('--a', a.toFixed(3))
-      el.style.visibility = a < 0.01 ? 'hidden' : 'visible'
-    })
+    if (!intro) return
+    const a = p <= INTRO.hold ? 1 : 1 - Math.min(1, (p - INTRO.hold) / (INTRO.exit - INTRO.hold))
+    intro.style.setProperty('--a', a.toFixed(3))
+    intro.style.visibility = a < 0.01 ? 'hidden' : 'visible'
   })
 
   return (
@@ -201,23 +244,6 @@ function Words() {
           ))}
         </h1>
       </div>
-
-      {CHAPTERS.map((timing, i) => {
-        const word = t.hero.chapters.find((c) => c.id === timing.id)?.ghost ?? ''
-        return (
-          <span
-            key={timing.id}
-            className="assembly__word"
-            aria-hidden="true"
-            style={{ '--len': word.length } as CSSProperties}
-            ref={(el) => {
-              refs.current[i] = el
-            }}
-          >
-            {word}
-          </span>
-        )
-      })}
     </div>
   )
 }
@@ -304,6 +330,10 @@ function ChapterCopy({
     <div className="assembly__chapter" data-last={last ? 'true' : 'false'} ref={ref} aria-hidden="true">
       <div className="assembly__chapter-copy">
         <p className="assembly__label">{chapterKicker(index, chapter.label)}</p>
+        {/* The chapter's word, in giant type, rising out of its own line. */}
+        <p className="assembly__chapter-word">
+          <span>{chapter.ghost}</span>
+        </p>
         <p className="assembly__chapter-title">{chapter.title.join(' ')}</p>
         <p className="assembly__chapter-body">{chapter.body}</p>
         {last && (
@@ -322,15 +352,17 @@ function ChapterCopy({
         )}
       </div>
 
-      {chapter.facts.map((fact, i) => (
-        <dl key={fact.label} className="assembly__card" data-slot={i}>
-          <dt>{fact.label}</dt>
-          <dd>
-            {fact.value}
-            {fact.unit && <small>{fact.unit}</small>}
-          </dd>
-        </dl>
-      ))}
+      <div className="assembly__facts">
+        {chapter.facts.map((fact, i) => (
+          <dl key={fact.label} className="assembly__card" data-slot={i}>
+            <dt>{fact.label}</dt>
+            <dd>
+              <span>{fact.value}</span>
+              {fact.unit && <small>{fact.unit}</small>}
+            </dd>
+          </dl>
+        ))}
+      </div>
     </div>
   )
 }

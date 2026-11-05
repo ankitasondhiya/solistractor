@@ -180,9 +180,11 @@ export function SiteHeader() {
 /**
  * Film | Studio: the two editions of the page (edition.ts). A link, not a
  * toggle — each edition loads its own film, so switching is a fresh page.
+ * Hidden while only one edition is live.
  */
 function EditionSwitch({ light = false }: { light?: boolean }) {
   const { t } = useLanguage()
+  if (EDITIONS.length < 2) return null
   return (
     <nav className="edition-switch" data-light={light ? 'true' : 'false'} aria-label={t.footer.edition}>
       {EDITIONS.map((e) => (

@@ -69,20 +69,22 @@ export function SiteFooter() {
         </p>
         <p>{t.footer.note}</p>
         <p className="site-footer__concept">{t.footer.concept}</p>
-        {/* Both versions of the page stay live; this is the way between them. */}
-        <nav className="site-footer__editions" aria-label={t.footer.editionNav}>
-          <span>{t.footer.edition}</span>
-          {EDITIONS.map((e) => (
-            <a
-              key={e}
-              href={editionPath[e]}
-              aria-current={e === EDITION ? 'page' : undefined}
-              onClick={(ev) => e !== EDITION && leaveForEdition(ev, editionPath[e])}
-            >
-              {t.footer.editions[e]}
-            </a>
-          ))}
-        </nav>
+        {/* When both versions of the page are live, this is the way between them. */}
+        {EDITIONS.length > 1 && (
+          <nav className="site-footer__editions" aria-label={t.footer.editionNav}>
+            <span>{t.footer.edition}</span>
+            {EDITIONS.map((e) => (
+              <a
+                key={e}
+                href={editionPath[e]}
+                aria-current={e === EDITION ? 'page' : undefined}
+                onClick={(ev) => e !== EDITION && leaveForEdition(ev, editionPath[e])}
+              >
+                {t.footer.editions[e]}
+              </a>
+            ))}
+          </nav>
+        )}
         <button type="button" className="site-footer__lang" onClick={() => setLang(lang === 'nl' ? 'en' : 'nl')}>
           {lang === 'nl' ? 'English' : 'Nederlands'}
         </button>

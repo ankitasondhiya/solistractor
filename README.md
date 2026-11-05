@@ -5,20 +5,24 @@ built in React + TypeScript + Vite. Dutch by default, English one click away.
 
 ```bash
 npm install
-npm run dev        # http://localhost:5174 and http://localhost:5174/studio
-npm run build      # typecheck + production build into dist/ (dist/studio/ included)
+npm run dev        # http://localhost:5174
+npm run build      # typecheck + production build into dist/
 ```
 
 ## Two editions
 
-The page exists in two versions, both live, with a **Versie / Version** switch in
-the footer. Everything below the hero is shared; each edition uses stills from its
-own film where a section shows the machine (`src/edition.ts`).
+The page exists in two versions. **For now only the studio edition is live, at
+`/`**; the film edition's code and frames stay in the project but nothing links to
+it, and an old `/studio` link lands on `/`. Set `FILM_EDITION_LIVE = true` in
+`src/edition.ts` to bring the film back at `/` (studio at `/studio`) together with
+the Film | Studio switches in the header and footer. Everything below the hero is
+shared; each edition uses stills from its own film where a section shows the
+machine.
 
 | Edition | Path | Hero |
 |---------|------|------|
-| **Film** | `/` | A red S75 in a full-screen cinematic film: axle and body assembling in a dark studio, driver aboard, lights on, a tyre in macro, sunrise in the field. White type low-left, chapter rail, hairline progress. |
-| **Studio** | `/studio` | The first version: a blue Solis assembling on a cream studio, cut out of its background so it stands in front of a giant navy word per chapter (after the "Pour / Play" reel), with corner labels, floating fact cards, callouts, dots, a turning badge, and the small tractor that drives along the foot of the page. |
+| **Studio** (live) | `/` | The first version: a blue Solis assembling on a cream studio, cut out of its background so it stands in front of a giant navy word per chapter (after the "Pour / Play" reel), with corner labels, floating fact cards, callouts, dots, a turning badge, and the small tractor that drives along the foot of the page. |
+| **Film** (parked) | `/` when re-enabled | A red S75 in a full-screen cinematic film: axle and body assembling in a dark studio, driver aboard, lights on, a tyre in macro, sunrise in the field. White type low-left, chapter rail, hairline progress. |
 
 ## The page, top to bottom
 

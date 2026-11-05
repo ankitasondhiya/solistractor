@@ -1,11 +1,16 @@
 /**
- * Two editions of the same landing page, side by side.
+ * Two editions of the same landing page.
  *
- *   film    /          A red S75 built and put to work in a full-screen
- *                      cinematic film; white type over the picture.
- *   studio  /studio    The first version: a blue Solis assembling in front of
- *                      giant chapter words on a cream studio, cut out of its
- *                      background (after the "Pour / Play" reference).
+ *   film    A red S75 built and put to work in a full-screen cinematic film;
+ *           white type over the picture.
+ *   studio  The first version: a blue Solis assembling in front of giant
+ *           chapter words on a cream studio, cut out of its background (after
+ *           the "Pour / Play" reference).
+ *
+ * For now only the studio edition is shown, at `/`: the film edition's code
+ * and frames stay in the project, but nothing links to it and no path opens
+ * it. Set FILM_EDITION_LIVE to true to bring it back — the film at `/`, the
+ * studio at `/studio`, and the Film | Studio switches in header and footer.
  *
  * Everything below the hero is shared; where a section shows the machine it
  * takes its still from the edition's own film (see each section's EDITION
@@ -14,14 +19,25 @@
  */
 export type Edition = 'film' | 'studio'
 
-export const EDITIONS: Edition[] = ['film', 'studio']
+/** Whether the film edition is offered at all (see above). */
+export const FILM_EDITION_LIVE = false
 
-export const editionPath: Record<Edition, string> = {
-  film: '/',
-  studio: '/studio',
+/** The editions a reader can reach; a switch between them shows only when there are two. */
+export const EDITIONS: Edition[] = FILM_EDITION_LIVE ? ['film', 'studio'] : ['studio']
+
+export const editionPath: Record<Edition, string> = FILM_EDITION_LIVE
+  ? { film: '/', studio: '/studio' }
+  : { film: '/', studio: '/' }
+
+const STUDIO_PATH = /^\/studio\/?$/
+
+export const EDITION: Edition =
+  FILM_EDITION_LIVE && !STUDIO_PATH.test(window.location.pathname) ? 'film' : 'studio'
+
+// An old /studio link while the studio is the only edition: same page, shown at `/`.
+if (!FILM_EDITION_LIVE && STUDIO_PATH.test(window.location.pathname)) {
+  window.history.replaceState(window.history.state, '', `/${window.location.search}${window.location.hash}`)
 }
-
-export const EDITION: Edition = /^\/studio\/?$/.test(window.location.pathname) ? 'studio' : 'film'
 
 /** How long the page takes to fade before it leaves (global.css, --dur-2). */
 const LEAVE_MS = 240
