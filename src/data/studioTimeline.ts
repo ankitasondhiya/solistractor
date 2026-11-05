@@ -81,19 +81,54 @@ export const CHAPTERS: StudioChapter[] = [
 ]
 
 /**
+ * The opening picture: the finished tractor, headlights on, standing under
+ * the headline before the reader has scrolled (0-based index into the
+ * frames). It is shot from the same camera as the first frames, so when it
+ * dissolves on the first scroll the chassis is left where the tractor stood,
+ * and the build begins from there.
+ */
+export const HERO_FRAME = 115
+
+/** The finished tractor in that frame, as [left, right, top, bottom] shares of the picture. */
+const HERO_SPAN = [0.205, 0.784, 0.129, 0.904] as const
+
+/** How much of the finished tractor shows: all of it until the first scroll, gone by 0.06. */
+const HERO_FADE: ReadonlyArray<readonly [number, number]> = [
+  [0, 1],
+  [0.012, 1],
+  [0.06, 0],
+]
+
+export function heroAt(progress: number): number {
+  return interpolate(HERO_FADE, progress, true)
+}
+
+/**
+ * How much the opening framing (the tractor fitted under the headline) still
+ * holds: all through the dissolve, then the camera hands over to the
+ * chapters' framing as the first chapter arrives.
+ */
+const INTRO_HOLD: ReadonlyArray<readonly [number, number]> = [
+  [0, 1],
+  [0.05, 1],
+  [0.135, 0],
+]
+
+/**
  * The camera, as [progress, x (vw), y (vh), scale]. Under the intro headline
- * the machine stands in the middle; once the chapters begin, each chapter's
- * word and copy take a column on the left and the machine moves into the
- * space to its right (see `lane`), so nothing it says is ever behind it. The
- * y keys keep every chapter's machine clear of the header above and of the
- * dots and badge below; the scale breathes — tighter on the small parts,
- * wider once the wheels are on.
+ * the machine is fitted to the space the headline and the intro's foot leave
+ * (`intro`); once the chapters begin, each chapter's word and copy take a
+ * column on the left and the machine moves into the space to its right (see
+ * `lane`), so nothing it says is ever behind it. The y keys keep every
+ * chapter's machine clear of the header above and of the dots and badge
+ * below; the scale breathes — tighter on the small parts, wider once the
+ * wheels are on.
  */
 type CameraKey = readonly [number, number, number, number]
 
 const CAMERA_DESKTOP: ReadonlyArray<CameraKey> = [
-  [0, 0, 12, 0.86],
-  [0.05, 0, 12, 0.86],
+  [0, 0, 4, 1],
+  [0.05, 0, 4, 1],
   [0.135, 0, 4, 1],
   [0.21, 0, 4, 1],
   [0.29, 0, 4, 1],
@@ -154,8 +189,8 @@ const SPAN_PAD = 0.02
  * (`band`), the keys only setting its largest size.
  */
 const CAMERA_MOBILE: ReadonlyArray<CameraKey> = [
-  [0, 4, 12, 1],
-  [0.05, 4, 12, 1],
+  [0, 4, 4, 1],
+  [0.05, 4, 4, 1],
   [0.135, 4, 4, 1],
   [0.765, 4, 4, 1],
   [0.845, 4, 2, 0.94],
@@ -187,20 +222,64 @@ export interface CameraView {
   margin: number
   /** narrow screens: the px band between the chapter copy and the cards */
   band?: { top: number; bottom: number }
+  /**
+   * Boxes (px) the finished tractor may stand in under the intro headline —
+   * the one that lets it be drawn largest is used.
+   */
+  intro?: ReadonlyArray<{ top: number; bottom: number; left: number; right: number }>
 }
+
+/** Where the machine stands before any scroll if the page could not be measured. */
+const INTRO_FALLBACK = { desktop: { x: 0, y: 12, scale: 0.86 }, mobile: { x: 4, y: 12, scale: 1 } } as const
 
 /** The canvas: 16:9, as wide as the window or as tall as it, and 165vw wide in portrait (studio-hero.css). */
 function pictureWidth(view: CameraView): number {
   return view.width <= view.height ? 1.65 * view.width : Math.min(view.width, (view.height * 16) / 9)
 }
 
+/** The finished tractor, as large as fits, centred in the intro box that holds it largest. */
+function introFraming(view: CameraView, picture: number): Camera | null {
+  const pictureHeight = (picture * 9) / 16
+  const [l, r, t, b] = [HERO_SPAN[0] - SPAN_PAD, HERO_SPAN[1] + SPAN_PAD, HERO_SPAN[2], HERO_SPAN[3] + SPAN_PAD]
+  let best: Camera | null = null
+  for (const box of view.intro ?? []) {
+    if (box.bottom <= box.top || box.right <= box.left) continue
+    const scale = Math.min(
+      1,
+      (box.bottom - box.top) / ((b - t) * pictureHeight),
+      (box.right - box.left) / ((r - l) * picture),
+    )
+    if (best && scale <= best.scale) continue
+    const x = (box.left + box.right) / 2 - view.width / 2 - ((l + r) / 2 - 0.5) * picture * scale
+    const y = (box.top + box.bottom) / 2 - view.height / 2 - ((t + b) / 2 - 0.5) * pictureHeight * scale
+    best = { x: (x / view.width) * 100, y: (y / view.height) * 100, scale }
+  }
+  return best
+}
+
 /**
- * On desktop the keys give the framing; the lane then moves the machine into
- * the free space right of the chapter column and, where that space is
- * narrower than the keys assume (a squarer window), draws it smaller. On a
- * narrow screen the lane moves it into the band between copy and cards.
+ * Before any scroll the finished tractor is fitted under the headline. From
+ * the first chapter on, on desktop the keys give the framing; the lane then
+ * moves the machine into the free space right of the chapter column and,
+ * where that space is narrower than the keys assume (a squarer window), draws
+ * it smaller. On a narrow screen the lane moves it into the band between copy
+ * and cards. Between the two, the camera hands over as the first chapter
+ * arrives.
  */
 export function cameraAt(progress: number, view: CameraView): Camera {
+  const cam = chapterFraming(progress, view)
+  const hold = interpolate(INTRO_HOLD, progress, true)
+  if (hold <= 0) return cam
+  const picture = view.width > 0 ? pictureWidth(view) : 0
+  const intro = (picture > 0 && introFraming(view, picture)) || INTRO_FALLBACK[view.mobile ? 'mobile' : 'desktop']
+  return {
+    x: cam.x + (intro.x - cam.x) * hold,
+    y: cam.y + (intro.y - cam.y) * hold,
+    scale: cam.scale + (intro.scale - cam.scale) * hold,
+  }
+}
+
+function chapterFraming(progress: number, view: CameraView): Camera {
   const keys = view.mobile ? CAMERA_MOBILE : CAMERA_DESKTOP
   const cam = {
     x: interpolate(keys.map((k) => [k[0], k[1]] as const), progress, true),

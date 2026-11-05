@@ -13,10 +13,12 @@ import { useFrameSequence } from '../../hooks/useFrameSequence'
 import { useMagnetic } from '../../hooks/useMagnetic'
 import {
   CHAPTERS,
+  HERO_FRAME,
   PRELOAD_FRAMES,
   cameraAt,
   frameAt,
   frameUrls,
+  heroAt,
   type FrameSize,
   type StudioChapter,
 } from '../../data/studioTimeline'
@@ -30,18 +32,20 @@ import { HeroStatic } from '../HeroStatic/HeroStatic'
 const MOBILE_QUERY = '(max-width: 899px)'
 
 /**
- * Section 01, studio edition (`/`) — the tractor builds itself as the reader
- * scrolls.
+ * Section 01, studio edition (`/`) — the finished tractor stands under the
+ * headline; on the first scroll it dissolves to its chassis, and the tractor
+ * builds itself again as the reader scrolls on.
  *
  * Three layers in one pinned viewport, bottom to top:
  *   1  words        the intro headline, solid navy on the cream studio
- *   2  the machine  the frame sequence — cut out of its studio, so it stands
- *                   in front of the headline
+ *   2  the machine  the finished tractor's picture over the frame sequence —
+ *                   both cut out of their studio
  *   3  interface    per chapter, a column on the left: label, the chapter's
  *                   word in giant type, title, text and two fact cards; then
  *                   the callouts on the machine, the pagination dots
  *
- * Once the chapters begin the machine moves right of the column
+ * Under the headline the machine is fitted to the space the headline and the
+ * intro's foot leave; once the chapters begin it moves right of the column
  * (studioTimeline.ts, `lane`), so the words are never behind it. The scroll
  * machinery is the Hitachi hero's; the cream studio and the oversized word
  * follow the "Pour / Play" reference.
@@ -52,17 +56,40 @@ export function StudioHero() {
   // Chosen once per visit: swapping sets mid-scroll would refetch everything.
   const size = useMemo<FrameSize>(() => (window.matchMedia(MOBILE_QUERY).matches ? 'sm' : 'lg'), [])
   const urls = useMemo(() => (systemReduced ? [] : frameUrls(size)), [size, systemReduced])
+  const heroSrc = useMemo(() => frameUrls(size)[HERO_FRAME]!, [size])
+
+  // The curtain lifts once the opening frames and the finished tractor are in.
+  const loaded = useRef({ frames: 0, hero: false })
+  const report = useCallback(() => {
+    preload.set(Math.min(loaded.current.frames, loaded.current.hero ? 1 : 0.96))
+  }, [])
 
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const onProgress = useCallback((settled: number, count: number) => {
-    preload.set(Math.min(1, settled / Math.min(count, PRELOAD_FRAMES)))
-  }, [])
+  const onProgress = useCallback(
+    (settled: number, count: number) => {
+      loaded.current.frames = Math.min(1, settled / Math.min(count, PRELOAD_FRAMES))
+      report()
+    },
+    [report],
+  )
   const sequence = useFrameSequence({ urls, canvasRef, onProgress, fit: 'frame' })
   const staticMode = systemReduced || sequence.failed
 
   useEffect(() => {
-    if (staticMode) preload.set(1)
-  }, [staticMode])
+    if (staticMode) {
+      preload.set(1)
+      return undefined
+    }
+    const image = new Image()
+    image.onload = image.onerror = () => {
+      loaded.current.hero = true
+      report()
+    }
+    image.src = heroSrc
+    return () => {
+      image.onload = image.onerror = null
+    }
+  }, [staticMode, heroSrc, report])
 
   return (
     <ProgressContext.Provider value={store}>
@@ -74,7 +101,13 @@ export function StudioHero() {
           chapterIds={CHAPTERS.map((c) => c.id)}
         />
       ) : (
-        <AssemblyStory store={store} canvasRef={canvasRef} draw={sequence.draw} ready={sequence.ready} />
+        <AssemblyStory
+          store={store}
+          canvasRef={canvasRef}
+          draw={sequence.draw}
+          ready={sequence.ready}
+          heroSrc={heroSrc}
+        />
       )}
     </ProgressContext.Provider>
   )
@@ -84,6 +117,8 @@ interface StageProps {
   canvasRef: RefObject<HTMLCanvasElement>
   draw: (index: number) => void
   ready: boolean
+  /** the finished tractor, shown before the first scroll */
+  heroSrc: string
 }
 
 function useChapterCopy(id: string) {
@@ -91,7 +126,7 @@ function useChapterCopy(id: string) {
   return t.hero.chapters.find((c) => c.id === id)
 }
 
-function AssemblyStory({ store, canvasRef, draw, ready }: StageProps & { store: ProgressStore }) {
+function AssemblyStory({ store, canvasRef, draw, ready, heroSrc }: StageProps & { store: ProgressStore }) {
   const { t } = useLanguage()
   const { calm, scrollTo } = useMotion()
   const sectionRef = useRef<HTMLElement>(null)
@@ -117,7 +152,7 @@ function AssemblyStory({ store, canvasRef, draw, ready }: StageProps & { store: 
     >
       <div className="assembly__viewport" ref={viewportRef}>
         <Words />
-        <Stage canvasRef={canvasRef} draw={draw} ready={ready} viewportRef={viewportRef} />
+        <Stage canvasRef={canvasRef} draw={draw} ready={ready} heroSrc={heroSrc} viewportRef={viewportRef} />
 
         <div className="assembly__ui">
           <IntroFoot onJump={jump} />
@@ -152,16 +187,37 @@ function AssemblyStory({ store, canvasRef, draw, ready }: StageProps & { store: 
 const COLUMN_GAP = 40
 /** Space above and below the machine, between copy and cards (narrow screens). */
 const BAND_GAP = 12
+/** Space between the finished tractor and the headline and intro copy around it. */
+const INTRO_GAP = 20
 
-function Stage({ canvasRef, draw, ready, viewportRef }: StageProps & { viewportRef: RefObject<HTMLDivElement> }) {
+type Box = { top: number; bottom: number; left: number; right: number }
+
+function Stage({
+  canvasRef,
+  draw,
+  ready,
+  heroSrc,
+  viewportRef,
+}: StageProps & { viewportRef: RefObject<HTMLDivElement> }) {
   const stageRef = useRef<HTMLDivElement>(null)
   const mobile = useMobileRef()
   const store = useProgressStore()
   const { lang } = useLanguage()
-  // Where the chapter copy is, measured from the page itself rather than
-  // restated here: on desktop the machine is framed right of the column, on a
-  // narrow screen between the copy above and the cards below.
-  const layout = useRef({ width: 0, height: 0, reserve: 0, margin: 0, band: { top: 0, bottom: 0 } })
+  // The finished tractor shows only once its picture is in; until then the chassis does.
+  const heroLoaded = useRef(false)
+  const heroRef = useRef<HTMLSpanElement>(null)
+  // Where the headline and the copy are, measured from the page itself rather
+  // than restated here: under the headline the finished tractor is fitted to
+  // the space left; on desktop the chapters frame the machine right of their
+  // column, on a narrow screen between the copy above and the cards below.
+  const layout = useRef({
+    width: 0,
+    height: 0,
+    reserve: 0,
+    margin: 0,
+    band: { top: 0, bottom: 0 },
+    intro: [] as Box[],
+  })
 
   useEffect(() => {
     const measure = () => {
@@ -180,6 +236,7 @@ function Stage({ canvasRef, draw, ready, viewportRef }: StageProps & { viewportR
         reserve: c.right - v.left + COLUMN_GAP,
         margin: c.left - v.left,
         band: { top: copyEnd + BAND_GAP, bottom: factsStart - BAND_GAP },
+        intro: introBoxes(viewport, c.left - v.left),
       }
       store.set(store.get())
     }
@@ -187,10 +244,30 @@ function Stage({ canvasRef, draw, ready, viewportRef }: StageProps & { viewportR
     // Again once the display face has loaded: it sets the word's height.
     let live = true
     document.fonts?.ready.then(() => live && measure())
-    window.addEventListener('resize', measure)
+    // And whenever the window, the headline or the intro's foot change size —
+    // observed after layout, so a breakpoint's new arrangement is already in.
+    const viewport = viewportRef.current
+    const observer = new ResizeObserver(() => measure())
+    if (viewport) {
+      observer.observe(viewport)
+      for (const selector of ['.assembly__intro-title', '.assembly__intro-foot', '.assembly__chapter-copy']) {
+        const el = viewport.querySelector(selector)
+        if (el) observer.observe(el)
+      }
+    }
+    // A window resize, measured once more a moment later as a backstop.
+    let settle = 0
+    const onResize = () => {
+      measure()
+      window.clearTimeout(settle)
+      settle = window.setTimeout(measure, 120)
+    }
+    window.addEventListener('resize', onResize)
     return () => {
       live = false
-      window.removeEventListener('resize', measure)
+      observer.disconnect()
+      window.clearTimeout(settle)
+      window.removeEventListener('resize', onResize)
     }
   }, [viewportRef, store, lang])
 
@@ -200,19 +277,70 @@ function Stage({ canvasRef, draw, ready, viewportRef }: StageProps & { viewportR
     if (!stage) return
     const cam = cameraAt(p, { mobile: mobile.current, ...layout.current })
     stage.style.transform = `translate3d(${cam.x.toFixed(3)}vw, ${cam.y.toFixed(3)}vh, 0) scale(${cam.scale.toFixed(4)})`
+    // The finished tractor dissolves on the first scroll, leaving its chassis.
+    const hero = heroLoaded.current ? heroAt(p) : 0
+    stage.style.setProperty('--hero', hero.toFixed(3))
+    if (heroRef.current) heroRef.current.style.visibility = hero < 0.005 ? 'hidden' : 'visible'
   })
 
   return (
     <div className="assembly__stage" ref={stageRef} aria-hidden="true">
-      <canvas
-        ref={canvasRef}
-        className="assembly__canvas"
-        data-ready={ready ? 'true' : 'false'}
-        width={1280}
-        height={720}
-      />
+      <div className="assembly__picture">
+        <canvas
+          ref={canvasRef}
+          className="assembly__canvas"
+          data-ready={ready ? 'true' : 'false'}
+          width={1280}
+          height={720}
+        />
+        <span className="assembly__hero-shot" ref={heroRef} data-loaded="false">
+          <img
+            src={heroSrc}
+            alt=""
+            width={1280}
+            height={720}
+            decoding="async"
+            onLoad={(e) => {
+              heroLoaded.current = true
+              e.currentTarget.parentElement!.dataset.loaded = 'true'
+              store.set(store.get())
+            }}
+          />
+        </span>
+      </div>
     </div>
   )
+}
+
+/**
+ * The boxes the finished tractor may stand in before the first scroll, under
+ * the headline: across the full width above the intro's foot; and, where the
+ * foot is a row (copy left, buttons right), down to the bottom of the window
+ * in the gap between them. The camera uses whichever holds it largest.
+ */
+function introBoxes(viewport: HTMLElement, gutter: number): Box[] {
+  const title = viewport.querySelector<HTMLElement>('.assembly__intro-title')
+  const intro = viewport.querySelector<HTMLElement>('.assembly__intro')
+  const foot = intro?.querySelector<HTMLElement>('.assembly__intro-foot')
+  const copy = intro?.querySelector<HTMLElement>('.assembly__intro-copy')
+  const actions = intro?.querySelector<HTMLElement>('.assembly__actions')
+  if (!title || !intro || !foot || !copy || !actions) return []
+  const width = viewport.clientWidth
+  const height = viewport.clientHeight
+  // Heights from offsets, which leave out the entrance and exit transforms
+  // (those only move things up and down); sides from the boxes on screen.
+  const top = title.offsetTop + title.offsetHeight + INTRO_GAP
+  const footTop = intro.offsetTop + foot.offsetTop
+  const boxes: Box[] = [{ top, bottom: footTop - INTRO_GAP, left: gutter, right: width - gutter }]
+  const v = viewport.getBoundingClientRect()
+  const copyRight = copy.getBoundingClientRect().right - v.left
+  const actionsLeft = actions.getBoundingClientRect().left - v.left
+  // Centred under the headline: as wide either side of the middle as the
+  // nearer of the copy and the buttons allows.
+  const centre = width / 2
+  const half = Math.min(centre - copyRight, actionsLeft - centre) - INTRO_GAP
+  if (half > 0) boxes.push({ top, bottom: height - INTRO_GAP, left: centre - half, right: centre + half })
+  return boxes
 }
 
 /* Layer 1 — the intro headline ---------------------------------------------- */
