@@ -6,13 +6,13 @@ import { loadPages, type ContentPage, type DealerPage, type PagesFile } from '..
 import { byDistance, dealers, dealerSlug } from '../data/dealers'
 import { links } from '../data/links'
 import { usePersonal } from '../personal/personal'
-import { goToSection, HOME, type Route } from '../router'
+import { goToSection, HOME, type PageId, type Route } from '../router'
 import { requestDemo } from '../sections/DemoRequest/demoBus'
 import { ArrowRight, ArrowUpRight, Phone, Pin } from '../components/Icons'
 import { Blocks } from './Blocks'
 
-/** The short name a page goes by in the breadcrumb trail. */
-const SHORT: Record<string, { nl: string; en: string }> = {
+/** The short name a page goes by in the breadcrumb trail — one for every page (router.ts). */
+const SHORT: Record<PageId, { nl: string; en: string }> = {
   'over-ons': { nl: 'Over Solis', en: 'About Solis' },
   informatie: { nl: 'Informatie', en: 'Information' },
   klantenservice: { nl: 'Service', en: 'Service' },
@@ -21,6 +21,8 @@ const SHORT: Record<string, { nl: string; en: string }> = {
   contact: { nl: 'Contact', en: 'Contact' },
   privacybeleid: { nl: 'Privacybeleid', en: 'Privacy policy' },
   cookiebeleid: { nl: 'Cookiebeleid', en: 'Cookie policy' },
+  acties: { nl: 'Acties', en: 'Offers' },
+  bedankt: { nl: 'Bedankt', en: 'Thank you' },
 }
 
 function setMeta(title: string, description: string): void {

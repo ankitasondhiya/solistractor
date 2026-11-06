@@ -1,6 +1,7 @@
 import { useSyncExternalStore } from 'react'
 
 import { EDITION, editionPath } from './edition'
+import { followLegacy, legacyTarget } from './legacy'
 
 /**
  * A small router for the pages that used to live on solistractor.nl — the
@@ -24,6 +25,8 @@ export type PageId =
   | 'contact'
   | 'privacybeleid'
   | 'cookiebeleid'
+  | 'acties'
+  | 'bedankt'
 
 export const PAGE_IDS: PageId[] = [
   'over-ons',
@@ -34,6 +37,8 @@ export const PAGE_IDS: PageId[] = [
   'contact',
   'privacybeleid',
   'cookiebeleid',
+  'acties',
+  'bedankt',
 ]
 
 export type Route =
@@ -103,7 +108,13 @@ function arrive(detail: Arrival): void {
  * edition, so a link home from /studio stays in the studio edition.
  */
 export function navigate(href: string, { replace = false }: { replace?: boolean } = {}): void {
-  const url = new URL(href, window.location.origin)
+  let url = new URL(href, window.location.origin)
+  // An old solistractor.nl address in a link: its place here (legacy.ts).
+  const legacy = legacyTarget(url.pathname, url.search)
+  if (legacy) {
+    followLegacy(legacy)
+    url = new URL(legacy.href, window.location.origin)
+  }
   let pathname = normalise(url.pathname)
   if (pathname === '/' || pathname === '/studio') pathname = HOME
   const samePath = pathname === currentPath() && url.search === window.location.search

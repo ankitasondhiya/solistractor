@@ -880,12 +880,218 @@
   font-size: clamp(32px, 3vw, 44px);
 }
 
+/* Promotion (Acties) ------------------------------------------------------------------
+   The machine with its attachment and the saving on the left; the pitch and
+   the price table — list price struck through, promotion price beside it —
+   on the right. */
+.cp-offer {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  align-items: start;
+  gap: clamp(32px, 5vw, 80px);
+}
+
+.cp-offer__visual {
+  position: sticky;
+  top: calc(var(--header-h) + 24px);
+  display: grid;
+  gap: 14px;
+}
+
+.cp-offer__machine {
+  position: relative;
+  margin: 0;
+  padding: clamp(16px, 3vw, 32px);
+  border-radius: 24px;
+  background:
+    radial-gradient(70% 60% at 50% 70%, rgba(255, 255, 255, 0.75), transparent 70%),
+    linear-gradient(to bottom, var(--studio-top), var(--studio-floor));
+}
+
+.cp-offer__machine img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1024 / 725;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 18px rgba(12, 30, 82, 0.2));
+}
+
+.cp-offer__attachment {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0;
+  padding: 12px 16px 12px 12px;
+  border-radius: 18px;
+  background: var(--paper);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.cp-offer__attachment img {
+  flex: none;
+  width: 120px;
+  height: auto;
+  aspect-ratio: 300 / 169;
+  object-fit: contain;
+}
+
+.cp-offer__attachment figcaption {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--navy);
+}
+
+/* The saving, as a stamp on the machine's picture. */
+.cp-offer__saving {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: 14px 18px;
+  border-radius: 18px;
+  background: var(--green);
+  color: var(--navy-900);
+  box-shadow: 0 14px 30px rgba(12, 30, 82, 0.18);
+  transform: rotate(-4deg);
+}
+
+.cp-offer__saving span {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cp-offer__saving strong {
+  font-family: var(--display);
+  font-size: clamp(30px, 3vw, 40px);
+  font-weight: 400;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.cp-offer__body {
+  display: grid;
+  gap: 18px;
+  justify-items: start;
+}
+
+.cp-offer__body > .cp-list,
+.cp-offer__table-wrap {
+  width: 100%;
+}
+
+/* A narrow screen scrolls the table inside its own box, never the page. */
+.cp-offer__table-wrap {
+  overflow-x: auto;
+  border-radius: 18px;
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.cp-offer__table {
+  width: 100%;
+  min-width: 460px;
+  border-collapse: collapse;
+  font-size: 14.5px;
+  color: var(--navy);
+}
+
+.cp-offer__table th,
+.cp-offer__table td {
+  padding: 13px 16px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.cp-offer__table [data-num] {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.cp-offer__table thead th {
+  background: var(--cream);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.cp-offer__table tbody tr + tr {
+  border-top: 1px solid var(--line);
+}
+
+.cp-offer__table tbody th {
+  font-weight: 600;
+}
+
+.cp-offer__table tbody th small {
+  display: block;
+  margin-top: 3px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.cp-offer__was {
+  color: var(--muted);
+}
+
+.cp-offer__was s {
+  text-decoration-thickness: 1.5px;
+}
+
+.cp-offer__now strong {
+  font-weight: 700;
+}
+
+/* Totals: a navy band, the promotion total large. */
+.cp-offer__table tr[data-total='true'] {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.cp-offer__table tr[data-total='true'] th,
+.cp-offer__table tr[data-total='true'] td {
+  vertical-align: middle;
+}
+
+.cp-offer__table tr[data-total='true'] .cp-offer__was {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.cp-offer__table tr[data-total='true'] .cp-offer__now strong {
+  font-family: var(--display);
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--green);
+}
+
+.cp-offer__footnote {
+  max-width: 62ch;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
 /* Small screens ------------------------------------------------------------------- */
 @media (max-width: 900px) {
   .cp-section[data-split='true'] .cp-section__top,
   .cp-section__top:has(> .cp-cards),
-  .cp-form-wrap {
+  .cp-form-wrap,
+  .cp-offer {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cp-offer__visual {
+    position: relative;
+    top: auto;
   }
 
   .cp-items[data-timeline='true'] .cp-item {

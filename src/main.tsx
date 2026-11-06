@@ -1,3 +1,5 @@
+// First: an old solistractor.nl address becomes its address here before anything reads it.
+import './legacy'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles/global.css'

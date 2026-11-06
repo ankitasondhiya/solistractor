@@ -8,8 +8,13 @@ import { EDITION, EDITIONS, editionPath, leaveForEdition } from '../../edition'
 import { goToSection, HOME, matchRoute, navigate, usePath } from '../../router'
 import { ArrowRight, Close, Menu, Phone, SolisLogo } from '../Icons'
 
-const SECTIONS = [
+/**
+ * The main menu: sections of the landing page, and — as on solistractor.nl,
+ * next to the range — the promotions, a page of its own.
+ */
+const NAV = [
   { id: 'modellen', key: 'models' },
+  { page: links.promotions, key: 'promotions' },
   { id: 'keuzehulp', key: 'finder' },
   { id: 'techniek', key: 'tech' },
   { id: 'dealers', key: 'dealers' },
@@ -116,11 +121,18 @@ export function SiteHeader() {
             </a>
 
             <nav className="site-header__nav" aria-label={t.nav.main}>
-              {SECTIONS.map((s) => (
-                <a key={s.id} href={`#${s.id}`} onClick={go(s.id)}>
-                  {t.nav[s.key]}
-                </a>
-              ))}
+              {NAV.map((s) =>
+                'page' in s ? (
+                  // A page: the router takes the click (router.ts).
+                  <a key={s.key} href={s.page} aria-current={path === s.page ? 'page' : undefined}>
+                    {t.nav[s.key]}
+                  </a>
+                ) : (
+                  <a key={s.key} href={`#${s.id}`} onClick={go(s.id)}>
+                    {t.nav[s.key]}
+                  </a>
+                ),
+              )}
             </nav>
 
             <div className="site-header__end">
@@ -147,11 +159,12 @@ export function SiteHeader() {
 
       <div className="mobile-menu" id="mobile-menu" data-open={open ? 'true' : 'false'} aria-hidden={!open}>
         <nav className="mobile-menu__nav">
-          {SECTIONS.map((s, i) => (
+          {NAV.map((s, i) => (
             <a
-              key={s.id}
-              href={`#${s.id}`}
-              onClick={go(s.id)}
+              key={s.key}
+              href={'page' in s ? s.page : `#${s.id}`}
+              onClick={'page' in s ? () => setOpen(false) : go(s.id)}
+              aria-current={'page' in s && path === s.page ? 'page' : undefined}
               tabIndex={open ? 0 : -1}
               style={{ transitionDelay: open ? `${80 + i * 50}ms` : '0ms' }}
             >

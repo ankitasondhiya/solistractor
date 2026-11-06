@@ -18,6 +18,7 @@ export const MEDIA = '/media/solis'
 export const links = {
   home: '/',
   models: '/#modellen',
+  promotions: '/acties',
   finder: '/#keuzehulp',
   compare: '/#vergelijken',
   dealers: '/#dealers',

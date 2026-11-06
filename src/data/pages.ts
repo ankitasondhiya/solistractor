@@ -1,7 +1,7 @@
 /**
  * The deeper pages of solistractor.nl — about, information, service,
- * warranty, warranty registration, contact, privacy, cookies and the twenty
- * dealer pages — as structured content (src/data/pages.json, rebuilt by
+ * warranty, warranty registration, contact, privacy, cookies, promotions,
+ * the thank-you page and the twenty dealer pages — as structured content (src/data/pages.json, rebuilt by
  * scripts/scrape-pages.py, media localised by scripts/localize-media.py).
  *
  * Every page is a list of blocks in the site's own theme shape: a hero, then
@@ -68,6 +68,35 @@ export interface PageBlock {
   form?: 'contact' | 'warranty'
   formOptions?: string[]
   note?: { title: string; text: string }
+  /** a promotion (solistractor.nl/acties): machine plus attachment at the promotion price */
+  offer?: PageOffer
+}
+
+/** One line of a promotion's price table: the list price, struck through, and the promotion price. */
+export interface PageOfferRow {
+  item: string
+  note?: string
+  /** "€ 24.275", or "" where there was no list price ("n.v.t.") */
+  was: string
+  now: string
+  /** the totals row */
+  total?: boolean
+}
+
+export interface PageOffer {
+  /** the machine first, then its attachment */
+  images?: PageImage[]
+  /** "Uw voordeel" · "€ 3.750" */
+  saving?: { label: string; value: string }
+  eyebrow?: string
+  title?: string
+  text?: string
+  points?: string[]
+  table?: { head: string[]; rows: PageOfferRow[] }
+  /** how long the promotion runs, as the price list puts it */
+  period?: { title: string; text: string }
+  actions?: PageLink[]
+  footnote?: string
 }
 
 export interface ContentPage {

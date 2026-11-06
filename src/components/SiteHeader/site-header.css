@@ -58,18 +58,20 @@
 }
 
 .site-header__nav a {
+  --pad: 14px;
   position: relative;
-  padding: 10px 14px;
+  padding: 10px var(--pad);
   font-size: 14.5px;
   font-weight: 600;
+  white-space: nowrap;
   color: var(--navy);
 }
 
 .site-header__nav a::after {
   content: '';
   position: absolute;
-  left: 14px;
-  right: 14px;
+  left: var(--pad);
+  right: var(--pad);
   bottom: 4px;
   height: 2px;
   background: var(--green);
@@ -78,8 +80,18 @@
   transition: transform var(--dur-3) var(--ease-out);
 }
 
-.site-header__nav a:hover::after {
+/* Hover, and the page the reader is on (Acties). */
+.site-header__nav a:hover::after,
+.site-header__nav a[aria-current='page']::after {
   transform: none;
+}
+
+/* Six links on a small laptop: a little closer together, never wrapping. */
+@media (min-width: 1101px) and (max-width: 1279px) {
+  .site-header__nav a {
+    --pad: 9px;
+    font-size: 14px;
+  }
 }
 
 .site-header__end {

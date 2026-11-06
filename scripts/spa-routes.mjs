@@ -11,9 +11,28 @@ import { copyFileSync, mkdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 
 // The two editions, every page that used to live on solistractor.nl
-// (src/router.ts) and each dealer's page (src/data/pages.json).
+// (src/router.ts) and each dealer's page (src/data/pages.json) — and the
+// old site's other addresses, which the app sends to their place here
+// (src/legacy.ts): the range, each model, the finder, the comparison, the
+// dealer list, the demo request, the warranty form and the promotion.
 const pages = JSON.parse(readFileSync(join('src', 'data', 'pages.json'), 'utf8'))
-const ROUTES = ['studio', ...Object.keys(pages.pages), ...Object.keys(pages.dealers).map((slug) => `dealers/${slug}`)]
+const catalogue = JSON.parse(readFileSync(join('src', 'data', 'catalogue.json'), 'utf8'))
+const LEGACY = [
+  'modellen',
+  ...catalogue.models.map((m) => `modellen/${m.slug}`),
+  'keuzehulp',
+  'vergelijken',
+  'dealers',
+  'demonstratie',
+  'garantieformulier',
+  'actie/actie-s50',
+]
+const ROUTES = [
+  'studio',
+  ...Object.keys(pages.pages),
+  ...Object.keys(pages.dealers).map((slug) => `dealers/${slug}`),
+  ...LEGACY,
+]
 
 for (const route of ROUTES) {
   const dir = join('dist', route)

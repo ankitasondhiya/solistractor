@@ -61,11 +61,23 @@ links work, any same-site `<a href>` is handled):
 | `/garantie` · `/garantie/registreren` | Warranty cover, and the registration form (the licence plate fills in the model from the RDW register) |
 | `/contact` | Contact form (`?onderwerp=dealer` pre-selects "Dealer worden") |
 | `/privacybeleid` · `/cookiebeleid` | Legal pages |
+| `/acties` | The current promotion (S50 with front loader): list price and promotion price per line, the saving, the totals, the period note |
+| `/bedankt` | Thank-you page |
 | `/dealers/<slug>` | Each of the 20 dealers: photo, address, phone, route, website, region map, history, distance from you, "plan a demo with this dealer" |
 
 Section links (`/#dealers`, `/#model-s26`) go home first, then to the section
 or the model's sheet. The landing page stays mounted while another page is open,
 so Back returns to the exact spot. Unknown addresses get a "page not found".
+
+Every address in solistractor.nl's sitemap (49) works here too. The ones the
+landing page shows itself are sent to their place (`src/legacy.ts`):
+`/modellen` → the range, `/modellen/<model>` → that model's sheet,
+`/keuzehulp`, `/vergelijken`, `/dealers` → their sections,
+`/demonstratie?model=s50` → the demo form with the S50 chosen,
+`/garantieformulier` → `/garantie/registreren`, `/actie/<promotion>` → `/acties`.
+To refresh one page from the live site without touching the others:
+`python scripts/scrape-pages.py src/data/pages.json --only acties`, then
+`python scripts/localize-media.py`.
 Forms open the visitor's email app (there is no backend); the only external
 links left are a dealer's own website, map routes and the OpenStreetMap credit,
 which open in a new tab.

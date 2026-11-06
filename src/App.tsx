@@ -125,6 +125,21 @@ export default function App() {
     [scrollTo],
   )
 
+  // Opened at a section of the landing page ("/#dealers" — an old /dealers
+  // link included, see legacy.ts): go there once the curtain has lifted. A
+  // model's sheet ("#model-s50") opens itself (ModelSheet).
+  useEffect(() => {
+    const hash = window.location.hash
+    if (!onLanding || !hash || hash === '#top' || hash.startsWith('#model-')) return undefined
+    if (!document.querySelector(hash.replace(/[^#\w-]/g, ''))) return undefined
+    return afterLoaded(() => {
+      ScrollTrigger.refresh()
+      scrollTo(hash, { offset: -24, immediate: true })
+    }, 120)
+    // Only for the address the visit started at.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <>
       <SiteHeader />

@@ -8,7 +8,16 @@ import { Mail, Phone, Pin, SolisLogo } from '../Icons'
 import { forgetEverything } from '../../personal/personal'
 
 /** Footer menu targets, in the order of `footer.links`. */
-const MENU = [links.home, links.models, links.information, links.service, links.warranty, links.about, links.contact]
+const MENU = [
+  links.home,
+  links.models,
+  links.promotions,
+  links.information,
+  links.service,
+  links.warranty,
+  links.about,
+  links.contact,
+]
 
 export function SiteFooter() {
   const { t, lang, setLang } = useLanguage()

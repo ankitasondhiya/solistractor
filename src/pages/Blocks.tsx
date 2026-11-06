@@ -1,7 +1,7 @@
 import { createContext, useContext, type ReactNode } from 'react'
 
 import { useLanguage } from '../i18n/LanguageContext'
-import type { PageBlock, PageCard, PageItem, PageLink } from '../data/pages'
+import type { PageBlock, PageCard, PageItem, PageLink, PageOffer } from '../data/pages'
 import { ArrowRight, ArrowUpRight, Check, Mail, Phone, Pin } from '../components/Icons'
 import { Reveal } from '../components/Reveal'
 import { ContactForm } from './ContactForm'
@@ -88,7 +88,9 @@ function Section({ block }: { block: PageBlock }) {
       data-variant={block.variant.join(' ')}
     >
       <div className="container">
-        {block.flow ? (
+        {block.offer ? (
+          <Offer offer={block.offer} />
+        ) : block.flow ? (
           <LegalText flow={block.flow} actions={block.actions} />
         ) : (
           <>
@@ -167,6 +169,93 @@ function Section({ block }: { block: PageBlock }) {
         )}
       </div>
     </section>
+  )
+}
+
+/* Promotion -------------------------------------------------------------------- */
+/**
+ * A promotion as the price list sets it: the machine with its attachment and
+ * the saving on one side; on the other the pitch, its points, and every line
+ * with its list price struck through beside the promotion price, then the
+ * totals. The period and the small print stay with the prices they qualify.
+ */
+function Offer({ offer }: { offer: PageOffer }) {
+  const [machine, attachment] = offer.images ?? []
+  const head = offer.table?.head ?? []
+  return (
+    <div className="cp-offer">
+      <Reveal className="cp-offer__visual">
+        {machine && (
+          <figure className="cp-offer__machine">
+            <img src={machine.src} alt={machine.alt} loading="lazy" decoding="async" />
+          </figure>
+        )}
+        {attachment && (
+          <figure className="cp-offer__attachment">
+            <img src={attachment.src} alt={attachment.alt} loading="lazy" decoding="async" />
+            <figcaption>{attachment.alt}</figcaption>
+          </figure>
+        )}
+        {offer.saving && (
+          <p className="cp-offer__saving">
+            <span>{offer.saving.label}</span>
+            <strong>{offer.saving.value}</strong>
+          </p>
+        )}
+      </Reveal>
+
+      <Reveal className="cp-offer__body" delay={80}>
+        {offer.eyebrow && <p className="eyebrow">{offer.eyebrow}</p>}
+        {offer.title && <h2 className="display display--md">{offer.title}</h2>}
+        {offer.text && <p className="cp-text">{offer.text}</p>}
+        {offer.points && (
+          <ul className="cp-list">
+            {offer.points.map((p) => (
+              <li key={p}>
+                <Check aria-hidden="true" />
+                {p}
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {offer.table && (
+          <div className="cp-offer__table-wrap">
+            <table className="cp-offer__table">
+              <thead>
+                <tr>
+                  {head.map((h, i) => (
+                    <th key={h} scope="col" data-num={i > 0 ? 'true' : undefined}>
+                      {h}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {offer.table.rows.map((row) => (
+                  <tr key={row.item} data-total={row.total ? 'true' : undefined}>
+                    <th scope="row">
+                      {row.item}
+                      {row.note && <small>{row.note}</small>}
+                    </th>
+                    <td data-num="true" className="cp-offer__was">
+                      {row.was ? <s>{row.was}</s> : <span className="cp-offer__none">—</span>}
+                    </td>
+                    <td data-num="true" className="cp-offer__now">
+                      <strong>{row.now}</strong>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+
+        {offer.period && <Note note={offer.period} />}
+        {offer.actions && <Actions links={offer.actions} dark={false} />}
+        {offer.footnote && <p className="cp-offer__footnote">{offer.footnote}</p>}
+      </Reveal>
+    </div>
   )
 }
 

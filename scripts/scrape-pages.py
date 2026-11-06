@@ -37,6 +37,8 @@ PAGES = {
     'contact': 'contact',
     'privacybeleid': 'privacybeleid',
     'cookiebeleid': 'cookiebeleid',
+    'acties': 'acties',
+    'bedankt': 'bedankt',
 }
 
 DEALERS = [
@@ -55,6 +57,7 @@ HERO_IMAGES = {
     'contact-hero': '/wp-content/themes/solis/assets/heroes/contact-fotograaf.webp',
     'privacy-hero': '/wp-content/themes/solis/assets/heroes/garantie-fotograaf.webp',
     'cookie-hero': '/wp-content/themes/solis/assets/heroes/contact-fotograaf.webp',
+    'acties-hero': '/wp-content/themes/solis/assets/models/heroes-fotograaf/s22.webp',
 }
 
 # Dark (navy) sections in the theme.
@@ -173,11 +176,15 @@ def map_href(href: str) -> dict:
     if path in ('vergelijken',):
         return {'kind': 'internal', 'href': '/#vergelijken'}
     if path in ('demo', 'demonstratie'):
-        return {'kind': 'internal', 'href': '/#demo'}
+        # "?model=s50" keeps its tractor: the old address picks it in the demo form (src/legacy.ts).
+        model = re.search(r'[?&]model=([a-z0-9-]+)', query)
+        return {'kind': 'internal', 'href': f'/demonstratie?model={model.group(1)}' if model else '/#demo'}
     if path == 'dealers':
         return {'kind': 'internal', 'href': '/#dealers'}
     if path.startswith('dealers/'):
         return {'kind': 'internal', 'href': f'/{path}'}
+    if path.startswith('actie/'):  # a single promotion: its own page lists every one
+        return {'kind': 'internal', 'href': '/acties'}
     if path in PAGES:
         return {'kind': 'internal', 'href': f'/{PAGES[path]}{query}'}
     return {'kind': 'internal', 'href': '/'}
@@ -301,8 +308,81 @@ def parse_card(card: Node) -> dict:
     return out
 
 
+def money(text: str) -> str:
+    """'€ 24.275' as published, or '' for 'n.v.t.' and empty cells."""
+    t = re.sub(r'\s+', ' ', text).strip()
+    return t if '€' in t else ''
+
+
+def parse_offer(promo: Node) -> dict:
+    """
+    A promotion (wp-block-solis-promotion): the machine and its attachment,
+    the saving, the pitch and its points, and the price table — each line
+    with its list price and its promotion price, then the totals.
+    """
+    offer: dict = {}
+    images = [img(i) for i in promo.find_all(lambda n: n.tag == 'img')]
+    images = [i for i in images if i.get('src')]
+    if images:
+        offer['images'] = images
+    stamp = promo.first(lambda n: 'actie-stamp' in n.cls)
+    if stamp is not None:
+        label = stamp.first(lambda n: n.tag == 'span')
+        value = stamp.first(lambda n: n.tag == 'strong')
+        offer['saving'] = {'label': label.text() if label else '', 'value': value.text() if value else ''}
+    body = promo.first(lambda n: 'actie-body' in n.cls) or promo
+    eyebrow = body.first(lambda n: 'eyebrow' in n.cls)
+    if eyebrow is not None:
+        offer['eyebrow'] = eyebrow.text()
+    title = body.first(lambda n: n.tag in ('h2', 'h3'))
+    if title is not None:
+        offer['title'] = title.text()
+    intro = body.first(lambda n: 'actie-intro' in n.cls)
+    if intro is not None:
+        offer['text'] = intro.text()
+    points = [li.text() for li in body.find_all(lambda n: n.tag == 'li' and n.inside(lambda q: 'actie-punten' in q.cls))]
+    if points:
+        offer['points'] = points
+    table = body.first(lambda n: n.tag == 'table')
+    if table is not None:
+        head = [th.text() for th in table.find_all(lambda n: n.tag == 'th' and n.inside(lambda q: q.tag == 'thead'))]
+        rows = []
+        for tr in table.find_all(lambda n: n.tag == 'tr' and not n.inside(lambda q: q.tag == 'thead')):
+            th = tr.first(lambda n: n.tag == 'th')
+            if th is None:
+                continue
+            small = th.first(lambda n: n.tag == 'small')
+            name = th.text().replace(small.text(), '').strip() if small is not None else th.text()
+            was = tr.first(lambda n: n.tag == 'td' and 'acties-was' in n.cls)
+            now = tr.first(lambda n: n.tag == 'td' and 'acties-now' in n.cls)
+            row = {'item': name, 'was': money(was.text()) if was else '', 'now': money(now.text()) if now else ''}
+            if small is not None and small.text():
+                row['note'] = small.text()
+            if tr.inside(lambda q: q.tag == 'tfoot'):
+                row['total'] = True
+            rows.append(row)
+        offer['table'] = {'head': head, 'rows': rows}
+    period = body.first(lambda n: 'actie-period' in n.cls)
+    if period is not None:
+        strong = period.first(lambda n: n.tag == 'strong')
+        span = period.first(lambda n: n.tag == 'span')
+        offer['period'] = {'title': strong.text() if strong else '', 'text': span.text() if span else ''}
+    actions = [link(a) for a in body.find_all(lambda n: n.tag == 'a' and n.attrs.get('href') and 'button' in n.cls)]
+    if actions:
+        offer['actions'] = actions
+    footnote = body.first(lambda n: 'acties-footnote' in n.cls)
+    if footnote is not None:
+        offer['footnote'] = footnote.text()
+    return offer
+
+
 def parse_section(sec: Node) -> dict:
     cls = sec.cls
+    promo = sec.first(lambda n: 'wp-block-solis-promotion' in n.cls)
+    if promo is not None:
+        tone = 'white' if 'white' in cls else 'paper'
+        variant = sorted(c for c in cls if c not in ('content-section', 'white', 'wp-block-group'))
+        return {'kind': 'section', 'tone': tone, 'variant': variant, 'offer': parse_offer(promo)}
     block: dict = {'kind': 'hero' if ('page-hero' in cls or 'information-hero' in cls) else 'section'}
     if sec.attrs.get('id'):
         block['id'] = sec.attrs['id']
@@ -415,6 +495,12 @@ def parse_section(sec: Node) -> dict:
         block['cards'] = cards
     is_action = lambda n: bool({'button', 'text-link', 'angled-download'} & n.cls) or n.attrs.get('href', '').lower().endswith('.pdf')
     actions = [link(a) for a in sec.find_all(lambda n: n.tag == 'a' and n.attrs.get('href') and not_in_card(n) and is_action(n))]
+    if not actions and block['kind'] == 'hero':
+        # A hero's plain row of links ("Terug naar home · Bekijk onze modellen").
+        actions = [
+            {**link(a), 'style': 'primary' if i == 0 else 'secondary'}
+            for i, a in enumerate(sec.find_all(lambda n: n.tag == 'a' and n.attrs.get('href') and n.inside(lambda q: 'subnav' in q.cls)))
+        ]
     if actions:
         block['actions'] = actions
     form = sec.first(lambda n: n.tag == 'form')
@@ -474,19 +560,33 @@ def dealer_facts(page: dict) -> dict:
     return facts
 
 
-def main(out_path: str) -> None:
-    data: dict = {'source': SITE, 'pages': {}, 'dealers': {}}
-    for src, dst in PAGES.items():
-        print('page', src, '->', dst, file=sys.stderr)
-        data['pages'][dst] = {'source': f'{SITE}/{src}/', **parse_page(fetch(src))}
-    for slug in DEALERS:
-        print('dealer', slug, file=sys.stderr)
-        page = parse_page(fetch(f'dealers/{slug}'))
-        data['dealers'][slug] = {'source': f'{SITE}/dealers/{slug}/', **page, 'facts': dealer_facts(page)}
+def main(out_path: str, only: list[str] | None = None) -> None:
+    if only:
+        # Refresh just these pages (paths on solistractor.nl) in the existing
+        # file; every other page and every dealer stays exactly as it was.
+        with open(out_path, encoding='utf-8') as f:
+            data = json.load(f)
+        for src in only:
+            dst = PAGES[src]
+            print('page', src, '->', dst, file=sys.stderr)
+            data['pages'][dst] = {'source': f'{SITE}/{src}/', **parse_page(fetch(src))}
+    else:
+        data = {'source': SITE, 'pages': {}, 'dealers': {}}
+        for src, dst in PAGES.items():
+            print('page', src, '->', dst, file=sys.stderr)
+            data['pages'][dst] = {'source': f'{SITE}/{src}/', **parse_page(fetch(src))}
+        for slug in DEALERS:
+            print('dealer', slug, file=sys.stderr)
+            page = parse_page(fetch(f'dealers/{slug}'))
+            data['dealers'][slug] = {'source': f'{SITE}/dealers/{slug}/', **page, 'facts': dealer_facts(page)}
     with open(out_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=1)
     print('wrote', out_path, file=sys.stderr)
 
 
 if __name__ == '__main__':
-    main(sys.argv[1] if len(sys.argv) > 1 else 'src/data/pages.json')
+    # python scripts/scrape-pages.py [out.json] [--only acties bedankt]
+    args = sys.argv[1:]
+    only = args[args.index('--only') + 1:] if '--only' in args else None
+    paths = args[: args.index('--only')] if '--only' in args else args
+    main(paths[0] if paths else 'src/data/pages.json', only)

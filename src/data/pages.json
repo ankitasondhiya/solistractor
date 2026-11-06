@@ -1497,6 +1497,167 @@
      ]
     }
    ]
+  },
+  "acties": {
+   "source": "/",
+   "title": "Actieprijzen | Solis Tractoren",
+   "description": "Solis actieprijzen volgens de prijslijst: zie per model wat de prijs vóór de actie was, wat u nu betaalt en hoeveel voordeel dat oplevert.",
+   "blocks": [
+    {
+     "kind": "hero",
+     "tone": "dark",
+     "variant": [
+      "acties-hero",
+      "page-hero",
+      "photo-hero"
+     ],
+     "image": {
+      "src": "/media/solis/themes/solis/assets/models/heroes-fotograaf/s22.webp",
+      "alt": ""
+     },
+     "eyebrow": "Uitgelicht",
+     "title": "Actie",
+     "text": [
+      "Eén samenstelling die er nu uitspringt: machine plus werktuig, tegen de actieprijs uit de prijslijst."
+     ]
+    },
+    {
+     "kind": "section",
+     "tone": "white",
+     "variant": [
+      "acties-section",
+      "is-layout-flow",
+      "wp-block-group-is-layout-flow"
+     ],
+     "offer": {
+      "images": [
+       {
+        "src": "/media/solis/uploads/2026/08/s50-1-1024x725.webp",
+        "alt": "Solis S50 Shuttle XL"
+       },
+       {
+        "src": "/media/solis/uploads/2026/08/s75-voorlader-300x169.png",
+        "alt": "Voorlader met parallelgeleiding en euro-aankoppeling"
+       }
+      ],
+      "saving": {
+       "label": "Uw voordeel",
+       "value": "€ 3.750"
+      },
+      "eyebrow": "Actie",
+      "title": "De S50 met voorlader, nu voordeliger.",
+      "text": "Een S50 wordt pas echt veelzijdig met een voorlader ervoor. Die combinatie staat nu met een scherpe actieprijs in de prijslijst: laden, lossen en stapelen zonder dat u er een tweede machine bij hoeft te halen.",
+      "points": [
+       "3e functie en joystickbediening zitten er standaard op",
+       "Euro-aankoppeling, dus gangbare werktuigen passen",
+       "Grondbak, balenklem en palletlepels los bij te bestellen"
+      ],
+      "table": {
+       "head": [
+        "Wat u krijgt",
+        "Was",
+        "Actieprijs"
+       ],
+       "rows": [
+        {
+         "item": "Solis S50 Shuttle XL · 4wd ROPS",
+         "was": "€ 24.275",
+         "now": "€ 21.725"
+        },
+        {
+         "item": "Voorlader met parallelgeleiding en euro-aankoppeling",
+         "was": "€ 6.195",
+         "now": "€ 4.995",
+         "note": "Inclusief 3e functie en joystickbediening, beide standaard"
+        },
+        {
+         "item": "Montagekosten voorlader",
+         "was": "",
+         "now": "€ 650"
+        },
+        {
+         "item": "Totaal · excl. btw",
+         "was": "€ 31.120",
+         "now": "€ 27.370",
+         "total": true
+        }
+       ]
+      },
+      "period": {
+       "title": "De prijslijst noemt geen actieperiode.",
+       "text": "In de prijslijst staat dat actieprijzen alleen gelden binnen de gestelde actieperiode, maar die periode wordt er niet bij vermeld. Laat uw dealer bevestigen of de actie op dit moment nog loopt."
+      },
+      "actions": [
+       {
+        "label": "Stel uw S50 samen",
+        "kind": "internal",
+        "href": "/#model-s50",
+        "style": "primary"
+       },
+       {
+        "label": "Plan een demonstratie",
+        "kind": "internal",
+        "href": "/demonstratie?model=s50",
+        "style": "secondary"
+       }
+      ],
+      "footnote": "Prijzen volgen de prijslijst van 01-02-2026 en zijn indicatief, exclusief btw. Uitvoering, opties, montage, leverbaarheid en de actuele geldigheid van de actie altijd door de dealer laten bevestigen."
+     }
+    },
+    {
+     "kind": "section",
+     "tone": "dark",
+     "variant": [
+      "s75-final-cta"
+     ],
+     "eyebrow": "Twijfelt u nog over het model?",
+     "title": "Laat de keuzehulp meedenken.",
+     "text": [
+      "Beantwoord drie eenvoudige vragen en bekijk welke modellen bij uw werk passen. De actieprijs staat er direct bij."
+     ],
+     "actions": [
+      {
+       "label": "Open de keuzehulp",
+       "kind": "internal",
+       "href": "/#keuzehulp",
+       "style": "primary"
+      }
+     ]
+    }
+   ]
+  },
+  "bedankt": {
+   "source": "/",
+   "title": "Bedankt | Solis Tractoren",
+   "description": "Bedankt voor uw bericht.",
+   "blocks": [
+    {
+     "kind": "hero",
+     "tone": "paper",
+     "variant": [
+      "page-hero"
+     ],
+     "eyebrow": "Bericht ontvangen",
+     "title": "Bedankt voor uw bericht!",
+     "text": [
+      "We nemen zo snel mogelijk contact met u op."
+     ],
+     "actions": [
+      {
+       "label": "Terug naar home",
+       "kind": "internal",
+       "href": "/",
+       "style": "primary"
+      },
+      {
+       "label": "Bekijk onze modellen",
+       "kind": "internal",
+       "href": "/#modellen",
+       "style": "secondary"
+      }
+     ]
+    }
+   ]
   }
  },
  "dealers": {

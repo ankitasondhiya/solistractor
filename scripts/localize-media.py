@@ -50,6 +50,9 @@ PAGE_MAP = {
     'modellen': '/#modellen',
     'keuzehulp': '/#keuzehulp',
     'vergelijken': '/#vergelijken',
+    'demonstratie': '/#demo',
+    'acties': '/acties',
+    'bedankt': '/bedankt',
 }
 
 
