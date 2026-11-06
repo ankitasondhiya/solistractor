@@ -28,6 +28,7 @@ export const links = {
   warranty: '/garantie',
   warrantyForm: '/garantie/registreren',
   about: '/over-ons',
+  history: '/geschiedenis',
   contact: '/contact',
   becomeDealer: '/contact?onderwerp=dealer',
   privacy: '/privacybeleid',

@@ -78,6 +78,38 @@
   gap: 12px;
 }
 
+/* The story's two ways on: about Solis, and the history since 1969. */
+.journey__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 22px;
+}
+
+.journey__history {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--white);
+  text-decoration: underline;
+  text-decoration-color: rgba(227, 178, 74, 0.7);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+.journey__history svg {
+  width: 16px;
+  height: 16px;
+  transition: transform var(--dur-2) var(--ease-out);
+}
+
+.journey__history:hover svg {
+  transform: translateX(3px);
+}
+
 .journey__facts div {
   display: flex;
   flex-direction: column-reverse;

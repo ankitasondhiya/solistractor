@@ -45,7 +45,12 @@ export type Route =
   | { kind: 'landing' }
   | { kind: 'page'; page: PageId }
   | { kind: 'dealer'; slug: string }
+  /** /geschiedenis: the history of ITL and Solis, a page of its own design (src/pages/HistoryPage.tsx) */
+  | { kind: 'history' }
   | { kind: 'notfound' }
+
+/** The history page's address. */
+export const HISTORY_PATH = '/geschiedenis'
 
 const NAVIGATE = 'solis:navigate'
 const ARRIVE = 'solis:arrive'
@@ -57,6 +62,7 @@ function normalise(pathname: string): string {
 export function matchRoute(pathname: string, dealerSlugs: readonly string[]): Route {
   const path = normalise(pathname)
   if (path === '/' || path === '/studio') return { kind: 'landing' }
+  if (path === HISTORY_PATH) return { kind: 'history' }
   const id = path.slice(1)
   if ((PAGE_IDS as string[]).includes(id)) return { kind: 'page', page: id as PageId }
   const dealer = /^dealers\/([a-z0-9-]+)$/.exec(id)

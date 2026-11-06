@@ -16,6 +16,7 @@ const MENU = [
   links.service,
   links.warranty,
   links.about,
+  links.history,
   links.contact,
 ]
 

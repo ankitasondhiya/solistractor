@@ -55,7 +55,8 @@ links work, any same-site `<a href>` is handled):
 
 | Path | Page |
 |------|------|
-| `/over-ons` | The Solis story (ITL, Yanmar, scale, Solis in the Netherlands) |
+| `/over-ons` | The Solis story (ITL, Yanmar, scale, Solis in the Netherlands) — ends with a way into the history |
+| `/geschiedenis` | The history of ITL as a story of innovation (`src/pages/HistoryPage.tsx`, facts and sources in `src/data/history.ts`): golden furrows toward 1969, founder L.D. Mittal, "first this, then this" (the thresher, then the first tractor), all 21 milestones on a line that scrolls sideways with a rolling year and the eras on a rail (a list on phones), strand filters (machines, factories, partners, world), ITL today in figures, 2021 — the Netherlands, and the sources |
 | `/informatie` | Price list and brochure (local PDFs), tyres per series, factory, partners |
 | `/klantenservice` | Service routes: workshop, technical questions, parts, warranty |
 | `/garantie` · `/garantie/registreren` | Warranty cover, and the registration form (the licence plate fills in the model from the RDW register) |

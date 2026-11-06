@@ -10,6 +10,8 @@ import { goToSection, HOME, type PageId, type Route } from '../router'
 import { requestDemo } from '../sections/DemoRequest/demoBus'
 import { ArrowRight, ArrowUpRight, Phone, Pin } from '../components/Icons'
 import { Blocks } from './Blocks'
+import { HistoryPage, HistoryTeaser } from './HistoryPage'
+import { HISTORY_COPY } from '../data/history'
 
 /** The short name a page goes by in the breadcrumb trail — one for every page (router.ts). */
 const SHORT: Record<PageId, { nl: string; en: string }> = {
@@ -45,17 +47,25 @@ export default function ContentRoute({ route }: { route: Exclude<Route, { kind: 
   }, [])
 
   const page: ContentPage | DealerPage | null =
-    !data || route.kind === 'notfound'
+    !data || route.kind === 'notfound' || route.kind === 'history'
       ? null
       : route.kind === 'page'
         ? data.pages[route.page]
         : data.dealers[route.slug] ?? null
 
   useEffect(() => {
-    if (page) setMeta(page.title, page.description)
+    if (route.kind === 'history') setMeta(HISTORY_COPY.meta.title[lang], HISTORY_COPY.meta.description[lang])
+    else if (page) setMeta(page.title, page.description)
     else if (route.kind === 'notfound') setMeta(`${t.pages.notFoundTitle} | Solis`, t.pages.notFoundText)
-  }, [page, route, t])
+  }, [page, route, t, lang])
 
+  // The history has a design of its own rather than the pages' blocks.
+  if (route.kind === 'history')
+    return (
+      <div className="cpage" data-route="history">
+        <HistoryPage />
+      </div>
+    )
   if (route.kind === 'notfound') return <NotFound />
   if (!page) return <Loading />
 
@@ -101,6 +111,8 @@ export default function ContentRoute({ route }: { route: Exclude<Route, { kind: 
       {note}
       {route.kind === 'dealer' && <DealerBar slug={route.slug} page={page as DealerPage} />}
       <Blocks blocks={rest} handlers={handlers} />
+      {/* About Solis leads on to the full story. */}
+      {route.kind === 'page' && route.page === 'over-ons' && <HistoryTeaser />}
     </div>
   )
 }

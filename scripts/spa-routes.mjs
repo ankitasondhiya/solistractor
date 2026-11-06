@@ -29,6 +29,7 @@ const LEGACY = [
 ]
 const ROUTES = [
   'studio',
+  'geschiedenis',
   ...Object.keys(pages.pages),
   ...Object.keys(pages.dealers).map((slug) => `dealers/${slug}`),
   ...LEGACY,

@@ -1,0 +1,1102 @@
+/* ---------------------------------------------------------------------------
+   /geschiedenis — the history of ITL as a story of innovation (HistoryPage.tsx)
+   Gold is this page's own accent: Sonalika means "lines of gold".
+--------------------------------------------------------------------------- */
+.hist {
+  --gold: #e3b24a;
+  --gold-deep: #b9861f;
+  --gold-soft: rgba(227, 178, 74, 0.14);
+  --t-machines: var(--green);
+  --t-factory: #6f9cf2;
+  --t-partners: var(--gold);
+  --t-world: #7fd0e4;
+}
+
+.hist-dot {
+  display: inline-block;
+  flex: none;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--t-machines);
+}
+
+.hist-dot[data-thread='factory'] {
+  background: var(--t-factory);
+}
+
+.hist-dot[data-thread='partners'] {
+  background: var(--t-partners);
+}
+
+.hist-dot[data-thread='world'] {
+  background: var(--t-world);
+}
+
+/* 1 — Hero: golden furrows toward a horizon where 1969 stands ----------------- */
+.hist-hero {
+  position: relative;
+  display: grid;
+  align-items: end;
+  min-height: min(100svh, 900px);
+  padding: calc(var(--header-h) + 48px) 0 clamp(48px, 9vh, 104px);
+  overflow: hidden;
+  background:
+    radial-gradient(60% 50% at 50% 38%, rgba(227, 178, 74, 0.16), transparent 70%),
+    linear-gradient(to bottom, var(--navy-900), #0b1a4a);
+  color: var(--white);
+}
+
+.hist-hero__field {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hist-hero__field path,
+.hist-hero__horizon {
+  fill: none;
+  stroke-width: 1.3;
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: hist-draw 2.2s var(--ease-out) forwards;
+}
+
+.hist-hero__field path {
+  stroke: url(#hist-gold);
+  animation-delay: calc(240ms + var(--i, 0) * 90ms);
+}
+
+.hist-hero__horizon {
+  stroke: rgba(243, 210, 122, 0.35);
+  animation-duration: 1.6s;
+}
+
+@keyframes hist-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* The year on the horizon: outlined gold, behind the copy. */
+.hist-hero__year {
+  position: absolute;
+  left: 50%;
+  top: calc(var(--header-h) + 2vh);
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(140px, 22vw, 340px);
+  line-height: 0.8;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(243, 210, 122, 0.55);
+  transform: translateX(-50%);
+  animation: hist-rise var(--dur-5) var(--ease-out) both;
+  pointer-events: none;
+}
+
+@keyframes hist-rise {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 30px);
+  }
+}
+
+.hist-hero__inner {
+  position: relative;
+  display: grid;
+  justify-items: start;
+  gap: 18px;
+}
+
+.hist-hero__title {
+  font-size: clamp(56px, 8.4vw, 136px);
+  line-height: 0.88;
+  color: var(--white);
+}
+
+.hist-hero__title > span {
+  display: block;
+  animation: hist-line-in var(--dur-5) var(--ease-out) both;
+  animation-delay: calc(160ms + var(--row, 0) * 110ms);
+}
+
+.hist-hero__title > span:last-child {
+  color: var(--gold);
+}
+
+@keyframes hist-line-in {
+  from {
+    opacity: 0;
+    clip-path: inset(100% 0 0 0);
+    transform: translateY(0.3em);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(-0.1em 0 -0.15em 0);
+    transform: none;
+  }
+}
+
+.hist-hero__lead {
+  max-width: 58ch;
+  font-size: clamp(16px, 1.3vw, 19px);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* A button: it takes the reader down to the founder. */
+.hist-hero__cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  margin-top: 4px;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 6px;
+  transition: text-decoration-color var(--dur-2) var(--ease);
+}
+
+.hist-hero__cue:hover {
+  text-decoration-color: currentColor;
+}
+
+.hist-hero__cue svg {
+  width: 16px;
+  height: 16px;
+  animation: hist-nudge 1.8s var(--ease-in-out) infinite;
+}
+
+@keyframes hist-nudge {
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+/* 2 — Founder ------------------------------------------------------------------ */
+.hist-founder {
+  padding: clamp(80px, 11vw, 150px) 0;
+  background: var(--cream);
+}
+
+.hist-founder__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  align-items: start;
+  gap: clamp(40px, 6vw, 96px);
+}
+
+.hist-founder__portrait {
+  display: grid;
+  gap: 22px;
+  justify-items: start;
+}
+
+/* A gold frame set off behind the portrait. */
+.hist-founder__portrait figure {
+  position: relative;
+  margin: 0 14px 14px 0;
+  /* The portrait is 380 px wide: never drawn larger, so it stays sharp. */
+  width: min(100%, 380px);
+}
+
+.hist-founder__portrait figure::before {
+  content: '';
+  position: absolute;
+  inset: 14px -14px -14px 14px;
+  border: 1.5px solid var(--gold-deep);
+  border-radius: 22px;
+}
+
+.hist-founder__portrait img {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 22px;
+  box-shadow: 0 24px 50px rgba(12, 30, 82, 0.18);
+}
+
+.hist-name {
+  display: grid;
+  gap: 8px;
+  max-width: 440px;
+  padding: 22px 24px;
+  border-radius: 20px;
+  background: var(--navy);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.hist-name__kicker {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.hist-name__title {
+  font-family: var(--display);
+  font-size: clamp(28px, 2.6vw, 38px);
+  line-height: 1;
+  color: var(--white);
+}
+
+.hist-name__text {
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+.hist-name__source {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.hist-founder__story {
+  display: grid;
+  gap: 16px;
+  justify-items: start;
+}
+
+.hist-founder__role {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.hist-founder__role span {
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--gold-soft);
+  box-shadow: inset 0 0 0 1px rgba(185, 134, 31, 0.35);
+  font-size: 13px;
+  color: #7a560f;
+}
+
+.hist-founder__lead {
+  max-width: 56ch;
+  font-size: clamp(16px, 1.25vw, 18px);
+  line-height: 1.65;
+  color: #3b4352;
+}
+
+.hist-ledger {
+  display: grid;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.hist-ledger li {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  align-items: baseline;
+  gap: 12px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line-strong);
+  font-size: 15.5px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--navy);
+}
+
+.hist-ledger li:last-child {
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.hist-ledger span {
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--gold-deep);
+}
+
+/* 3 — What he built first ----------------------------------------------------- */
+.hist-first {
+  padding: clamp(80px, 11vw, 150px) 0;
+  background: var(--paper);
+}
+
+.hist-first__head {
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+  max-width: 760px;
+  margin: 0 auto clamp(40px, 6vw, 72px);
+  text-align: center;
+}
+
+.hist-first__text {
+  max-width: 56ch;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.hist-first__pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(16px, 2.4vw, 32px);
+}
+
+.hist-first__pair > .hist-machine:nth-child(1) {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.hist-first__pair > .hist-machine:nth-child(2) {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.hist-first__gap {
+  grid-column: 2;
+  grid-row: 1;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+
+.hist-first__gap span {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--gold-soft);
+  white-space: nowrap;
+}
+
+.hist-first__gap svg {
+  width: 26px;
+  height: 26px;
+}
+
+.hist-machine {
+  position: relative;
+  display: grid;
+  gap: 10px;
+  padding: clamp(20px, 2.4vw, 32px);
+  border-radius: 26px;
+  background:
+    radial-gradient(70% 60% at 50% 70%, rgba(255, 255, 255, 0.75), transparent 70%),
+    linear-gradient(to bottom, var(--studio-top), var(--studio-floor));
+}
+
+.hist-machine__label {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hist-machine__label strong {
+  font-family: var(--display);
+  font-size: clamp(40px, 4vw, 60px);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 0.9;
+  color: var(--navy);
+}
+
+.hist-machine img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 20px rgba(12, 30, 82, 0.2));
+}
+
+.hist-machine__caption {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+/* 4 — Timeline: one line, scrolled sideways ------------------------------------ */
+.hist-line {
+  position: relative;
+  height: calc(100svh + var(--distance, 0px));
+  background:
+    radial-gradient(50% 60% at 15% 60%, rgba(227, 178, 74, 0.1), transparent 70%),
+    var(--navy-900);
+  color: var(--white);
+}
+
+.hist-line__viewport {
+  position: sticky;
+  top: 0;
+  display: grid;
+  /* One column the width of the window: left to size itself it would grow
+     to the line's full length and carry the heading and rail off-screen. */
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  height: 100svh;
+  padding: calc(var(--header-h) + 16px) 0 26px;
+  overflow: hidden;
+}
+
+.hist-line .display {
+  color: var(--white);
+}
+
+.hist-line__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px 32px;
+}
+
+.hist-line__filter {
+  display: grid;
+  gap: 10px;
+}
+
+.hist-line__filter-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.hist-line__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hist-line__chips .chip {
+  color: var(--white);
+  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.22);
+}
+
+.hist-line__chips .chip .hist-dot {
+  margin-right: 8px;
+}
+
+.hist-line__chips .chip[aria-pressed='true'] {
+  color: var(--navy-900);
+}
+
+.hist-line__chips .chip__pill {
+  background: var(--gold);
+}
+
+.hist-line__stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 0;
+}
+
+.hist-line__track {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 0;
+  padding: 12px 50vw 12px calc(var(--gutter) + 6vw);
+  list-style: none;
+  will-change: transform;
+}
+
+.hist-card {
+  flex: none;
+  width: clamp(280px, 23vw, 340px);
+  transition:
+    opacity var(--dur-3) var(--ease),
+    transform var(--dur-4) var(--ease-out);
+}
+
+.hist-card[data-image='true'] {
+  width: clamp(300px, 26vw, 390px);
+}
+
+.hist-card__inner {
+  position: relative;
+  display: grid;
+  gap: 10px;
+  padding: 20px 22px 22px;
+  border-radius: 22px;
+  background: var(--paper);
+  color: var(--navy);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+  transition:
+    box-shadow var(--dur-3) var(--ease),
+    transform var(--dur-4) var(--ease-out);
+}
+
+/* The strand's colour along the top edge. */
+.hist-card__inner::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: var(--t-machines);
+}
+
+.hist-card[data-thread='factory'] .hist-card__inner::before {
+  background: var(--t-factory);
+}
+
+.hist-card[data-thread='partners'] .hist-card__inner::before {
+  background: var(--t-partners);
+}
+
+.hist-card[data-thread='world'] .hist-card__inner::before {
+  background: var(--t-world);
+}
+
+.hist-card[data-active='true'] .hist-card__inner {
+  transform: translateY(-10px);
+  box-shadow:
+    0 0 0 2px var(--gold),
+    0 30px 70px rgba(0, 0, 0, 0.4);
+}
+
+/* 2021, the Netherlands: the card in gold. */
+.hist-card[data-home='true'] .hist-card__inner {
+  background: linear-gradient(160deg, #fff6df, var(--paper) 60%);
+  box-shadow:
+    0 0 0 2px var(--gold),
+    0 18px 44px rgba(0, 0, 0, 0.28);
+}
+
+.hist-card__pic {
+  margin: -20px -22px 4px;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: linear-gradient(to bottom, var(--studio-top), var(--studio-floor));
+}
+
+.hist-card__pic img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur-5) var(--ease-out);
+}
+
+.hist-card[data-active='true'] .hist-card__pic img {
+  transform: scale(1.04);
+}
+
+.hist-card__pic[data-kind='cutout'] img {
+  object-fit: contain;
+  padding: 8px;
+}
+
+.hist-card__meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.hist-card__year {
+  font-family: var(--display);
+  font-size: 46px;
+  line-height: 0.9;
+  color: var(--navy);
+}
+
+/* The theme tag: a small chip that filters the line to its theme. */
+.hist-card__thread {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  box-shadow: inset 0 0 0 1px var(--line-strong);
+  transition:
+    background-color var(--dur-2) var(--ease),
+    color var(--dur-2) var(--ease),
+    box-shadow var(--dur-2) var(--ease),
+    transform var(--dur-3) var(--ease-spring);
+}
+
+/* A comfortable target without a bigger chip. */
+.hist-card__thread::after {
+  content: '';
+  position: absolute;
+  inset: -8px -4px;
+}
+
+.hist-card__thread:hover {
+  color: var(--navy);
+  box-shadow: inset 0 0 0 1.5px var(--navy);
+}
+
+.hist-card__thread:active {
+  transform: scale(0.95);
+  transition-duration: var(--dur-1);
+}
+
+.hist-card__thread[aria-pressed='true'] {
+  background: var(--navy);
+  color: var(--white);
+  box-shadow: none;
+}
+
+.hist-card__title {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+.hist-card__text {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: #4a5262;
+}
+
+.hist-card__home {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #7a560f;
+}
+
+.hist-card__home svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* The scrubber: the year now, then the eras and how far along the reader is. */
+.hist-line__rail {
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(18px, 2.4vw, 36px);
+  margin-top: 16px;
+}
+
+.hist-line__now {
+  flex: none;
+  min-width: 3.9ch;
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(52px, 8vh, 84px);
+  line-height: 0.8;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.hist-line__eras {
+  position: relative;
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  gap: 6px;
+}
+
+.hist-line__fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(var(--p, 0));
+  transform-origin: 0 50%;
+}
+
+/* Each era is a button: it moves the line to that era's first milestone. */
+.hist-line__era {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 44px;
+  padding: 12px 0 2px;
+  border-top: 2px solid rgba(255, 255, 255, 0.16);
+  font-size: 12.5px;
+  font-weight: 600;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: color var(--dur-3) var(--ease);
+}
+
+.hist-line__era:hover:not(:disabled) {
+  color: var(--white);
+}
+
+.hist-line__era:hover:not(:disabled) strong {
+  color: var(--gold);
+}
+
+/* No milestones of the chosen theme in this era. */
+.hist-line__era:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.hist-line__era strong {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 11.5px;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.hist-line__era[data-current='true'] {
+  color: var(--white);
+}
+
+.hist-line__era[data-current='true'] strong {
+  color: var(--gold);
+}
+
+/* Phones and reduced motion: the same line, standing upright. */
+.hist-line[data-mode='list'] {
+  height: auto;
+  padding: clamp(72px, 12vw, 110px) 0;
+}
+
+.hist-line[data-mode='list'] .hist-line__viewport {
+  position: static;
+  display: block;
+  height: auto;
+  padding: 0;
+  overflow: visible;
+}
+
+.hist-line[data-mode='list'] .hist-line__track {
+  display: grid;
+  gap: 16px;
+  margin-top: 36px;
+  padding: 0 var(--gutter) 0 calc(var(--gutter) + 34px);
+  transform: none !important;
+}
+
+/* The line itself, down the left edge, with a knot at every milestone. */
+.hist-line[data-mode='list'] .hist-line__track::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: calc(var(--gutter) + 9px);
+  width: 2px;
+  background: linear-gradient(to bottom, var(--gold), rgba(227, 178, 74, 0.2));
+}
+
+.hist-line[data-mode='list'] .hist-card {
+  position: relative;
+  width: auto;
+  max-width: 560px;
+}
+
+.hist-line[data-mode='list'] .hist-card::before {
+  content: '';
+  position: absolute;
+  top: 30px;
+  left: -31px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--navy-900);
+  box-shadow:
+    0 0 0 2px var(--gold),
+    0 0 0 6px rgba(227, 178, 74, 0.15);
+}
+
+/* 5 — Today -------------------------------------------------------------------- */
+.hist-today {
+  padding: clamp(72px, 10vw, 130px) 0;
+  background: var(--navy);
+  color: var(--white);
+}
+
+.hist-today .display {
+  color: var(--white);
+}
+
+.hist-today__head {
+  display: grid;
+  gap: 12px;
+  margin-bottom: clamp(32px, 5vw, 56px);
+}
+
+.hist-today__grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.hist-figure {
+  display: grid;
+  gap: 8px;
+  padding: 22px 20px 6px 0;
+}
+
+.hist-figure + .hist-figure {
+  padding-left: 20px;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hist-figure__value {
+  font-family: var(--display);
+  font-size: clamp(38px, 4.4vw, 68px);
+  line-height: 0.95;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.hist-figure__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.hist-today__note {
+  margin-top: 22px;
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* 6 — The Netherlands ------------------------------------------------------------ */
+.hist-home {
+  padding: clamp(80px, 11vw, 150px) 0;
+  background: var(--cream);
+}
+
+.hist-home__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(32px, 6vw, 96px);
+}
+
+.hist-home__year span {
+  display: block;
+  font-family: var(--display);
+  font-size: clamp(120px, 18vw, 280px);
+  line-height: 0.8;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--navy);
+}
+
+.hist-home__copy {
+  display: grid;
+  gap: 16px;
+  justify-items: start;
+}
+
+.hist-home__text {
+  max-width: 54ch;
+  font-size: 17px;
+  line-height: 1.65;
+  color: #3b4352;
+}
+
+/* 7 — Sources -------------------------------------------------------------------- */
+.hist-sources {
+  padding: 48px 0 64px;
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+}
+
+.hist-sources__title {
+  margin-bottom: 14px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hist-sources__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  margin-bottom: 14px;
+}
+
+.hist-sources__list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy);
+  text-decoration: underline;
+  text-decoration-color: rgba(12, 30, 82, 0.25);
+  text-underline-offset: 4px;
+}
+
+.hist-sources__list svg {
+  width: 14px;
+  height: 14px;
+}
+
+.hist-sources__note {
+  max-width: 80ch;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* About Solis → the history ---------------------------------------------------- */
+.hist-teaser {
+  padding: 0 0 clamp(72px, 10vw, 120px);
+  background: var(--paper);
+}
+
+.hist-teaser__card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(20px, 4vw, 56px);
+  padding: clamp(28px, 4vw, 48px);
+  border-radius: 28px;
+  background:
+    radial-gradient(60% 120% at 0% 50%, rgba(227, 178, 74, 0.18), transparent 70%),
+    var(--navy-900);
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.hist-teaser__card .display {
+  color: var(--white);
+}
+
+.hist-teaser__copy {
+  display: grid;
+  gap: 10px;
+}
+
+.hist-teaser__years {
+  display: grid;
+  justify-items: center;
+  font-family: var(--display);
+  font-size: clamp(44px, 5vw, 72px);
+  line-height: 0.9;
+  color: var(--gold);
+}
+
+.hist-teaser__years span {
+  font-family: var(--font);
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.45);
+  transform: rotate(90deg);
+}
+
+@media (max-width: 899px) {
+  .hist-teaser__card {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: start;
+  }
+
+  .hist-teaser__years {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .hist-teaser__years span {
+    transform: none;
+  }
+}
+
+/* "Pause motion": everything drawn at once, nothing loops. */
+html[data-motion='calm'] .hist-hero__field path,
+html[data-motion='calm'] .hist-hero__horizon {
+  animation: none;
+  stroke-dashoffset: 0;
+}
+
+html[data-motion='calm'] .hist-hero__year,
+html[data-motion='calm'] .hist-hero__title > span,
+html[data-motion='calm'] .hist-hero__cue svg {
+  animation: none;
+}
+
+/* Small screens ----------------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .hist-today__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .hist-figure:nth-child(4) {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+@media (max-width: 899px) {
+  .hist-founder__grid,
+  .hist-home__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hist-first__pair {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hist-first__pair > .hist-machine:nth-child(1),
+  .hist-first__pair > .hist-machine:nth-child(2),
+  .hist-first__gap {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .hist-first__gap {
+    order: 0;
+  }
+
+  .hist-first__pair > .hist-machine:nth-child(2) {
+    order: 1;
+  }
+
+  .hist-first__gap svg {
+    transform: rotate(90deg);
+  }
+}
+
+@media (max-width: 600px) {
+  .hist-today__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hist-figure,
+  .hist-figure + .hist-figure {
+    padding: 18px 12px 4px 0;
+    border-left: 0;
+  }
+
+  .hist-figure:nth-child(even) {
+    padding-left: 14px;
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
+  }
+}

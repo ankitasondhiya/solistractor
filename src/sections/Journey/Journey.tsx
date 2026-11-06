@@ -84,10 +84,16 @@ export function Journey() {
                 </div>
               ))}
             </dl>
-            <a className="btn btn--ghost-light" href={links.about}>
-              {t.journey.cta}
-              <ArrowRight className="btn__icon" />
-            </a>
+            <div className="journey__actions">
+              <a className="btn btn--ghost-light" href={links.about}>
+                {t.journey.cta}
+                <ArrowRight className="btn__icon" />
+              </a>
+              <a className="journey__history" href={links.history}>
+                {t.journey.history}
+                <ArrowRight aria-hidden="true" />
+              </a>
+            </div>
           </div>
 
           {t.journey.steps.map((step, i) => (
